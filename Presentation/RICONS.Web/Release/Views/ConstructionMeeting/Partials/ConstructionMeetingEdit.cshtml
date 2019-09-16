@@ -1,0 +1,91 @@
+﻿@using RICONS.Web.Models
+@model RICONS.DataServices.Executes.ConstructionMeetings.ConstructionMeetingViewModel
+@{
+    var lstLoaiCuocHop = new List<SelectOption>()
+{
+new SelectOption(){ Text = "Họp với chủ đầu tư", Value = 0},
+new SelectOption(){ Text = "Hop với BCH công trường", Value = 1},
+};
+}
+<input type="hidden" name="Id" value="@Model.Id" />
+<input type="hidden" name="CongTruong" value="@Model.CongTruong" />
+<input type="hidden" name="GiamDoc" value="@Model.GiamDoc" />
+<input type="hidden" name="Date" value="@Model.Date.ToString("MM/dd/yyyy")" />
+<div class="boxEdit">
+    <div class="row">
+        <div class="col-md-3" style="min-width: 150px; padding-left: 10px;">
+            Loại cuộc họp <label style="color: red; height: 10px;">*</label>:
+        </div>
+        <div class="col-md-9" style="padding-left: 10px;">
+            <select value="" name="loaicuochop">
+                @foreach (var item in lstLoaiCuocHop)
+                {
+                    if (item.Value == Model.LoaiCuocHop)
+                    {
+                        <option selected="selected" value="@item.Value">@item.Text</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3" style="min-width: 150px; padding-left: 10px;">
+            Giờ bắt đầu họp <label style="color: red; height: 10px;">*</label>:
+        </div>
+        <div class="col-md-9" style="padding-left: 10px;">
+            <input type="text" value="@Model.GioHop" style="width: 100%" placeholder="Giờ họp - VD: 8h20 or 15h00" name="GioHop">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3" style="min-width: 150px; padding-left: 10px;">
+            Thành phần tham dự <label style="color: red; height: 10px;">*</label>:
+        </div>
+        <div class="col-md-9" style="padding-left: 10px;">
+            <input type="text" value="@Model.ThanhPhanThamDu" style="width: 100%" name="ThanhPhanThamDu" placeholder="Thành phần tham dự">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3" style="min-width: 150px; padding-left: 10px;">
+            File đính kèm :
+        </div>
+        <div class="col-md-9" style="padding-left: 10px;">
+            <input type="file" name="FileDinhKemPostFileBase" />
+        </div>
+    </div>
+</div>
+
+<script>
+    function initConstructionMeetingForm(callback) {
+        var f = '#ConstructionMeetingForm';
+        $(f + ' select').chosen();
+        $(f + ' .btn-submit').click(function () {
+            var btn = $(this);
+            btn.button('loading');
+            $.ajax(
+                {
+                    url: '/ConstructionMeeting/ConstructionMeetingEdit',
+                    type: "POST",
+                    data: new FormData($(f)[0]),
+                    processData: false,
+                    contentType: false,
+                    success: function (result) {
+                        btn.button('reset');
+                        $('#ConstructionMeetingEditModal').modal('hide');
+                        callback(result);
+                    }
+                });
+        });
+
+    }
+    function formDataToJson(formData) {
+        var object = {};
+        formData.forEach(function (value, key) {
+            object[key] = value;
+        });
+        return object;
+    }
+</script>

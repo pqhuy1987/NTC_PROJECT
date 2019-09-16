@@ -1,0 +1,415 @@
+﻿@model RICONS.Web.Models.daotao_taolopModels
+@{
+    ViewBag.Title = "Quản lý danh sách lớp";
+}
+
+@section CSS
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/controller/Daotao/NotiEmail.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/css/components-rounded.min.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/layouts/css/blue.min.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/prism.css" />
+    @* <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/controller/MilestonesCSS.Create.css" />*@
+}
+
+@*--javascript--*@
+@section JavaScript
+{
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/controllers/Daotao/NotiEmail.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery.datepick-vi.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/chosen.jquery.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/prism.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/table/buildTable.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/colResizale/colResizable-1.3.source.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/plugins/jquery.blockui.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/scripts/app.min.js"></script>
+
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootbox.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/custom.js"></script>
+
+<script>
+    $(document).ready(function (e) {
+        setValueToCombobox();
+    });
+    function setValueToCombobox() {
+        $('#filter01').val('@Model.malop');
+        for (var selector in configChosenDangkyvanphongpham) {
+            $(selector).change();
+            $(selector).trigger('chosen:updated');
+        }
+    }
+</script>
+
+}
+<script>
+    var linkContent = '@Url.Content("~")';
+</script>
+
+
+<div class="HeaderFixed">
+
+    <div class="b-b b-light1">
+        <div class="row">
+            <div class="col-md-1" style="width:105px">
+                @*<button id="btn-save" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu"><i class="retweet_save"></i> Lưu</button>*@
+                <a id="Capnhatguimail" href="@Url.Action("Capnhatguimail", "Classlist")" class="buttoncustom WhiteButton"> <i class="retweet_save"></i>Lưu</a>
+            </div>
+            <div class="col-md-1" style="width: 230px;">
+                <a id="GuiEmail" href="@Url.Action("GuiEmail", "Classlist")" class="buttoncustom WhiteButton" style="width: 220px;"> <i class="retweet_new"></i>Gửi Email thông báo đào tạo</a>
+            </div>
+           
+            <div class="col-md-2" style="width: 97px;">Tên lớp học<label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-3">
+                <select id="filter01" data-placeholder="Tên lớp học" class="chosen-select-loaikehoach" name="malop">
+                    <option value="0">Chọn tên lớp học</option>
+                    @if (!string.IsNullOrEmpty(ViewBag.sblophoc))
+                    {
+                        @Html.Raw(ViewBag.sblophoc);
+                    }
+                </select>
+            </div>
+
+            @*<div class="col-md-1" style="line-height: 31px; width:105px">
+                &nbsp; Export: <a href="@Url.Action("ExportLicensing", "Classtlist")"><i class="fa fa-file-excel-o" style="color:black;"></i>Excel</a>
+            </div>*@
+
+            <div class="p-right p-right-item2">
+                <div class="p-right-item t-export c-black">
+                    <div class="p-right-item t-export c-black" style="padding-right: 5px;"><a id="btnPre" style="cursor: pointer;"> < </a></div>
+
+                    <div class="p-right-item t-export c-black">
+                        <div class="col-md-1"><input type="text" style="width: 50px; border-radius: 3px; border: 1px solid #bbb; height: 26px; text-align: center; " id="txttrangthu" name="trangthu" value="1" /></div>
+                    </div>
+                    <div class="p-right-item t-export c-black" style="padding-right: 5px;"><a id="btnNext" style="cursor: pointer;"> > </a></div>
+
+                </div>
+                <div class="p-right-item1 t-export c-black" id="girdInfo">&nbsp; <span class="Pages">0</span>&nbsp; trang&nbsp; <span class="tongdong">0</span>&nbsp; kết quả &nbsp;</div>
+            </div>
+
+        </div>
+    </div>
+    <div class="clearBoth"></div>
+</div>
+
+<div class="boxEdit">
+    @using (Html.BeginForm("NotiEmail", "Classlist", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+    {
+
+             <div class="row">
+                <div class="col-md-1" style="width: 135px; padding-left:10px;">Tiêu đề gửi mail<label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-5">
+                    <input type="text" style="width:100%" autocomplete="off" placeholder="Tiêu đề gửi mail" id="txttieudeguimail" name="tieudeguimail" />
+                </div>
+                
+                 <div class="col-md-1" style="padding-left:10px;">Chọn file:</div>
+                 <div class="col-md-2">
+                     <input type="file" id="FileUpload" />
+                     <input type="text" style="width:100%" autocomplete="off" placeholder="Báo cáo" id="txtchuoimahoa" class="hidden" name="chuoimahoa"/>
+                 </div>
+                 <div class="col-md-2">
+                     <input type="text" style="width:100%" autocomplete="off" placeholder="file" id="txttenfile" name="tenfile" />
+                 </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-md-1" style="width: 135px; padding-left: 10px;">Email CC:</div>
+                <div class="col-md-10">
+                    <textarea style="width:100%; resize:none;" rows="2" placeholder="Email CC viết cách nhau dấu ; (daotao@ricons.vn;daotao1@ricons.vn) " id="txtmailcc" name="mailcc"></textarea>
+                </div>
+            </div>
+
+           <div class="row">
+                <div class="col-md-1" style="width: 135px; padding-left: 10px;">Kính gửi:</div>
+                <div class="col-md-5">
+                    <input type="text" style="width:100%" autocomplete="off" placeholder="Kính gửi" id="txtkinhgui" name="kinhgui" />
+                </div>
+               <div class="col-md-1" style="padding-left:10px;">Báo cáo:</div>
+               <div class="col-md-4">
+                   <input type="text" style="width:100%" autocomplete="off" placeholder="Báo cáo" id="txtbaocao" name="baocao" />
+               </div>
+
+            </div>
+        
+            <div class="row">
+                <div class="col-md-1" style="width: 135px; padding-left: 10px;">Nội dung gửi Email:</div>
+                <div class="col-md-10">
+                    <textarea style="width:100%; resize:none;" rows="3" placeholder="Nội dung gửi Email" id="txtnoidungguimail" name="noidungguimail"></textarea>
+                </div>
+            </div>
+    }
+</div>
+
+<div style="width:100%; height:100%; ">
+
+    <div id="boxContent">
+        <div class="row">
+            @*<div class="col-md-12">*@
+                <div class="portlet-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table_danhSach" id="tableContent">
+                            <thead id="head-date">
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                           
+                        </table>
+                    </div>
+                </div>
+            @*</div>*@
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    $(document).ready(function (e) {
+        renderDate();
+
+        $('#txtmanvs').on('keypress', function (event) {
+            debugger;
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                GetData(true);
+            }
+        });
+
+        $('#txthovatens').on('keypress', function (event) {
+            debugger;
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                GetData(true);
+            }
+        });
+
+        $('#btndiemdanh').on('click', function (e) {
+            e.preventDefault();
+            debugger;
+            var aa = $(this).closest('tr');
+
+            var data = [];
+            var DataJson = "{'data1':";
+            //var DataJson = "{'data1':";
+            DataJson += "{";
+            DataJson += "'tenlop':'" + $('#txttenlop').val() + "',";
+            DataJson += "'tenkhoahoc':'" + $('#txttenkhoahoc').val() + "',";
+            DataJson += "}}";
+
+            $.ajax({
+                type: 'POST',
+                url: '/Classlist/Diemdanh',
+                datatype: "JSON",
+                data: "DataJson=" + DataJson,
+                cache: false,
+
+            })
+           
+        })
+
+        $('#FileUpload').on("change", function () {
+            debugger;
+            if ($('#filter01').val() == 0) {
+                Thongbao("Chọn lớp?");
+                document.getElementById("FileUpload").value="";
+                return false;
+            }
+            var formData = new FormData();
+            var totalFiles = document.getElementById("FileUpload").files.length;
+            for (var i = 0; i < totalFiles; i++) {
+                var file = document.getElementById("FileUpload").files[i];
+                formData.append("FileUpload", file);
+                document.getElementById('txttenfile').value = file.name;
+                formData.append("FileUpload", file);
+            }
+            $.ajax({
+                type: "POST",
+                url: '/Classlist/Upload?ma=' + encodeURIComponent($('#txtchuoimahoa').val()) + '',
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    alert('Upload file thành công!');
+                },
+                error: function (error) {
+                    alert("Lỗi khi upload file!");
+                }
+            });
+        });
+
+    });
+
+    $('#Capnhatguimail').on('click', function (e) {
+        e.preventDefault();
+        debugger;
+        if ($("#txttieudeguimail").val().length < 3) {
+            Thongbao("Tên lớp không để trống?");
+            return false;
+        }
+        else if ($('#filter01').val() == 0) {
+            Thongbao("Chọn lớp?");
+            return false;
+        }
+
+        var DataJson = "";
+        DataJson += "{";
+        DataJson += "'tieudeguimail':'" + $('#txttieudeguimail').val() + "',";
+        DataJson += "'mailcc':'" + $('#txtmailcc').val() + "',";
+        DataJson += "'kinhgui':'" + $('#txtkinhgui').val() + "',";
+        DataJson += "'baocao':'" + $('#txtbaocao').val() + "',";
+        DataJson += "'noidungguimail':'" + $('#txtnoidungguimail').val() + "',";
+        DataJson += "'malop':'" + $('#filter01').val() + "'";
+        DataJson += "}";
+
+        $.ajax({
+            type: 'POST',
+            url: '/Classlist/Capnhatguimail',
+            datatype: "JSON",
+            data: "DataJson=" + DataJson,
+            //data: "DataJson=" + datadulieu,
+            cache: false,
+        })
+        .done(function (result) {
+            debugger;
+            var tb = JSON.stringify(result.success);
+            if (tb == "true") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu thành công.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    dialogSuccess.modal('hide');
+                }, 2000);
+            } else {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu không thành công</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    dialogSuccess.modal('hide');
+                }, 2000);
+            }
+            //alert("Done: " + JSON.stringify(result));
+        })
+        .fail(function (result) {
+            alert("FAILED: " + JSON.stringify(result));
+
+        });
+    })
+
+    $('#GuiEmail').on('click', function (e) {
+        e.preventDefault();
+        debugger;
+        if ($('#filter01').val() == 0) {
+            Thongbao("Chọn lớp?");
+            return false;
+        }
+        var DataJson = $('#filter01').val();
+        $.ajax({
+            type: 'POST',
+            url: '/Classlist/GuiEmail',
+            datatype: "JSON",
+            data: "DataJson=" + DataJson,
+            cache: false,
+            beforeSend: function () {
+                AddLoader();
+            },
+        })
+        .done(function (result) {
+            debugger;
+            var tb = JSON.stringify(result.success);
+            if (tb == "true") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Gửi Email thành công.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    dialogSuccess.modal('hide');
+                    RemoveLoader();
+                }, 2000);
+            } else {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu không thành công</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    dialogSuccess.modal('hide');
+                }, 2000);
+            }
+            //alert("Done: " + JSON.stringify(result));
+        })
+        .fail(function (result) {
+            alert("FAILED: " + JSON.stringify(result));
+
+        });
+    })
+
+    function renderDate() {
+
+        var html = '';
+
+
+        html += '<tr>';
+        html += '<th class="ovh col1">Stt</th>';
+        html += '<th class="ovh col2">MNV</th>';
+        html += '<th class="ovh col3">Họ tên</th>';
+
+        html += '<th class="ovh col4">Ngày sinh</th>';
+        html += '<th class="ovh col5">Email</th>';
+        html += '<th class="ovh col6">Phòng ban</th>';
+
+        html += '<th class="ovh col7">Tình trạng</th>';
+
+        html += '<th class="ovh col8">Điểm danh</th>';
+
+        html += '<th class="ovh col9">Xác nhận tham gia</th>';
+        
+
+        html += '<tr>';
+
+        html += '<th class="ovh col1 boxEdit"></th>'
+             + '<th class="ovh col2 boxEdit"><input type="text" id="txtmanvs" style="width:100%;height:24px;text-align: center" autocomplete="off" placeholder="" name="manvs" /></th>'
+             + '<th class="ovh col3 boxEdit"><input type="text" id="txthovatens" style="width:100%;height:24px" autocomplete="off" placeholder="" name="hovatens" /></th>'
+             + '<th class="ovh col4 boxEdit"><input type="text" id="txtngaysinhs" style="width:100%;height:24px;text-align: center" autocomplete="off" placeholder="" name="ngaysinhs" /></th>'
+             + '<th class="ovh col5 boxEdit"><input type="text" id="txtemails" style="width:100%;height:24px" autocomplete="off" placeholder="" name="emails" /></th>'
+             + '<th class="ovh col6 boxEdit"><input type="text" id="txtphongbans" style="width:100%;height:24px" autocomplete="off" placeholder="" name="phongbans" /></th>'
+             + '<th class="ovh col7 boxEdit"><input type="text" id="txtphongbans" style="width:100%;height:24px;text-align: center" autocomplete="off" placeholder="" name="phongbans" /></th>'
+             + '<th class="ovh col8 boxEdit"><input type="text" id="txtphongbans" style="width:100%;height:24px" autocomplete="off" placeholder="" name="phongbans" /></th>'
+             + '<th class="ovh col9 boxEdit"><input type="text" id="txtphongbans" style="width:100%;height:24px" autocomplete="off" placeholder="" name="phongbans" /></th>'
+
+
+             //+ '<th id="btnAdd" style="text-align: center;"><a href="#" class="button-add">l</a> |&nbsp;<a href="#" class="button-del">Del</a></th>'
+
+             + ' </tr>';
+
+        $('#head-date').html(html);
+    }
+
+    function Thongbao(num) {
+        var dialogSuccess = bootbox.dialog({
+            message: "<i class='fa fa-check text-success'></i><span class='text-success'>" + num + "</span>",
+            closeButton: false,
+            onEscape: function () {
+            }
+        });
+        setTimeout(function () {
+            dialogSuccess.modal('hide');
+        }, 1000);
+    }
+
+</script>
+
+
+

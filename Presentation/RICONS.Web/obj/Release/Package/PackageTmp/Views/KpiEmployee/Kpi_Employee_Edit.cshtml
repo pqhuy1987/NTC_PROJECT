@@ -1,0 +1,1179 @@
+﻿@model RICONS.Web.Models.KpiEmployeeModels
+@{
+    ViewBag.Title = "Cập nhật KPI";
+}
+@*--css--*@
+@section CSS
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/Controller/KpiEmployee/KpiEmployee_New.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/prism.css" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Themes/RICONS-2015/css/Controller/KpiEmployee/dlgView.css" rel="stylesheet" />
+
+}
+
+@*--javascript--*@
+@section JavaScript
+{
+
+    @*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>*@
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/controllers/jquery.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/controllers/KpiEmployee/KpiEmployee_Edit.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery.datepick-vi.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/chosen.jquery.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/prism.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/table/buildTable.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/colResizale/colResizable-1.3.source.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/plugins/jquery.blockui.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/scripts/app.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootbox.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/custom.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/dialog/jquery.customdialog.js"></script>
+
+}
+<script>
+    var linkContent = '@Url.Content("~")';
+</script>
+
+
+<div class="HeaderFixed">
+    <div class="b-b b-light">
+        <div class="p-left c-black">Cập nhật Kpi nhân viên</div>
+        <div class="clearBoth"></div>
+    </div>
+</div>
+
+<div id="boxContent">
+    <div style="width:100%; height:100%">
+        <div class="portlet-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table_danhSach" id="tableContent" style="font-size:12px;">
+                    <thead id="head-date">
+                    </thead>
+                    <tbody id="head-date1"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="padding-top:5px;"></div>
+
+<div class="boxEdit">
+
+    <div class="row">
+        <div class="col-md-1"><input type="text" class="hidden" style="width: 100%;" autocomplete="off" placeholder="" id="txtmakpinhanvien" name="makpinhanvien" value="@Model.makpinhanvien" /></div>
+        <div class="col-md-1"><input type="text" class="hidden" style="width: 100%;" autocomplete="off" placeholder="" id="txttruongphongxemxetkpi_duyet" name="truongphongxemxetkpi_duyet" value="@Model.truongphongxemxetkpi_duyet" /></div>
+        <div class="col-md-1"><input type="text" class="hidden" style="width: 100%;" autocomplete="off" placeholder="" id="txtnguoilapkpi_dagui" name="nguoilapkpi_dagui" value="@Model.nguoilapkpi_dagui" /></div>
+        <div class="col-md-1"><input type="text" class="hidden" style="width: 100%;" autocomplete="off" placeholder="" id="txtkpichinhsua" name="kpichinhsua" value="@Model.kpichinhsua" /></div>
+        <div class="col-md-1"><input type="text" class="hidden" style="width: 100%;" autocomplete="off" placeholder="" id="txtkhoaketqua" name="khoaketqua" value="@Model.khoaketqua" /></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1" style="min-width: 150px; padding-left:10px;">Người lập KPI<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-3" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Họ tên người lập KPI" id="txtnguoilapkpi" name="nguoilapkpi"  value="@Model.nguoilapkpi" /></div>
+        <div class="col-md-1" style="padding-left: 10px; min-width: 115px; ">Ngày lập KPI<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Ngày lập KPI" id="txtnguoilapkpi_ngay" name="nguoilapkpi_ngay" value="@Model.nguoilapkpi_ngay" /></div>
+        <div class="col-md-1" style="padding-left: 10px; min-width: 80px; ">Email<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Đ/c Email" id="txtemail" name="email" value="@Model.email" /></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1" style="min-width: 150px; padding-left: 10px; ">Trưởng phòng duyệt<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-3" style="padding-left:10px; "><input type="text" style="width:100%" autocomplete="off" placeholder="Họ tên trưởng phòng" id="txttruongphongxemxetkpi" name="truongphongxemxetkpi" value="@Model.truongphongxemxetkpi" /></div>
+        <div class="col-md-1" style="padding-left: 10px; min-width: 115px; ">Ngày xét duyệt<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Ngày xem xét" id="txttruongphongxemxetkpi_ngay" name="truongphongxemxetkpi_ngay" value="@Model.truongphongxemxetkpi_ngay" /></div>
+        <div class="col-md-1" style="padding-left: 10px; min-width: 80px; ">Email<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Đ/c Email" id="txttruongphongemail" name="truongphongemail" value="@Model.truongphongemail" /></div>
+    </div>
+
+    <div class="row" style="padding-top:10px; padding-bottom:50px;">
+        <div class="col-md-1" style="min-width: 160px; padding-left: 10px;"></div>
+        <button id="btn-save" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu"><i class="retweet_save"></i> Lưu</button>
+        <button id="btn-save-guimail" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu & gửi" style="width:100px"><i class="retweet_save"></i> Lưu & gửi</button>
+        <button id="btn-save-chinhsuayeucau" type="button" class="buttoncustom WhiteButton" name="luu" value="Y/c chỉnh sữa" style="width:125px"><i class="retweet_save"></i> Y/c chỉnh sữa</button>
+        <button id="btn-saveketquakpi" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu kết quả KPI" style="width: 135px; background-color: #f54951;"><i class="retweet_save"></i> Lưu kết quả KPI</button>
+        @*<button id="btn-inbieumau" type="button" class="buttoncustom WhiteButton" name="luu" value="In biễu mẫu" style="width:110px"><i class="print"></i> In biễu mẫu</button>*@
+        <a id="btnXuatexcell" style="width:110px" href="@Url.Action("ExportLicensing", "KpiEmployee")" class="buttoncustom WhiteButton"><i class="print"></i> In biễu mẫu</a>
+        
+
+        @if(@Model.truongphongchucdanh=="2")
+        {
+            <button id="btn-save-duyet" type="button" class="buttoncustom WhiteButton" name="luu" value="Duyệt KPI" style="width:100px"><i class="retweet_save"></i> Duyệt KPI</button>
+            <button id="btn-save-khongduyet" type="button"  class="buttoncustom WhiteButton" name="luu" value="Không duyệt KPI" style="width:145px;"><i class="retweet_save"></i> Không duyệt KPI</button>
+            <button id="btn-save-khoaketquakpi" type="button"  class="buttoncustom WhiteButton" name="luu" value="Khóa kết quả KPI" style="width:150px;"><i class="retweet_save"></i> Khóa kết quả KPI</button>
+        }
+        <a href="@Url.Action("Index_Employee", "KpiEmployee")" class="buttoncustom WhiteButton"><i class="retweet_trove"></i> Trở về</a>
+    </div>
+
+</div>
+
+
+@*<head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Themes/RICONS-2015/css/Controller/KpiEmployee/dlgView.css" rel="stylesheet" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>*@
+
+<body>
+    <div class="hidden"><a href="#login-box" class="login-window button"></a></div>
+    <div id="login-box" class="login">
+        <p class="login_title">Dữ liệu KPI cấp phòng ban</p>
+        <a href="#" class="close"><img src="@Url.Content("~")Themes/RICONS-2015/images/close.png" class="img-close" title="Close Window" alt="Close" /></a>
+        <form method="post" class="login-content" action="#">
+           
+
+            <div id="boxContentRom" @*style="padding-right: 30px"*@>
+                <div style="width:100%; height:100%">
+                    <div class="portlet-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table_danhSach" id="tableContentRom" style="font-size:12px;">
+                                <thead id="head-rom">
+                                </thead>
+                                <tbody id="head-date1-rom"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <button id="btnlaydulieu" class="button submit-button" type="button">Lấy dữ liệu</button>
+            @*<p>
+                    <a class="forgot" href="#">Quên mật khẩu?</a>
+                </p>*@
+        </form>
+    </div>
+</body>
+
+
+
+@*<script type="text/javascript">
+        // Popup window code
+        function newPopup(url) {
+            popupWindow = window.open(
+                url, 'popUpWindow', 'height=300,width=400,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+        }
+    </script>*@
+
+
+
+<script>
+
+    $(document).ready(function (e) {
+        renderDate();
+        renderRom();
+        $(document).on('click', "a.close, #over", function () {
+            $('#over, .login').fadeOut(300, function () {
+                $('#over').remove();
+            });
+            return false;
+        });
+
+        $("#btnXuatexcell").click(function (e) {
+            e.preventDefault();
+            debugger;
+            var makpinhanvien = $("#txtmakpinhanvien").val();
+            var link = '';
+            link = $(this).attr('href') + '/' + encodeURIComponent(makpinhanvien);
+            return window.open(link, "_self");
+        });
+
+
+    });
+
+
+    $('#boxContent').on('click', 'a.login-window', function () {
+        debugger;
+
+        var loginBox = $(this).attr('href');
+
+        //cho hiện hộp đăng nhập trong 300ms
+        $(loginBox).fadeIn("slow");
+
+        // thêm phần tử id="over" vào cuối thẻ body
+        $('body').append('<div id="over"></div>');
+        $('#over').fadeIn(300);
+        GetDataRom(false);
+        return false;
+        //var width = 1200;
+        //var height = 650;
+        //var top = parseInt((screen.availHeight / 2) - (height / 2));
+        //var left = parseInt((screen.availWidth / 2) - (width / 2));
+        //window.open('dlgView',
+        //      "Thông tin KPI cấp phòng",
+        //      "menubar=no,resizable=no,width=1200,height=650,scrollbars=yes,left=" + left + ",top=" + top + ",screenX=" + left + ",screenY=" + top);
+
+
+    });
+
+    $('#btnlaydulieu').on('click', function () {
+        debugger;
+        var stt = $("#tableContent > tbody > tr").length + 1;
+        var target = $(this).closest('tr').attr('group');
+        var listChecked = $('.chkCheck:checked');
+        if (listChecked.length > 0) {
+            $(listChecked).each(function (index, selectedItem) {
+                var row = $(selectedItem).closest('.rows-box');
+                var muctieu = $(row).find('td.col2 textarea').val();
+
+                var newTr = '<tr class="rows-box" makpinhanvien_chitiet=0 makpinhanvien=0 group=' + 2 + '><td class="ovh col1 boxEdit" id="txtstt" name ="stt">1</td>'
+                            + '<td class="ovh col2 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="Nhập mục tiêu đánh giá" id="txtmuctieu" name="muctieu">' + muctieu + '</textarea></td>'
+                            + '<td class="ovh col3 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txttrongso" name="trongso"></textarea></td>'
+                            + '<td class="ovh col4 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtphuongphapdo" name="phuongphapdo"></textarea></td>'
+                            + '<td class="ovh col5 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtnguonchungminh" name="nguonchungminh"></textarea></td>'
+                            + '<td class="ovh col6 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtdonvitinh" name="donvitinh"></textarea></td>'
+                            + '<td class="ovh col7 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtkehoach" name="kehoach"></textarea></td>'
+                            + '<td class="ovh col8 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtthuchien" name="thuchien"></textarea></td>'
+                            + '<td class="ovh col9 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txttilehoanthanh" name="tilehoanthanh"></textarea></td>'
+                            + '<td class="ovh col10 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtketqua" name="ketqua"></textarea></td>'
+                            + '<td class="ovh col11 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtkyxacnhan" name="kyxacnhan"></textarea></td>'
+                            + '<td id="btnAdd" style="text-align: center;font-weight: bold;font-size: 13px;"><a href="#" class="button-add">Add</a> |&nbsp;<a href="#" class="button-del">Del</a> <br/><br/><a href="#login-box" class="login-window">KPI Phòng</a></td>'
+                            + ' </tr>';
+                $(newTr).insertAfter('#boxContent #tableContent tbody tr[group="' + 2 + '"]:last');
+                var i = 1;
+                $('#boxContent table tbody tr[group="' + 2 + '"]').each(function (index, item) {
+                    if (i > 1)
+                        $(item).find('td.col1').text(i - 1);
+                    i = i + 1;
+                });
+
+
+            });
+            $('#over, .login').fadeOut(300, function () {
+                $('#over').remove();
+            });
+            return false;
+        }
+    });
+
+    function encodechuoi(str) {
+        return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    }
+
+    $('#btn-save').on('click', function (e) {
+        e.preventDefault();
+        debugger;
+
+        var a = $('#txtnguoilapkpi_dagui').val();
+        var b = $('#txttruongphongxemxetkpi_duyet').val();
+        var c = $('#txtkpichinhsua').val();
+
+        if ($('#txtnguoilapkpi_dagui').val().trim() == "1" && $('#txttruongphongxemxetkpi_duyet').val().trim() != "2" && $('#txtkpichinhsua').val().trim() != "0" && $('#txtkpichinhsua').val().trim() != "2") {
+            Thongbao("KPI đã gửi chờ duyệt hoặc đã duyệt bởi " + $('#txttruongphongxemxetkpi').val() + ". Bạn không chỉnh sữa lại được.");
+            return false;
+        }
+        else if ($('#txttruongphongxemxetkpi_duyet').val().trim() == "1" && $('#txtkpichinhsua').val().trim() != "0" && $('#txtkpichinhsua').val().trim() != "2") {
+            Thongbao("KPI đã duyệt vui lòng không chỉnh sữa. Liên hệ Trưởng phòng để được hướng dẫn.");
+            return false;
+        }
+        else if ($('#txtngaydangky').val().length != 10) {
+            Thongbao("Ngày ngày đăng ký nhập không đúng định dạng (01/01/2018)?");
+            return false;
+        }
+        var thuoccap = "I";
+        var data = [];
+        var DataJson = "{'data1':";
+        DataJson += "{";
+        DataJson += "'makpinhanvien':'" + $('#txtmakpinhanvien').val() + "',";
+        DataJson += "'maphongban':'" + $('#filter02').val() + "',";
+        DataJson += "'ngaybanhanh':'" + $('#txtngaybanhanh').val() + "',";
+
+        DataJson += "'manhanvien':'" + $('#txtmanhanvien').val() + "',";
+        DataJson += "'hovaten':'" + $('#txthovaten').val() + "',";
+        DataJson += "'chucdanh':'" + $('#filter01').val() + "',";
+        DataJson += "'captrentructiep':'" + $('#txtcaptrentructiep').val() + "',";
+        DataJson += "'ngaydangky':'" + $('#txtngaydangky').val() + "',";
+        DataJson += "'ngaydanhgia':'" + $('#txtngaydanhgia').val() + "',";
+
+        DataJson += "'nguoilapkpi':'" + $('#txtnguoilapkpi').val() + "',";
+        DataJson += "'nguoilapkpi_ngay':'" + $('#txtnguoilapkpi_ngay').val() + "',";
+        DataJson += "'email':'" + $('#txtemail').val() + "',";
+
+        DataJson += "'kpichinhsua':'" + $('#txtkpichinhsua').val() + "',";
+
+        DataJson += "'truongphongxemxetkpi':'" + $('#txttruongphongxemxetkpi').val() + "',";
+        DataJson += "'truongphongxemxetkpi_ngay':'" + $('#txttruongphongxemxetkpi_ngay').val() + "',";
+        DataJson += "'truongphongemail':'" + $('#txttruongphongemail').val() + "',";
+
+        DataJson += "}, 'data2':[";
+
+        $('#boxContent table tbody tr').each(function (index, item) {
+            debugger;
+            var makpinhanvien_chitiet = encodeURIComponent($(item).attr('makpinhanvien_chitiet'));
+            var makpinhanvien = encodeURIComponent($(item).attr('makpinhanvien'));
+            var kpichinhsua = encodeURIComponent($(item).attr('kpichinhsua'));
+            var stt = $(item).find('td.col1').text();
+            var muctieu = ""; var trongso = "0%"; var ketqua = "0%";
+            if (stt == "I" || stt == "II" || stt == "" || stt == null) {
+                muctieu = $(item).find('td.col2').text();
+                trongso = $(item).find('td.col3 input').val();
+                ketqua = $(item).find('td.col10 input').val();
+                thuoccap = stt;
+            }
+            else {
+                muctieu = $(item).find('td.col2 textarea').val();
+                trongso = $(item).find('td.col3 textarea').val();
+                ketqua = $(item).find('td.col10 textarea').val();
+            }
+
+            //var muctieucongviec = muctieu.replace(/'/g, "'");
+            //var muctieucongviec1 = muctieu.replace(/'/g, " ");
+            //var muctieucongviec2 = muctieu.replace(/'/g, "");
+           
+            if (muctieu == undefined) muctieu = "";
+
+            var phuongphapdo = $(item).find('td.col4 textarea').val();
+            if (phuongphapdo == undefined) phuongphapdo = "";
+            var nguonchungminh = $(item).find('td.col5 textarea').val();
+            if (nguonchungminh == undefined) nguonchungminh = "";
+            var donvitinh = $(item).find('td.col6 textarea').val();
+            if (donvitinh == undefined) donvitinh = "";
+            var kehoach = $(item).find('td.col7 textarea').val();
+            if (kehoach == undefined) kehoach = "";
+            var thuchien = $(item).find('td.col8 textarea').val();
+            if (thuchien == undefined) thuchien = "";
+            var tilehoanthanh = $(item).find('td.col9 textarea').val();
+            if (tilehoanthanh == undefined) tilehoanthanh = "";
+            var kyxacnhan = $(item).find('td.col11 textarea').val();
+            if (kyxacnhan == undefined) kyxacnhan = "";
+
+            DataJson += "{";
+            DataJson += "'makpinhanvien_chitiet':'" + makpinhanvien_chitiet + "',";
+            DataJson += "'makpinhanvien':'" + makpinhanvien + "',";
+            DataJson += "'stt':'" + stt + "',";
+
+            //DataJson += "'muctieu':'" + encodechuoi(muctieu) + "',";
+
+            DataJson += "'muctieu':'" + muctieu.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'trongso':'" + trongso.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'phuongphapdo':'" + phuongphapdo.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'nguonchungminh':'" + nguonchungminh.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'donvitinh':'" + donvitinh.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'kehoach':'" + kehoach.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'thuchien':'" + thuchien.replace(/'/g, "") + "',";
+            DataJson += "'tilehoanthanh':'" + tilehoanthanh.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'ketqua':'" + ketqua.replace(/'/g, "").replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'thuoccap':'" + thuoccap.replace(/'/g, "").replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'kpichinhsua':'" + kpichinhsua.replace(/'/g, "").replace(/"/g, '').replace(/&/g, '') + "',";
+            DataJson += "'kyxacnhan':'" + kyxacnhan.replace(/'/g, "").replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "'";
+
+            DataJson += "}";
+            if (index != $('#boxContent table tbody tr').length - 1)
+                DataJson += ",";
+        });
+        DataJson += "]}";
+
+        $.ajax({
+            type: 'POST',
+            url: '/KpiEmployee/Save_KpiEmployee',
+            datatype: "JSON",
+            data: "DataJson=" + DataJson,
+            cache: false,
+        })
+        .done(function (result) {
+            debugger;
+            var tb = JSON.stringify(result.success);
+            var makpinhanvien = JSON.stringify(result.makpinhanvien);
+            if (tb == "true") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu thành công.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmakpinhanvien').val(makpinhanvien);
+                    dialogSuccess.modal('hide');
+                    GetData(false);
+                }, 2000);
+            }
+            else {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu không thành công</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    dialogSuccess.modal('hide');
+                }, 2000);
+            }
+        })
+        .fail(function (result) {
+            alert("FAILED: " + JSON.stringify(result));
+        });
+    })
+
+    $('#btn-save-guimail').on('click', function (e) {
+        e.preventDefault();
+        debugger;
+        if ($('#txtnguoilapkpi_dagui').val().trim() == "1" && $('#txttruongphongxemxetkpi_duyet').val().trim() != "2" && $('#txtkpichinhsua').val().trim() != "0" && $('#txtkpichinhsua').val().trim() != "2") {
+            Thongbao("KPI đã gửi chờ duyệt hoặc đã duyệt bởi " + $('#txttruongphongxemxetkpi').val() + ". Bạn không chỉnh sữa lại được.");
+            return false;
+        }
+        else if ($('#txttruongphongxemxetkpi_duyet').val().trim() == "1" && $('#txtkpichinhsua').val().trim() != "0" && $('#txtkpichinhsua').val().trim() != "2") {
+            Thongbao("KPI đã duyệt vui lòng không chỉnh sữa. Liên hệ Trưởng phòng để được hướng dẫn.");
+            return false;
+        }
+        else if ($('#txtngaydangky').val().length != 10) {
+            Thongbao("Ngày ngày đăng ký nhập không đúng định dạng (01/01/2018)?");
+            return false;
+        }
+        var thuoccap = "I";
+        var data = [];
+        var DataJson = "{'data1':";
+        DataJson += "{";
+        DataJson += "'makpinhanvien':'" + $('#txtmakpinhanvien').val() + "',";
+        DataJson += "'maphongban':'" + $('#filter02').val() + "',";
+        DataJson += "'ngaybanhanh':'" + $('#txtngaybanhanh').val() + "',";
+
+        DataJson += "'manhanvien':'" + $('#txtmanhanvien').val() + "',";
+        DataJson += "'hovaten':'" + $('#txthovaten').val() + "',";
+        DataJson += "'chucdanh':'" + $('#filter01').val() + "',";
+        DataJson += "'captrentructiep':'" + $('#txtcaptrentructiep').val() + "',";
+        DataJson += "'ngaydangky':'" + $('#txtngaydangky').val() + "',";
+        DataJson += "'ngaydanhgia':'" + $('#txtngaydanhgia').val() + "',";
+
+        DataJson += "'nguoilapkpi':'" + $('#txtnguoilapkpi').val() + "',";
+        DataJson += "'nguoilapkpi_ngay':'" + $('#txtnguoilapkpi_ngay').val() + "',";
+        DataJson += "'email':'" + $('#txtemail').val() + "',";
+        DataJson += "'kpichinhsua':'" + $('#txtkpichinhsua').val() + "',";
+        DataJson += "'truongphongxemxetkpi':'" + $('#txttruongphongxemxetkpi').val() + "',";
+        DataJson += "'truongphongxemxetkpi_ngay':'" + $('#txttruongphongxemxetkpi_ngay').val() + "',";
+        DataJson += "'truongphongemail':'" + $('#txttruongphongemail').val() + "',";
+
+        DataJson += "}, 'data2':[";
+
+        $('#boxContent table tbody tr').each(function (index, item) {
+            debugger;
+            var makpinhanvien_chitiet = encodeURIComponent($(item).attr('makpinhanvien_chitiet'));
+            var makpinhanvien = encodeURIComponent($(item).attr('makpinhanvien'));
+            var kpichinhsua = encodeURIComponent($(item).attr('kpichinhsua'));
+            var stt = $(item).find('td.col1').text();
+            var muctieu = ""; var trongso = "0%"; var ketqua = "0%";
+            if (stt == "I" || stt == "II" || stt == "" || stt == null) {
+                muctieu = $(item).find('td.col2').text();
+                trongso = $(item).find('td.col3 input').val();
+                ketqua = $(item).find('td.col10 input').val();
+                thuoccap = stt;
+            }
+            else {
+                muctieu = $(item).find('td.col2 textarea').val();
+                trongso = $(item).find('td.col3 textarea').val();
+                ketqua = $(item).find('td.col10 textarea').val();
+            }
+
+            var phuongphapdo = $(item).find('td.col4 textarea').val();
+            if (phuongphapdo == undefined) phuongphapdo = "";
+            var nguonchungminh = $(item).find('td.col5 textarea').val();
+            if (nguonchungminh == undefined) nguonchungminh = "";
+            var donvitinh = $(item).find('td.col6 textarea').val();
+            if (donvitinh == undefined) donvitinh = "";
+            var kehoach = $(item).find('td.col7 textarea').val();
+            if (kehoach == undefined) kehoach = "";
+            var thuchien = $(item).find('td.col8 textarea').val();
+            if (thuchien == undefined) thuchien = "";
+            var tilehoanthanh = $(item).find('td.col9 textarea').val();
+            if (tilehoanthanh == undefined) tilehoanthanh = "";
+            var kyxacnhan = $(item).find('td.col11 textarea').val();
+            if (kyxacnhan == undefined) kyxacnhan = "";
+
+
+            DataJson += "{";
+            DataJson += "'makpinhanvien_chitiet':'" + makpinhanvien_chitiet + "',";
+            DataJson += "'makpinhanvien':'" + makpinhanvien + "',";
+            DataJson += "'stt':'" + stt + "',";
+            DataJson += "'muctieu':'" + muctieu.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'trongso':'" + trongso.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+
+            DataJson += "'phuongphapdo':'" + phuongphapdo.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'nguonchungminh':'" + nguonchungminh.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'donvitinh':'" + donvitinh.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'kehoach':'" + kehoach.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'thuchien':'" + thuchien.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'tilehoanthanh':'" + tilehoanthanh.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'ketqua':'" + ketqua.replace(/'/g, "") + "',";
+            DataJson += "'thuoccap':'" + thuoccap + "',";
+            DataJson += "'kpichinhsua':'" + kpichinhsua + "',";
+            DataJson += "'kyxacnhan':'" + kyxacnhan.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "'";
+
+            DataJson += "}";
+            if (index != $('#boxContent table tbody tr').length - 1)
+                DataJson += ",";
+        });
+        DataJson += "]}";
+
+        $.ajax({
+            type: 'POST',
+            url: '/KpiEmployee/Save_KpiEmployee_guimail',
+            datatype: "JSON",
+            data: "DataJson=" + DataJson,
+            cache: false,
+        })
+        .done(function (result) {
+            debugger;
+            var tb = JSON.stringify(result.success);
+            var makpinhanvien = JSON.stringify(result.makpinhanvien);
+            if (tb == "true") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu và gửi dữ liệu thành công.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmakpinhanvien').val(makpinhanvien);
+                    dialogSuccess.modal('hide');
+                    history.back();
+                }, 4000);
+            }
+            else if (tb == "1") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lỗi gửi mail.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmakpinhanvien').val(makpinhanvien);
+                    dialogSuccess.modal('hide');
+                }, 4000);
+            }
+            else {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu và gửi dữ liệu không thành công</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    dialogSuccess.modal('hide');
+                }, 4000);
+            }
+        })
+        .fail(function (result) {
+            alert("FAILED: " + JSON.stringify(result));
+        });
+    })
+
+    $('#btn-save-duyet').on('click', function (e) {
+        e.preventDefault();
+        debugger;
+        if ($('#txtnguoilapkpi_dagui').val() != "1") {
+            Thongbao("KPI tháng chưa được gửi. Bạn vui lòng kiểm tra lại");
+            return false;
+        }
+        else if ($('#txttruongphongxemxetkpi_duyet').val() == "1") {
+            Thongbao("KPI đã duyệt. Vui lòng k duyệt nữa.");
+            return false;
+        }
+        var DataJson = "{";
+        DataJson += "'makpinhanvien':'" + $('#txtmakpinhanvien').val() + "',";
+        DataJson += "'dongy':'1',";
+        DataJson += "'email':'" + $('#txtemail').val() + "'";
+        DataJson += "}";
+
+        $.ajax({
+            type: 'POST',
+            url: '/Duyetmail/DuyetEmployee_html',
+            datatype: "JSON",
+            data: "DataJson=" + DataJson,
+            cache: false,
+        })
+        .done(function (result) {
+            debugger;
+            var tb = JSON.stringify(result.success);
+            var makpinhanvien = JSON.stringify(result.makpinhanvien);
+            if (tb == "true") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Duyệt KPI thành công.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmakpinhanvien').val(makpinhanvien);
+                    dialogSuccess.modal('hide');
+
+                }, 4000);
+            } else {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lỗi Duyệt KPI. Liên hệ quản trị được hướng dẫn</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmakpinhanvien').val(0);
+                    dialogSuccess.modal('hide');
+                }, 4000);
+            }
+        })
+        .fail(function (result) {
+            alert("FAILED: " + JSON.stringify(result));
+        });
+    })
+
+    $('#btn-save-khongduyet').on('click', function (e) {
+        e.preventDefault();
+        debugger;
+        if ($('#txtnguoilapkpi_dagui').val() != "1") {
+            Thongbao("KPI tháng chưa được gửi. Bạn vui lòng kiểm tra lại");
+            return false;
+        }
+        else if ($('#txttruongphongxemxetkpi_duyet').val() == "1") {
+            Thongbao("KPI đã duyệt. Bạn không thay đổi được.");
+            return false;
+        }
+        var DataJson = "{";
+        DataJson += "'makpinhanvien':'" + $('#txtmakpinhanvien').val() + "',";
+        DataJson += "'dongy':'2',";
+        DataJson += "'email':'" + $('#txtemail').val() + "'";
+        DataJson += "}";
+
+        $.ajax({
+            type: 'POST',
+            url: '/Duyetmail/DuyetEmployee_html',
+            datatype: "JSON",
+            data: "DataJson=" + DataJson,
+            cache: false,
+        })
+        .done(function (result) {
+            debugger;
+            var tb = JSON.stringify(result.success);
+            var makpinhanvien = JSON.stringify(result.makpinhanvien);
+            if (tb == "true") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Không duyệt KPI thành công.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmakpinhanvien').val(makpinhanvien);
+                    dialogSuccess.modal('hide');
+
+                }, 4000);
+            } else {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lỗi Không duyệt KPI. Liên hệ quản trị được hướng dẫn</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmakpinhanvien').val(0);
+                    dialogSuccess.modal('hide');
+                }, 4000);
+            }
+        })
+        .fail(function (result) {
+            alert("FAILED: " + JSON.stringify(result));
+        });
+    })
+
+    $('#btn-save-chinhsuayeucau').on('click', function (e) {
+        e.preventDefault();
+        debugger;
+
+        if ($('#txtkhoaketqua').val() == "1") {
+            Thongbao("KPI tháng đã khóa. Bạn không gửi được yêu cầu chỉnh sữa.");
+            return false;
+        }
+        var listChecked = $('.chkCheck:checked');   //
+        var data = [];
+        //var aa = $(this).closest('tr');
+        //var hovaten1 = $(aa).find('td.col2 input').val();
+        var DataJson = "{'data1':[";
+
+        if (listChecked.length > 0) {
+            $(listChecked).each(function (index, selectedItem) {
+
+                var row = $(selectedItem).closest('.rows-box');
+                //var nhansuden_ct_pb_ngaytra = $(row).find('td.col9 input').val();
+                DataJson += "{";
+
+                DataJson += "'makpinhanvien_chitiet':'" + $(row).attr('codeid') + "',";
+                DataJson += "'makpinhanvien':'" + $(row).attr('makpinhanvien') + "',";
+                DataJson += "'stt':'" + $(row).find('td.col1').text() + "',";
+                DataJson += "'muctieu':'" + $(row).find('td.col2 textarea').val().replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+                DataJson += "'kyxacnhan':'" + $(row).find('td.col11 textarea').val().replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+                DataJson += "'trongso':'" + $(row).find('td.col3 textarea').val().replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+                DataJson += "'hovaten':'" + $('#txthovaten').val() + "',";
+                DataJson += "'manhanvien':'" + $('#txtmanhanvien').val() + "',";
+                DataJson += "'ngaydangky':'" + $('#txtngaydangky').val() + "',";
+                DataJson += "'email':'" + $('#txtemail').val() + "',";
+                DataJson += "'truongphongemail':'" + $('#txttruongphongemail').val() + "',";
+                DataJson += "'kpichinhsua':'4'";
+                DataJson += "}";
+                if (index != listChecked.length - 1)
+                    DataJson += ",";
+            });
+            DataJson += "]}";
+            $.ajax({
+                type: 'POST',
+                url: '/KpiEmployee/Save_Yeucauchinhsua_chitiet',
+                datatype: "JSON",
+                //data: { ids: DataJson }, DataJson1.toString()
+                data: "DataJson=" + DataJson,
+                cache: false,
+                success: function (response) {
+                    //GetData(true);
+                    alert('Đã gửi yêu cầu chỉnh sữa hồ sơ thành công');
+                },
+                error: function (error) {
+                    alert("Lỗi chuyển hồ sơ!");
+                }
+            })
+        }
+        else if (listChecked.length > 0) {
+            alert('Chưa có dòng nào được chọn để chuyển hồ sơ!');
+        }
+    })
+
+    $('#btn-save-khoaketquakpi').on('click', function (e) {
+        e.preventDefault();
+        debugger;
+        var a = $('#txtnguoilapkpi_dagui').val();
+        var b = $('#txttruongphongxemxetkpi_duyet').val();
+        if ($('#txtkhoaketqua').val() == "1") {
+            Thongbao("KPI tháng đã khóa.");
+            return false;
+        }
+        else if ($('#txttruongphongxemxetkpi_duyet').val().trim() != "1") {
+            Thongbao("Duyệt KPI trước khi khóa kết quả.");
+            return false;
+        }
+        var DataJson = "{";
+        DataJson += "'makpinhanvien':'" + $('#txtmakpinhanvien').val() + "',";
+        DataJson += "'email':'" + $('#txtemail').val() + "'";
+        DataJson += "}";
+
+        $.ajax({
+            type: 'POST',
+            url: '/KpiEmployee/Khoamuctieukpithang',
+            datatype: "JSON",
+            data: "DataJson=" + DataJson,
+            cache: false,
+        })
+        .done(function (result) {
+            debugger;
+            var tb = JSON.stringify(result.success);
+            var makpinhanvien = JSON.stringify(result.makpinhanvien);
+            if (tb == "true") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>KPI tháng khóa thành công.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    dialogSuccess.modal('hide');
+                    $('#txtkhoaketqua').val(1);
+                }, 4000);
+            } else {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lỗi khóa KPI. Liên hệ quản trị được hướng dẫn</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    dialogSuccess.modal('hide');
+                }, 4000);
+            }
+        })
+        .fail(function (result) {
+            alert("FAILED: " + JSON.stringify(result));
+        });
+    })
+
+    $('#btn-saveketquakpi').on('click', function (e) {
+        e.preventDefault();
+        debugger;
+
+        if ($('#txtkhoaketqua').val() == "1") {
+            Thongbao("KPI tháng đã khóa. Bạn không nhập kết quả KPI được.");
+            return false;
+        }
+        
+        var thuoccap = "I";
+        var data = [];
+        var DataJson = "{'data1':";
+        DataJson += "{";
+        DataJson += "'makpinhanvien':'" + $('#txtmakpinhanvien').val() + "',";
+        DataJson += "'maphongban':'" + $('#filter02').val() + "',";
+        DataJson += "'ngaydanhgia':'" + $('#txtngaydanhgia').val() + "',";
+        DataJson += "}, 'data2':[";
+        $('#boxContent table tbody tr').each(function (index, item) {
+            debugger;
+            var makpinhanvien_chitiet = encodeURIComponent($(item).attr('makpinhanvien_chitiet'));
+            var makpinhanvien = encodeURIComponent($(item).attr('makpinhanvien'));
+            var stt = $(item).find('td.col1').text();
+            var ketqua = "0%";
+            if (stt == "I" || stt == "II" || stt == "" || stt == null) {
+                ketqua = $(item).find('td.col10 input').val();
+            }
+            else {
+                ketqua = $(item).find('td.col10 textarea').val();
+            }
+            var thuchien = $(item).find('td.col8 textarea').val();
+            if (thuchien == undefined) thuchien = "";
+            var tilehoanthanh = $(item).find('td.col9 textarea').val();
+            if (tilehoanthanh == undefined) tilehoanthanh = "";
+            DataJson += "{";
+            DataJson += "'makpinhanvien_chitiet':'" + makpinhanvien_chitiet + "',";
+            DataJson += "'makpinhanvien':'" + makpinhanvien + "',";
+            DataJson += "'thuchien':'" + thuchien.replace(/'/g, "") + "',";
+            DataJson += "'tilehoanthanh':'" + tilehoanthanh.replace(/'/g, "") + "',";
+            DataJson += "'ketqua':'" + ketqua.replace(/'/g, "") + "'";
+            DataJson += "}";
+            if (index != $('#boxContent table tbody tr').length - 1)
+                DataJson += ",";
+        });
+        DataJson += "]}";
+
+        $.ajax({
+            type: 'POST',
+            url: '/KpiEmployee/Save_Ketquakpi',
+            datatype: "JSON",
+            data: "DataJson=" + DataJson,
+            cache: false,
+        })
+        .done(function (result) {
+            debugger;
+            var tb = JSON.stringify(result.success);
+            var makpinhanvien = JSON.stringify(result.makpinhanvien);
+            if (tb == "true") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu thành công.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    dialogSuccess.modal('hide');
+                }, 2000);
+            }
+            else {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu không thành công</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    dialogSuccess.modal('hide');
+                }, 2000);
+            }
+        })
+        .fail(function (result) {
+            alert("FAILED: " + JSON.stringify(result));
+        });
+    })
+
+
+    function renderRom() {
+        var html = '';
+        //debugger;
+        html += '<tr>';
+        html += '<th class="ovh col1">Stt</th>'
+        html += '<th class="ovh col1">Stt</th>'
+        html += '<th class="ovh col2">Mục tiêu</th>'
+        html += '<th class="ovh col3">Trọng số</th>'
+        html += '<th class="ovh col4">Tiêu chí đánh giá (KPIs)</th>'
+        html += '<th class="ovh col5">Cách tính</th>'
+        html += '<th class="ovh col6">Thời điểm ghi nhận kết quả</th>'
+        html += '<th class="ovh col7">Nguồn chứng minh</th>'
+        html += '<th class="ovh col8">Đơn vị tính</th>'
+        //html += '<th class="ovh col9">KPIs kế hoạch</th>'
+        //html += '<th class="ovh col10">KPIs thực hiện</th>'
+        //html += '<th class="ovh col11">Tỉ lệ % hoàn thành KPIs</th>'
+        //html += '<th class="ovh col12">Kết quả</th>'
+        //html += '<th class="ovh col13">Ghi chú</th>'
+        html += '</tr>';
+        $('#head-rom').html(html);
+    }
+
+
+
+    function currencyFormatDE(num) {
+        return (num + "").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+    }
+
+    function calTotal() {
+        debugger;
+        var total = 0;
+        var sub = 0;
+        $('#boxContent table tbody tr').each(function (index, itemitem) {
+            debugger;
+            //var kpitong = $('#boxContent #tableContent tbody tr[kpicha="' + 1 + '"]').length;
+            //var kpitong1111 = $('#boxContent #tableContent tbody tr[kpicha="' + 1 + '"]');
+            //var bbbb = $(itemitem).find('tr[kpicha="' + 1 + '"]').length;
+            var kpicha = $(itemitem).attr('kpicha');
+            //var bbbbbbbb = $(itemitem).find('td.col3 input').val();
+            //var aaa = kpitong1111.find('td.col3 input').val();
+            sub = $(itemitem).find('td.col3 input').val();
+            if (kpicha == 1) {
+                sub = $(itemitem).find('td.col3 input').val().replace("%", "").replace("%", "").replace(" ", "");
+                sub = Number(sub);
+                if (isNaN(sub) == false)
+                    total = total + sub;
+            }
+        });
+
+        var currentRow2 = $('#boxContent table tbody tr:last').closest('.rows-box');
+        currentRow2.find('.col3 input').val(total + "%");
+    }
+
+    $('#tableContent').on('keyup', 'input', function (e) {
+        debugger;
+        var currentRow = $(this).closest('.rows-box');
+        var soluong = $(this).val().replace('%', '');
+        if (isNaN(soluong) == false)
+            currentRow.find('.col12 input').val(currencyFormatDE(soluong + "%"));
+        calTotal();
+    });
+
+    $('#boxContent').on('click', '.button-add', function () {
+        debugger;
+        var stt = $("#tableContent > tbody > tr").length + 1;
+        var target = $(this).closest('tr').attr('group');
+
+        var newTr = '<tr class="rows-box" codeid=0 makpinhanvien_chitiet=0 makpinhanvien=0 group= ' + target + ' ><td class="ovh col1 boxEdit" id="txtstt" name ="stt"></td>'
+            + '<td class="ovh col2 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="Nhập mục tiêu đánh giá" id="txtmuctieu" name="muctieu"></textarea></td>'
+           + '<td class="ovh col3 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txttrongso" name="trongso"></textarea></td>'
+           + '<td class="ovh col4 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="Nhập phải có khoảng cách giữa <=, >=, =: VD: KQ <= 8h: 100% KPI" id="txtphuongphapdo" name="phuongphapdo"></textarea></td>'
+           + '<td class="ovh col5 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtnguonchungminh" name="nguonchungminh"></textarea></td>'
+           + '<td class="ovh col6 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtdonvitinh" name="donvitinh"></textarea></td>'
+           + '<td class="ovh col7 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtkehoach" name="kehoach"></textarea></td>'
+           + '<td class="ovh col8 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtthuchien" name="thuchien"></textarea></td>'
+           + '<td class="ovh col9 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txttilehoanthanh" name="tilehoanthanh"></textarea></td>'
+           + '<td class="ovh col10 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtketqua" name="ketqua"></textarea></td>'
+           + '<td class="ovh col11 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtkyxacnhan" name="kyxacnhan"></textarea></td>'
+           + '<td id="btnAdd" style="text-align: center;font-weight: bold;font-size: 13px;"><a href="#" class="button-add">Add</a> |&nbsp;<a href="#" class="button-del">Del</a> <br/><br/><a href="#login-box" class="login-window">KPI Phòng</a></td>'
+           + ' </tr>';
+
+        $(newTr).insertAfter('#boxContent #tableContent tbody tr[group="' + target + '"]:last');
+        var i = 1;
+        $('#boxContent table tbody tr[group="' + target + '"]').each(function (index, item) {
+            var aaa = index;
+            if (i > 1)
+                $(item).find('td.col1').text(i - 1);
+            i = i + 1;
+        });
+    });
+
+    $('#boxContent').on('click', '.button-del', function () {
+        debugger;
+        var target = $(this).closest('tr').attr('group');
+        var makpinhanvien_chitiet = $(this).closest('tr').attr('makpinhanvien_chitiet');
+        if ($("#tableContent > tbody > tr[group='" + target + "'] ").length > 2) {
+            $(this).closest('tr').remove();
+
+            var i = 1;
+            $('#boxContent table tbody tr[group="' + target + '"]').each(function (index, item) {
+                var aaa = index;
+                if (i > 1)
+                    $(item).find('td.col1').text(i - 1);
+                i = i + 1;
+            });
+
+            if (makpinhanvien_chitiet != "0") {
+                $.ajax({
+                    type: 'POST',
+                    url: '/KpiEmployee/Save_KpiEmployee_Xoadongdulieu',
+                    datatype: "JSON",
+                    data: "DataJson=" + makpinhanvien_chitiet,
+                    cache: false,
+                })
+            }
+            
+        }
+    });
+
+    function renderDate() {
+        var day = new Date();
+        var dd = day.getDate();
+        var mm = day.getMonth() + 1;
+        var yyyy = day.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        var today = dd + '/' + mm + '/' + yyyy;
+        var html = '';
+        
+        html += '<tr>';
+        html += '<th rowspan="3" colspan="2">Logo</th>'
+        html += '<th colspan="9" style="font-size: 18pt;background-color: azure;color: #8e2bf1;">KPI CẤP CÁ NHÂN - ĐĂNG KÝ KPI THÁNG @Model.thangkpi  - NĂM @Model.namkpi</th>'
+        html += '<th rowspan="5" colspan="1">Chức năng</th>'
+        html += '</tr>'
+
+        html += '<tr>'
+        html += '<th colspan="2" style="text-align: left">Phòng Ban:</th>'
+        html += '<th colspan="5" class="ovh col2 boxEdit"><select id="filter02" style="width:100%;padding-left: 2px;border: 1px solid #aaa;  border-radius: 3px;background-color: #fff;height: 26px;" class="chosen-select-loaikehoach" name="maphongban">@Html.Raw(ViewBag.sbphongban)</select></th>'
+        html += '<th colspan="2" style="text-align: right;">Biễu mẫu: QP04 FM18</th>'
+        html += '</tr>'
+
+        html += '<tr>'
+        html += '<th colspan="2" style="text-align: left">Ngày ban hành</th>'
+        html += '<th colspan="2" class="ovh col2 boxEdit"><input type="text" style="width:100%; text-align: left" autocomplete="off" placeholder="Ngày ban hành" id="txtngaybanhanh" name="ngaybanhanh" value="@Model.ngaybanhanh" /></th>'
+        html += '<th colspan="5" style="text-align: right;">Lần cập nhật: 00/01</th>'
+        html += '</tr>'
+
+        html += '<tr class="boxEdit" style="box-shadow: none;">'
+        html += '<th colspan="5" style="text-align: left">'
+        html += '<div class="row">'
+        html += '<div class="col-md-1" style="min-width: 150px; padding-left:10px;">Họ và tên<label style="color:red;height:10px;">*</label>:</div>'
+        html += '<div class="col-md-7" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Họ và tên" id="txthovaten" name="hovaten" value="@Model.hovaten" /></div>'
+        html += '</div>'
+
+        html += '<div class="row">'
+        html += '<div class="col-md-1" style="min-width: 150px; padding-left:10px;">Chức danh<label style="color:red;height:10px;">*</label>:</div>'
+        html += '<div class="col-md-7" style="padding-left:10px;"><select id="filter01" style="width:100%;padding-left: 2px;border: 1px solid #aaa;  border-radius: 3px;background-color: #fff;height: 26px;" class="chosen-select-loaikehoach" name="chucdanh">@Html.Raw(ViewBag.sbchucdanh)</select></div>'
+        html += '</div>'
+
+        html += '<div class="row">'
+        html += '<div class="col-md-1" style="min-width: 150px; padding-left:10px;">Cấp trên trực tiếp<label style="color:red;height:10px;">*</label>:</div>'
+        html += '<div class="col-md-7" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Cấp trên trực tiếp" id="txtcaptrentructiep" name="captrentructiep" value="@Model.captrentructiep" /></div>'
+        html += '</div>'
+        html += '</th>'
+
+        html += '<th colspan="6" style="text-align: left">'
+        html += '<div class="row">'
+        html += '<div class="col-md-1" style="min-width: 150px; padding-left:10px;">Mã nhân viên<label style="color:red;height:10px;">*</label>:</div>'
+        html += '<div class="col-md-7" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Nhập mã nhân viên" id="txtmanhanvien" name="manhanvien" value="@Model.manhanvien" /></div>'
+        html += '</div>'
+        html += '<div class="row">'
+        html += '<div class="col-md-1" style="min-width: 150px; padding-left:10px;">Ngày đăng ký<label style="color:red;height:10px;">*</label>:</div>'
+        html += '<div class="col-md-7" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Nhập ngày đăng ký" id="txtngaydangky" name="ngaydangky" value="@Model.ngaydangky" /></div>'
+        html += '</div>'
+        html += '<div class="row">'
+        html += '<div class="col-md-1" style="min-width: 150px; padding-left:10px;">Ngày đánh giá<label style="color:red;height:10px;">*</label>:</div>'
+        html += '<div class="col-md-7" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Nhập ngày đánh giá" id="txtngaydanhgia" name="ngaydanhgia" value="@Model.ngaydanhgia" /></div>'
+        html += '</div>'
+        html += '</th>'
+        html += '</tr>'
+
+        html += '<tr>';
+        html += '<th class="ovh col1">Stt</th>'
+        html += '<th class="ovh col2">Tiêu chí/ Mục tiêu đánh giá</th>'
+        html += '<th class="ovh col3">Trọng số</th>'
+        html += '<th class="ovh col4">Phương pháp đo</th>'
+        html += '<th class="ovh col5">Nguồn dữ liệu chứng minh</th>'
+        html += '<th class="ovh col6">Đơn vị tính</th>'
+        html += '<th class="ovh col7">Kế hoạch</th>'
+        html += '<th class="ovh col8">Thực hiện</th>'
+        html += '<th class="ovh col9">Tỉ lệ % hoàn thành</th>'
+        html += '<th class="ovh col10">Kết quả</th>'
+        html += '<th class="ovh col11">Ký xác nhận</th>'
+        html += '</tr>';
+
+        $('#head-date').html(html);
+    }
+
+
+    function renderDate_body() {
+        var html = '';
+        debugger;
+        html += '<tr class="rows-box" makpinhanvien_chitiet=0 makpinhanvien=0 group=1 kpicha=1 style="background-color:#f9fd0d">';
+        html += '<td class="ovh col1 boxEdit" id="txtstt" name ="stt" style="text-align: center;font-weight: bold;font-size: 13px;">I</th>'
+           + '<td class="ovh col2 boxEdit" id="txtmuctieu" name ="muctieu" style="text-align: left;font-weight: bold;font-size: 13px;">Thái độ - Hành vi</th>'
+           + '<td class="ovh col3 boxEdit"><input type="text" id="txttrongso" style="width:100%;height:24px;font-weight: bold" autocomplete="off" placeholder="" name="trongso" value="20%" /></td>'
+           + '<td class="ovh col4 boxEdit"></td>'
+           + '<td class="ovh col5 boxEdit"></td>'
+           + '<td class="ovh col6 boxEdit"></td>'
+           + '<td class="ovh col7 boxEdit"></td>'
+           + '<td class="ovh col8 boxEdit"></td>'
+           + '<td class="ovh col9 boxEdit"></td>'
+           + '<td class="ovh col10 boxEdit"><input type="text" id="txtketqua" style="width:100%;height:24px;font-weight: bold" autocomplete="off" placeholder="" name="ketqua" value="0%" /></td>'
+           + '<td class="ovh col11 boxEdit"></td>'
+           + '<td class="ovh col12 boxEdit"></td>'
+           + ' </tr>';
+
+        html += '<tr class="rows-box" makpinhanvien_chitiet=0 makpinhanvien=0 group=1><td class="ovh col1 boxEdit" id="txtstt" name ="stt">1</td>'
+           + '<td class="ovh col2 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="Đi trễ về sớm" id="txtmuctieu" name="muctieu"></textarea></td>'
+           + '<td class="ovh col3 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txttrongso" name="trongso"></textarea></td>'
+           + '<td class="ovh col4 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtphuongphapdo" name="phuongphapdo"></textarea></td>'
+           + '<td class="ovh col5 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtnguonchungminh" name="nguonchungminh"></textarea></td>'
+           + '<td class="ovh col6 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtdonvitinh" name="donvitinh"></textarea></td>'
+           + '<td class="ovh col7 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtkehoach" name="kehoach"></textarea></td>'
+           + '<td class="ovh col8 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtthuchien" name="thuchien"></textarea></td>'
+           + '<td class="ovh col9 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txttilehoanthanh" name="tilehoanthanh"></textarea></td>'
+           + '<td class="ovh col10 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtketqua" name="ketqua"></textarea></td>'
+           + '<td class="ovh col11 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtkyxacnhan" name="kyxacnhan"></textarea></td>'
+           + '<td class="ovh col12 boxEdit"></td>'
+           //+ '<td id="btnAdd" style="text-align: center;font-weight: bold;font-size: 13px;"><a href="#" class="button-add">Add</a> |&nbsp;<a href="#" class="button-del">Del</a></td>'
+           + ' </tr>';
+
+        html += '<tr class="rows-box" makpinhanvien_chitiet=0 makpinhanvien=0 group=2 kpicha=1 style="background-color:#99f1b8">';
+        html += '<td class="ovh col1 boxEdit" id="txtstt" name ="stt" style="text-align: center;font-weight: bold;font-size: 13px;">II</th>'
+           + '<td class="ovh col2 boxEdit" id="txtmuctieu" name ="muctieu" style="text-align: left;font-weight: bold;font-size: 13px;">Khả năng giải quyết công việc</th>'
+           + '<td class="ovh col3 boxEdit"><input type="text" id="txttrongso" style="width:100%;height:24px;font-weight: bold" autocomplete="off" placeholder="" name="trongso" value="80%" /></td>'
+           + '<td class="ovh col4 boxEdit"></td>'
+           + '<td class="ovh col5 boxEdit"></td>'
+           + '<td class="ovh col6 boxEdit"></td>'
+           + '<td class="ovh col7 boxEdit"></td>'
+           + '<td class="ovh col8 boxEdit"></td>'
+           + '<td class="ovh col9 boxEdit"></td>'
+           + '<td class="ovh col10 boxEdit"><input type="text" id="txtketqua" style="width:100%;height:24px;font-weight: bold" autocomplete="off" placeholder="" name="ketqua" value="0%" /></td>'
+           + '<td class="ovh col11 boxEdit"></td>'
+           + '<td class="ovh col12 boxEdit"></td>'
+           + ' </tr>';
+
+        html += '<tr class="rows-box" makpinhanvien_chitiet=0 makpinhanvien=0 group=2><td class="ovh col1 boxEdit" id="txtstt" name ="stt">1</td>'
+            + '<td class="ovh col2 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="Nhập mục tiêu đánh giá" id="txtmuctieu" name="muctieu"></textarea></td>'
+           + '<td class="ovh col3 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txttrongso" name="trongso"></textarea></td>'
+           + '<td class="ovh col4 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="Nhập phải có khoảng cách giữa <=, >=, =: VD: KQ <= 8h: 100% KPI" id="txtphuongphapdo" name="phuongphapdo"></textarea></td>'
+           + '<td class="ovh col5 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtnguonchungminh" name="nguonchungminh"></textarea></td>'
+           + '<td class="ovh col6 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtdonvitinh" name="donvitinh"></textarea></td>'
+           + '<td class="ovh col7 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtkehoach" name="kehoach"></textarea></td>'
+           + '<td class="ovh col8 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtthuchien" name="thuchien"></textarea></td>'
+           + '<td class="ovh col9 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txttilehoanthanh" name="tilehoanthanh"></textarea></td>'
+           + '<td class="ovh col10 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtketqua" name="ketqua"></textarea></td>'
+           + '<td class="ovh col11 boxEdit"><textarea style="width:100%; resize:none;" rows="4" placeholder="" id="txtkyxacnhan" name="kyxacnhan"></textarea></td>'
+           + '<td id="btnAdd" style="text-align: center;font-weight: bold;font-size: 13px;"><a href="#" class="button-add">Add</a> |&nbsp;<a href="#" class="button-del">Del</a> <br/><br/><a href="#" class="button-Search">KPI Phòng</a></td>'
+           + ' </tr>';
+
+        html += '<tr class="rows-box" makpinhanvien_chitiet=0 makpinhanvien=0 style="background-color:#e2e0e0">';
+        html += '<td class="ovh col1 boxEdit" id="txtmuctieu" name ="txtmuctieu" style="text-align: center;font-weight: bold;font-size: 13px;"></th>'
+           + '<td class="ovh col2 boxEdit" style="text-align: left;font-weight: bold;font-size: 13px;">TỔNG CỘNG</th>'
+           + '<td class="ovh col3 boxEdit"><input type="text" id="txttrongso" style="width:100%;height:24px;font-weight: bold" autocomplete="off" placeholder="" name="trongso" value="100%" /></td>'
+           + '<td class="ovh col4 boxEdit"></td>'
+           + '<td class="ovh col5 boxEdit"></td>'
+           + '<td class="ovh col6 boxEdit"></td>'
+           + '<td class="ovh col7 boxEdit"></td>'
+           + '<td class="ovh col8 boxEdit"></td>'
+           + '<td class="ovh col9 boxEdit"></td>'
+           + '<td class="ovh col10 boxEdit"><input type="text" id="txtketqua" style="width:100%;height:24px;font-weight: bold" autocomplete="off" placeholder="" name="ketqua" value="0%" /></td>'
+           + '<td class="ovh col11 boxEdit"></td>'
+           + '<td class="ovh col12 boxEdit"></td>'
+           + '</tr>';
+
+        $('#head-date1').html(html);
+    }
+
+
+    function Thongbao(num) {
+        var dialogSuccess = bootbox.dialog({
+            message: "<i class='fa fa-check text-success'></i><span class='text-success'>" + num + "</span>",
+            closeButton: false,
+            onEscape: function () {
+            }
+        });
+        setTimeout(function () {
+            dialogSuccess.modal('hide');
+        }, 2000);
+    }
+
+</script>
+

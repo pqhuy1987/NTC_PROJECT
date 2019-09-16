@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html class="app js no-touch no-android no-chrome firefox no-iemobile no-ie no-ie8 no-ie10 no-ie11 no-ios no-ios7 ipad" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>@ViewBag.Title - Ricons</title>
+    <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/themes/RICONS-2015/css/jquery-ui-1.10.2.css" />
+    <link rel="stylesheet" type="text/css" href="/themes/RICONS-2015/css/bootstrap_calendar.css" />
+    <link rel="stylesheet" type="text/css" href="/themes/RICONS-2015/css/loader.css" />
+    <link rel="stylesheet" type="text/css" href="/themes/RICONS-2015/css/scrollbar/prettify.css" />
+    <link rel="stylesheet" type="text/css" href="/themes/RICONS-2015/css/app.css" />
+    <link rel="stylesheet" type="text/css" href="/themes/RICONS-2015/css/StyleButton.css" />
+
+    @RenderSection("CSS", required: false)
+    <!--[if lt IE 9]>
+        <script src="js/ie/html5shiv.js"></script> <script src="js/ie/respond.min.js">
+        </script> <script src="js/ie/excanvas.js"></script> <![endif]-->
+
+
+    <script type="text/javascript" src="/themes/RICONS-2015/js/jquery-2.2.3.min.js"></script>
+    <script src="~/Themes/RICONS-2015/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/themes/RICONS-2015/js/encoder.js"></script>
+    <script type="text/javascript" src="/themes/RICONS-2015/js/jquery.common-functions.js"></script>
+    <script type="text/javascript" src="/themes/RICONS-2015/js/scrollbar/jquery.slimscroll.js"></script>
+    <script type="text/javascript" src="/themes/RICONS-2015/js/loader.js"></script>
+    <script type="text/javascript" src="/themes/RICONS-2015/js/dialog/jquery.customdialog.js"></script>
+    <script type="text/javascript" src="/themes/RICONS-2015/js/ScriptUploadFile.js"></script>
+    <script type="text/javascript" src="/themes/RICONS-2015/js/jquery.fileDownload.js"></script>
+
+    @RenderSection("JavaScript", required: false)
+</head>
+<body class="RICONS-body">
+    <section class="vbox">
+        <header class="bg-white header header-md navbar navbar-fixed-top-xs box-shadow">
+            <div class="navbar-header aside-md dk">
+                <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <a href="/" class="navbar-brand">
+                    <img src="/Themes/RICONS-2015/images/Logo.png" class="m-r-sm" alt="scale">
+                </a>
+
+               
+
+                <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+                    <i class="fa fa-cog"></i>
+                </a>
+
+            </div>
+
+            
+
+            
+            <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user user">
+                @*//Noi dung thong bao*@ 
+
+                @*<li class="hidden-xs">      
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="i i-chat3"></i>
+                        <span style="display: inline-block;" class="badge badge-sm up bg-danger count">3</span>
+                    </a>
+                    <section class="dropdown-menu aside-xl animated flipInY">
+                        <section class="panel bg-white">
+                            <!-- noi dung thong bao -->
+                            @Html.Action("QuickAlert", "Message")
+                            <!-- End noi dung thong bao -->
+                            <div class="panel-footer text-sm">
+                                <a href="@Url.Action("Config", "Message")" class="pull-right">
+                                    <i class="fa fa-cog"></i>
+                                </a>
+                                <a href="@Url.Action("Alerts", "Message")">Xem toàn bộ</a>
+                            </div>
+                        </section>
+                    </section>
+                </li>*@
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="thumb-sm avatar pull-left">
+                            <img src="/Themes/RICONS-2015/images/hinha0.jpg" class="dker" alt="...">
+                        </span>@Session["fullname"].ToString()<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight">
+                        <li>
+                            <span class="arrow top"></span>
+                            <a href="@Url.Action("Personal", "Account")">Hồ sơ</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Help")">Trợ giúp</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="@Url.Action("LogOff", "Account")">Đăng xuất</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <p id="welcometext">PHẦN MỀM QUẢN LÝ LỊCH HỌP TUẦN</p>
+        </header> 
+
+
+
+        <section>
+            <section class="hbox stretch">
+                <!-- .aside -->
+                <aside class="aside-md hidden-print hidden-xs" id="nav">
+                    <section class="vbox">
+                        <section class="w-f scrollable">
+                            <div class="clearfix wrapper dk nav-user hidden-xs">
+                                <div class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <span class="thumb avatar pull-left m-r">
+                                            <img src="/Themes/RICONS-2015/images/hinha0.jpg" class="dker" alt="...">
+                                            <i class="on md b-black"></i>
+                                        </span>
+                                        <span class="hidden-nav-xs clear">
+                                            <span class="block m-t-xs">
+                                                <strong class="font-bold text-lt"><div class="text-eclip" title="@Session["fullname"].ToString()">@Session["fullname"].ToString()</div><b class="caret"></b></strong>
+                                            </span>
+                                            <span class="text-muted text-xs block">@Session["tenchucvu"].ToString()</span>
+                                        </span>
+                                    </a> <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                        <li>
+                                            <span class="arrow top"></span>
+                                            <a href="@Url.Action("Personal", "Account")">Hồ sơ</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Index", "Help")">Trợ giúp</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="@Url.Action("LogOff", "Account")">Đăng xuất</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- nav -->
+                            @Html.Action("MenuHeaderLink", "Common")
+                            <!-- / nav -->
+                        </section>
+ 
+                        <footer class="footer hidden-xs no-padder text-center-nav-xs">
+                            <div class="footer-c">
+                                <a href="@Url.Action("LogOff", "Account")" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs">
+                                    <i class="i i-logout"></i>
+                                </a>
+                                <a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs">
+                                    <i class="i i-circleleft text"></i>
+                                    <i class="i i-circleright text-active"></i>
+                                </a>
+                            </div>
+                        </footer>
+
+                    </section>
+                </aside>
+                <!-- /.aside -->
+
+                <section id="content">
+                    <section class="hbox stretch">
+                        <div id="ScrollContent">
+                            @RenderBody()
+                        </div>
+                    </section>
+                </section>
+
+
+            </section>
+        </section>
+
+
+
+
+    </section>
+    <script type="text/javascript">
+        //giu session
+        setInterval(function () {
+            $.get("/ajax/KeepAlive.ashx");
+        }, 1000 * 15); // 30s gửi request một lần
+        //
+
+        //$('#nav .scrollable .nav-primary').slimscroll({ height: getWindowHeight() - $('.RICONS-body header.header').height() - $('.RICONS-body .nav-user').outerHeight(true) - $('.RICONS-body #nav .footer').height() -100 });
+
+        $('#nav .scrollable .nav-wrap').slimscroll({ height: getWindowHeight() - $('.RICONS-body header.header').height() - $('.RICONS-body .nav-user').outerHeight(true) - $('.RICONS-body #nav .footer').height()+15 });
+
+        //$('#boxContent').slimscroll({
+        //    height: getWindowHeight()
+        //        - $('.RICONS-body header.header').height()
+        //        - $('.RICONS-body .nav-user').outerHeight(true)
+        //        - $('.boxEdit').height()
+        //        - $('.boxContent').height()
+        //        - $('.boxContent1').height() -200
+        //});
+
+        //$('#boxContent1').slimscroll({
+        //    height: getWindowHeight()
+        //        - $('.RICONS-body header.header').height()
+        //        - $('.RICONS-body .nav-user').outerHeight(true)
+        //        - $('.boxEdit').height()
+        //        - $('.boxContent').height()
+        //        - $('.boxContent1').height() - 100
+        //});
+
+    </script>
+</body>
+</html>

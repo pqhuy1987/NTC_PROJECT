@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap
+  namespace="Nhapkho"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://ibatis.apache.org/mapping">
+  <statements>
+
+    <select id="CountRows_Nhapkho" resultClass="int">
+      SELECT
+      count(*)
+      FROM
+      warehousing
+      WHERE
+      xoa = '0'
+      <isNotEmpty property="nguoitao">
+        and nguoitao=$nguoitao$
+      </isNotEmpty>
+
+    </select>
+
+    <select id="SelectRows_Nhapkho_ma" resultClass="System.Collections.Hashtable">
+      select
+      *
+      from warehousing
+      where xoa='0' and manhapkho=$manhapkho$
+    </select>
+    
+    
+    <select id="SelectRows_Nhapkho" resultClass="System.Collections.Hashtable">
+      select * from (select
+      *
+      ,ROW_NUMBER() OVER (ORDER BY manhapkho  desc) as row
+      from warehousing where xoa='0' <isNotEmpty property="maphongban">and maphongban='$maphongban$'</isNotEmpty>) tbl1
+      where tbl1.xoa='0' and  tbl1.row <![CDATA[>=]]> $trangbd$ and tbl1.row <![CDATA[<=]]> $trangkt$
+      <isNotEmpty property="maphongban">
+        and maphongban='$maphongban$'
+      </isNotEmpty>
+
+      <isNotEmpty property="nguoitao">
+        and nguoitao=$nguoitao$
+      </isNotEmpty>
+      
+      order by manhapkho desc
+
+    </select>
+
+    <select id="SelectRows_Nhapkho_chitiet" resultClass="System.Collections.Hashtable">
+      select
+      *
+      from warehousing_detail
+      where xoa='0'
+      <isNotEmpty property="manhapkho">
+        and manhapkho=$manhapkho$
+      </isNotEmpty>
+      order by machitiet ASC
+    </select>
+
+    <insert id="Insert_Nhapkho">
+      INSERT INTO warehousing(
+      manhapkho,
+      sochungtu,
+      sohoadon,
+      ngaynhapchungtu,
+      nhacungcap,
+      tongtien,
+      noidungnhaphang,
+      xoa,
+      nguoitao,
+      ngaytao
+      )
+      VALUES (
+      $manhapkho$
+      ,'$sochungtu$'
+      ,'$sohoadon$'
+      ,'$ngaynhapchungtu$'
+      ,$nhacungcap$
+      ,'$tongtien$'
+      ,N'$noidungnhaphang$'
+      ,'0'
+      ,'$nguoitao$'
+      ,GETDATE()
+      )
+    </insert>
+
+    <update id="UpdateRow_Nhapkho">
+      UPDATE
+      warehousing
+      SET
+      sochungtu=N'$sochungtu$'
+      ,sohoadon='$sohoadon$'
+      ,ngaynhapchungtu='$ngaynhapchungtu$'
+      ,nhacungcap=$nhacungcap$
+      ,tongtien='$tongtien$'
+      ,noidungnhaphang=N'$noidungnhaphang$'
+      ,xoa='0'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      WHERE manhapkho=$manhapkho$
+    </update>
+    
+    <update id="DeletedRow_Nhapkho">
+      UPDATE
+      warehousing
+      SET
+      xoa='1'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      WHERE manhapkho=$manhapkho$
+    </update>
+
+    <insert id="Insert_Nhapkho_chitiet">
+      INSERT INTO warehousing_detail(
+      manhapkho,
+      mavanphongpham,
+      tenvanphongpham,
+      donvitinh,
+      dongia,
+      soluong,
+      thanhtien,
+      danhmuccha,
+      danhmucgoc,
+      xoa,
+      nguoitao,
+      ngaytao
+      )
+      VALUES (
+      $manhapkho$
+      ,$mavanphongpham$
+      ,N'$tenvanphongpham$'
+      ,'$donvitinh$'
+      ,'$dongia$'
+      ,$soluong$
+      ,'$thanhtien$'
+      ,'$danhmuccha$'
+      ,'$danhmucgoc$'
+      ,'0'
+      ,'$nguoitao$'
+      ,GETDATE()
+      )
+    </insert>
+
+    <update id="DeletedRow_Nhapkho_chitiet">
+      UPDATE
+      warehousing_detail
+      SET
+      xoa='1'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      WHERE manhapkho=$manhapkho$
+    </update>
+
+    <select id="SelectRows_kiemtrahangton" resultClass="System.Collections.Hashtable">
+      select
+      ware.mavanphongpham
+      ,ware.tenvanphongpham
+      ,ware.donvitinh
+      ,ware.dongia
+      ,(COALESCE(sum(ware.soluong),0)+COALESCE(ex.slthucxuat,0)) as soluongnhap
+      ,COALESCE(ex.slthucxuat,0) as slthucxuat
+      ,sum(ware.soluong)as soluongtonkho
+      ,ware.thanhtien
+      from warehousing_detail ware
+      left join(select exportwarehousing_detail.mavanphongpham,sum(exportwarehousing_detail.slthucxuat) as slthucxuat from exportwarehousing_detail where xoa='0'group by mavanphongpham)ex on(ex.mavanphongpham=ware.mavanphongpham)
+      where xoa='0'
+      group by ware.mavanphongpham,ware.tenvanphongpham,ware.donvitinh,ware.dongia,ware.thanhtien,ex.slthucxuat
+    </select>
+    
+    
+    
+    
+    
+    
+  </statements>
+</sqlMap>

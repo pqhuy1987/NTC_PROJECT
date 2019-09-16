@@ -1,0 +1,178 @@
+﻿@using RICONS.DataServices.Context
+@using RICONS.Web.Models
+@model RICONS.Web.Models.PhongBanModels
+@{
+    ViewBag.Title = "KPI nhân viên";
+
+    var lstLoaiCuocHop = new List<SelectOption>()
+{
+new SelectOption(){ Text = "Họp với chủ đầu tư", Value = 1},
+new SelectOption(){ Text = "Hop với BCH công trường", Value = 2},
+};
+
+    var lstGiamDoc = ViewData["LstGiamDoc"] as List<m_donvi_thongtingiamdoc>;
+    var ct = ViewData["CongTruong"] as m_donvi_phongban;
+    var groupTk = Session["grouptk"].ToString().Trim();
+    var now = DateTime.Now;
+}
+
+
+<link rel="stylesheet" type="text/css" href="/Themes/RICONS-2015/css/TableBuild/layouts/css/blue.min.css" />
+<link rel="stylesheet" type="text/css" href="/themes/RICONS-2015/css/chosen/chosen.css" />
+<link href="~/assets/css/construction-meeting.min.css" rel="stylesheet" />
+
+<script>
+    var linkContent = '/';
+</script>
+
+
+<div class="HeaderFixed">
+    <div class="b-b b-light1">
+        <div class="row">
+            <div class="col-md-3" style="width: 320px; padding-left: 10px; padding-right:0px">
+                Giám đốc dự án: &nbsp;
+                <select data-placeholder="Chọn giám đốc dự án" class="chosen-1">
+                    @if (groupTk != "3")
+                    {
+                        <option value=""></option>
+                    }
+                    @foreach (var g in lstGiamDoc)
+                    {
+                        <option value="@g.mathongtin">@g.hovaten</option>
+                    }
+                </select>
+            </div>
+
+            <div class="col-md-3" style="width: 320px; padding-left: 10px; padding-right:0px">
+                Công trường: &nbsp;
+                <select data-placeholder="Chọn công trường" class="chosen-2">
+
+                    @if (ct != null)
+                    {
+                        <option value="@ct.maphongban">@ct.tenphongban</option>
+                    }
+                    else
+                    {
+                        <option value=""></option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-3" style="width: 320px; padding-left: 10px; padding-right:0px">
+                Tháng: &nbsp;
+                <select data-placeholder="Tháng" class="chosen-3">
+                    <option value=""></option>
+                    @for (var i = 1; i <= 12; i++)
+                    {
+                        if (i == now.Month)
+                        {
+                            <option selected="selected" value="@i">@(i + "/" + now.Year)</option>
+                        }
+                        else
+                        {
+                            <option value="@i">@(i + "/" + now.Year)</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-md-3" style="width: 320px; padding-left: 10px; padding-right:0px">
+                Loại cuộc họp: &nbsp;
+                <select data-placeholder="Chọn cuộc họp" class="chosen-4">
+                    <option value=""></option>
+                    <option value="0">Họp với chủ đầu tư</option>
+                    <option value="1">Họp với BCH công trường</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="clearBoth"></div>
+</div>
+
+<div style="width:100%; height:100%;">
+    <div id="boxContent" style="background: #fff; padding: 15px">
+        <div class="row">
+            <div class="portlet-body" id="apply_element">
+                <div class="calendar-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="width: 3%">Tuần</th>
+                                <th style="width: 14%">Thứ 2</th>
+                                <th style="width: 14%">Thứ 3</th>
+                                <th style="width: 14%">Thứ 4</th>
+                                <th style="width: 14%">Thứ 5</th>
+                                <th style="width: 14%">Thứ 6</th>
+                                <th style="width: 13%">Thứ 7</th>
+                                <th>Chủ nhật</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: weeks">
+                            <tr>
+                                <td>
+                                    <span data-bind="text: n"></span>
+                                </td>
+                                <!-- ko foreach: days -->
+                                <td class="day-item">
+                                    <span class="day-number" data-bind="text: d"></span>
+                                    <ul class="meetings">
+                                        <!-- ko foreach: meetings -->
+                                        <li data-bind="visible: Status() >= 0">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <h6 class="media-heading cw" data-bind="text: title"></h6>
+                                                    <span class="text-muted cw" data-bind="text: GioHop"></span>
+                                                    <ul data-bind="visible: FileDinhKem() != '' && FileDinhKem() != null">
+                                                        <li>
+                                                            <i class="fa fa-link"></i>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" data-bind="attr: { href : FileDinhKem }" target="_blank">Download</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" data-bind="attr: { href : FileDinhKem }" target="_blank">Xem file</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="media-right media-middle">
+                                                    <ul class="icons-list">
+                                                        <li class="dropdown">
+                                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                                <i class="fa fa-align-justify"></i>
+                                                            </a>
+
+                                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                                <li><a href="javascript:void(0)" data-bind="click: $root.editMeeting"><i class="fa fa-edit"></i> Sửa</a></li>
+                                                                <li><a href="javascript:void(0)" data-bind="click: $root.removeMeeting"><i class="fa fa-trash"></i> Xóa</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- /ko -->
+                                        <li class="btn-add">
+                                            <button class="btn btn-default btn-block " data-loading-text="<i class='fa fa-refresh fa-spin'></i>" data-bind="click: $root.addMeeting">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <!-- /ko -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Themes/RICONS-2015/js/moment.min.js"></script>
+<script src="~/Themes/RICONS-2015/js/knockout-3.3.0.js"></script>
+<script src="~/Themes/RICONS-2015/js/knockout.mapping-latest.js"></script>
+<script src="~/assets/js/ultra-form.js"></script>
+<script src="/themes/RICONS-2015/js/chosen/chosen.jquery.js"></script>
+<script src="/themes/RICONS-2015/js/chosen/prism.js"></script>
+<script src="~/assets/js/construction-meeting.js"></script>
+
+

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap
+  namespace="KpiLevelCompany"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://ibatis.apache.org/mapping">
+  <statements>
+    
+    <select id="CountRows_KpiLevelCompany" resultClass="int">
+      SELECT
+      count(*)
+      FROM
+      KPI_Level_Company
+      WHERE xoa = '0'
+    </select>
+
+    <select id="SelectRow_KpiLevelCompany" resultClass="System.Collections.Hashtable">
+      select * from (SELECT
+      *
+      ,ROW_NUMBER() OVER (ORDER BY makpicongty  desc) as row
+      from KPI_Level_Company
+      WHERE xoa='0') tbl1
+      where tbl1.xoa='0' and  tbl1.row <![CDATA[>=]]> $trangbd$ and tbl1.row <![CDATA[<=]]> $trangkt$
+      order by makpicongty desc
+    </select>
+    
+    <insert id="InsertRow_KpiLevelCompany">
+      INSERT INTO KPI_Level_Company
+      (
+      makpicongty
+      ,bophansoanthao
+      ,ngaybanhanh
+      ,ngaycapnhat
+      ,lancapnhat
+      ,nguoilapkpi
+      ,nguoilapkpi_dagui
+      ,nguoilapkpi_ngay
+      ,photongxemxetkpi
+      ,photongxemxetkpi_duyet
+      ,photongxemxetkpi_ngay
+      ,tonggiamdocxemxetkpi
+      ,tonggiamdocxemxetkpi_duyet
+      ,tonggiamdocxemxetkpi_ngay
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      ,nam
+      ,nguoilapkpi_email
+      ,photongxemxetkpi_email
+      ,tonggiamdocxemxetkpi_email
+      )
+      VALUES
+      (
+      $makpicongty$
+      ,N'$bophansoanthao$'
+      ,'$ngaybanhanh$'
+      ,'$ngaycapnhat$'
+      ,'$lancapnhat$'
+      ,N'$nguoilapkpi$'
+      ,'$nguoilapkpi_dagui$'
+      ,'$nguoilapkpi_ngay$'
+      ,N'$photongxemxetkpi$'
+      ,'$photongxemxetkpi_duyet$'
+      ,'$photongxemxetkpi_ngay$'
+      ,N'$tonggiamdocxemxetkpi$'
+      ,'$tonggiamdocxemxetkpi_duyet$'
+      ,'$tonggiamdocxemxetkpi_ngay$'
+      ,'0'
+      ,GETDATE()
+      ,$nguoitao$
+      ,'$nam$'
+      ,'$nguoilapkpi_email$'
+      ,'$photongxemxetkpi_email$'
+      ,'$tonggiamdocxemxetkpi_email$'
+      )
+    </insert>
+
+    <update id="UpdateRow_KpiLevelCompany">
+      UPDATE
+      KPI_Level_Company
+      SET
+      bophansoanthao=N'$bophansoanthao$'
+      ,ngaybanhanh='$ngaybanhanh$'
+      ,ngaycapnhat='$ngaycapnhat$'
+      ,lancapnhat='$lancapnhat$'
+      ,nguoilapkpi=N'$nguoilapkpi$'
+      ,nguoilapkpi_dagui='$nguoilapkpi_dagui$'
+      ,nguoilapkpi_ngay='$nguoilapkpi_ngay$'
+      ,photongxemxetkpi=N'$photongxemxetkpi$'
+      ,photongxemxetkpi_duyet='$photongxemxetkpi_duyet$'
+      ,photongxemxetkpi_ngay='$photongxemxetkpi_ngay$'
+      ,tonggiamdocxemxetkpi=N'$tonggiamdocxemxetkpi$'
+      ,tonggiamdocxemxetkpi_duyet='$tonggiamdocxemxetkpi_duyet$'
+      ,tonggiamdocxemxetkpi_ngay='$tonggiamdocxemxetkpi_ngay$'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      ,nam='$nam$'
+      ,nguoilapkpi_email='$nguoilapkpi_email$'
+      ,photongxemxetkpi_email='$photongxemxetkpi_email$'
+      ,tonggiamdocxemxetkpi_email='$tonggiamdocxemxetkpi_email$'
+      WHERE makpicongty=$makpicongty$
+    </update>
+    
+    
+    <insert id="InsertRow_KpiLevelCompanyDetail">
+      INSERT INTO KPI_Level_Company_Detail
+      (
+      makpicongty
+      ,stt
+      ,muctieu
+      ,trongso
+      ,tieuchidanhgia
+      ,cachtinh
+      ,ngayghinhanketqua
+      ,nguonchungminh
+      ,nguonchungminh1
+      ,donvitinh
+      ,kehoach
+      ,thuchien
+      ,tilehoanthanh
+      ,ketqua
+      ,ghichu
+      ,thuoccap
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      )
+      VALUES
+      (
+      '$makpicongty$'
+      ,'$stt$'
+      ,N'$muctieu$'
+      ,'$trongso$'
+      ,N'$tieuchidanhgia$'
+      ,N'$cachtinh$'
+      ,'$ngayghinhanketqua$'
+      ,'$nguonchungminh$'
+      ,'$nguonchungminh1$'
+      ,N'$donvitinh$'
+      ,N'$kehoach$'
+      ,N'$thuchien$'
+      ,N'$tilehoanthanh$'
+      ,'$ketqua$'
+      ,N'$ghichu$'
+      ,'$thuoccap$'
+      ,'0'
+      ,GETDATE()
+      ,$nguoitao$
+      )
+    </insert>
+
+    <update id="DeleteRow_KpiLevelCompany">
+      Update KPI_Level_Company set xoa='1' where makpicongty=$makpicongty$
+    </update>
+    
+    
+    <update id="UpdateRow_KpiLevelCompany_nguoiguihoso">
+      Update KPI_Level_Company set nguoilapkpi_dagui='$nguoilapkpi_dagui$' where makpicongty=$makpicongty$
+    </update>
+    
+    <update id="DeleteRow_KpiLevelCompanyDetail">
+      Delete from  KPI_Level_Company_Detail where makpicongty=$makpicongty$
+    </update>
+
+    <select id="SelectRows_KpiLevelCompany_hieuchinh" resultClass="System.Collections.Hashtable">
+      SELECT
+      *
+      from KPI_Level_Company
+      WHERE xoa='0' and makpicongty=$makpicongty$
+    </select>
+
+    <select id="SelectRows_KpiLevelCompanyDetail_hieuchinh" resultClass="System.Collections.Hashtable">
+      SELECT
+      makpicongty_chitiet
+      ,makpicongty
+      ,stt
+      ,REPLACE(CAST(muctieu AS NVARCHAR(MAX)),'\\','\') as muctieu
+      ,REPLACE(CAST(trongso AS NVARCHAR(MAX)),'\\','\') as trongso
+      ,REPLACE(CAST(tieuchidanhgia AS NVARCHAR(MAX)),'\\','\') as tieuchidanhgia
+      ,REPLACE(CAST(cachtinh AS NVARCHAR(MAX)),'\\','\') as cachtinh
+      ,REPLACE(CAST(ngayghinhanketqua AS NVARCHAR(MAX)),'\\','\') as ngayghinhanketqua
+      ,REPLACE(CAST(nguonchungminh AS NVARCHAR(MAX)),'\\','\') as nguonchungminh
+      ,REPLACE(CAST(donvitinh AS NVARCHAR(MAX)),'\\','\') as donvitinh
+      ,REPLACE(CAST(kehoach AS NVARCHAR(MAX)),'\\','\') as kehoach
+      ,REPLACE(CAST(thuchien AS NVARCHAR(MAX)),'\\','\') as thuchien
+      ,REPLACE(CAST(tilehoanthanh AS NVARCHAR(MAX)),'\\','\') as tilehoanthanh
+      ,REPLACE(CAST(ketqua AS NVARCHAR(MAX)),'\\','\') as ketqua
+      ,REPLACE(CAST(ghichu AS NVARCHAR(MAX)),'\\','\') as ghichu
+      ,thuoccap
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      from KPI_Level_Company_Detail
+      WHERE xoa='0' and makpicongty=$makpicongty$
+    </select>
+    
+     <update id="UpdateRow_KPICompany_Duyet_Khongduyet">
+      Update KPI_Level_Company 
+      set 
+      <isNotEmpty property="photongxemxetkpi_duyet">
+      photongxemxetkpi_duyet='$photongxemxetkpi_duyet$' 
+      </isNotEmpty>
+      <isNotEmpty property="photongxemxetkpi_ngay">
+      ,photongxemxetkpi_ngay='$photongxemxetkpi_ngay$' 
+      </isNotEmpty>
+       <isNotEmpty property="tonggiamdocxemxetkpi_duyet">
+      tonggiamdocxemxetkpi_duyet='$tonggiamdocxemxetkpi_duyet$' 
+      </isNotEmpty>
+       <isNotEmpty property="tonggiamdocxemxetkpi_ngay">
+      ,tonggiamdocxemxetkpi_ngay='$tonggiamdocxemxetkpi_ngay$' 
+      </isNotEmpty>
+
+       <isNotEmpty property="nguoilapkpi_dagui">
+         ,nguoilapkpi_dagui='$nguoilapkpi_dagui$'
+       </isNotEmpty>
+       
+       
+      where makpicongty=$makpicongty$
+    </update>
+
+
+  </statements>
+</sqlMap>

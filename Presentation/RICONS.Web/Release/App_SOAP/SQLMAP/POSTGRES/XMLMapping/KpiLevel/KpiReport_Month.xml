@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap
+  namespace="KpiReport_Month"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://ibatis.apache.org/mapping">
+  <statements>
+
+    <select id="CountRows_KpiReportMonth" resultClass="int">
+      SELECT
+      count(*)
+      FROM
+      KPI_Results_Month
+      WHERE xoa = '0'
+      <isNotEmpty property="hovaten">
+        and (manhanvien='$hovaten$' or lower(hovaten) like lower('%$hovaten$%'))
+      </isNotEmpty>
+      <isNotEmpty property="nguoitao">
+        and nguoitao=$nguoitao$
+      </isNotEmpty>
+      <isNotEmpty property="maphongban">
+        and maphongban = '$maphongban$'
+      </isNotEmpty>
+    </select>
+
+    <select id="SelectRow_KpiReportMonth" resultClass="System.Collections.Hashtable">
+      select * from (SELECT
+      matonghopketqua
+      ,stt
+      ,thangnam
+      ,manhanvien
+      ,maphongban
+      ,hovaten
+      ,hanhvithaido
+      ,giaiquyetcongviec
+      ,ketquakpi
+      ,tenchucdanhns
+      ,phanloaiketqua
+      ,REPLACE(CAST(ghichu AS NVARCHAR(MAX)),'\\','\') as ghichu
+      ,(select tenphongban from m_donvi_phongban pb where pb.xoa='0' and pb.maphongban=KPI_Results_Month.maphongban) as tenphongban
+      ,xoa
+      ,groupcha
+      ,maphanloaiketqua
+      ,ROW_NUMBER() OVER (ORDER BY cast(maphongban as int),matonghopketqua  asc) as row
+      from KPI_Results_Month
+      WHERE xoa='0') tbl1
+      where tbl1.xoa='0' and  tbl1.row <![CDATA[>=]]> $trangbd$ and tbl1.row <![CDATA[<=]]> $trangkt$
+      <isNotEmpty property="hovaten">
+        and (manhanvien='$hovaten$' or lower(hovaten) like lower(N'%$hovaten$%'))
+      </isNotEmpty>
+      <isNotEmpty property="nguoitao">
+        and nguoitao=$nguoitao$
+      </isNotEmpty>
+      <isNotEmpty property="maphongban">
+        and maphongban = '$maphongban$'
+      </isNotEmpty>
+      order by cast(maphongban as int),matonghopketqua asc
+    </select>
+
+    <select id="SelectRows_KpiEmployeeDetail_load" resultClass="System.Collections.Hashtable">
+      select
+      emp.manhanvien
+      ,emp.maphongban
+      ,emp.hovaten
+      ,(select PositionName from V_EmployeeProfile where V_EmployeeProfile.EmployeeID = emp.manhanvien) as tenchucdanhns
+      ,(select ketqua from KPI_Employee_Detail where xoa='0' and KPI_Employee_Detail.makpinhanvien=emp.makpinhanvien and stt='I') as hanhvithaido
+      ,(select ketqua from KPI_Employee_Detail where xoa='0' and KPI_Employee_Detail.makpinhanvien=emp.makpinhanvien and stt='II') as giaiquyetcongviec
+      ,(select ketqua from KPI_Employee_Detail where xoa='0' and KPI_Employee_Detail.makpinhanvien=emp.makpinhanvien and stt='' or stt is null or stt=null) as ketquakpi
+      from KPI_Employee emp
+      where emp.xoa='0' and SUBSTRING(emp.ngaydangky, 4, 7)='$thangnam$'
+      <isNotEmpty property="manhanvien">
+        and emp.manhanvien='$hovaten$' or lower(emp.hovaten) like lower('%$hovaten$%') or lower(emp.email) like lower('%$hovaten$%')
+      </isNotEmpty>
+      <isNotEmpty property="maphongban">
+        and emp.maphongban='$maphongban$'
+      </isNotEmpty>
+      <isNotEmpty property="nguoitao">
+        and emp.nguoitao='$nguoitao$'
+      </isNotEmpty>
+      order by emp.makpinhanvien
+    </select>
+
+
+    <insert id="InsertRow_KpiResultMonth">
+      INSERT INTO KPI_Results_Month
+      (
+      stt
+      ,thangnam
+      ,manhanvien
+      ,maphongban
+      ,hovaten
+      ,hanhvithaido
+      ,giaiquyetcongviec
+      ,ketquakpi
+      ,phanloaiketqua
+      ,ghichu
+      ,maphanloaiketqua
+      ,groupcha
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      ,tenchucdanhns
+      )
+      VALUES
+      (
+      '$stt$'
+      ,'$thangnam$'
+      ,'$manhanvien$'
+      ,'$maphongban$'
+      ,N'$hovaten$'
+      ,'$hanhvithaido$'
+      ,'$giaiquyetcongviec$'
+      ,'$ketquakpi$'
+      ,N'$phanloaiketqua$'
+      ,N'$ghichu$'
+      ,'$maphanloaiketqua$'
+      ,'$groupcha$'
+      ,'0'
+      ,GETDATE()
+      ,$nguoitao$
+      ,'$tenchucdanhns$'
+      )
+    </insert>
+
+
+    <update id="UpdateRow_KpiResultMonth">
+      UPDATE
+      KPI_Results_Month
+      SET
+      stt='$stt$'
+      ,thangnam='$thangnam$'
+      ,manhanvien='$manhanvien$'
+      ,maphongban='$maphongban$'
+      ,hovaten=N'$hovaten$'
+      ,hanhvithaido='$hanhvithaido$'
+      ,giaiquyetcongviec='$giaiquyetcongviec$'
+      ,ketquakpi='$ketquakpi$'
+      ,phanloaiketqua=N'$phanloaiketqua$'
+      ,ghichu=N'$ghichu$'
+      ,maphanloaiketqua='$maphanloaiketqua$'
+      ,groupcha='$groupcha$'
+      ,tenchucdanhns='$tenchucdanhns$'
+      ,ngayhieuchinh= GETDATE()
+      WHERE matonghopketqua =$matonghopketqua$
+    </update>
+
+    <select id="SelectRows_ExitKPIMonth" resultClass="System.Collections.Hashtable">
+      select
+      *
+      from KPI_Results_Month
+      where xoa='0' and rtrim(thangnam)=rtrim('$thangnam$') and rtrim(maphongban)=rtrim('$maphongban$') and rtrim(manhanvien)=rtrim('$manhanvien$')
+    </select>
+
+
+    <select id="SelectRow_ListDepartment" resultClass="System.Collections.Hashtable">
+      select * from (SELECT
+      maphongban
+      ,tenphongban
+      ,phongban_congtruong
+      ,xoa
+      ,ROW_NUMBER() OVER (ORDER BY cast(maphongban as int)  asc) as row
+      from m_donvi_phongban
+      WHERE xoa='0'
+      and phongban_congtruong= $phongban_congtruong$
+      <isNotEmpty property="maphongban">
+      and maphongban='$maphongban$'
+      </isNotEmpty>
+      ) tbl1
+      where tbl1.xoa='0' and  tbl1.row <![CDATA[>=]]> $trangbd$ and tbl1.row <![CDATA[<=]]> $trangkt$
+      order by cast(maphongban as int) asc
+    </select>
+
+
+
+    <select id="SelectRows_KPIYear" resultClass="System.Collections.Hashtable">
+      Select
+      vemp.EmployeeID as manhanvien
+      ,emp.maphongban
+      ,(select tenphongban from m_donvi_phongban pb where pb.xoa='0' and pb.maphongban=emp.maphongban) as tenphongban
+      ,vemp.OrgID
+      ,vemp.FullName as hovaten
+      ,vemp.PositionName as tenchucdanhns
+      ,vemp.JoinDate as ngaynhanviec
+      ,emp.stt
+      ,emp.ketqua
+      ,emp.ngaydangky
+      ,SUBSTRING(emp.ngaydangky,4,2) as thangkpi
+      ,SUBSTRING(emp.ngaydangky,7,4) as namkpi
+      from V_EmployeeProfile vemp
+      left join(select emp.manhanvien,emp.makpinhanvien,emp.ngaydangky,detail.stt,detail.ketqua,emp.maphongban  from KPI_Employee emp
+      left join (select detail.makpinhanvien,detail.stt,detail.ketqua from KPI_Employee_Detail detail  where detail.stt='' or detail.stt=null)detail on(detail.makpinhanvien=emp.makpinhanvien)
+      )emp on(emp.manhanvien=vemp.EmployeeID)
+      where vemp.Construction='0' and vemp.WorkStatus <![CDATA[<>]]> 59 and ($maphongban$) and (SUBSTRING(emp.ngaydangky,7,4)='2018' or SUBSTRING(emp.ngaydangky,7,4)='' or SUBSTRING(emp.ngaydangky,7,4)=null or SUBSTRING(emp.ngaydangky,7,4) is null)
+      order by vemp.OrgID, vemp.PositionID
+    </select>
+
+  </statements>
+</sqlMap>

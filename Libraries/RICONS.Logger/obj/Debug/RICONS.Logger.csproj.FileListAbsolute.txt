@@ -1,0 +1,33 @@
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.csproj.CoreCompileInputs.cache
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\bin\Debug\RICONS.Logger.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\bin\Debug\RICONS.Logger.pdb
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\bin\Debug\log4net.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\bin\Debug\log4net.xml
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.csproj.CopyComplete
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.pdb
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.csprojAssemblyReference.cache
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\bin\Debug\RICONS.Logger.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\bin\Debug\RICONS.Logger.pdb
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\bin\Debug\log4net.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\bin\Debug\log4net.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.csproj.CoreCompileInputs.cache
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.csproj.CopyComplete
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\bin\Debug\RICONS.Logger.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\bin\Debug\RICONS.Logger.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\bin\Debug\log4net.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\bin\Debug\log4net.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.csproj.CoreCompileInputs.cache
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.csproj.CopyComplete
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.csprojAssemblyReference.cache
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\bin\Debug\RICONS.Logger.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\bin\Debug\RICONS.Logger.pdb
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\bin\Debug\log4net.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\bin\Debug\log4net.xml
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.csprojResolveAssemblyReference.cache
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.pdb

@@ -1,0 +1,489 @@
+﻿@model RICONS.Web.Models.AddStaffModels
+@{
+    ViewBag.Title = "Hiệu chỉnh thông tin";
+}
+@*--css--*@
+@section CSS
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/controller/AddStaff/NewOffice.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/prism.css" />
+}
+
+@*--javascript--*@
+@section JavaScript
+{
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/controllers/AddStaff/EditOffice.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery.datepick-vi.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/chosen.jquery.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/prism.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/table/buildTable.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/colResizale/colResizable-1.3.source.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/plugins/jquery.blockui.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/scripts/app.min.js"></script>
+
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootbox.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/custom.js"></script>
+
+    <script src="~/Scripts/jquery-2.1.0.intellisense.js"></script>
+    <script src="~/Scripts/jquery-2.1.0.js"></script>
+    <script src="~/Scripts/jquery-2.1.0.min.js"></script>
+
+}
+<script>
+    var linkContent = '@Url.Content("~")';
+</script>
+
+
+<div class="HeaderFixed">
+    <div class="b-b b-light">
+        <div class="p-left c-black">Hiệu chỉnh đề nghị bổ sung nhân sự @Model.tenduan &nbsp;&nbsp;&nbsp;</div>
+        @*<div class="p-left c-black">
+                <button id="btn-save" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu"><i class="retweet_save"></i> Lưu</button>
+                <a href="@Url.Action("Index", "Classlist")" class="buttoncustom WhiteButton"><i class="retweet_trove"></i> Trở về</a>
+            </div>*@
+        <div class="clearBoth"></div>
+    </div>
+</div>
+
+
+<div class="boxEdit">
+    @using (Html.BeginForm("EditOffice", "AddStaff", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+    {
+
+        <div class="row">
+            <div class="col-md-2" style="width:170px;"></div>
+            <div class="col-md-1"><label style="color:red" id="lblthongbao" class="hidden"></label></div>
+            <div class="col-md-1" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" class="hidden" id="txtmabosungnhansu" name="mabosungnhansu" value="@Model.mabosungnhansu" /></div>
+        </div>
+
+        <div class="row" @*style="padding-bottom:2px;padding-left:7px;padding-right:6px;"*@>
+            <div class="col-md-3" style="font-size: 14px; border-radius: 5px; font-weight: bold; color: black; padding-left: 1px; height: 28px; line-height:26px; background-color:0090d9">&nbsp; I. Phòng ban đề xuất @Model.tenduan</div>
+            <div class="col-md-1" style="min-width: 130px; padding-left:10px;">Số nhân sự hiện tại<label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Số nhân sự hiện tại" id="txtsoluongnhansuhientai" name="soluongnhansuhientai" value="@Model.soluongnhansuhientai" /></div>
+            <div class="col-md-1" style="min-width: 80px; padding-left:10px;">Ngày y/c<label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Ngày yêu cầu" id="txtngayyeucau" name="ngayyeucau" value="@Model.ngayyeucau" /></div>
+        </div>
+        <div>
+            <div class="row" style="padding-top: 5px; padding-bottom: 1px;">
+                <div class="col-md-1" style="min-width: 130px; padding-left: 10px;"></div>
+                <div class="col-md-7" style="padding-left:10px;">
+                    <button id="btn-save" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu"><i class="retweet_save"></i> Lưu</button>
+                    <button id="btn-save-guimail" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu & gửi" style="width:100px"><i class="retweet_save"></i> Lưu & gửi</button>
+                    <a href="@Url.Action("Index", "AddStaff")" class="buttoncustom WhiteButton"><i class="retweet_trove"></i> Trở về</a>
+                </div>
+            </div>
+
+
+        </div>
+
+    }
+</div>
+
+<div id="boxContent">
+    <div style="width:100%; height:100%">
+        <div class="portlet-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table_danhSach" id="tableContent" style="font-size:12px;">
+                    <thead id="head-date">
+                    </thead>
+                    <tbody id="head-date1"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="height:7px;"></div>
+
+<div class="boxEdit">
+
+    <div class="row" @*style="padding-bottom:2px;padding-left:7px;padding-right:6px;"*@>
+        <div class="col-md-4" style="font-size: 14px; border-radius: 5px; font-weight: bold; color: black; padding-left: 1px; height: 28px; line-height:26px; background-color:0090d9">&nbsp; II. Đề xuất phòng QTNNL</div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-3" style="min-width: 130px; padding-left:10px;"><input type="checkbox" id="chkthuyenchuyennoibo" name="chkthuyenchuyennoibo" />Thuyên chuyển nội bộ (Tất cả/theo Stt)</div>
+        <div class="col-md-7" style="padding-left:10px;">
+            <input type="text" style="width: 100%;" autocomplete="off" placeholder="Thuyên chuyển nội bộ (Tất cả/theo Stt) nhập theo: 1,2,3,4,5" id="txtthuyenchuyennoibo" name="thuyenchuyennoibo" value="@Model.thuyenchuyennoibo" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3" style="min-width: 130px; padding-left:10px;"><input type="checkbox" id="chktuyenmoi" name="chktuyenmoi" />Tuyển mới (Tất cả/theo Stt)</div>
+        <div class="col-md-7" style="padding-left:10px;">
+            <input type="text" style="width: 100%;" autocomplete="off" placeholder="Tuyển mới (Tất cả/theo Stt) nhập theo: 1,2,3,4,5" id="txttuyenmoi" name="tuyenmoi" value="@Model.tuyenmoi" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3" style="min-width: 130px; padding-left:10px;"><input type="checkbox" id="chkkhongbosung" name="chkkhongbosung" />Không bổ sung (Tất cả/theo Stt)</div>
+        <div class="col-md-7" style="padding-left:10px;">
+            <input type="text" style="width: 100%;" autocomplete="off" placeholder="Không bổ sung (Tất cả/theo Stt) nhập theo: 1,2,3,4,5" id="txtkhongbosung" name="khongbosung" value="@Model.khongbosung" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1" style="min-width: 180px; padding-left:10px;">Trưởng bộ phận<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-3" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Chỉ huy trưởng" id="txttruongbophan_cht" name="truongbophan_cht" value="@Model.truongbophan_cht" /></div>
+
+        <div class="col-md-1" style="padding-left:10px;">Email<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-3" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Địa chỉ Email" id="txttruongbophan_cht_email" name="truongbophan_cht_email" value="@Model.truongbophan_cht_email" /></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1" style="min-width: 180px; padding-left: 10px;">Phòng QTNNL<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-3" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Phòng QTNNL" id="txtphongqtnnl" name="phongqtnnl" value="@Model.phongqtnnl" /></div>
+
+        <div class="col-md-1" style="padding-left:10px;">Email<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-3" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Địa chỉ Email" id="txtphongqtnnl_email" name="phongqtnnl_email" value="@Model.phongqtnnl_email" /></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1" style="min-width: 180px; padding-left: 10px;">P.TGĐ phụ trách<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-3" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="GĐDA/P.TGĐ phụ trách" id="txtgiamdocduan_ptgd" name="giamdocduan_ptgd" value="@Model.giamdocduan_ptgd" /></div>
+
+        <div class="col-md-1" style="padding-left:10px;">Email<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-3" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Địa chỉ Email" id="txtgiamdocduan_ptgd_email" name="giamdocduan_ptgd_email" value="@Model.giamdocduan_ptgd_email" /></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1" style="min-width: 180px; padding-left: 10px;">Tổng Giám đốc<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-3" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Ban Tổng Giám đốc" id="txtbantonggiamdoc" name="bantonggiamdoc" value="@Model.bantonggiamdoc" /></div>
+
+        <div class="col-md-1" style="padding-left:10px;">Email<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-3" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Địa chỉ Email" id="txtbantonggiamdoc_email" name="bantonggiamdoc_email" value="@Model.bantonggiamdoc_email" /></div>
+    </div>
+
+</div>
+
+
+<script>
+
+    $(document).ready(function (e) {
+        renderDate();
+        renderDate_body();
+
+        $('#txtmanvs').on('keypress', function (event) {
+            debugger;
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                GetData(true);
+            }
+        });
+
+        $('#txthovatens').on('keypress', function (event) {
+            debugger;
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                GetData(true);
+            }
+        });
+
+        $('#filter02').on('click', function (event) {
+            debugger;
+            GetData(true);
+        });
+
+        $('#chkkiemtra').click(function () {
+            debugger;
+            GetData(true);
+        });
+
+    });
+
+    $('#boxContent').on('click', '.button-add', function () {
+        var stt = $("#tableContent > tbody > tr").length + 1;
+        var newTr = '<tr class="rows-box" matiendo=0 mabosungnhansu=0>'
+            + '<td class="ovh col1"> ' + stt + ' </td>'
+           + '<td class="ovh col2 boxEdit"><input type="text" id="txtvitricongtac" style="width:100%;height:24px" autocomplete="off" placeholder="" name="vitricongtac" /></th>'
+            + '<td class="ovh col3 boxEdit"><input type="text" id="txtsoluong" style="width:100%;height:24px; text-align: center;" autocomplete="off" placeholder="" name="soluong" /></td>'
+            + '<td class="ovh col4 boxEdit"><input type="text" id="txtchuyenmon" style="width:100%;height:24px;text-align: left;" placeholder="" name="chuyenmon" /></td>'
+            + '<td class="ovh col5 boxEdit"><input type="text" id="txttrinhdo" style="width:100%;height:24px; text-align: left;" autocomplete="off" placeholder="" name="trinhdo" /></td>'
+            + '<td class="ovh col6 boxEdit"><input type="text" id="txtthoigiantiepnhan" style="width:100%;height:24px; text-align: center;" autocomplete="off" placeholder="" name="thoigiantiepnhan" /></td>'
+            + '<td class="ovh col7 boxEdit"><input type="text" id="txttieuchuan_ghichu" style="width:100%;height:24px" autocomplete="off" placeholder="" name="tieuchuan_ghichu" /></td>'
+            + '<td id="btnAdd" style="text-align: center;font-weight: bold;font-size: 13px;"><a href="#" class="button-add">Add</a> |&nbsp;<a href="#" class="button-del">Del</a></td></tr>';
+        $('#boxContent table tbody').append(newTr);
+    });
+
+    $('#boxContent').on('click', '.button-del', function () {
+        debugger;
+        if ($("#tableContent > tbody > tr").length > 1) {
+            $(this).closest('tr').remove();
+        }
+    });
+
+
+    $('#btn-save').on('click', function (e) {
+        e.preventDefault();
+
+        //$("#lblthongbao").removeClass('hidden');
+
+        if ($("#txtsoluongnhansuhientai").val().length < 1) {
+            Thongbao("Số nhân sự hiện tại?");
+            return false;
+        }
+        //else if ($('#txtngayhoc').val().length != 10) {
+        //    //$('#lblthongbao').html('Chọn ngày tháng năm đăng ký (01/01/2017)?');
+        //    Thongbao("Chọn ngày học (01/01/2017)?");
+        //    return false;
+        //}
+        //else if ($('#filter01').val() == 0) {
+        //    //$('#lblthongbao').html('Chọn chức vụ?');
+        //    Thongbao("Chọn giáo viên hướng dẫn?");
+        //    return false;
+        //}
+
+
+        var data = [];
+        var DataJson = "{'data1':";
+        DataJson += "{";
+        DataJson += "'mabosungnhansu':'" + $('#txtmabosungnhansu').val() + "',";
+        DataJson += "'tenduan':'@Model.tenduan',";
+        DataJson += "'goithau':'',";
+        DataJson += "'diachi':'',";
+        DataJson += "'soluongnhansuhientai':'" + $('#txtsoluongnhansuhientai').val() + "',";
+        DataJson += "'ngayyeucau':'" + $('#txtngayyeucau').val() + "',";
+        DataJson += "'thuyenchuyennoibo':'" + $('#txtthuyenchuyennoibo').val() + "',";
+        DataJson += "'tuyenmoi':'" + $('#txttuyenmoi').val() + "',";
+        DataJson += "'khongbosung':'" + $('#txtkhongbosung').val() + "',";
+
+        DataJson += "'truongbophan_cht':'" + $('#txttruongbophan_cht').val() + "',";
+        DataJson += "'truongbophan_cht_email':'" + $('#txttruongbophan_cht_email').val() + "',";
+
+        DataJson += "'giamdocduan_ptgd':'" + $('#txtgiamdocduan_ptgd').val() + "',";
+        DataJson += "'giamdocduan_ptgd_email':'" + $('#txtgiamdocduan_ptgd_email').val() + "',";
+
+        DataJson += "'phongqtnnl':'" + $('#txtphongqtnnl').val() + "',";
+        DataJson += "'phongqtnnl_email':'" + $('#txtphongqtnnl_email').val() + "',";
+
+        DataJson += "'bantonggiamdoc':'" + $('#txtbantonggiamdoc').val() + "',";
+        DataJson += "'bantonggiamdoc_email':'" + $('#txtbantonggiamdoc_email').val() + "',";
+
+        DataJson += "'phongban_congtruong':'0'";
+        DataJson += "}, 'data2':[";
+
+        $('#boxContent table tbody tr').each(function (index, item) {
+            debugger;
+            var makehoach = $(item).attr('makehoach');
+            var mabosungnhansu = $(item).attr('mabosungnhansu');
+            var vitricongtac = $(item).find('td.col2 input').val();
+            var soluong = $(item).find('td.col3 input').val();
+            var chuyenmon = $(item).find('td.col4 input').val();
+            var trinhdo = $(item).find('td.col5 input').val();
+            var thoigiantiepnhan = $(item).find('td.col6 input').val();
+            var tieuchuan_ghichu = $(item).find('td.col7 input').val();
+
+            DataJson += "{";
+            DataJson += "'makehoach':'" + makehoach + "',";
+            DataJson += "'mabosungnhansu':'" + mabosungnhansu + "',";
+            DataJson += "'vitricongtac':'" + vitricongtac + "',";
+            DataJson += "'soluong':'" + soluong + "',";
+            DataJson += "'chuyenmon':'" + chuyenmon + "',";
+
+            DataJson += "'trinhdo':'" + trinhdo + "',";
+
+            DataJson += "'thoigiantiepnhan':'" + thoigiantiepnhan + "',";
+            DataJson += "'tieuchuan_ghichu':'" + tieuchuan_ghichu + "'";
+
+            DataJson += "}";
+            if (index != $('#boxContent table tbody tr').length - 1)
+                DataJson += ",";
+        });
+        DataJson += "]}";
+
+        $.ajax({
+            type: 'POST',
+            url: '/AddStaff/Save_bosung_vanphong',
+            datatype: "JSON",
+            data: "DataJson=" + DataJson,
+            cache: false,
+
+        })
+        .done(function (result) {
+            debugger;
+            var tb = JSON.stringify(result.success);
+            var idbosungnhansu = JSON.stringify(result.mabosungnhansu);
+            if (tb == "true") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu thành công.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmabosungnhansu').val(idbosungnhansu);
+                    dialogSuccess.modal('hide');
+                }, 2000);
+            } else {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu không thành công</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmabosungnhansu').val(0);
+                    dialogSuccess.modal('hide');
+                }, 2000);
+            }
+        })
+        .fail(function (result) {
+            alert("FAILED: " + JSON.stringify(result));
+
+        });
+    })
+
+    $('#btn-save-guimail').on('click', function (e) {
+        e.preventDefault();
+
+        if ($("#txtsoluongnhansuhientai").val().length < 1) {
+            Thongbao("Số nhân sự hiện tại?");
+            return false;
+        }
+        //else if ($('#txtngayhoc').val().length != 10) {
+        //    //$('#lblthongbao').html('Chọn ngày tháng năm đăng ký (01/01/2017)?');
+        //    Thongbao("Chọn ngày học (01/01/2017)?");
+        //    return false;
+        //}
+        //else if ($('#filter01').val() == 0) {
+        //    //$('#lblthongbao').html('Chọn chức vụ?');
+        //    Thongbao("Chọn giáo viên hướng dẫn?");
+        //    return false;
+        //}
+
+
+        var data = [];
+        var DataJson = "{'data1':";
+        DataJson += "{";
+        DataJson += "'mabosungnhansu':'" + $('#txtmabosungnhansu').val() + "',";
+        DataJson += "'tenduan':'@Model.tenduan',";
+        DataJson += "'goithau':'',";
+        DataJson += "'diachi':'',";
+        DataJson += "'soluongnhansuhientai':'" + $('#txtsoluongnhansuhientai').val() + "',";
+        DataJson += "'ngayyeucau':'" + $('#txtngayyeucau').val() + "',";
+        DataJson += "'thuyenchuyennoibo':'" + $('#txtthuyenchuyennoibo').val() + "',";
+        DataJson += "'tuyenmoi':'" + $('#txttuyenmoi').val() + "',";
+        DataJson += "'khongbosung':'" + $('#txtkhongbosung').val() + "',";
+
+        DataJson += "'truongbophan_cht':'" + $('#txttruongbophan_cht').val() + "',";
+        DataJson += "'truongbophan_cht_email':'" + $('#txttruongbophan_cht_email').val() + "',";
+
+        DataJson += "'giamdocduan_ptgd':'" + $('#txtgiamdocduan_ptgd').val() + "',";
+        DataJson += "'giamdocduan_ptgd_email':'" + $('#txtgiamdocduan_ptgd_email').val() + "',";
+
+        DataJson += "'phongqtnnl':'" + $('#txtphongqtnnl').val() + "',";
+        DataJson += "'phongqtnnl_email':'" + $('#txtphongqtnnl_email').val() + "',";
+
+        DataJson += "'bantonggiamdoc':'" + $('#txtbantonggiamdoc').val() + "',";
+        DataJson += "'bantonggiamdoc_email':'" + $('#txtbantonggiamdoc_email').val() + "',";
+
+        DataJson += "'phongban_congtruong':'0'";
+
+        DataJson += "}, 'data2':[";
+
+        $('#boxContent table tbody tr').each(function (index, item) {
+            debugger;
+            var makehoach = $(item).attr('makehoach');
+            var mabosungnhansu = $(item).attr('mabosungnhansu');
+            var vitricongtac = $(item).find('td.col2 input').val();
+            var soluong = $(item).find('td.col3 input').val();
+            var chuyenmon = $(item).find('td.col4 input').val();
+            var trinhdo = $(item).find('td.col5 input').val();
+            var thoigiantiepnhan = $(item).find('td.col6 input').val();
+            var tieuchuan_ghichu = $(item).find('td.col7 input').val();
+
+            DataJson += "{";
+            DataJson += "'makehoach':'" + makehoach + "',";
+            DataJson += "'mabosungnhansu':'" + mabosungnhansu + "',";
+            DataJson += "'vitricongtac':'" + vitricongtac + "',";
+            DataJson += "'soluong':'" + soluong + "',";
+            DataJson += "'chuyenmon':'" + chuyenmon + "',";
+
+            DataJson += "'trinhdo':'" + trinhdo + "',";
+
+            DataJson += "'thoigiantiepnhan':'" + thoigiantiepnhan + "',";
+            DataJson += "'tieuchuan_ghichu':'" + tieuchuan_ghichu + "'";
+
+            DataJson += "}";
+            if (index != $('#boxContent table tbody tr').length - 1)
+                DataJson += ",";
+        });
+        DataJson += "]}";
+
+        $.ajax({
+            type: 'POST',
+            url: '/AddStaff/Save_bosung_vanphong_guimail',
+            datatype: "JSON",
+            data: "DataJson=" + DataJson,
+            cache: false,
+
+        })
+        .done(function (result) {
+            debugger;
+            var tb = JSON.stringify(result.success);
+            var idbosungnhansu = JSON.stringify(result.mabosungnhansu);
+            if (tb == "true") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu thành công.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmabosungnhansu').val(idbosungnhansu);
+                    dialogSuccess.modal('hide');
+                    history.back();
+                }, 2000);
+            } else {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu không thành công</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmabosungnhansu').val(0);
+                    dialogSuccess.modal('hide');
+                }, 2000);
+            }
+        })
+        .fail(function (result) {
+            alert("FAILED: " + JSON.stringify(result));
+
+        });
+    })
+
+    function renderDate() {
+        var html = '';
+        debugger;
+        html += '<tr>';
+        html += '<th class="ovh col1">Stt</th>';
+        html += '<th class="ovh col2">Vị trí công tác</th>';
+        html += '<th class="ovh col3">Số lượng (Nam/Nữ)</th>';
+        html += '<th class="ovh col4">Chuyên môn (XD, KTS,...)</th>';
+        html += '<th class="ovh col5">Trình độ (ĐH, CĐ,...)</th>';
+        html += '<th class="ovh col6">Thời gian tiếp nhận</th>';
+        html += '<th class="ovh col7">Tiêu chuẩn tuyển dụng khác/Ghi chú khác</th>';
+        html += '<th class="ovh col8"></th>';
+        html += '</tr>';
+        $('#head-date').html(html);
+    }
+
+    function Thongbao(num) {
+        var dialogSuccess = bootbox.dialog({
+            message: "<i class='fa fa-check text-success'></i><span class='text-success'>" + num + "</span>",
+            closeButton: false,
+            onEscape: function () {
+            }
+        });
+        setTimeout(function () {
+            dialogSuccess.modal('hide');
+        }, 1000);
+    }
+
+</script>
+

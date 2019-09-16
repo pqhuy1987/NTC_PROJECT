@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap
+  namespace="KpiLevelDepartment"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://ibatis.apache.org/mapping">
+  <statements>
+
+    <select id="SelectRows_LoadKPIfromCompanyDetail_theophongban" resultClass="System.Collections.Hashtable">
+      SELECT
+      makpicongty_chitiet
+      ,makpicongty
+      ,stt
+      ,REPLACE(CAST(muctieu AS NVARCHAR(MAX)),'\\','\') as muctieu
+      ,REPLACE(CAST(trongso AS NVARCHAR(MAX)),'\\','\') as trongso
+      ,REPLACE(CAST(tieuchidanhgia AS NVARCHAR(MAX)),'\\','\') as tieuchidanhgia
+      ,REPLACE(CAST(cachtinh AS NVARCHAR(MAX)),'\\','\') as cachtinh
+      ,REPLACE(CAST(ngayghinhanketqua AS NVARCHAR(MAX)),'\\','\') as ngayghinhanketqua
+      ,REPLACE(CAST(nguonchungminh AS NVARCHAR(MAX)),'\\','\') as nguonchungminh
+      ,REPLACE(CAST(donvitinh AS NVARCHAR(MAX)),'\\','\') as donvitinh
+      ,REPLACE(CAST(kehoach AS NVARCHAR(MAX)),'\\','\') as kehoach
+      ,REPLACE(CAST(thuchien AS NVARCHAR(MAX)),'\\','\') as thuchien
+      ,REPLACE(CAST(tilehoanthanh AS NVARCHAR(MAX)),'\\','\') as tilehoanthanh
+      ,REPLACE(CAST(ketqua AS NVARCHAR(MAX)),'\\','\') as ketqua
+      ,REPLACE(CAST(ghichu AS NVARCHAR(MAX)),'\\','\') as ghichu
+      ,thuoccap
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      FROM KPI_Level_Company_Detail
+      WHERE xoa='0'  and '$maphongban$' IN (SELECT * FROM fn_SplitStringToTable(nguonchungminh, ',')) or stt='A' or stt='B' or stt='C' or stt='D' or stt='';
+    </select>
+    
+    
+    <select id="CountRows_KpiLevelDepartment" resultClass="int">
+      SELECT
+      count(*)
+      FROM
+      KPI_Level_Department
+      WHERE xoa = '0' and phongban_congtruong='0'
+      <isNotEmpty property="userid">
+        and nguoitao=$userid$
+      </isNotEmpty>
+      <isNotEmpty property="maphongban">
+       and  maphongban='$maphongban$'
+      </isNotEmpty>
+
+      <isNotEmpty property="timkiemnam">
+        and rtrim(nam)='$timkiemnam$'
+      </isNotEmpty>
+
+      <isNotEmpty property="tinhtrangduyet">
+        and (rtrim(bankiemsoat_duyet)='$tinhtrangduyet$' or rtrim(photongxemxetkpi_duyet)='$tinhtrangduyet$' or rtrim(tonggiamdocxemxetkpi_duyet)='$tinhtrangduyet$')
+      </isNotEmpty>
+      
+     </select>
+
+    <select id="SelectRow_KpiLevelDepartment" resultClass="System.Collections.Hashtable">
+      select * from (SELECT
+      *
+      ,(select tenphongban from m_donvi_phongban pb where pb.xoa='0' and pb.maphongban=KPI_Level_Department.maphongban) as tenphongban
+      ,ROW_NUMBER() OVER (ORDER BY makpiphongban  desc) as row
+      from KPI_Level_Department
+      WHERE xoa='0' and phongban_congtruong='0'
+      <isNotEmpty property="userid">
+        and nguoitao=$userid$
+      </isNotEmpty>
+      <isNotEmpty property="maphongban">
+        and maphongban='$maphongban$'
+      </isNotEmpty>
+      
+      <isNotEmpty property="timkiemnam">
+        and rtrim(nam)='$timkiemnam$'
+      </isNotEmpty>
+      <isNotEmpty property="tinhtrangduyet">
+        and (rtrim(bankiemsoat_duyet)='$tinhtrangduyet$' or rtrim(photongxemxetkpi_duyet)='$tinhtrangduyet$' or rtrim(tonggiamdocxemxetkpi_duyet)='$tinhtrangduyet$')
+      </isNotEmpty>
+      ) tbl1
+      where tbl1.xoa='0' and  tbl1.row <![CDATA[>=]]> $trangbd$ and tbl1.row <![CDATA[<=]]> $trangkt$
+      <!--<isNotEmpty property="userid">
+        and tbl1.nguoitao=$userid$
+      </isNotEmpty>
+    <isNotEmpty property="maphongban">
+      and tbl1.maphongban='$maphongban$'
+    </isNotEmpty>-->
+      order by makpiphongban desc
+    </select>
+    
+    <insert id="InsertRow_KpiLevelDepartment">
+      INSERT INTO KPI_Level_Department
+      (
+      makpiphongban
+      ,maphongban
+      ,ngaybanhanh
+      ,ngaycapnhat
+      ,lancapnhat
+      ,nguoilapkpi
+      ,nguoilapkpi_dagui
+      ,nguoilapkpi_ngay
+      ,photongxemxetkpi
+      ,photongxemxetkpi_duyet
+      ,photongxemxetkpi_ngay
+      ,tonggiamdocxemxetkpi
+      ,tonggiamdocxemxetkpi_duyet
+      ,tonggiamdocxemxetkpi_ngay
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      ,nguoilapkpi_email
+      ,photongxemxetkpi_email
+      ,tonggiamdocxemxetkpi_email
+      ,bankiemsoat_email
+      ,nam
+      ,bankiemsoat_duyet
+      ,phongban_congtruong
+      )
+      VALUES
+      (
+      $makpiphongban$
+      ,'$maphongban$'
+      ,'$ngaybanhanh$'
+      ,'$ngaycapnhat$'
+      ,'$lancapnhat$'
+      ,N'$nguoilapkpi$'
+      ,'$nguoilapkpi_dagui$'
+      ,'$nguoilapkpi_ngay$'
+      ,N'$photongxemxetkpi$'
+      ,'$photongxemxetkpi_duyet$'
+      ,'$photongxemxetkpi_ngay$'
+      ,N'$tonggiamdocxemxetkpi$'
+      ,'$tonggiamdocxemxetkpi_duyet$'
+      ,'$tonggiamdocxemxetkpi_ngay$'
+      ,'0'
+      ,GETDATE()
+      ,$nguoitao$
+      ,'$nguoilapkpi_email$'
+      ,'$photongxemxetkpi_email$'
+      ,'$tonggiamdocxemxetkpi_email$'
+      ,'$bankiemsoat_email$'
+      ,'$nam$'
+      ,'0'
+      ,'0'
+      )
+    </insert>
+
+    <update id="UpdateRow_KpiLevelDepartment">
+      UPDATE
+      KPI_Level_Department
+      SET
+      bophansoanthao=N'$bophansoanthao$'
+      ,maphongban='$maphongban$'
+      ,ngaybanhanh='$ngaybanhanh$'
+      ,ngaycapnhat='$ngaycapnhat$'
+      ,lancapnhat='$lancapnhat$'
+      ,nguoilapkpi=N'$nguoilapkpi$'
+      ,nguoilapkpi_dagui='$nguoilapkpi_dagui$'
+      ,nguoilapkpi_ngay='$nguoilapkpi_ngay$'
+      ,photongxemxetkpi=N'$photongxemxetkpi$'
+      ,photongxemxetkpi_duyet='$photongxemxetkpi_duyet$'
+      ,photongxemxetkpi_ngay='$photongxemxetkpi_ngay$'
+      ,tonggiamdocxemxetkpi=N'$tonggiamdocxemxetkpi$'
+      ,tonggiamdocxemxetkpi_duyet='$tonggiamdocxemxetkpi_duyet$'
+      ,tonggiamdocxemxetkpi_ngay='$tonggiamdocxemxetkpi_ngay$'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      ,nguoilapkpi_email='$nguoilapkpi_email$'
+      ,photongxemxetkpi_email='$photongxemxetkpi_email$'
+      ,tonggiamdocxemxetkpi_email='$tonggiamdocxemxetkpi_email$'
+      ,nam='$nam$'
+      <!--,bankiemsoat_email='$bankiemsoat_email$'-->
+      WHERE makpiphongban=$makpiphongban$
+    </update>
+    
+    
+    <insert id="InsertRow_KpiLevelDepartmentDetail">
+      INSERT INTO KPI_Level_Department_Detail
+      (
+      makpiphongban
+      ,stt
+      ,muctieu
+      ,trongso
+      ,tieuchidanhgia
+      ,cachtinh
+      ,ngayghinhanketqua
+      ,nguonchungminh
+      ,donvitinh
+      ,kehoach
+      ,thuchien
+      ,tilehoanthanh
+      ,ketqua
+      ,ghichu
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      ,thuoccap
+      ,congty
+      ,sttcon
+      ,sttcha
+      )
+      VALUES
+      (
+      '$makpiphongban$'
+      ,'$stt$'
+      ,N'$muctieu$'
+      ,'$trongso$'
+      ,N'$tieuchidanhgia$'
+      ,N'$cachtinh$'
+      ,'$ngayghinhanketqua$'
+      ,N'$nguonchungminh$'
+      ,N'$donvitinh$'
+      ,N'$kehoach$'
+      ,N'$thuchien$'
+      ,N'$tilehoanthanh$'
+      ,'$ketqua$'
+      ,N'$ghichu$'
+      ,'0'
+      ,GETDATE()
+      ,$nguoitao$
+      ,'$thuoccap$'
+      ,'$congty$'
+      ,'$sttcon$'
+      ,'$sttcha$'
+      )
+    </insert>
+
+    <update id="UpdateRow_KpiLevelDepartmentDetail">
+      UPDATE
+      KPI_Level_Department_Detail
+      SET
+      stt ='$stt$'
+      ,muctieu=N'$muctieu$'
+      ,trongso='$trongso$'
+      ,tieuchidanhgia=N'$tieuchidanhgia$'
+      ,cachtinh=N'$cachtinh$'
+      ,ngayghinhanketqua='$ngayghinhanketqua$'
+      ,nguonchungminh=N'$nguonchungminh$'
+      ,donvitinh=N'$donvitinh$'
+      ,kehoach=N'$kehoach$'
+      ,thuchien=N'$thuchien$'
+      ,tilehoanthanh=N'$tilehoanthanh$'
+      ,ketqua='$ketqua$'
+      ,ghichu=N'$ghichu$'
+      ,thuoccap='$thuoccap$'
+      ,congty='$congty$'
+      ,sttcon='$sttcon$'
+      ,sttcha='$sttcha$'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh=GETDATE()
+      WHERE makpiphongban_chitiet=$makpiphongban_chitiet$
+    </update>
+    
+    
+    
+    
+    <update id="DeleteRow_KpiLevelDepartment">
+      Update KPI_Level_Department set xoa='1' where makpiphongban=$makpiphongban$
+    </update>
+
+    <delete id="DeleteRow_KpiLevelDepartmentDetail">
+      Delete KPI_Level_Department_Detail where makpiphongban=$makpiphongban$
+    </delete>
+    
+
+    <update id="Save_KpiLevelDepartment_nguoiguihoso">
+      UPDATE
+      KPI_Level_Department
+      SET
+      nguoilapkpi_dagui='$nguoilapkpi_dagui$'
+      ,ngayhieuchinh= GETDATE()
+      WHERE makpiphongban=$makpiphongban$
+    </update>
+
+
+    <select id="SelectRows_KpiLevelDepartment_hieuchinh" resultClass="System.Collections.Hashtable">
+      SELECT
+      *
+      ,(select tenphongban from m_donvi_phongban pb where pb.xoa='0' and pb.maphongban=KPI_Level_Department.maphongban) as tenphongban
+      from KPI_Level_Department
+      WHERE xoa='0' and makpiphongban=$makpiphongban$
+    </select>
+
+    <select id="SelectRows_KpiLevelDepartmentDetail_hieuchinh" resultClass="System.Collections.Hashtable">
+      SELECT
+      makpiphongban_chitiet
+      ,makpiphongban
+      ,stt
+      ,congty
+      ,sttcon
+      ,sttcha
+      ,REPLACE(CAST(muctieu AS NVARCHAR(MAX)),'\\','\') as muctieu
+      ,REPLACE(CAST(trongso AS NVARCHAR(MAX)),'\\','\') as trongso
+      ,REPLACE(CAST(tieuchidanhgia AS NVARCHAR(MAX)),'\\','\') as tieuchidanhgia
+      ,REPLACE(CAST(cachtinh AS NVARCHAR(MAX)),'\\','\') as cachtinh
+      ,REPLACE(CAST(ngayghinhanketqua AS NVARCHAR(MAX)),'\\','\') as ngayghinhanketqua
+      ,REPLACE(CAST(nguonchungminh AS NVARCHAR(MAX)),'\\','\') as nguonchungminh
+      ,REPLACE(CAST(donvitinh AS NVARCHAR(MAX)),'\\','\') as donvitinh
+      ,REPLACE(CAST(kehoach AS NVARCHAR(MAX)),'\\','\') as kehoach
+      ,REPLACE(CAST(thuchien AS NVARCHAR(MAX)),'\\','\') as thuchien
+      ,REPLACE(CAST(tilehoanthanh AS NVARCHAR(MAX)),'\\','\') as tilehoanthanh
+      ,REPLACE(CAST(ketqua AS NVARCHAR(MAX)),'\\','\') as ketqua
+      ,REPLACE(CAST(ghichu AS NVARCHAR(MAX)),'\\','\') as ghichu
+      ,thuoccap
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      from KPI_Level_Department_Detail
+      WHERE xoa='0' and makpiphongban=$makpiphongban$
+      order by case when thuoccap ='' then 'E' else thuoccap end,makpiphongban_chitiet
+    </select>
+
+    <update id="UpdateRow_KPIDepartment_Duyet_Khongduyet">
+      Update KPI_Level_Department
+      set
+      <isNotEmpty property="bankiemsoat_duyet">
+        bankiemsoat_duyet='$bankiemsoat_duyet$'
+      </isNotEmpty>
+      <isNotEmpty property="photongxemxetkpi_duyet">
+        photongxemxetkpi_duyet='$photongxemxetkpi_duyet$'
+      </isNotEmpty>
+      <isNotEmpty property="photongxemxetkpi_ngay">
+        ,photongxemxetkpi_ngay='$photongxemxetkpi_ngay$'
+      </isNotEmpty>
+      <isNotEmpty property="tonggiamdocxemxetkpi_duyet">
+        tonggiamdocxemxetkpi_duyet='$tonggiamdocxemxetkpi_duyet$'
+      </isNotEmpty>
+      <isNotEmpty property="tonggiamdocxemxetkpi_ngay">
+        ,tonggiamdocxemxetkpi_ngay='$tonggiamdocxemxetkpi_ngay$'
+      </isNotEmpty>
+      <isNotEmpty property="nguoilapkpi_dagui">
+        ,nguoilapkpi_dagui='$nguoilapkpi_dagui$'
+      </isNotEmpty>
+      <isNotEmpty property="bankiemsoat_duyet1">
+        ,bankiemsoat_duyet='$bankiemsoat_duyet1$'
+      </isNotEmpty>
+      where makpiphongban=$makpiphongban$
+    </update>
+    
+    
+  </statements>
+</sqlMap>

@@ -1,0 +1,98 @@
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Debug\RICONS.Core.csprojAssemblyReference.cache
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Debug\RICONS.Core.csproj.CoreCompileInputs.cache
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\RICONS.Core.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\RICONS.Core.pdb
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\ICSharpCode.SharpZipLib.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\log4net.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\Npgsql.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\NPOI.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\NPOI.OOXML.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\NPOI.OpenXml4Net.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\NPOI.OpenXmlFormats.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\RICONS.Logger.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\System.ValueTuple.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\RICONS.Logger.pdb
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\log4net.xml
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\Npgsql.pdb
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\Npgsql.xml
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\System.Threading.Tasks.Extensions.xml
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\System.ValueTuple.xml
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Debug\RICONS.Core.csproj.CopyComplete
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Debug\RICONS.Core.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Debug\RICONS.Core.pdb
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Debug\RICONS.Core.csprojAssemblyReference.cache
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Debug\RICONS.Core.csproj.CoreCompileInputs.cache
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\RICONS.Core.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\RICONS.Core.pdb
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\ICSharpCode.SharpZipLib.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\log4net.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\Npgsql.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\NPOI.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\NPOI.OOXML.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\NPOI.OpenXml4Net.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\NPOI.OpenXmlFormats.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\RICONS.Logger.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\System.Threading.Tasks.Extensions.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\System.ValueTuple.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\RICONS.Logger.pdb
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\log4net.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\Npgsql.pdb
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\Npgsql.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\System.Threading.Tasks.Extensions.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\System.ValueTuple.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Debug\RICONS.Core.csproj.CopyComplete
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Debug\RICONS.Core.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Debug\RICONS.Core.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\RICONS.Core.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\RICONS.Core.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\log4net.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\Npgsql.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\NPOI.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\NPOI.OOXML.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\NPOI.OpenXml4Net.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\RICONS.Logger.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\System.ValueTuple.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\RICONS.Logger.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\log4net.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\Npgsql.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\Npgsql.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Debug\System.ValueTuple.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\obj\Debug\RICONS.Core.csprojAssemblyReference.cache
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\obj\Debug\RICONS.Core.csproj.CoreCompileInputs.cache
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\obj\Debug\RICONS.Core.csproj.CopyComplete
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\obj\Debug\RICONS.Core.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\obj\Debug\RICONS.Core.pdb
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\RICONS.Core.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\RICONS.Core.pdb
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\log4net.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\Npgsql.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\NPOI.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\NPOI.OOXML.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\NPOI.OpenXml4Net.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\RICONS.Logger.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\System.ValueTuple.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\RICONS.Logger.pdb
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\log4net.xml
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\Npgsql.pdb
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\Npgsql.xml
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Debug\System.ValueTuple.xml
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Debug\RICONS.Core.csprojResolveAssemblyReference.cache
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Debug\RICONS.Core.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Debug\RICONS.Core.pdb

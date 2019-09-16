@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap
+  namespace="WeedMeeting"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://ibatis.apache.org/mapping">
+  <statements>
+
+    <select id="CountRows_WeedMeeting" resultClass="int">
+      SELECT
+      count(*)
+      FROM
+      WeedMeeting
+      WHERE xoa = '0' 
+      <isNotEmpty property="hovaten">
+        and (manhanvien='$hovaten$' or lower(hovaten) like lower('%$hovaten$%') or lower(email) = lower('$hovaten$'))
+      </isNotEmpty>
+     
+      <isNotEmpty property="maphongban">
+        and maphongban = '$maphongban$'
+      </isNotEmpty>
+
+    </select>
+
+    <select id="SelectRow_WeedMeeting" resultClass="System.Collections.Hashtable">
+      select * ,tuan.tentuan1 +'  '+ tuan.tungay+' - '+tuan.denngay as tentuan from (SELECT
+      *
+      ,(select tenphongban from m_donvi_phongban pb where pb.xoa='0' and pb.maphongban=WeedMeeting.maphongban) as tenphongban
+      ,ROW_NUMBER() OVER (ORDER BY macuochop  desc) as row
+      from WeedMeeting
+      WHERE xoa='0'
+      <isNotEmpty property="hovaten">
+      and (manhanvien='$hovaten$' or lower(hovaten) like lower(N'%$hovaten$%') or lower(email) = lower('$hovaten$'))
+    </isNotEmpty>
+ 
+    <isNotEmpty property="maphongban">
+      and maphongban = '$maphongban$'
+    </isNotEmpty>
+      ) tbl1
+      left join (select Item_weed.matuan as matuan1,Item_weed.tentuan as tentuan1,Item_weed.tungay,Item_weed.denngay from Item_weed where xoa='0')tuan on(tuan.matuan1=tbl1.matuan)
+      where tbl1.xoa='0' and  tbl1.row <![CDATA[>=]]> $trangbd$ and tbl1.row <![CDATA[<=]]> $trangkt$
+      <isNotEmpty property="hovaten">
+        and (manhanvien='$hovaten$' or lower(hovaten) like lower(N'%$hovaten$%') or lower(email) = lower('$hovaten$'))
+      </isNotEmpty>
+    
+      <isNotEmpty property="maphongban">
+        and maphongban = '$maphongban$'
+      </isNotEmpty>
+      order by macuochop desc
+    </select>
+    
+    <insert id="InsertRow_WeedMeeting">
+      INSERT INTO WeedMeeting
+      (
+      matuan
+      ,giohop
+      ,ngayhop
+      ,phonghop
+      ,lydobuoihop
+      ,thanhphanthamdu
+      ,caplanhdao
+      ,noidungcuochop
+      ,uploadfile
+      ,tenfile
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      ,maphongban
+      ,loaicuochop
+      )
+      VALUES
+      (
+      $matuan$
+      ,'$giohop$'
+      ,'$ngayhop$'
+      ,'$phonghop$'
+      ,N'$lydobuoihop$'
+      ,N'$thanhphanthamdu$'
+      ,N'$caplanhdao$'
+      ,N'$noidungcuochop$'
+      ,N'$uploadfile$'
+      ,N'$tenfile$'
+      ,'0'
+      ,GETDATE()
+      ,$nguoitao$
+      ,'$maphongban$'
+      ,$loaicuochop$
+      )
+    </insert>
+
+    <update id="UpdateRow_WeedMeeting">
+      UPDATE
+      WeedMeeting
+      SET
+      matuan=$matuan$
+      ,giohop='$giohop$'
+      ,ngayhop='$ngayhop$'
+      ,phonghop='$phonghop$'
+      ,lydobuoihop=N'$lydobuoihop$'
+      ,thanhphanthamdu=N'$thanhphanthamdu$'
+      ,caplanhdao=N'$caplanhdao$'
+      ,noidungcuochop=N'$noidungcuochop$'
+      ,uploadfile=N'$uploadfile$'
+      ,tenfile=N'$tenfile$'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      ,maphongban='$maphongban$'
+      ,loaicuochop=$loaicuochop$
+      WHERE macuochop=$macuochop$
+    </update>
+
+      
+    <update id="DeleteRow_KpiEmployee">
+      Update KPI_Employee set xoa='1' where makpinhanvien=$makpinhanvien$
+    </update>
+    
+    
+    
+    
+    
+    <select id="SelectRows_WeedMeeting_hieuchinh" resultClass="System.Collections.Hashtable">
+      SELECT
+      macuochop
+      ,matuan
+      ,giohop
+      ,ngayhop
+      ,phonghop
+      ,lydobuoihop
+      ,thanhphanthamdu
+      ,caplanhdao
+      ,uploadfile
+      ,REPLACE(CAST(noidungcuochop AS NVARCHAR(MAX)),'\\','\') as noidungcuochop
+      ,tenfile
+      ,maphongban
+      ,loaicuochop
+      from WeedMeeting
+      WHERE macuochop=$macuochop$
+
+    </select>
+
+    
+  </statements>
+</sqlMap>

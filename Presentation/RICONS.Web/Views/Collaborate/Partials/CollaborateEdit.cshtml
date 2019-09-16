@@ -1,0 +1,135 @@
+﻿@using RICONS.DataServices.Context
+@model RICONS.DataServices.Executes.Collaborates.CollaborateViewModel
+@{
+    var lstCongTruong = ViewData["ListCongTruong"] as List<m_donvi_phongban>;
+    var pb = ViewData["PhongBan"] as m_donvi_phongban;
+}
+<form class="form-horizontal" id="CollaborateForm" style="padding: 10px;">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <div class="form-group" style="margin-bottom: 5px">
+        <label for="" class="col-sm-2 control-label" style="text-align: left">Tiêu đề</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="TieuDe" value="@Model.TieuDe">
+        </div>
+    </div>
+    <div class="form-group" style="margin-bottom: 5px">
+        <label for="" class="col-sm-2 control-label" style="text-align: left">Thời gian đi</label>
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input type="text" class="form-control" name="TuNgay" value="@Model.TuNgay.ToString("dd/MM/yyyy")">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+            </div>
+        </div>
+        <div class="col-sm-1">
+            <span style="margin-top: 2px; display: inherit; text-align: center">đến</span>
+        </div>
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input type="text" class="form-control" name="DenNgay" value="@Model.DenNgay.ToString("dd/MM/yyyy")">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" style="margin-bottom: 5px">
+        <label for="" class="col-sm-2 control-label" style="text-align: left">Địa điểm công tác</label>
+        <div class="col-sm-10">
+            <select class="form-control" data-placeholder="Chọn công trường" multiple name="NoiCongTac">
+                @foreach (var c in lstCongTruong)
+                {
+                    <option value="@c.maphongban">@c.tenphongban</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group" style="margin-bottom: 5px">
+        <label for="" class="col-sm-2 control-label" style="text-align: left">Mô tả</label>
+        <div class="col-sm-10">
+            <textarea type="text" class="form-control" name="MoTa">@Model.MoTa</textarea>
+        </div>
+    </div>
+    <div class="form-group" style="margin-bottom: 5px">
+        <label for="" class="col-sm-2 control-label" style="text-align: left">Người duyệt</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" readonly="readonly" name="EmailNguoiDuyet" value="@Model.EmailNguoiDuyet" />
+        </div>
+    </div>
+    <div class="" style="text-align: right;">
+        <button type="button" id="cancel" class="btn btn-default">Thoát</button>
+        <button type="button" id="save" class="btn btn-info">Lưu tạm</button>
+        <button type="button" id="save_and_send" class="btn btn-success">Lưu và gửi đề xuất</button>
+    </div>
+</form>
+
+<script>
+    function initEditForm(table) {
+        var sendmail = false;
+        var f = $('#CollaborateForm').ultraForm({
+            uiType: 1,
+            action: '/Collaborate/CollaborateEdit',
+            actionType: 'ajax',
+            props: [
+                {
+                    name: 'Id',
+                    type: 'hidden'
+                },
+                {
+                    name: 'TieuDe',
+                    type: 'text',
+                    required: {
+                        message: 'Vui lòng nhập tiêu đề'
+                    }
+                },
+                {
+                    name: 'TuNgay',
+                    type: 'datepicker'
+                },
+                {
+                    name: 'DenNgay',
+                    type: 'datepicker'
+                },
+                {
+                    name: 'NoiCongTac',
+                    type: 'chosen'
+                },
+                {
+                    name: 'MoTa',
+                    type: 'text'
+                },
+                {
+                    name: 'EmailNguoiDuyet',
+                    type: 'text'
+                }
+            ],
+            autoSubmit: false,
+            validCallback: function (data, btn) {
+                data = app.formDataToJson(data);
+                data.sendmail = sendmail;
+                app.postData('/collaborate/CollaborateEdit',
+                    data,
+                    function(result) {
+                        table.hideModal();
+                        table.loadData();
+                    });
+            },
+            afterSubmit: function (form) {
+                table.hideModal();
+                table.loadData();
+            }
+        });
+        $('#cancel').unbind().click(function () {
+            $('#formEditModal').modal('hide');
+        });
+        $('#save').unbind().click(function () {
+            sendmail = false;
+            f.submit();
+        });
+        $('#save_and_send').unbind().click(function () {
+            sendmail = true;
+            f.submit();
+        });
+    }
+</script>

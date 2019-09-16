@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap
+  namespace="Saudaotao"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://ibatis.apache.org/mapping">
+  <statements>
+
+    <select id="CountRows_Danhsachdanhgiasaudaotao" resultClass="int">
+      SELECT
+      count(*)
+      FROM
+      daotao_ykiensaodaotao
+      WHERE xoa = '0'
+      <isNotEmpty property="malop">
+        and malop=$malop$
+      </isNotEmpty>
+    </select>
+
+    <select id="SelectRows_Danhsachdanhgiasaudaotao" resultClass="System.Collections.Hashtable">
+      select * from (SELECT
+      *
+      ,ROW_NUMBER() OVER (ORDER BY matiepnhan  desc) as row
+      from daotao_ykiensaodaotao
+      left join(select daotao_taolop.malop as idmalop, daotao_taolop.tenlop from daotao_taolop where xoa='0')taolop on(taolop.idmalop=daotao_ykiensaodaotao.malop)
+      left join(select maphongban as idmaphongban, tenphongban from m_donvi_phongban where xoa='0')pban on(pban.idmaphongban=daotao_ykiensaodaotao.maphongban)
+      ) tbl1
+      where tbl1.xoa='0' and  tbl1.row <![CDATA[>=]]> $trangbd$ and tbl1.row <![CDATA[<=]]> $trangkt$
+    <isNotEmpty property="malop">
+      and malop=$malop$
+    </isNotEmpty>
+      order by matiepnhan desc
+    </select>
+
+    <select id="SelectRows_Laydslopdaotao" resultClass="System.Collections.Hashtable">
+      select * from daotao_taolop
+      WHERE xoa='0'
+     <isNotEmpty property="malop">
+      and malop=$malop$
+    </isNotEmpty>
+    </select>
+    
+    
+    
+    
+    <select id="SelectRows_Laydslophoctheo_nhanvien" resultClass="System.Collections.Hashtable">
+      select * from daotao_taolop_chitiet
+      left join (select malop as ml,tenlop from daotao_taolop where xoa='0') taolop on(taolop.ml=daotao_taolop_chitiet.malop)
+      WHERE xoa='0'
+      <isNotEmpty property = "email">
+        and lower(rtrim(email))=lower(rtrim('$email$'))
+      </isNotEmpty>
+    </select>
+
+    <select id="SelectRows_daotao_dm_tieuchisaodaotao" resultClass="System.Collections.Hashtable">
+      select * from daotao_dm_tieuchisaodaotao
+      where xoa='0'
+      order by matieuchi asc
+    </select>
+
+    <select id="SelectRows_Laydslophoctheo_nhanvien_theolop" resultClass="System.Collections.Hashtable">
+      select * from daotao_taolop_chitiet
+      left join (select malop as ml,tenlop,tenkhoahoc as tieudekhoahoc
+      ,(select hovaten from daotao_dm_giaovien where xoa='0' and daotao_dm_giaovien.magiaovien=daotao_taolop.chongiaovien) as tengiaovien
+      ,chongiaovien
+      ,ngayhoc as ngaydaotao
+      ,xoa as matiepnhan
+      from daotao_taolop where xoa='0'
+      <isNotEmpty property = "malop">
+        and malop=$malop$
+      </isNotEmpty>) taolop on(taolop.ml=daotao_taolop_chitiet.malop)
+      WHERE xoa='0'
+      <isNotEmpty property = "malop">
+        and malop=$malop$
+      </isNotEmpty>
+      <isNotEmpty property = "email">
+        and lower(rtrim(email))=lower(rtrim('$email$'))
+      </isNotEmpty>
+    </select>
+
+    <select id="SelectRows_daotao_ykiensaodaotao_malop_email" resultClass="System.Collections.Hashtable">
+      select *
+      from daotao_ykiensaodaotao
+      WHERE xoa='0'
+      <isNotEmpty property = "malop">
+        and malop=$malop$
+      </isNotEmpty>
+      <isNotEmpty property = "email">
+        and lower(rtrim(email))=lower(rtrim('$email$'))
+      </isNotEmpty>
+    </select>
+
+    <select id="SelectRows_daotao_ykiensaodaotao_chitiet" resultClass="System.Collections.Hashtable">
+      select *
+      from daotao_ykiensaodaotao_chitiet
+      WHERE xoa='0'
+      <isNotEmpty property = "matiepnhan">
+        and matiepnhan=$matiepnhan$
+      </isNotEmpty>
+    </select>
+    
+    
+    
+    
+    <insert id="InsertRow_Saudaotao">
+      INSERT INTO daotao_ykiensaodaotao
+      (
+      matiepnhan
+      ,hovaten
+      ,maphongban
+      ,tieudekhoahoc
+      ,tengiaovien
+      ,ngaydaotao
+      ,malop
+      ,manv
+      ,email
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      )
+      VALUES
+      (
+      $matiepnhan$
+      ,N'$hovaten$'
+      ,'$maphongban$'
+      ,N'$tieudekhoahoc$'
+      ,N'$tengiaovien$'
+      ,'$ngaydaotao$'
+      ,$malop$
+      ,'$manv$'
+      ,'$email$'
+      ,'0'
+      ,GETDATE()
+      ,$nguoitao$
+      )
+    </insert>
+
+    <update id="UpdateRow_Saudaotao">
+      UPDATE
+      daotao_ykiensaodaotao
+      SET
+      hovaten=N'$hovaten$'
+      ,maphongban='$maphongban$'
+      ,tieudekhoahoc=N'$tieudekhoahoc$'
+      ,tengiaovien=N'$tengiaovien$'
+      ,ngaydaotao='$ngaydaotao$'
+      ,malop=$malop$
+      ,manv='$manv$'
+      ,email='$email$'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      WHERE matiepnhan=$matiepnhan$
+    </update>
+
+
+    <insert id="InsertRow_Saudaotao_chitiet">
+      INSERT INTO daotao_ykiensaodaotao_chitiet
+      (
+      matiepnhan
+      ,tentieuchi
+      ,kem
+      ,trungbinh
+      ,kha
+      ,tot
+      ,rattot
+      ,danhmuccha
+      ,danhmucgoc
+      ,matieuchi
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      )
+      VALUES
+      (
+      $matiepnhan$
+      ,N'$tentieuchi$'
+      ,'$kem$'
+      ,'$trungbinh$'
+      ,'$kha$'
+      ,'$tot$'
+      ,'$rattot$'
+      ,'$danhmuccha$'
+      ,'$danhmucgoc$'
+      ,$matieuchi$
+      ,'0'
+      ,GETDATE()
+      ,$nguoitao$
+      )
+    </insert>
+
+    <update id="UpdateRow_Saudaotao_chitiet">
+      UPDATE
+      daotao_ykiensaodaotao_chitiet
+      SET
+      matiepnhan=$matiepnhan$
+      ,tentieuchi=N'$tentieuchi$'
+      ,kem='$kem$'
+      ,trungbinh='$trungbinh$'
+      ,kha='$kha$'
+      ,tot='$tot$'
+      ,rattot='$rattot$'
+      ,danhmuccha='$danhmuccha$'
+      ,danhmucgoc='$danhmucgoc$'
+      ,matieuchi=$matieuchi$
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      WHERE matiepnhan_tieuchidaotao=$matiepnhan_tieuchidaotao$
+    </update>
+    
+    
+  </statements>
+</sqlMap>

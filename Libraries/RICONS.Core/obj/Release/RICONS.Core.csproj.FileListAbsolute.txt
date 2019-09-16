@@ -1,0 +1,50 @@
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\RICONS.Core.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\RICONS.Core.pdb
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\ICSharpCode.SharpZipLib.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\log4net.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\Npgsql.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\NPOI.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\NPOI.OOXML.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\NPOI.OpenXml4Net.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\NPOI.OpenXmlFormats.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\RICONS.Logger.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\System.Threading.Tasks.Extensions.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\System.ValueTuple.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\RICONS.Logger.pdb
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\log4net.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\Npgsql.pdb
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\Npgsql.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\System.Threading.Tasks.Extensions.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\bin\Release\System.ValueTuple.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Release\RICONS.Core.csprojAssemblyReference.cache
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Release\RICONS.Core.csproj.CoreCompileInputs.cache
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Release\RICONS.Core.csproj.CopyComplete
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Release\RICONS.Core.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Release\RICONS.Core.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\RICONS.Core.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\RICONS.Core.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\log4net.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\Npgsql.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\NPOI.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\NPOI.OOXML.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\NPOI.OpenXml4Net.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\NPOI.OpenXmlFormats.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\RICONS.Logger.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\System.Threading.Tasks.Extensions.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\System.ValueTuple.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\RICONS.Logger.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\log4net.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\Npgsql.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\Npgsql.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\System.Threading.Tasks.Extensions.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\bin\Release\System.ValueTuple.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\obj\Release\RICONS.Core.csprojAssemblyReference.cache
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\obj\Release\RICONS.Core.csproj.CoreCompileInputs.cache
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\obj\Release\RICONS.Core.csproj.CopyComplete
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\obj\Release\RICONS.Core.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\obj\Release\RICONS.Core.pdb

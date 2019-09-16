@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap
+  namespace="AddStaff"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://ibatis.apache.org/mapping">
+  <statements>
+
+    <select id="CountRows_Denghibosungnhansu" resultClass="int">
+      SELECT
+      count(*)
+      FROM
+      ddns_addstaff
+      WHERE xoa = '0'
+    </select>
+
+    <select id="SelectRow_Denghibosungnhansu" resultClass="System.Collections.Hashtable">
+      select * from (SELECT
+      *
+      ,ROW_NUMBER() OVER (ORDER BY mabosungnhansu  desc) as row
+      from ddns_addstaff
+      <!--left join (select magiaovien,hovaten,nguongiaovien,sodienthoai from daotao_dm_giaovien)dmgv on(dmgv.magiaovien=daotao_taolop.chongiaovien)-->
+      WHERE xoa='0') tbl1
+      where tbl1.xoa='0' and  tbl1.row <![CDATA[>=]]> $trangbd$ and tbl1.row <![CDATA[<=]]> $trangkt$
+
+      order by mabosungnhansu desc
+    </select>
+    
+ 
+    <insert id="InsertRow_addstaff">
+      INSERT INTO ddns_addstaff
+      (
+      mabosungnhansu
+      ,maphongban
+      ,tenduan
+      ,goithau
+      ,diachi
+      ,ngayyeucau
+      ,soluongnhansuhientai
+      ,congnghiep
+      ,thuongmai
+      ,dandung
+      ,nghiduong
+      ,hatang
+      ,khac
+      ,khac_noidung
+      ,thuyenchuyennoibo
+      ,tuyenmoi
+      ,khongbosung
+      ,truongbophan_cht
+      ,truongbophan_cht_ngayky
+      ,truongbophan_cht_duyet
+      ,giamdocduan_ptgd
+      ,giamdocduan_ptgd_ngayky
+      ,giamdocduan_ptgd_duyet
+      ,phongqtnnl
+      ,phongqtnnl_ngayky
+      ,phongqtnnl_duyet
+      ,bantonggiamdoc
+      ,bantonggiamdoc_ngayky
+      ,bantonggiamdoc_duyet
+      ,phongban_congtruong
+      ,mahoso
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      ,truongbophan_cht_email
+      ,giamdocduan_ptgd_email
+      ,phongqtnnl_email
+      ,bantonggiamdoc_email
+      )
+      VALUES
+      (
+      $mabosungnhansu$
+      ,'$maphongban$'
+      ,N'$tenduan$'
+      ,N'$goithau$'
+      ,N'$diachi$'
+      ,'$ngayyeucau$'
+      ,'$soluongnhansuhientai$'
+      ,'$congnghiep$'
+      ,'$thuongmai$'
+      ,'$dandung$'
+      ,'$nghiduong$'
+      ,'$hatang$'
+      ,'$khac$'
+      ,N'$khac_noidung$'
+      ,N'$thuyenchuyennoibo$'
+      ,N'$tuyenmoi$'
+      ,N'$khongbosung$'
+      ,N'$truongbophan_cht$'
+      ,'$truongbophan_cht_ngayky$'
+      ,'$truongbophan_cht_duyet$'
+      ,N'$giamdocduan_ptgd$'
+      ,'$giamdocduan_ptgd_ngayky$'
+      ,'$giamdocduan_ptgd_duyet$'
+      ,N'$phongqtnnl$'
+      ,'$phongqtnnl_ngayky$'
+      ,'$phongqtnnl_duyet$'
+      ,N'$bantonggiamdoc$'
+      ,'$bantonggiamdoc_ngayky$'
+      ,'$bantonggiamdoc_duyet$'
+      ,'$phongban_congtruong$'
+      ,'$mahoso$'
+      ,'0'
+      ,GETDATE()
+      ,$nguoitao$
+      ,'$truongbophan_cht_email$'
+      ,'$giamdocduan_ptgd_email$'
+      ,'$phongqtnnl_email$'
+      ,'$bantonggiamdoc_email$'
+      )
+    </insert>
+
+    <insert id="InsertRow_ddns_tiendo_giatri">
+      INSERT INTO ddns_tiendo_giatri
+      (
+      mabosungnhansu
+      ,hangmucthicong
+      ,giatri
+      ,batdau
+      ,ketthuc
+      ,duphong
+      ,ghichu
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      )
+      VALUES
+      (
+      $mabosungnhansu$
+      ,N'$hangmucthicong$'
+      ,N'$giatri$'
+      ,'$batdau$'
+      ,'$ketthuc$'
+      ,'$duphong$'
+      ,N'$ghichu$'
+      ,'0'
+      ,GETDATE()
+      ,$nguoitao$
+      )
+    </insert>
+
+    <insert id="InsertRow_ddns_congtruong_kehoachbosungnhansu">
+      INSERT INTO ddns_congtruong_kehoachbosungnhansu
+      (
+      mabosungnhansu
+      ,vitricongtac
+      ,soluong
+      ,thoigianbosung
+      ,soluong1
+      ,thoigianbosung1
+      ,soluong2
+      ,thoigianbosung2
+      ,ghichu
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      )
+      VALUES
+      (
+      $mabosungnhansu$
+      ,N'$vitricongtac$'
+      ,$soluong$
+      ,'$thoigianbosung$'
+      ,$soluong1$
+      ,'$thoigianbosung1$'
+      ,$soluong2$
+      ,'$thoigianbosung2$'
+      ,N'$ghichu$'
+      ,'0'
+      ,GETDATE()
+      ,$nguoitao$
+      )
+    </insert>
+
+    <insert id="InsertRow_ddns_vanphong_kehoachbosungnhansu">
+      INSERT INTO ddns_vanphong_kehoachbosungnhansu
+      (
+      mabosungnhansu
+      ,vitricongtac
+      ,soluong
+      ,chuyenmon
+      ,trinhdo
+      ,thoigiantiepnhan
+      ,tieuchuan_ghichu
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      )
+      VALUES
+      (
+      $mabosungnhansu$
+      ,N'$vitricongtac$'
+      ,$soluong$
+      ,N'$chuyenmon$'
+      ,N'$trinhdo$'
+      ,'$thoigiantiepnhan$'
+      ,N'$tieuchuan_ghichu$'
+      ,'0'
+      ,GETDATE()
+      ,$nguoitao$
+      )
+    </insert>
+    
+    
+
+    <update id="UpdateRow_ddns_addstaff">
+      UPDATE
+      ddns_addstaff
+      SET
+      tenduan=N'$tenduan$'
+      ,goithau=N'$goithau$'
+      ,diachi=N'$diachi$'
+      ,ngayyeucau='$ngayyeucau$'
+      ,soluongnhansuhientai='$soluongnhansuhientai$'
+      ,congnghiep='$congnghiep$'
+      ,thuongmai='$thuongmai$'
+      ,dandung='$dandung$'
+      ,nghiduong='$nghiduong$'
+      ,hatang='$hatang$'
+      ,khac='$khac$'
+      ,khac_noidung=N'$khac_noidung$'
+      ,thuyenchuyennoibo=N'$thuyenchuyennoibo$'
+      ,tuyenmoi=N'$tuyenmoi$'
+      ,khongbosung=N'$khongbosung$'
+      ,truongbophan_cht=N'$truongbophan_cht$'
+      ,truongbophan_cht_ngayky='$truongbophan_cht_ngayky$'
+      ,truongbophan_cht_duyet='$truongbophan_cht_duyet$'
+      ,giamdocduan_ptgd=N'$giamdocduan_ptgd$'
+      ,giamdocduan_ptgd_ngayky='$giamdocduan_ptgd_ngayky$'
+      ,giamdocduan_ptgd_duyet='$giamdocduan_ptgd_duyet$'
+      ,phongqtnnl=N'$phongqtnnl$'
+      ,phongqtnnl_ngayky='$phongqtnnl_ngayky$'
+      ,phongqtnnl_duyet='$phongqtnnl_duyet$'
+      ,bantonggiamdoc=N'$bantonggiamdoc$'
+      ,bantonggiamdoc_ngayky='$bantonggiamdoc_ngayky$'
+      ,bantonggiamdoc_duyet='$bantonggiamdoc_duyet$'
+      ,phongban_congtruong='$phongban_congtruong$'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      ,truongbophan_cht_email='$truongbophan_cht_email$'
+      ,giamdocduan_ptgd_email='$giamdocduan_ptgd_email$'
+      ,phongqtnnl_email='$phongqtnnl_email$'
+      ,bantonggiamdoc_email='$bantonggiamdoc_email$'
+      WHERE mabosungnhansu=$mabosungnhansu$
+    </update>
+
+    <update id="UpdateRow_ddns_tiendo_giatri">
+      UPDATE
+      ddns_tiendo_giatri
+      SET
+      giatri='$giatri$'
+      ,batdau='$batdau$'
+      ,ketthuc='$ketthuc$'
+      ,duphong='$duphong$'
+      ,ghichu='$ghichu$'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      WHERE matiendo=$matiendo$
+    </update>
+
+    <update id="UpdateRow_ddns_congtruong_kehoachbosungnhansu">
+      UPDATE
+      ddns_congtruong_kehoachbosungnhansu
+      SET
+      soluong =$soluong$
+      ,thoigianbosung ='$thoigianbosung$'
+      ,soluong1=$soluong1$
+      ,thoigianbosung1='$thoigianbosung1$'
+      ,soluong2=$soluong2$
+      ,thoigianbosung2='$thoigianbosung2$'
+      ,ghichu='$ghichu$'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      WHERE makehoach=$makehoach$
+    </update>
+
+    <update id="UpdateRow_ddns_vanphong_kehoachbosungnhansu">
+      UPDATE
+      ddns_vanphong_kehoachbosungnhansu
+      SET
+      ,vitricongtac=N'$vitricongtac$'
+      ,soluong=$soluong$
+      ,chuyenmon=N'$chuyenmon$'
+      ,trinhdo=N'$trinhdo$'
+      ,thoigiantiepnhan=N'$thoigiantiepnhan$'
+      ,tieuchuan_ghichu=N'$tieuchuan_ghichu$'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      WHERE makehoach=$makehoach$
+    </update>
+
+
+    <update id="Deleted_ddns_tiendo_giatri">
+      Delete
+      from ddns_tiendo_giatri
+      WHERE mabosungnhansu=$mabosungnhansu$
+    </update>
+
+    <update id="Deleted_ddns_congtruong_kehoachbosungnhansu">
+      Delete
+      from ddns_congtruong_kehoachbosungnhansu
+      WHERE mabosungnhansu=$mabosungnhansu$
+    </update>
+
+    <update id="Deleted_ddns_vanphong_kehoachbosungnhansu">
+      Delete
+      from ddns_vanphong_kehoachbosungnhansu
+      WHERE mabosungnhansu=$mabosungnhansu$
+    </update>
+
+    <select id="SelectRows_Denghibosungnhansu_hieuchinh" resultClass="System.Collections.Hashtable">
+      SELECT
+      *
+      from ddns_addstaff
+      WHERE xoa='0' and mabosungnhansu=$mabosungnhansu$
+    </select>
+
+    <select id="SelectRows_ddns_tiendo_giatri_hieuchinh" resultClass="System.Collections.Hashtable">
+      SELECT
+      *
+      from ddns_tiendo_giatri
+      WHERE xoa='0' and mabosungnhansu=$mabosungnhansu$
+      order by matiendo
+    </select>
+
+    <select id="SelectRows_ddns_congtruong_kehoachbosungnhansu_hieuchinh" resultClass="System.Collections.Hashtable">
+      SELECT
+      *
+      from ddns_congtruong_kehoachbosungnhansu
+      WHERE xoa='0' and mabosungnhansu=$mabosungnhansu$
+      order by makehoach
+    </select>
+
+    <select id="SelectRows_ddns_vanphong_kehoachbosungnhansu_hieuchinh" resultClass="System.Collections.Hashtable">
+      SELECT
+      *
+      from ddns_vanphong_kehoachbosungnhansu
+      WHERE xoa='0' and mabosungnhansu=$mabosungnhansu$
+      order by makehoach
+    </select>
+
+
+
+    <update id="UpdateRow_Giamdocduan_duyet_khongduyet">
+      UPDATE
+      ddns_addstaff
+      SET
+      giamdocduan_ptgd_ngayky='$giamdocduan_ptgd_ngayky$'
+      ,giamdocduan_ptgd_duyet='$giamdocduan_ptgd_duyet$'
+      ,ngayhieuchinh= GETDATE()
+      WHERE mabosungnhansu=$mabosungnhansu$
+    </update>
+
+    <update id="UpdateRow_Quantringuonnhanluc_duyet_khongduyet">
+      UPDATE
+      ddns_addstaff
+      SET
+      phongqtnnl_ngayky='$phongqtnnl_ngayky$'
+      ,phongqtnnl_duyet='$phongqtnnl_duyet$'
+      ,ngayhieuchinh= GETDATE()
+      WHERE mabosungnhansu=$mabosungnhansu$
+    </update>
+
+    <update id="UpdateRow_Bantonggiamdoc_duyet_khongduyet">
+      UPDATE
+      ddns_addstaff
+      SET
+      bantonggiamdoc_ngayky='$bantonggiamdoc_ngayky$'
+      ,bantonggiamdoc_duyet='$bantonggiamdoc_duyet$'
+      ,ngayhieuchinh= GETDATE()
+      WHERE mabosungnhansu=$mabosungnhansu$
+    </update>
+    
+   
+    
+    
+  </statements>
+</sqlMap>

@@ -1,0 +1,184 @@
+﻿@model RICONS.Web.Models.SendMailModel
+@{
+    Layout = null;
+    var now = DateTime.Now;
+    var quy = 0;
+    if (now.Month % 3 == 0)
+    {
+        quy = now.Month / 3;
+    }
+    else
+    {
+        quy = (now.Month / 3) + 1;
+    }
+}
+<html>
+<head>
+
+    <style type="text/css">
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed,
+        figure, figcaption, footer, header, hgroup,
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+        /* HTML5 display-role reset for older browsers */
+        article, aside, details, figcaption, figure,
+        footer, header, hgroup, menu, nav, section {
+            display: block;
+        }
+
+        body {
+            line-height: 1;
+        }
+
+        ol, ul {
+            list-style: none;
+        }
+
+        blockquote, q {
+            quotes: none;
+        }
+
+            blockquote:before, blockquote:after,
+            q:before, q:after {
+                content: '';
+                content: none;
+            }
+
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.428571429;
+            color: #333333;
+            background-color: #ffffff;
+        }
+
+        b {
+            font-weight: bold;
+        }
+
+        .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
+            padding: 8px;
+            line-height: 1.428571429;
+            vertical-align: top;
+            border-top: 1px solid #dddddd;
+        }
+
+        .table thead > tr > th, .table tbody > tr > th {
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1.428571429;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+
+        .btn-primary {
+            color: #ffffff;
+            background-color: #428bca;
+            border-color: #357ebd;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .table tbody > tr > th {
+            vertical-align: middle;
+        }
+
+        a {
+            text-decoration: unset;
+        }
+    </style>
+
+    @*<link href="~/Themes/RICONS-2015/css/bootstrap.css" rel="stylesheet" />*@
+</head>
+<body style="margin-top: 5px; padding: 0; width: 100%; font-size: 1em;color:black;">
+    <table cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td>
+                <h1 style="font-size: 25px; text-align:  center">ĐỀ NGHỊ ĐI CÔNG TÁC</h1>
+            </td>
+        </tr>
+    </table>
+
+    <hr style="border: 1px solid #000; width: 100%; margin: 10px 0" />
+
+    <table style="width:100%; font-size:16px;">
+        <tr style="width: 100%; font-size: 15px;">
+            <td style="padding-left: 10px;">
+                <p><strong><em><u>Kính gửi:</u></em>&nbsp;&nbsp; Anh/Chị: @Model.Hotenlanhdao</strong></p>
+            </td>
+        </tr>
+
+        <tr style="width: 100%; font-size: 13px;">
+            <td style="padding-left: 10px;">Kính đề nghị Lãnh đạo<b> Xem xét duyệt đăng ký </b>với các nội dung như sau:</td>
+        </tr>
+
+        <tr style="width: 100%; font-size: 13px;">
+            <td style="padding-left: 10px;">
+                Tiêu đề đi công tác: @Model.TieuDe
+            </td>
+        </tr>
+
+        <tr style="width: 100%; font-size: 13px;">
+            <td style="padding-left: 10px;">
+                Ngày đi công tác: @Model.TuNgay  đến ngày @Model.DenNgay
+            </td>
+        </tr>
+        <tr style="width: 100%; font-size: 13px;">
+            <td style="padding-left: 10px;">
+                Nơi đến công tác: @Model.phongbancongtruongten
+            </td>
+        </tr>
+        <tr style="width: 100%; font-size: 13px;">
+            <td style="padding-left: 10px;">
+                Nội dung đi công tác:@Model.MoTa
+            </td>
+        </tr>
+
+    </table>
+    
+    <table style="width: 850px; margin-top: 10px;">
+        <tr>
+            <td style="">
+                <a href="@Model.AgreeLink" class="btn btn-primary" style="color: #fff"> Đồng ý</a> &nbsp;&nbsp;
+                <a href="@Model.DisagreeLink" class="btn btn-primary" style="color: #fff">Không đồng ý</a>
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</body>
+</html>

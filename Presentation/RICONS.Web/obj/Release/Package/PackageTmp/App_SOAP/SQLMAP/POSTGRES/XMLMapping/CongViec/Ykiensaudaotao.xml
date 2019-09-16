@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap
+  namespace="Ykiensaudaotao"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://ibatis.apache.org/mapping">
+  <statements>
+
+    <select id="SelectRows_daotao_dm_tieuchisaodaotao" resultClass="System.Collections.Hashtable">
+      select * from daotao_dm_tieuchisaodaotao
+      where xoa='0'
+      order by matieuchi asc
+    </select>
+    
+    
+    
+    
+    
+    
+    <update id="UpdateRow_Duyetvpp">
+      UPDATE
+      Dangkyvanphongpham
+      SET
+      daduyet='$daduyet$'
+      ,ngayhieuchinh= GETDATE()
+      WHERE xoa='0' and madangky=$madangky$
+    </update>
+
+    <select id="CountRows_Daduyetnghiphep" resultClass="int">
+      SELECT
+      count(*)
+      FROM
+      Dangkyvanphongpham
+      WHERE
+      xoa = '0' and daduyet='1' and madangky=$madangky$ 
+      
+    </select>
+
+    <select id="CountRows_DSdangkyvpp" resultClass="int">
+      SELECT
+      count(*)
+      FROM
+      Dangkyvanphongpham
+      WHERE
+      xoa = '0'
+      <isNotEmpty property="madangky">
+        and madangky=$madangky$
+      </isNotEmpty>
+      <isNotEmpty property="maphongban">
+        and maphongban='$maphongban$'
+      </isNotEmpty>
+
+    </select>
+    
+    <select id="SelectRows_DS_Vanphongpham" resultClass="System.Collections.Hashtable">
+      select * from (SELECT
+      *
+      ,(select tenchucdanh from m_donvi_chucdanh cd where xoa='0' and Dangkyvanphongpham.machucdanh=cd.machucdanh) as tenchucdanh
+      ,(select tenphongban from m_donvi_phongban pb where xoa='0' and Dangkyvanphongpham.maphongban=pb.maphongban) as tenphongban
+      ,ROW_NUMBER() OVER (ORDER BY madangky  desc) as row
+      from Dangkyvanphongpham WHERE xoa='0' <isNotEmpty property="maphongban">and maphongban='$maphongban$'</isNotEmpty>) tbl1
+      where tbl1.xoa='0' and  tbl1.row <![CDATA[>=]]> $trangbd$ and tbl1.row <![CDATA[<=]]> $trangkt$
+      <isNotEmpty property="madangky">
+        and madangky=$madangky$
+      </isNotEmpty>
+      <isNotEmpty property="maphongban">
+        and maphongban='$maphongban$'
+      </isNotEmpty>
+
+      <isNotEmpty property="nguoitao">
+        and nguoitao=$nguoitao$
+      </isNotEmpty>
+      order by madangky desc
+    </select>
+
+    <select id="SelectRows_DS_Vanphongpham_hieuchinh" resultClass="System.Collections.Hashtable">
+      SELECT
+      *
+      ,(select tenchucdanh from m_donvi_chucdanh cd where xoa='0' and Dangkyvanphongpham.machucdanh=cd.machucdanh) as tenchucdanh
+      ,(select tenphongban from m_donvi_phongban pb where xoa='0' and Dangkyvanphongpham.maphongban=pb.maphongban) as tenphongban
+      from Dangkyvanphongpham WHERE xoa='0' 
+      <isNotEmpty property="madangky">
+        and madangky=$madangky$
+      </isNotEmpty>
+    </select>
+
+
+    <select id="SelectRows_DS_Vanphongpham_xuatkho" resultClass="System.Collections.Hashtable">
+      SELECT
+      madangky
+      ,hovaten
+      ,(select tenchucdanh from m_donvi_chucdanh cd where xoa='0' and Dangkyvanphongpham.machucdanh=cd.machucdanh) as tenchucdanh
+      ,(select tenphongban from m_donvi_phongban pb where xoa='0' and Dangkyvanphongpham.maphongban=pb.maphongban) as tenphongban
+      from Dangkyvanphongpham WHERE xoa='0' and daduyet='1' and dacap='0'
+    </select>
+
+    <select id="SelectRows_DS_Vanphongpham_xuatkho_hieuchinh" resultClass="System.Collections.Hashtable">
+      SELECT
+      madangky
+      ,hovaten
+      ,(select tenchucdanh from m_donvi_chucdanh cd where xoa='0' and Dangkyvanphongpham.machucdanh=cd.machucdanh) as tenchucdanh
+      ,(select tenphongban from m_donvi_phongban pb where xoa='0' and Dangkyvanphongpham.maphongban=pb.maphongban) as tenphongban
+      from Dangkyvanphongpham WHERE xoa='0' and daduyet='1' and  madangky=$madangky$
+    </select>
+    
+    
+    
+
+    <select id="SelectRows_Dangky_Vanphongpham_chitiet" resultClass="System.Collections.Hashtable">
+      SELECT
+      *
+      FROM
+      Dangkyvanphongpham_chitiet
+      WHERE xoa='0'
+      <isNotEmpty property = "madangky">
+        and madangky=$madangky$
+      </isNotEmpty>
+
+    </select>
+    
+    
+    
+    <select id="CountRows" resultClass="int">
+      SELECT
+      count(*)
+      FROM
+      m_donvi_phongban
+      WHERE
+      xoa = '0'
+    </select>
+    
+    <update id="UpdateRow_Vanphongpham">
+      UPDATE
+      dm_vanphongpham
+      SET
+      tenvanphongpham=N'$tenvanphongpham$'
+      ,dongia='$dongia$'
+      ,donvitinh='$donvitinh$'
+      ,danhmuccha='$danhmuccha$'
+      ,danhmucgoc='$danhmucgoc$'
+      ,ghichu=N'$ghichu$'
+      ,nguoihieuchinh='$nguoihieuchinh$'
+      ,ngayhieuchinh= GETDATE()
+      WHERE mavanphongpham=$mavanphongpham$
+    </update>
+
+
+    <insert id="InsertRow_Dangky_vpp">
+      INSERT INTO Dangkyvanphongpham
+      (
+      madangky
+      ,hovaten
+      ,machucdanh
+      ,maphongban
+      ,ngaydangky
+      ,tongtien
+      ,ghichu
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      ,email
+      )
+      VALUES
+      (
+      $madangky$
+      ,N'$hovaten$'
+      ,'$machucdanh$'
+      ,'$maphongban$'
+      ,'$ngaydangky$'
+      ,'$tongtien$'
+      ,N'$ghichu$'
+      ,'0'
+      ,GETDATE()
+      ,$nguoitao$
+      ,'$email$'
+      )
+    </insert>
+
+    <insert id="InsertRow_Dangky_vpp_chitiet">
+      INSERT INTO Dangkyvanphongpham_chitiet
+      (
+      madangky_chitiet
+      ,madangky
+      ,madanhmuc
+      ,tendanhmuc
+      ,dongia
+      ,donvitinh
+      ,soluong
+      ,thanhtien
+      ,danhmuccha
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      )
+      VALUES
+      (
+      $madangkychitiet$
+      ,$madangky$
+      ,$madanhmuc$
+      ,N'$tendanhmuc$'
+      ,'$dongia$'
+      ,N'$donvitinh$'
+      ,$soluong$
+      ,'$thanhtien$'
+      ,'$danhmuccha$'
+      ,'0'
+      ,GETDATE()
+      ,$nguoitao$
+      )
+    </insert>
+
+
+    <update id="UpdateRow_Dangky_vpp">
+      UPDATE
+      Dangkyvanphongpham
+      SET
+      hovaten=N'$hovaten$'
+      ,machucdanh='$machucdanh$'
+      ,maphongban='$maphongban$'
+      ,ngaydangky='$ngaydangky$'
+      ,email='$email$'
+      ,tongtien='$tongtien$'
+      ,ghichu=N'$ghichu$'
+      ,xoa='0'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      WHERE madangky=$madangky$
+    </update>
+
+    <update id="DeletedRow_Dangky_vpp_chitiet">
+      UPDATE
+      Dangkyvanphongpham_chitiet
+      SET
+      xoa='1'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      WHERE madangky=$madangky$
+    </update>
+    
+     <update id="DeletedRow_Dangky_vpp">
+      UPDATE
+      Dangkyvanphongpham
+      SET
+      xoa='1'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      WHERE madangky=$madangky$
+    </update>
+
+    
+
+  </statements>
+</sqlMap>

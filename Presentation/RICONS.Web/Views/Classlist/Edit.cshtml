@@ -1,0 +1,395 @@
+﻿@model RICONS.Web.Models.daotao_taolopModels
+@{
+    ViewBag.Title = "Tạo mới lớp học";
+}
+@*--css--*@
+@section CSS
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/controller/Daotao/Create.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/prism.css" />
+}
+
+@*--javascript--*@
+@section JavaScript
+{
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/controllers/Daotao/daotao_Edit.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery.datepick-vi.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/chosen.jquery.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/prism.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/table/buildTable.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/colResizale/colResizable-1.3.source.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/plugins/jquery.blockui.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/scripts/app.min.js"></script>
+
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootbox.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/custom.js"></script>
+
+<script>
+    $(document).ready(function (e) {
+        setValueToCombobox();
+    });
+    function setValueToCombobox() {
+        $('#filter01').val('@Model.chongiaovien');
+        for (var selector in configChosenDanhmucvanphongpham) {
+            $(selector).change();
+            $(selector).trigger('chosen:updated');
+        }
+    }
+</script>
+
+}
+<script>
+    var linkContent = '@Url.Content("~")';
+</script>
+
+
+<div class="HeaderFixed">
+    <div class="b-b b-light">
+        <div class="p-left c-black">Cập nhật thông tin lớp học</div>
+        <div class="clearBoth"></div>
+    </div>
+</div>
+
+
+<div class="boxEdit">
+    @using (Html.BeginForm("Save", "Classlist", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+    {
+
+        <div class="row">
+            <div class="col-md-2" style="width:170px;"></div>
+            <div class="col-md-7"><label style="color:red" id="lblthongbao" class="hidden"></label></div>
+        </div>
+
+        <div>
+
+            <div class="row">
+                <div class="col-md-1" style="min-width: 130px; padding-left:10px;">Tên lớp học<label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Tên lớp học" id="txttenlop" name="tenlop" value="@Model.tenlop" /></div>
+
+                <div class="col-md-1" style="min-width: 140px; padding-left:10px;">Tên khóa học<label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-3" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Tên chương trình học" id="txttenkhoahoc" name="tenkhoahoc" value="@Model.tenkhoahoc" /></div>
+
+                <div class="col-md-1" style="min-width: 130px; padding-left: 10px;">Ngày học<label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Ngày học" id="txtngayhoc" name="ngayhoc" value="@Model.ngayhoc" /></div>
+
+                @*<div class="col-md-1"><input type="text" class="hidden" id="txtmalop" name="malop" value="@Model.malop" /></div>*@
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-1" style="min-width: 130px; padding-left:10px;">Giờ bắt đầu học<label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Thời lượng" id="txtgiobatdauhoc" name="giobatdauhoc" value="@Model.giobatdauhoc" /></div>
+
+                <div class="col-md-1" style="min-width: 140px; padding-left: 10px;">Tổng thời gian học<label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-3" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Tổng thời gian học" id="txttongthoigianhoc" name="tongthoigianhoc" value="@Model.tongthoigianhoc" /></div>
+
+                <div class="col-md-1" style="min-width: 130px; padding-left: 10px;">Tổng chi phí<label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Tổng chi phí" id="txttongchiphidaotao" name="tongchiphidaotao" value="@Model.tongchiphidaotao" /></div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-1" style="min-width: 130px; padding-left:10px;">Chọn giáo viên<label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-2" style="padding-left:10px;">
+                    <select id="filter01" data-placeholder="Chọn giáo viên" class="chosen-select-loaikehoach" name="chongiaovien">
+                        <option value="0">Lựa chọn giáo viên</option>
+                        @if (!string.IsNullOrEmpty(ViewBag.sbchucvu))
+                        {
+                            @Html.Raw(ViewBag.sbchucvu);
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-1" style="min-width: 140px; padding-left: 10px;">Nơi học<label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-6" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Nơi học" id="txtnoihoc" name="noihoc" value="@Model.noihoc" /></div>
+            </div>
+
+
+
+
+            <div class="row" style="padding-top: 5px; padding-bottom: 1px;">
+                <div class="col-md-1" style="min-width: 130px; padding-left: 10px;"></div>
+                <div class="col-md-7" style="padding-left:10px;">
+                    <button id="btn-save" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu"><i class="retweet_save"></i> Lưu</button>
+
+                    <a href="@Url.Action("Index", "Classlist")" class="buttoncustom WhiteButton"><i class="retweet_trove"></i> Trở về</a>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    }
+</div>
+
+
+<div style="width:100%; overflow-x: scroll;">
+    @*<div class="row" style="padding-top:10px;padding-bottom:2px;padding-left:15px;padding-right:15px;">
+            <div class="col-md-12" style="font-size: 14px; font-weight: bold; color: white; padding-left: 10px; height: 30px; background-color: #0090d9">Danh sách nhân viên tham gia đào tạo</div>
+        </div>*@
+    <div id="boxContent">
+        <div class="row" style="padding-bottom:2px">
+            <div class="col-md-12" style="font-size: 14px; font-weight: bold; color: white; padding-left: 10px; height: 30px; background-color: #0090d9">Danh sách nhân viên tham gia đào tạo</div>
+        </div>
+
+        <div style="width:100%; height:100%">
+            <div class="portlet-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table_danhSach" id="tableContent"  style="font-size:12px;">
+                        <thead id="head-date">
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    $(document).ready(function (e) {
+        renderDate();
+
+        $('#txtmanvs').on('keypress', function (event) {
+            debugger;
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                GetData(true);
+            }
+        });
+
+        $('#txthovatens').on('keypress', function (event) {
+            debugger;
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                GetData(true);
+            }
+        });
+
+        $('#txthovatens').on('keypress', function (event) {
+            debugger;
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                GetData(true);
+            }
+        });
+
+        $('#filter02').on('click', function (event) {
+            debugger;
+            GetData(true);
+        });
+
+        $('#chkkiemtra').click(function () {
+            debugger;
+            GetData(true);
+        });
+
+
+        //$('#filter02').on('click', function (e) {
+        //    GetData(true);
+        //});
+
+    });
+
+
+    //$('#boxContent').on('click', '.button-add', function () {
+    //    var stt = $("#tableContent > tbody > tr").length + 1;
+
+    //    var pb = "<option value='0'>Chọn xác nhận hồ sơ</option>";
+
+    //    pb = pb + "<option value= 1>Có hồ sơ</option>";
+    //    pb = pb + "<option value= 2>Thiếu hồ sơ</option>";
+
+    //    var newTr = '<tr>'
+    //        + '<td class="ovh col1"> ' + stt + ' </td>'
+    //        + '<td class="ovh col2 boxEdit"><input type="text" id="txttenhoso" style="width:100%;height:24px" autocomplete="off" placeholder="" name="tenhoso" /></td>'
+    //        + '<td class="ovh col3 boxEdit"><input type="text" id="txtghichu" style="width:100%;height:24px" autocomplete="off" placeholder="" name="ghichu" /></td>'
+    //        + '<td class="ovh col4 boxEdit"><select id="filter02" style="width:100%;padding-left: 2px;border: 1px solid #aaa; border-radius: 3px;background-color: #fff;height: 22px;" class="chosen-select-loaikehoach" name="madanhmuc1">"' + pb + '"</select></td>'
+    //        + '<td class="ovh col5 boxEdit"><input type="text" id="txtghichu" style="width:100%;height:24px" autocomplete="off" placeholder="" name="ghichu" /></td>'
+    //        + '<td class="ovh col6 boxEdit"><input type="text" id="txtghichu" style="width:100%;height:24px" autocomplete="off" placeholder="" name="ghichu" /></td>'
+    //        + '<td id="btnAdd" style="text-align: center;"><a href="#" class="button-add">Add</a> |&nbsp;<a href="#" class="button-del">Del</a></td></tr>';
+    //    $('#boxContent table tbody').append(newTr);
+    //});
+
+    $('#boxContent').on('click', '.button-del', function () {
+        debugger;
+        if ($("#tableContent > tbody > tr").length > 1) {
+            $(this).closest('tr').remove();
+        }
+    });
+
+
+    $('#btn-save').on('click', function (e) {
+        e.preventDefault();
+
+        //$("#lblthongbao").removeClass('hidden');
+
+        if ($("#txttenlop").val().length < 3) {
+            Thongbao("Tên lớp không để trống?");
+            return false;
+        }
+        else if ($('#txtngayhoc').val().length != 10) {
+            Thongbao("Chọn ngày học (01/01/2017)?");
+            return false;
+        }
+        else if ($('#filter01').val() == 0) {
+            Thongbao("Chọn giáo viên hướng dẫn?");
+            return false;
+        }
+        //else if ($('#filter01').val() == 0) {
+        //    //$('#lblthongbao').html('Chọn chức vụ?');
+        //    Thongbao("Chọn chức vụ?");
+        //    return false;
+        //}
+
+        //else if ($('#filter02').val() == 0) {
+        //    //$('#lblthongbao').html('Chọn phòng ban/Công trường?');
+        //    Thongbao("Chọn phòng ban/Công trường?");
+        //    return false;
+        //}
+        //else if ($('#txtemail').val() == 0) {
+        //    //$('#lblthongbao').html('Chọn phòng ban/Công trường?');
+        //    Thongbao("Nhập email?");
+        //    return false;
+        //}
+        //else if ($('#txtNgayDangKy').val().length != 10) {
+        //    //$('#lblthongbao').html('Chọn ngày tháng năm đăng ký (01/01/2017)?');
+        //    Thongbao("Chọn ngày tháng năm đăng ký (01/01/2017)?");
+        //    return false;
+        //}
+        var data = [];
+        var DataJson = "{'data1':";
+        DataJson += "{";
+        DataJson += "'tenlop':'" + $('#txttenlop').val() + "',";
+        DataJson += "'tenkhoahoc':'" + $('#txttenkhoahoc').val() + "',";
+        DataJson += "'ngayhoc':'" + $('#txtngayhoc').val() + "',";
+        DataJson += "'giobatdauhoc':'" + $('#txtgiobatdauhoc').val() + "',";
+        DataJson += "'tongthoigianhoc':'" + $('#txttongthoigianhoc').val() + "',";
+        DataJson += "'tongchiphidaotao':'" + $('#txttongchiphidaotao').val() + "',";
+        DataJson += "'noihoc':'" + $('#txtnoihoc').val() + "',";
+        DataJson += "'chongiaovien':'" + $('#filter01').val() + "'";
+        DataJson += "}, 'data2':[";
+
+        $('#boxContent table tbody tr').each(function (index, item) {
+            debugger;
+            var malopchitiet = encodeURIComponent($(item).attr('codeid'));
+            var malop = encodeURIComponent($(item).attr('malop'));
+            var manv = $(item).find('td.col2').text();
+            var hovaten = $(item).find('td.col3').text();
+            var ngaysinh = $(item).find('td.col4').text();
+            var email = $(item).find('td.col5').text();
+            var maphongban = $(item).find('td.col6').attr('title');
+
+            DataJson += "{";
+            DataJson += "'malopchitiet':'" + malopchitiet + "',";
+            DataJson += "'malop':'" + malop + "',";
+            DataJson += "'manv':'" + manv + "',";
+            DataJson += "'hovaten':'" + hovaten + "',";
+            DataJson += "'ngaysinh':'" + ngaysinh + "',";
+            DataJson += "'email':'" + email + "',";
+            DataJson += "'maphongban':'" + maphongban + "'";
+            DataJson += "}";
+            if (index != $('#boxContent table tbody tr').length - 1)
+                DataJson += ",";
+        });
+        DataJson += "]}";
+
+
+        $.ajax({
+            type: 'POST',
+            url: '/Classlist/Save',
+            datatype: "JSON",
+            data: "DataJson=" + DataJson,
+            cache: false,
+
+        })
+        .done(function (result) {
+            debugger;
+            var tb = JSON.stringify(result.success);
+            if (tb == "true") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu thành công.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    dialogSuccess.modal('hide');
+                }, 2000);
+            } else {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu không thành công</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    dialogSuccess.modal('hide');
+                }, 2000);
+            }
+            //alert("Done: " + JSON.stringify(result));
+        })
+        .fail(function (result) {
+            alert("FAILED: " + JSON.stringify(result));
+
+        });
+    })
+
+    function renderDate() {
+
+        //var pb = "<option value='0'>Nguồn giáo viên</option>";
+        //pb = pb + "<option value= 1>Nội bộ</option>";
+        //pb = pb + "<option value= 2>Bên ngoài</option>";
+
+        var html = '';
+
+        debugger;
+        html += '<tr>';
+            html += '<th class="ovh col1">Stt</th>';
+            html += '<th class="ovh col2">MNV</th>';
+            html += '<th class="ovh col3">Họ tên</th>';
+
+            html += '<th class="ovh col4">Ngày sinh</th>';
+            html += '<th class="ovh col5">Email</th>';
+            html += '<th class="ovh col6">Phòng ban</th>';
+
+
+
+            html += '<th class="ovh col7" rowspan="2" id="btnAddnone" style="text-align: center;"><input type="checkbox" id="chkkiemtra" checked="checked" onclick="Select(this);" class="chkCheck"/>Đào tạo</th>';
+
+            //html += '<th class="ovh col8" rowspan="2">Upload-Download</th>';
+
+            html += '<tr>';
+
+            html += '<th class="ovh col1 boxEdit"></th>'
+                + '<th class="ovh col2 boxEdit"><input type="text" id="txtmanvs" style="width:100%;height:24px" autocomplete="off" placeholder="" name="manvs" /></th>'
+                + '<th class="ovh col3 boxEdit"><input type="text" id="txthovatens" style="width:100%;height:24px" autocomplete="off" placeholder="" name="hovatens" /></th>'
+                + '<th class="ovh col4 boxEdit"><input type="text" id="txtngaysinhs" style="width:100%;height:24px" autocomplete="off" placeholder="" name="ngaysinhs" /></th>'
+                + '<th class="ovh col5 boxEdit"><input type="text" id="txtemails" style="width:100%;height:24px" autocomplete="off" placeholder="" name="emails" /></th>'
+                + '<th class="ovh col6 boxEdit"><select id="filter02" style="width:100%;padding-left: 2px;border: 1px solid #aaa;  border-radius: 3px;background-color: #fff;height: 22px;" class="chosen-select-loaikehoach"  name="phongban"><option value="0">Lựa chọn phòng ban</option>"' + '@Html.Raw(ViewBag.sbphongban)' + '"</select></th>'
+                + ' </tr>';
+
+        $('#head-date').html(html);
+    }
+
+    function Thongbao(num) {
+        var dialogSuccess = bootbox.dialog({
+            message: "<i class='fa fa-check text-success'></i><span class='text-success'>" + num + "</span>",
+            closeButton: false,
+            onEscape: function () {
+            }
+        });
+        setTimeout(function () {
+            dialogSuccess.modal('hide');
+        }, 1000);
+    }
+
+</script>
+

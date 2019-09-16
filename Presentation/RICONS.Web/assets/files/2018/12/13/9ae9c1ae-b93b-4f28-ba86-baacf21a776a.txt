@@ -1,0 +1,1 @@
+Copying file obj\Debug\build.force to obj\Release\Package\PackageTmp\obj\Debug\build.force failed. Could not find file 'obj\Debug\build.force'.

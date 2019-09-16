@@ -1,0 +1,386 @@
+﻿
+
+@model RICONS.Web.Models.ExportwarehousingModels
+@{
+    ViewBag.Title = "Phiếu xuất kho";
+}
+@*--css--*@
+@section CSS
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/controller/ExportWarehousing_New.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/prism.css" />
+}
+
+@*--javascript--*@
+@section JavaScript
+{
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/controllers/ExportWarehousing_New.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery.datepick-vi.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/chosen.jquery.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/prism.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/table/buildTable.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/colResizale/colResizable-1.3.source.js"></script>
+<script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/plugins/jquery.blockui.min.js"></script>
+<script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/scripts/app.min.js"></script>
+
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootbox.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/custom.js"></script>
+
+}
+<script>
+    var linkContent = '@Url.Content("~")';
+</script>
+
+
+@*<div class="HeaderFixed">
+    <div class="b-b b-light">
+        <div class="p-left c-black">Thêm mới phiếu xuất kho</div>
+        <div class="clearBoth"></div>
+    </div>
+</div>*@
+
+<div class="HeaderFixed">
+    <div class="b-c b-light">
+        @*<div class="p-left c-black" style="line-height:31px;">
+                <div class="row">
+                    <div class="col-md-2" style="width:170px;">Tổng tiền</div>
+                    <div class="col-md-3"><input type="text" style="width:100%" class="inputShort" id="txttongtien" name="tongtien" readonly="true" /></div>
+                    <div class="col-md-1" style="width:110px;">Ghi chú:</div>
+                    <div class="col-md-3"><input type="text" style="width:100%" class="inputShort" id="txtghichu" name="ghichu" /></div>
+                </div>
+            Lấy thông tin PĐK
+            </div>*@
+
+        <div class="row" style="line-height:31px;">
+            <div class="col-md-2" style="width: 170px; font-size: 16px; font-weight: bold; color:black ">Lấy thông tin PĐK</div>
+            <div class="col-md-3">
+                <select id="filter03" data-placeholder="Phiếu đăng ký" class="chosen-select-dangky" name="chonphieudangky">
+                    <option value="0">Chọn phiếu đăng ký</option>
+                    @if (!string.IsNullOrEmpty(ViewBag.sbdangkyvpp))
+                    {
+                        @Html.Raw(ViewBag.sbdangkyvpp);
+                    }
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <input id="btn-save" type="button" class="buttoncustom WhiteButton" name="luu" value="Xuất kho" />
+                <a href="@Url.Action("Index", "ExportWarehousing")" class="buttoncustom WhiteButton">Trở về</a>
+            </div>
+
+        </div>
+
+        <div class="clearBoth"></div>
+    </div>
+</div>
+
+
+<div class="boxEdit">
+    @using (Html.BeginForm("New_ExportWarehousing", "ExportWarehousing", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+    {
+         <div class="row" style="padding:10px">
+            <div class="col-md-12" style="font-size: 14px; font-weight: bold; color: white; padding-left: 10px; height: 30px; background-color: #0090d9">Thông tin phiếu xuất kho</div>
+        </div>
+        
+         <div class="row">
+             <div class="col-md-2" style="width:170px;">Ngày xuất kho<label style="color:red;height:10px;">*</label>:</div>
+             <div class="col-md-3"><input type="text" style="width:100%" class="inputShort" id="txtngayxuatkho" name="ngayxuatkho" /></div>
+             <div class="col-md-1" style="width:110px;">Nội dung xuất<label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-3"><input type="text" style="width:100%" class="inputShort" id="txtnoidungxuat" name="noidungxuat" /></div> 
+        </div>
+        
+        
+
+        <div class="row" style="padding:10px;">
+            <div class="col-md-12" style="font-size: 14px; font-weight: bold; color: white; padding-left: 10px; height: 30px; background-color: #0090d9">Thông tin phiếu đăng ký</div>
+        </div>
+
+       <div class="row">
+            <div class="col-md-2" style="width:170px;">Họ và tên<label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-3"><input type="text" style="width:100%" autocomplete="off" placeholder="Họ và tên" id="txthovaten" name="hovaten" /></div>
+            <div class="col-md-1" style="width:110px;">Chức vụ<label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-3">
+                <select id="filter01" data-placeholder="Chức vụ" class="chosen-select-chucvu" name="machucdanh">
+                    <option value="0">Chọn chức vụ</option>
+                    @if (!string.IsNullOrEmpty(ViewBag.sbchucvu))
+                    {
+                        @Html.Raw(ViewBag.sbchucvu);
+                    }
+                </select>
+            </div>
+           <div class="col-md-1"><input type="text" style="width:1%" autocomplete="off" placeholder="Mã đăng ký" id="txtmadangky" name="madangky" class="hidden" /></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2" style="width:170px;">Phòng ban/Công trường<label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-3">
+                <select id="filter02" data-placeholder="Phòng ban" class="chosen-select-phongban" name="maphongban">
+                    <option value="0">Chọn phòng ban</option>
+                    @if (!string.IsNullOrEmpty(ViewBag.sbphongban))
+                    {
+                        @Html.Raw(ViewBag.sbphongban);
+                    }
+                </select>
+            </div>
+            <div class="col-md-1" style="width:110px;">Ngày đăng ký<label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-3"><input type="text" style="width:100%" class="inputShort" id="txtNgayDangKy" name="ngaydangky" /></div>
+        </div>
+
+         <div class="row">
+             <div class="col-md-2" style="width:170px;">Tổng tiền<label style="color:red;height:10px;">*</label>:</div>
+             <div class="col-md-3"><input type="text" style="width:100%" class="inputShort" id="txttongtien" name="tongtien" readonly="true" /></div>
+             <div class="col-md-1" style="width:110px;">Ghi chú:</div>
+            <div class="col-md-3"><input type="text" style="width:100%" class="inputShort" id="txtghichu" name="ghichu" /></div>
+        </div>
+
+         <div class="row" style="padding-top:15px; padding-bottom:25px;">
+             <div class="col-md-2" style="width:170px;"></div>
+                    <div class="col-md-7">
+                        <input id="btn-save" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu" />
+                        <a href="@Url.Action("Index","Home")" class="buttoncustom WhiteButton">Trở về</a>
+                    </div>
+        </div>
+
+    }
+</div>
+<br />
+
+<div id="boxContent">
+    <div class="row" style="padding:10px;">
+        <div class="col-md-12" style="font-size: 14px; font-weight: bold; color: white; padding-left: 10px; height: 30px; background-color: #0090d9">Danh mục văn phòng phẩm xuất kho</div>
+    </div>
+    <div class="row" style="padding-right:5px">
+        <div class="col-md-12">
+            <div class="portlet-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table_danhSach" id="tableContent">
+                        <thead style="font-weight:bold; font-size:14px;">
+                        <th class="col2">STT</th>
+                        <th class="col4">Tên văn phòng phẩm</th>
+                        <th class="col5">Đơn vị tính</th>
+                        <th class="col6">Số lượng</th>
+                        <th class="col7">Đơn giá</th>
+                        <th class="col8">Thành tiền</th>
+                        <th class="col9">SL tồn</th>
+                        <th class="col10">SL xuất thật</th>
+                        <th class="col11">SL còn thiếu</th>
+                        <th class="col12"></th>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div id="boxTableDataSelected">
+    <div class="boxTable boxTable" style="padding-left:10px; padding-right:10px">
+        <table class="table_danhSach table_fixed JColResizer" id="tableContent_chitiet">
+            <thead style="font-weight:bold; font-size:14px;">
+            <th class="col2">STT</th>
+            <th class="col4">Tên văn phòng phẩm</th>
+            <th class="col5">Đơn vị tính</th>
+            <th class="col6">Số lượng</th>
+            <th class="col7">Đơn giá</th>
+            <th class="col8">Thành tiền</th>
+            <th class="col9">SL tồn</th>
+            <th class="col10">SL xuất thật</th>
+            <th class="col11">SL còn thiếu</th>
+            <th class="col12"></th>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <br />
+    </div>
+</div>*@
+
+<script>
+    
+    function calTotal() {
+        var total = 0;
+        //debugger;
+        $('#boxContent table tr').each(function (index, itemitem) {
+            var sub = $(itemitem).find('td.col8').text().replace(".", "").replace(".", "").replace(".", "");
+            sub = Number(sub);
+            if (isNaN(sub) == false)
+                total = total + sub;
+        });
+
+        $('#txttongtien').val(currencyFormatDE(total));
+    }
+
+    $('#tableContent').on('keyup', 'input', function (e) {
+        debugger;
+        var currentRow = $(this).closest('.rows-box');
+        var soluong = currentRow.find('.col6').text();
+        var soluongton = currentRow.find('.col9').text();
+        var soluongxuatthat = $(this).val();
+        if (isNaN(soluongxuatthat) == false && (parseInt(soluongxuatthat) <= parseInt(soluongton)) && (parseInt(soluongxuatthat) <= parseInt(soluong))) {
+            
+            currentRow.find('.col11').text(currencyFormatDE(soluong - soluongxuatthat));
+        }
+        else {
+            if (parseInt(soluongton) <= parseInt(soluong)) {
+                currentRow.find('.col10 input').val(currencyFormatDE(soluongton));
+
+                var soluongthat = $(this).val();
+                currentRow.find('.col11').text(currencyFormatDE(soluong - soluongthat));
+
+            }
+            else if (parseInt(soluongton) > parseInt(soluong)) {
+                currentRow.find('.col10 input').val(currencyFormatDE(soluong));
+                currentRow.find('.col11').text(0);
+            }
+            Thongbao("Số lượng xuất không hợp lý.");
+            return false;
+        }
+        //var sub = $(itemitem).find('td.col6').$(this).closest('tr').attr('group')
+        //$(this).parent().parent().css("background-color", "#CCC");
+    });
+
+    function currencyFormatDE(num) {
+        return (num + "").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+    }
+
+
+    $('#btn-save').on('click', function (e) {
+        e.preventDefault();
+        
+        if ($("#txtngayxuatkho").val().length != 10) {
+            Thongbao("Chọn ngày tháng năm xuất kho(01/01/2017)?");
+            return false;
+        }
+        else if ($("#txtnoidungxuat").val().length < 2) {
+            Thongbao("Nhập nội dung xuất?");
+            return false;
+        }
+        //else if ($('#filter01').val() == 0) {
+        //    Thongbao("Chọn chức vụ?");
+        //    return false;
+        //}
+        //else if ($('#filter02').val() == 0) {
+        //    Thongbao("Phòng ban/Công trường?");
+        //    return false;
+        //}
+        
+        //else if ($('#txttongtien').val().length != 10) {
+        //    Thongbao("Tổng thành tiền?");
+        //    return false;
+        //}
+
+        var data = [];
+        var DataJson = "{'data1':";
+        DataJson += "{";
+        DataJson += "'ngayxuatkho':'" + $('#txtngayxuatkho').val() + "',";
+        DataJson += "'noidungxuat':'" + $('#txtnoidungxuat').val() + "',";
+
+        DataJson += "'madangky':'" + $('#txtmadangky').val() + "',";
+
+        DataJson += "'hovaten':'" + $('#txthovaten').val() + "',";
+        DataJson += "'machucdanh':'" + $('#filter01').val() + "',";
+        DataJson += "'maphongban':'" + $('#filter02').val() + "',";
+        DataJson += "'ngaydangky':'" + $('#txtNgayDangKy').val() + "',";
+        DataJson += "'tongtien':'" + $('#txttongtien').val() + "',";
+        DataJson += "'ghichu':'" + $('#txtghichu').val() + "'";
+        DataJson += "}, 'data2':[";
+
+        $('#boxContent table tr').each(function (index, item) {
+
+            var mavanphongpham = encodeURIComponent($(item).attr('codeid'));
+            var tenvanphongpham = $(item).find('td.col4').text();
+            var donvitinh = $(item).find('td.col5').text();
+            //debugger;
+
+            //var soluong = $(item).find('td.col6').text($().val());
+            var soluong = $(item).find('td.col6').text();
+            var dongia = $(item).find('td.col7').text();
+            var thanhtien = $(item).find('td.col8').text();
+            var slthucxuat = $(item).find('td.col10 input').val();
+            var slconthieu = $(item).find('td.col11').text();
+
+            DataJson += "{";
+            DataJson += "'mavanphongpham':'" + mavanphongpham + "',";
+            DataJson += "'tenvanphongpham':'" + tenvanphongpham + "',";
+            DataJson += "'donvitinh':'" + donvitinh + "',";
+            DataJson += "'soluong':'" + soluong + "',";
+            DataJson += "'dongia':'" + dongia + "',";
+            DataJson += "'thanhtien':'" + thanhtien + "',";
+            DataJson += "'slthucxuat':'" + slthucxuat + "',";
+            DataJson += "'slconthieu':'" + slconthieu + "',";
+
+            //DataJson += "'danhmuccha':'" + danhmuccha + "'";
+            DataJson += "}";
+            if (index != $('#boxContent table tr').length - 1)
+                DataJson += ",";
+        });
+        DataJson += "]}";
+
+        //bootbox.confirm(" Xac nhan luu", function (result) {
+        //    if (result) {
+
+        //    }
+        //});  // Thong bao khi luu du lieu. Dong y hay k
+
+        $.ajax({
+            type: 'POST',
+            url: '/ExportWarehousing/Save',
+            datatype: "JSON",
+            data: "DataJson=" + DataJson,
+            cache: false,
+
+        })
+        .done(function (result) {
+            debugger;
+            var tb = JSON.stringify(result.success);
+            if (tb == "true") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu thành công.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    dialogSuccess.modal('hide');
+                }, 1000);
+            } else {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu không thành công</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    dialogSuccess.modal('hide');
+                }, 1000);
+            }
+            //alert("Done: " + JSON.stringify(result));
+        })
+        .fail(function (result) {
+            alert("FAILED: " + JSON.stringify(result));
+
+        });
+    })
+
+    function Thongbao(num) {
+        var dialogSuccess = bootbox.dialog({
+            message: "<i class='fa fa-check text-success'></i><span class='text-success'>" + num + "</span>",
+            closeButton: false,
+            onEscape: function () {
+            }
+        });
+        setTimeout(function () {
+            dialogSuccess.modal('hide');
+        }, 1000);
+    }
+
+</script>
+
+
+
+
+
+

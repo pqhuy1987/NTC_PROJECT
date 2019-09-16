@@ -1,0 +1,52 @@
+﻿.col1 {
+    text-align: center;
+    width: 4%;
+}
+
+.col2 {
+    text-align: center;
+    width: 4%;
+}
+
+/*.col3 {
+    text-align: center;
+     width: 60px;
+}*/
+
+.col4 {
+    text-align: center;
+    width: 9%;
+}
+
+.col5 {
+    text-align: left;
+    width: 13%;
+}
+
+/*.col6 {
+    text-align: center;
+    width: 80px;
+}*/
+.col7 {
+    text-align: left;
+    width: 13%;
+}
+.col8 {
+    text-align: left;
+    width: 13%;
+}
+
+.col9 {
+    text-align: center;
+    width: 13%;
+}
+
+.col10 {
+    text-align: right;
+    width: 7%;
+}
+
+.col11 {
+    text-align: left;
+    width: 24%;
+}

@@ -1,0 +1,17 @@
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\bin\Release\RICONS.Logger.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\bin\Release\RICONS.Logger.pdb
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\bin\Release\log4net.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\bin\Release\log4net.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\obj\Release\RICONS.Logger.csproj.CoreCompileInputs.cache
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\obj\Release\RICONS.Logger.csproj.CopyComplete
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\obj\Release\RICONS.Logger.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\obj\Release\RICONS.Logger.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\bin\Release\RICONS.Logger.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\bin\Release\RICONS.Logger.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\bin\Release\log4net.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\bin\Release\log4net.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\obj\Release\RICONS.Logger.csprojAssemblyReference.cache
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\obj\Release\RICONS.Logger.csproj.CoreCompileInputs.cache
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\obj\Release\RICONS.Logger.csproj.CopyComplete
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\obj\Release\RICONS.Logger.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\obj\Release\RICONS.Logger.pdb

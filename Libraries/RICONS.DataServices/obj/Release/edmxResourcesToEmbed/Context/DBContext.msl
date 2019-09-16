@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HopNoiBoModelStoreContainer" CdmEntityContainer="DBContext">
+    <EntitySetMapping Name="Collaborates">
+      <EntityTypeMapping TypeName="HopNoiBoModel.Collaborate">
+        <MappingFragment StoreEntitySet="Collaborates">
+          <ScalarProperty Name="NgayDuyet" ColumnName="NgayDuyet" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DaDuyet" ColumnName="DaDuyet" />
+          <ScalarProperty Name="EmailNguoiDuyet" ColumnName="EmailNguoiDuyet" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="NoiCongTac" ColumnName="NoiCongTac" />
+          <ScalarProperty Name="DenNgay" ColumnName="DenNgay" />
+          <ScalarProperty Name="TuNgay" ColumnName="TuNgay" />
+          <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+          <ScalarProperty Name="NguoiDi" ColumnName="NguoiDi" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="m_donvi_chucdanh">
+      <EntityTypeMapping TypeName="HopNoiBoModel.m_donvi_chucdanh">
+        <MappingFragment StoreEntitySet="m_donvi_chucdanh">
+          <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+          <ScalarProperty Name="ngayhieuchinh" ColumnName="ngayhieuchinh" />
+          <ScalarProperty Name="nguoihieuchinh" ColumnName="nguoihieuchinh" />
+          <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+          <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+          <ScalarProperty Name="xoa" ColumnName="xoa" />
+          <ScalarProperty Name="tenchucdanh" ColumnName="tenchucdanh" />
+          <ScalarProperty Name="tengiaodich" ColumnName="tengiaodich" />
+          <ScalarProperty Name="machucdanh" ColumnName="machucdanh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="m_donvi_phongban">
+      <EntityTypeMapping TypeName="HopNoiBoModel.m_donvi_phongban">
+        <MappingFragment StoreEntitySet="m_donvi_phongban">
+          <ScalarProperty Name="ghichu2" ColumnName="ghichu2" />
+          <ScalarProperty Name="hotenquanly2" ColumnName="hotenquanly2" />
+          <ScalarProperty Name="thuocquanly2" ColumnName="thuocquanly2" />
+          <ScalarProperty Name="ghichu1" ColumnName="ghichu1" />
+          <ScalarProperty Name="hotenquanly1" ColumnName="hotenquanly1" />
+          <ScalarProperty Name="thuocquanly1" ColumnName="thuocquanly1" />
+          <ScalarProperty Name="phongban_congtruong" ColumnName="phongban_congtruong" />
+          <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
+          <ScalarProperty Name="hotenquanly" ColumnName="hotenquanly" />
+          <ScalarProperty Name="thuocquanly" ColumnName="thuocquanly" />
+          <ScalarProperty Name="hovaten" ColumnName="hovaten" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+          <ScalarProperty Name="ngayhieuchinh" ColumnName="ngayhieuchinh" />
+          <ScalarProperty Name="nguoihieuchinh" ColumnName="nguoihieuchinh" />
+          <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+          <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+          <ScalarProperty Name="xoa" ColumnName="xoa" />
+          <ScalarProperty Name="tenphongban" ColumnName="tenphongban" />
+          <ScalarProperty Name="maphongban" ColumnName="maphongban" />
+          <ScalarProperty Name="madonvi" ColumnName="madonvi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="m_donvi_thongtingiamdoc">
+      <EntityTypeMapping TypeName="HopNoiBoModel.m_donvi_thongtingiamdoc">
+        <MappingFragment StoreEntitySet="m_donvi_thongtingiamdoc">
+          <ScalarProperty Name="xoa" ColumnName="xoa" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="hovaten" ColumnName="hovaten" />
+          <ScalarProperty Name="mathongtin" ColumnName="mathongtin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="m_taikhoan">
+      <EntityTypeMapping TypeName="HopNoiBoModel.m_taikhoan">
+        <MappingFragment StoreEntitySet="m_taikhoan">
+          <ScalarProperty Name="chamcong" ColumnName="chamcong" />
+          <ScalarProperty Name="phongban_congtruong" ColumnName="phongban_congtruong" />
+          <ScalarProperty Name="chucdanhkpi" ColumnName="chucdanhkpi" />
+          <ScalarProperty Name="grouptk" ColumnName="grouptk" />
+          <ScalarProperty Name="machucdanh" ColumnName="machucdanh" />
+          <ScalarProperty Name="maphongban" ColumnName="maphongban" />
+          <ScalarProperty Name="ngayhieuchinh" ColumnName="ngayhieuchinh" />
+          <ScalarProperty Name="nguoihieuchinh" ColumnName="nguoihieuchinh" />
+          <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+          <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+          <ScalarProperty Name="xoa" ColumnName="xoa" />
+          <ScalarProperty Name="kichhoat" ColumnName="kichhoat" />
+          <ScalarProperty Name="is_ada" ColumnName="is_ada" />
+          <ScalarProperty Name="madonvi" ColumnName="madonvi" />
+          <ScalarProperty Name="binarydata" ColumnName="binarydata" />
+          <ScalarProperty Name="filecontenttype" ColumnName="filecontenttype" />
+          <ScalarProperty Name="extensionfile" ColumnName="extensionfile" />
+          <ScalarProperty Name="tenhinh" ColumnName="tenhinh" />
+          <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+          <ScalarProperty Name="hoten" ColumnName="hoten" />
+          <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+          <ScalarProperty Name="thudientu" ColumnName="thudientu" />
+          <ScalarProperty Name="tendangnhap" ColumnName="tendangnhap" />
+          <ScalarProperty Name="manhansu" ColumnName="manhansu" />
+          <ScalarProperty Name="mataikhoan" ColumnName="mataikhoan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WeedMeetings">
+      <EntityTypeMapping TypeName="HopNoiBoModel.WeedMeeting">
+        <MappingFragment StoreEntitySet="WeedMeeting">
+          <ScalarProperty Name="loaicuochop" ColumnName="loaicuochop" />
+          <ScalarProperty Name="maphongban" ColumnName="maphongban" />
+          <ScalarProperty Name="ngayhieuchinh" ColumnName="ngayhieuchinh" />
+          <ScalarProperty Name="nguoihieuchinh" ColumnName="nguoihieuchinh" />
+          <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+          <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+          <ScalarProperty Name="xoa" ColumnName="xoa" />
+          <ScalarProperty Name="tenfile" ColumnName="tenfile" />
+          <ScalarProperty Name="uploadfile" ColumnName="uploadfile" />
+          <ScalarProperty Name="noidungcuochop" ColumnName="noidungcuochop" />
+          <ScalarProperty Name="caplanhdao" ColumnName="caplanhdao" />
+          <ScalarProperty Name="thanhphanthamdu" ColumnName="thanhphanthamdu" />
+          <ScalarProperty Name="lydobuoihop" ColumnName="lydobuoihop" />
+          <ScalarProperty Name="phonghop" ColumnName="phonghop" />
+          <ScalarProperty Name="ngayhop" ColumnName="ngayhop" />
+          <ScalarProperty Name="giohop" ColumnName="giohop" />
+          <ScalarProperty Name="matuan" ColumnName="matuan" />
+          <ScalarProperty Name="macuochop" ColumnName="macuochop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConstructionMeetings">
+      <EntityTypeMapping TypeName="HopNoiBoModel.ConstructionMeeting">
+        <MappingFragment StoreEntitySet="ConstructionMeetings">
+          <ScalarProperty Name="CongTruong" ColumnName="CongTruong" />
+          <ScalarProperty Name="GiamDoc" ColumnName="GiamDoc" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="FileDinhKem" ColumnName="FileDinhKem" />
+          <ScalarProperty Name="ThanhPhanThamDu" ColumnName="ThanhPhanThamDu" />
+          <ScalarProperty Name="LoaiCuocHop" ColumnName="LoaiCuocHop" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="GioHop" ColumnName="GioHop" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

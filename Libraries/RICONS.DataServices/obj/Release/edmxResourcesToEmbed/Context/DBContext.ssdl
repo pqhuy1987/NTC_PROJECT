@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HopNoiBoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Collaborates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NguoiDi" Type="int" Nullable="false" />
+    <Property Name="TieuDe" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TuNgay" Type="datetime" Nullable="false" />
+    <Property Name="DenNgay" Type="datetime" Nullable="false" />
+    <Property Name="NoiCongTac" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="MoTa" Type="nvarchar" MaxLength="3000" />
+    <Property Name="EmailNguoiDuyet" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="DaDuyet" Type="bit" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="NgayDuyet" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ConstructionMeetings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="GioHop" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="LoaiCuocHop" Type="int" Nullable="false" />
+    <Property Name="ThanhPhanThamDu" Type="nvarchar" MaxLength="2000" />
+    <Property Name="FileDinhKem" Type="varchar" MaxLength="250" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="GiamDoc" Type="int" Nullable="false" />
+    <Property Name="CongTruong" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="m_donvi_chucdanh">
+    <Key>
+      <PropertyRef Name="machucdanh" />
+    </Key>
+    <Property Name="machucdanh" Type="int" Nullable="false" />
+    <Property Name="tengiaodich" Type="nvarchar" MaxLength="500" />
+    <Property Name="tenchucdanh" Type="nvarchar" MaxLength="500" />
+    <Property Name="xoa" Type="char" MaxLength="1" />
+    <Property Name="nguoitao" Type="int" />
+    <Property Name="ngaytao" Type="datetime" />
+    <Property Name="nguoihieuchinh" Type="int" />
+    <Property Name="ngayhieuchinh" Type="datetime" />
+    <Property Name="ghichu" Type="nvarchar" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="m_donvi_phongban">
+    <Key>
+      <PropertyRef Name="madonvi" />
+      <PropertyRef Name="maphongban" />
+    </Key>
+    <Property Name="madonvi" Type="int" Nullable="false" />
+    <Property Name="maphongban" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="tenphongban" Type="nvarchar" MaxLength="256" />
+    <Property Name="xoa" Type="varchar" MaxLength="1" />
+    <Property Name="nguoitao" Type="int" />
+    <Property Name="ngaytao" Type="datetime" />
+    <Property Name="nguoihieuchinh" Type="int" />
+    <Property Name="ngayhieuchinh" Type="datetime" />
+    <Property Name="ghichu" Type="nvarchar" MaxLength="2050" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="hovaten" Type="nvarchar" MaxLength="250" />
+    <Property Name="thuocquanly" Type="int" />
+    <Property Name="hotenquanly" Type="nvarchar" MaxLength="250" />
+    <Property Name="sodienthoai" Type="nvarchar" MaxLength="200" />
+    <Property Name="phongban_congtruong" Type="int" />
+    <Property Name="thuocquanly1" Type="int" />
+    <Property Name="hotenquanly1" Type="nvarchar" MaxLength="250" />
+    <Property Name="ghichu1" Type="varchar" MaxLength="250" />
+    <Property Name="thuocquanly2" Type="int" />
+    <Property Name="hotenquanly2" Type="nvarchar" MaxLength="250" />
+    <Property Name="ghichu2" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="m_donvi_thongtingiamdoc">
+    <Key>
+      <PropertyRef Name="mathongtin" />
+    </Key>
+    <Property Name="mathongtin" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="hovaten" Type="nvarchar" MaxLength="500" />
+    <Property Name="email" Type="nvarchar" MaxLength="500" />
+    <Property Name="xoa" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="m_taikhoan">
+    <Key>
+      <PropertyRef Name="mataikhoan" />
+    </Key>
+    <Property Name="mataikhoan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="manhansu" Type="nvarchar" MaxLength="50" />
+    <Property Name="tendangnhap" Type="nvarchar" MaxLength="500" />
+    <Property Name="thudientu" Type="nvarchar" MaxLength="500" />
+    <Property Name="matkhau" Type="nvarchar" MaxLength="32" />
+    <Property Name="hoten" Type="nvarchar" MaxLength="100" />
+    <Property Name="gioitinh" Type="nvarchar" MaxLength="1" />
+    <Property Name="diachi" Type="nvarchar" MaxLength="512" />
+    <Property Name="sodienthoai" Type="varchar" MaxLength="13" />
+    <Property Name="tenhinh" Type="nvarchar" MaxLength="1024" />
+    <Property Name="extensionfile" Type="nvarchar" MaxLength="10" />
+    <Property Name="filecontenttype" Type="nvarchar" MaxLength="100" />
+    <Property Name="binarydata" Type="binary" MaxLength="1" />
+    <Property Name="madonvi" Type="int" />
+    <Property Name="is_ada" Type="varchar" MaxLength="1" />
+    <Property Name="kichhoat" Type="varchar" MaxLength="1" />
+    <Property Name="xoa" Type="varchar" MaxLength="1" />
+    <Property Name="nguoitao" Type="int" />
+    <Property Name="ngaytao" Type="datetime" />
+    <Property Name="nguoihieuchinh" Type="int" />
+    <Property Name="ngayhieuchinh" Type="datetime" />
+    <Property Name="maphongban" Type="nchar" MaxLength="10" />
+    <Property Name="machucdanh" Type="nchar" MaxLength="10" />
+    <Property Name="grouptk" Type="char" MaxLength="1" />
+    <Property Name="chucdanhkpi" Type="char" MaxLength="1" />
+    <Property Name="phongban_congtruong" Type="char" MaxLength="1" />
+    <Property Name="chamcong" Type="char" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="WeedMeeting">
+    <Key>
+      <PropertyRef Name="macuochop" />
+    </Key>
+    <Property Name="macuochop" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="matuan" Type="int" Nullable="false" />
+    <Property Name="giohop" Type="nvarchar" MaxLength="100" />
+    <Property Name="ngayhop" Type="varchar" MaxLength="10" />
+    <Property Name="phonghop" Type="int" />
+    <Property Name="lydobuoihop" Type="nvarchar" MaxLength="3050" />
+    <Property Name="thanhphanthamdu" Type="nvarchar(max)" />
+    <Property Name="caplanhdao" Type="nvarchar" MaxLength="3050" />
+    <Property Name="noidungcuochop" Type="nvarchar(max)" />
+    <Property Name="uploadfile" Type="nvarchar" MaxLength="256" />
+    <Property Name="tenfile" Type="nvarchar" MaxLength="256" />
+    <Property Name="xoa" Type="varchar" MaxLength="1" />
+    <Property Name="nguoitao" Type="int" />
+    <Property Name="ngaytao" Type="datetime" />
+    <Property Name="nguoihieuchinh" Type="int" />
+    <Property Name="ngayhieuchinh" Type="datetime" />
+    <Property Name="maphongban" Type="varchar" MaxLength="50" />
+    <Property Name="loaicuochop" Type="int" />
+  </EntityType>
+  <EntityContainer Name="HopNoiBoModelStoreContainer">
+    <EntitySet Name="Collaborates" EntityType="Self.Collaborates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ConstructionMeetings" EntityType="Self.ConstructionMeetings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="m_donvi_chucdanh" EntityType="Self.m_donvi_chucdanh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="m_donvi_phongban" EntityType="Self.m_donvi_phongban" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="m_donvi_thongtingiamdoc" EntityType="Self.m_donvi_thongtingiamdoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="m_taikhoan" EntityType="Self.m_taikhoan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WeedMeeting" EntityType="Self.WeedMeeting" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

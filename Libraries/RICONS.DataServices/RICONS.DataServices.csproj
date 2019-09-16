@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{421195B1-55FA-445D-9055-BCF389B0D221}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RICONS.DataServices</RootNamespace>
+    <AssemblyName>RICONS.DataServices</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.DynamicProxy, Version=1.1.5.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IBatisNet.1.0.0\lib\net20\Castle.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.Common, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IBatisNet.1.0.0\lib\net20\IBatisNet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.DataMapper, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IBatisNet.1.0.0\lib\net20\IBatisNet.DataMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseData.cs" />
+    <Compile Include="CastDataType.cs" />
+    <Compile Include="Context\Collaborate.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\ConstructionMeeting.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\DBContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\DBContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\DBContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Context\m_donvi_chucdanh.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\m_donvi_phongban.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\m_donvi_thongtingiamdoc.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\m_taikhoan.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\WeedMeeting.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConvertUtilities.cs" />
+    <Compile Include="DataClass\BaseClass.cs" />
+    <Compile Include="DataClass\CV_CongViec.cs" />
+    <Compile Include="DataClass\CV_CongViec_LichSu.cs" />
+    <Compile Include="DataClass\CV_CongViec_TapTin.cs" />
+    <Compile Include="DataClass\CV_LichLamViec.cs" />
+    <Compile Include="DataClass\CV_LichLamViec_TapTin.cs" />
+    <Compile Include="DataClass\CV_LichLamViec_ThanhPhan.cs" />
+    <Compile Include="DataClass\CV_LichLamViec_ThongBao.cs" />
+    <Compile Include="DataClass\M_BinhLuan_HoatDong.cs" />
+    <Compile Include="DataClass\M_BinhLuan_HoatDong_TapTin.cs" />
+    <Compile Include="DataClass\M_BinhLuan_HoatDong_Thich.cs" />
+    <Compile Include="DataClass\M_KeHoach_NguoiThucHien.cs" />
+    <Compile Include="DataClass\M_KeHoach_LichSu.cs" />
+    <Compile Include="DataClass\M_KeHoach.cs" />
+    <Compile Include="DataClass\M_Log.cs" />
+    <Compile Include="DataClass\M_TaiKhoan.cs" />
+    <Compile Include="DataClass\M_ThongBao.cs" />
+    <Compile Include="Executes\BaseService.cs" />
+    <Compile Include="Executes\Collaborates\CollaborateCommand.cs" />
+    <Compile Include="Executes\Collaborates\CollaborateMany.cs" />
+    <Compile Include="Executes\Collaborates\CollaborateModels.cs" />
+    <Compile Include="Executes\Collaborates\CollaborateOne.cs" />
+    <Compile Include="Executes\CongTruong\CongTruongOne.cs" />
+    <Compile Include="Executes\ConstructionMeetings\ConstructionMeetingCommand.cs" />
+    <Compile Include="Executes\ConstructionMeetings\ConstructionMeetingMany.cs" />
+    <Compile Include="Executes\ConstructionMeetings\ConstructionMeetingModels.cs" />
+    <Compile Include="Executes\ConstructionMeetings\ConstructionMeetingOne.cs" />
+    <Compile Include="Executes\DataService.cs" />
+    <Compile Include="Executes\CongTruong\CongTruongMany.cs" />
+    <Compile Include="Executes\CongTruong\CongTruongModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\DataSettings.cs" />
+    <Compile Include="Settings\DataSettingsHelper.cs" />
+    <Compile Include="Settings\DataSettingsManager.cs" />
+    <Compile Include="Settings\SequenceValuecs.cs" />
+    <Compile Include="SQLMapEmployee.cs" />
+    <Compile Include="SQLMap.cs" />
+    <Compile Include="Variables\CommandResult.cs" />
+    <Compile Include="Variables\OptionResult.cs" />
+    <Compile Include="Variables\QueryResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RICONS.Core\RICONS.Core.csproj">
+      <Project>{48c94b4f-1402-4db8-bc5f-7763afa5dea5}</Project>
+      <Name>RICONS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RICONS.Logger\RICONS.Logger.csproj">
+      <Project>{c5834c69-0231-40e9-9d2a-4199314d8f5c}</Project>
+      <Name>RICONS.Logger</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Context\DBContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
+    <None Include="Context\DBContext.edmx.diagram">
+      <DependentUpon>DBContext.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Context\DBContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DBContext.Context.cs</LastGenOutput>
+      <DependentUpon>DBContext.edmx</DependentUpon>
+    </Content>
+    <Content Include="Context\DBContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBContext.edmx</DependentUpon>
+      <LastGenOutput>DBContext.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Executes\Departments\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap
+  namespace="Xuatkho"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://ibatis.apache.org/mapping">
+  <statements>
+
+    <select id="SelectRows_theomavanphongphan_nhapkho" resultClass="System.Collections.Hashtable">
+      SELECT
+      *
+      FROM
+      warehousing_detail
+      WHERE xoa='0' and mavanphongpham=$mavanphongpham$
+    </select>
+
+    <update id="UpdateRow_Xuatkho_capnhatnhapkho">
+      UPDATE
+      warehousing_detail
+      SET
+      soluong=$soluong$
+      WHERE machitiet=$machitiet$
+    </update>
+
+    <select id="SelectRows_Xuatkho_chitiet_ktsl" resultClass="System.Collections.Hashtable">
+      SELECT
+      *
+      FROM
+      exportwarehousing_detail
+      WHERE xoa='0' and maxuatkho=$maxuatkho$
+    </select>
+    
+    
+    
+    <select id="SelectRows_Dangky_Vanphongpham_chitiet" resultClass="System.Collections.Hashtable">
+      SELECT
+      *
+      FROM
+      Dangkyvanphongpham_chitiet
+      left join(select mavanphongpham, sum(soluong) as sltonkho from warehousing_detail where xoa='0' group by mavanphongpham) nh on(nh.mavanphongpham=Dangkyvanphongpham_chitiet.madanhmuc)
+      WHERE xoa='0'
+      <isNotEmpty property = "madangky">
+        and madangky=$madangky$
+      </isNotEmpty>
+    </select>
+    
+    
+    <select id="CountRows_Xuatkho" resultClass="int">
+      SELECT
+      count(*)
+      FROM
+      exportwarehousing
+      WHERE
+      xoa = '0'
+      <isNotEmpty property="nguoitao">
+        and nguoitao=$nguoitao$
+      </isNotEmpty>
+
+    </select>
+
+    <select id="SelectRows_Xuatkho_ma" resultClass="System.Collections.Hashtable">
+      select
+      *
+      from exportwarehousing
+      where xoa='0' and maxuatkho=$maxuatkho$
+      
+    </select>
+    
+    
+    <select id="SelectRows_Xuatkho" resultClass="System.Collections.Hashtable">
+      select * from (select
+      *
+      ,(select tenchucdanh from m_donvi_chucdanh cd where xoa='0' and exportwarehousing.machucdanh=cd.machucdanh) as tenchucdanh
+      ,(select tenphongban from m_donvi_phongban pb where xoa='0' and exportwarehousing.maphongban=pb.maphongban) as tenphongban
+      ,ROW_NUMBER() OVER (ORDER BY maxuatkho  desc) as row
+      from exportwarehousing where xoa='0' <isNotEmpty property="maphongban">and maphongban='$maphongban$'</isNotEmpty>) tbl1
+      where tbl1.xoa='0' and  tbl1.row <![CDATA[>=]]> $trangbd$ and tbl1.row <![CDATA[<=]]> $trangkt$
+      <isNotEmpty property="maphongban">
+        and maphongban='$maphongban$'
+      </isNotEmpty>
+
+      <isNotEmpty property="nguoitao">
+        and nguoitao=$nguoitao$
+      </isNotEmpty>
+
+      order by maxuatkho desc
+
+    </select>
+
+    <select id="SelectRows_Xuatkho_chitiet" resultClass="System.Collections.Hashtable">
+      select
+      *
+      from exportwarehousing_detail
+      left join(select mavanphongpham as madanhmuc, sum(soluong) as sltonkho from warehousing_detail where xoa='0' group by mavanphongpham) nh on(nh.madanhmuc=exportwarehousing_detail.mavanphongpham)
+      where xoa='0'
+      <isNotEmpty property="maxuatkho">
+        and maxuatkho=$maxuatkho$
+      </isNotEmpty>
+      order by machitiet ASC
+    </select>
+
+    <insert id="Insert_Xuatkho">
+      INSERT INTO exportwarehousing(
+      maxuatkho,
+      madangky,
+      machucdanh,
+      maphongban,
+      ngaydangky,
+      tongtien,
+      ghichu,
+      xoa,
+      nguoitao,
+      ngaytao,
+      ngayxuatkho,
+      noidungxuat,
+      conthieu
+      )
+      VALUES (
+      $maxuatkho$
+      ,$madangky$
+      ,$machucdanh$
+      ,'$maphongban$'
+      ,'$ngaydangky$'
+      ,'$tongtien$'
+      ,N'$ghichu$'
+      ,'0'
+      ,'$nguoitao$'
+      ,GETDATE()
+      ,'$ngayxuatkho$'
+      ,N'$noidungxuat$'
+      ,'$conthieu$'
+      )
+    </insert>
+
+    <update id="UpdateRow_Xuatkho">
+      UPDATE
+      exportwarehousing
+      SET
+      machucdanh=$machucdanh$
+      ,maphongban='$maphongban$'
+      ,ngaydangky='$ngaydangky$'
+      ,tongtien=$tongtien$
+      ,ghichu='$ghichu$'
+      ,ngayxuatkho='$ngayxuatkho$'
+      ,noidungxuat=N'$noidungxuat$'
+      ,xoa='0'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      ,conthieu='$conthieu$'
+      WHERE maxuatkho=$maxuatkho$
+    </update>
+
+    <update id="Update_hangconthieuchodangkyvppp">
+      UPDATE
+      Dangkyvanphongpham
+      SET
+      conthieu='$conthieu$'
+      ,dacap='1'
+      WHERE madangky=$madangky$
+    </update>
+    
+    
+   
+
+    <insert id="Insert_Xuatkho_chitiet">
+      INSERT INTO exportwarehousing_detail(
+      maxuatkho,
+      mavanphongpham,
+      tenvanphongpham,
+      donvitinh,
+      dongia,
+      soluong,
+      thanhtien,
+      danhmuccha,
+      danhmucgoc,
+      xoa,
+      nguoitao,
+      ngaytao,
+      slconthieu,
+      slthucxuat
+      )
+      VALUES (
+      $maxuatkho$
+      ,$mavanphongpham$
+      ,N'$tenvanphongpham$'
+      ,'$donvitinh$'
+      ,'$dongia$'
+      ,$soluong$
+      ,'$thanhtien$'
+      ,'$danhmuccha$'
+      ,'$danhmucgoc$'
+      ,'0'
+      ,'$nguoitao$'
+      ,GETDATE()
+      ,$slconthieu$
+      ,$slthucxuat$
+      )
+    </insert>
+
+    <update id="DeletedRow_Xuatkho">
+      UPDATE
+      exportwarehousing
+      SET
+      xoa='1'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      WHERE maxuatkho=$maxuatkho$
+    </update>
+    
+    <update id="DeletedRow_Xuatkho_chitiet">
+      UPDATE
+      exportwarehousing_detail
+      SET
+      xoa='1'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      WHERE maxuatkho=$maxuatkho$
+    </update>
+    
+  </statements>
+</sqlMap>

@@ -1,0 +1,56 @@
+2017-08-15 11:28:41 ERROR  : ERROR:  column "maphongban" does not exist
+LINE 1: ...hoan        ,tk.hoten        ,tk.manhansu        ,maphongban...
+                                                             ^
+2017-08-15 11:28:53 ERROR  : ERROR:  column "maphongban" does not exist
+LINE 1: ...hoan        ,tk.hoten        ,tk.manhansu        ,maphongban...
+                                                             ^
+2017-08-15 11:29:25 ERROR  : ERROR:  column "machucdanh" does not exist
+LINE 3: ...aphongban = tk.maphongban) as tenphongban        ,machucdanh...
+                                                             ^
+2017-08-15 11:29:25 ERROR  : ERROR:  column "machucdanh" does not exist
+LINE 3: ...aphongban = tk.maphongban) as tenphongban        ,machucdanh...
+                                                             ^
+2017-08-15 11:29:26 ERROR  : ERROR:  column "machucdanh" does not exist
+LINE 3: ...aphongban = tk.maphongban) as tenphongban        ,machucdanh...
+                                                             ^
+2017-08-15 11:29:26 ERROR  : ERROR:  column "machucdanh" does not exist
+LINE 3: ...aphongban = tk.maphongban) as tenphongban        ,machucdanh...
+                                                             ^
+2017-08-15 11:29:26 ERROR  : ERROR:  column "machucdanh" does not exist
+LINE 3: ...aphongban = tk.maphongban) as tenphongban        ,machucdanh...
+                                                             ^
+2017-08-15 11:29:26 ERROR  : ERROR:  column "machucdanh" does not exist
+LINE 3: ...aphongban = tk.maphongban) as tenphongban        ,machucdanh...
+                                                             ^
+2017-08-15 11:29:26 ERROR  : ERROR:  column "machucdanh" does not exist
+LINE 3: ...aphongban = tk.maphongban) as tenphongban        ,machucdanh...
+                                                             ^
+2017-08-15 11:29:46 ERROR  : ERROR:  operator does not exist: character varying = integer
+LINE 4: ...xoa = '0' and madonvi = tk.madonvi and machucdanh = tk.machu...
+                                                             ^
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+2017-08-15 11:29:46 ERROR  : ERROR:  operator does not exist: character varying = integer
+LINE 4: ...xoa = '0' and madonvi = tk.madonvi and machucdanh = tk.machu...
+                                                             ^
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+2017-08-15 11:29:47 ERROR  : ERROR:  operator does not exist: character varying = integer
+LINE 4: ...xoa = '0' and madonvi = tk.madonvi and machucdanh = tk.machu...
+                                                             ^
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+2017-08-15 11:29:47 ERROR  : ERROR:  operator does not exist: character varying = integer
+LINE 4: ...xoa = '0' and madonvi = tk.madonvi and machucdanh = tk.machu...
+                                                             ^
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+2017-08-15 11:29:47 ERROR  : ERROR:  operator does not exist: character varying = integer
+LINE 4: ...xoa = '0' and madonvi = tk.madonvi and machucdanh = tk.machu...
+                                                             ^
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+2017-08-15 11:30:56 ERROR  : ERROR:  column "taikhoanquanly" does not exist
+LINE 5: ...'0' and madonvi = tk.madonvi) as tendonvi        ,taikhoanqu...
+                                                             ^
+2017-08-15 11:31:23 ERROR  : ERROR:  column "nguoiduyetmuctieu" does not exist
+LINE 5: ...donvi) as tendonvi        ,taikhoanquanly        ,nguoiduyet...
+                                                             ^
+2017-08-15 11:31:27 ERROR  : ERROR:  column "nguoiduyetmuctieu" does not exist
+LINE 5: ...donvi) as tendonvi        ,taikhoanquanly        ,nguoiduyet...
+                                                             ^

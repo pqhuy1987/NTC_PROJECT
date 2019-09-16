@@ -1,0 +1,794 @@
+﻿@model RICONS.Web.Models.thongtinnhanvienModels
+@{
+    ViewBag.Title = "Thêm mới KPI";
+}
+@*--css--*@
+@section CSS
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/Controller/KpiCompany/KpiDu_Director_New.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/prism.css" />
+}
+
+@*--javascript--*@
+@section JavaScript
+{
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/controllers/KpiCompany/KpiDu_Director_New.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery.datepick-vi.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/chosen.jquery.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/prism.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/table/buildTable.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/colResizale/colResizable-1.3.source.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/plugins/jquery.blockui.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/scripts/app.min.js"></script>
+
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootbox.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/custom.js"></script>
+
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/dialog/jquery.customdialog.js"></script>
+
+}
+<script>
+    var linkContent = '@Url.Content("~")';
+</script>
+
+
+<div class="HeaderFixed">
+    <div class="b-b b-light">
+        <div class="p-left c-black">Thêm mới Kpi</div>
+        <div class="clearBoth"></div>
+    </div>
+</div>
+
+<div id="boxContent">
+    <div style="width:100%; height:100%">
+        <div class="portlet-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table_danhSach" id="tableContent" style="font-size:12px;">
+                    <thead id="head-date">
+                    </thead>
+                    <tbody id="head-date1"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div style="padding-top:5px;"></div>
+
+<div class="boxEdit">
+
+    <div class="row">
+        <div class="col-md-1"><input type="text" class="hidden" style="width: 100%;" autocomplete="off" placeholder="" id="txtmakpicanhancap" name="makpicanhancap" value="0" /></div>
+        <div class="col-md-1"><input type="text" class="hidden" style="width: 100%;" autocomplete="off" placeholder="" id="txtnguoilapkpi_dagui" name="nguoilapkpi_dagui" value="0" /></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1" style="min-width: 150px; padding-left:10px;">Người lập KPI<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-3" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Họ tên người lập KPI" id="txtnguoilapkpi" name="nguoilapkpi" value="@Model.hoten" /></div>
+
+        <div class="col-md-1" style="padding-left: 10px; min-width: 115px; ">Email<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Địa chỉ Email" id="txtnguoilapkpi_email" name="nguoilapkpi_email" value="@Model.mailnhanvien" /></div>
+
+        <div class="col-md-1" style="padding-left: 10px; min-width: 115px; ">Ngày lập KPI<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Ngày lập KPI" id="txtnguoilapkpi_ngay" name="nguoilapkpi_ngay" /></div>
+
+    </div>
+
+    @if (@Model.chucdanhkpi != "6" && @Model.chucdanhkpi != "7" && @Model.chucdanhkpi != "8" && @Model.maphongban != "67")
+    {
+        <div class="row">
+            <div class="col-md-1" style="min-width: 150px; padding-left: 10px; ">Quản lý trực tiếp<label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-3" style="padding-left:10px; "><input type="text" style="width:100%" autocomplete="off" placeholder="Họ tên phó tổng xem xét" id="txtphotongxemxetkpi" name="photongxemxetkpi" value="@Model.captrentructiep" /></div>
+
+            <div class="col-md-1" style="padding-left: 10px; min-width: 115px; ">Email<label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Địa chỉ Email" id="txtphotongxemxetkpi_email" name="photongxemxetkpi_email" value="@Model.captrentructiep_email" /></div>
+
+            <div class="col-md-1" style="padding-left: 10px; min-width: 115px; ">Ngày xem xét<label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Ngày xem xét" id="txtphotongxemxetkpi_ngay" name="photongxemxetkpi_ngay" /></div>
+        </div>
+    }
+    else
+    {
+        <div class="hidden">
+            <div class="row">
+                <div class="col-md-1" style="min-width: 150px; padding-left: 10px;">Quản lý trực tiếp<label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-3" style="padding-left:10px; "><input type="text" class="hidden" style="width:100%" autocomplete="off" placeholder="Họ tên phó tổng xem xét" id="txtphotongxemxetkpi" name="photongxemxetkpi" value="" /></div>
+
+                <div class="col-md-1" style="padding-left: 10px; min-width: 115px; ">Email<label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-2" style="padding-left:10px;"><input type="text" class="hidden" style="width:100%" autocomplete="off" placeholder="Địa chỉ Email" id="txtphotongxemxetkpi_email" name="photongxemxetkpi_email" value="@Model.captrentructiep_email" /></div>
+
+                <div class="col-md-1" style="padding-left: 10px; min-width: 115px; ">Ngày xem xét<label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-2" style="padding-left:10px;"><input type="text" class="hidden" style="width:100%" autocomplete="off" placeholder="Ngày xem xét" id="txtphotongxemxetkpi_ngay" name="photongxemxetkpi_ngay" /></div>
+            </div>
+        </div>
+    }
+
+    <div class="row">
+            <div class="col-md-1" style="min-width: 150px; padding-left: 10px; ">Tổng giám đốc<label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-3" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Họ tên tổng giám đốc duyệt" id="txttonggiamdocxemxetkpi" name="tonggiamdocxemxetkpi" value="Lê Miên Thụy" /></div>
+
+            <div class="col-md-1" style="padding-left: 10px; min-width: 115px; ">Email<label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Địa chỉ Email" id="txttonggiamdocxemxetkpi_email" name="tonggiamdocxemxetkpi_email" value="thuy.lemien@ricons.vn" /></div>
+
+            <div class="col-md-1" style="padding-left: 10px; min-width: 115px">Ngày xét duyệt<label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Ngày xét duyệt" id="txttonggiamdocxemxetkpi_ngay" name="tonggiamdocxemxetkpi_ngay" /></div>
+        </div>
+
+    <div class="row" style="padding-top:10px; padding-bottom:50px;">
+        <div class="col-md-1" style="min-width: 160px; padding-left: 10px;"></div>
+        <button id="btn-save" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu"><i class="retweet_save"></i> Lưu</button>
+        <button id="btn-save-guimail" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu & gửi" style="width:100px"><i class="retweet_save"></i> Lưu & gửi</button>
+        <a href="@Url.Action("Index_Du_Director", "KpiCompany")" class="buttoncustom WhiteButton"><i class="retweet_trove"></i> Trở về</a>
+    </div>
+
+
+</div>
+
+
+@*<script type="text/javascript">
+    // Popup window code
+    function newPopup(url) {
+        popupWindow = window.open(
+            url, 'popUpWindow', 'height=300,width=400,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+    }
+</script>*@
+
+
+
+<script>
+
+    $(document).ready(function (e) {
+        renderDate();
+    });
+
+    function htmlspecialchars(str) {
+        str = str.replace(/&/g, "daukytuva");
+        str = str.replace(/"/g, "");
+        str = str.replace(/'/g, "daunhaydon");
+        return str;
+    }
+
+    function ShowMessageBoxbox(strText, strCaption, msButtons, msIcon) {
+        try {
+            debugger;
+            var _strText = "Bạn có chắc muốn xóa không?";
+            var _strCaption = "Xóa";
+            var _strButtons = "<input class='buttoncustom blueButton windowConform' type='button' value='Đóng' id='btnCloseDialog'/>";
+            var _strmsIcon = "";
+            //kiem tra noi dung co bang null hoac "" khong, neu co thi nhap mac dinh
+            if (strText != null)
+                if (strText.replace(/\s/g, '').length > 0)
+                    _strText = strText;
+            //kiem tra tieu de co bang null hoac "" khong, neu co thi nhap mac dinh
+            if (strCaption != null)
+                if (strCaption.replace(/\s/g, '').length > 0)
+                    _strCaption = strCaption;
+            //kiem tra button co bang null hoac "" khong, neu co thi nhap mac dinh
+            if (msButtons != null)
+                if (msButtons.replace(/\s/g, '').length > 0)
+                    if (msButtons.replace(/\s/g, '').toLowerCase() == "okcancel")
+                        _strButtons = "<input id='btnSubmitMessage' class='buttoncustom blueButton windowConform' type='button' value='Đồng ý'/>&nbsp;&nbsp;" + _strButtons;
+            //kiem tra icon co bang null hoac "" khong, neu co thi nhap mac dinh
+            if (msIcon != null)
+                if (msIcon.replace(/\s/g, '').length > 0)
+                    if (msIcon.replace(/\s/g, '').toLowerCase() == "error" || msIcon.replace(/\s/g, '').toLowerCase() == "information" ||
+                       msIcon.replace(/\s/g, '').toLowerCase() == "question" || msIcon.replace(/\s/g, '').toLowerCase() == "warning")
+                        _strmsIcon = "hinh";   //"<img src='templates/system/images/messagebox/icon48x48_" + msIcon + ".png'/>";
+            var _strFormMessage = "<div id='MessageBox' class='web_dialog' style='height: auto;z-index:9120'>" +
+                "<table style='width: 100%; border: 0px;' cellpadding='3' cellspacing='0'>" +
+                    "<tr>" +
+                        "<td colspan='2' class='web_dialog_title' >" +
+                            "<label >" + _strCaption + "</label>" +
+                            "<a style='float:right' href='#' onclick='HideMessageBox();return false'><i class='btn_close_dialog'></i></a>" +
+                        "</td>" +
+                    "</tr>" +
+                    "<tr><td>&nbsp;</td><td>&nbsp;</td></tr>" +
+                    "<tr>" +
+                        //"<td id='tdMessageIcon'>" +
+                        //    _strmsIcon +
+                        //"</td>" +
+                        "<td >" +
+                            "<b>" + _strText + "</b>" +
+                        "</td>" +
+                    "</tr>" +
+                    "<tr><td>&nbsp;</td><td>&nbsp;</td></tr>" +
+                    "<tr>" +
+                        "<td colspan='2' style='text-align: center;'>" +
+                            _strButtons +
+                        "</td>" +
+                    "</tr>" +
+                "</table>" +
+            "</div>";
+            $("#overlayAlert").show();
+            $('body form#form1').append(_strFormMessage);
+            $("#MessageBox").show('50000');
+            $("#btnCloseDialog").click(HideMessageBox);
+        } catch (Error) {
+            if (window.console) console.log(Error);
+        }
+    }
+
+
+    $('#boxContent').on('click', '.button-Search', function () {
+        debugger;
+        //ShowMessageBoxbox('Ban co hien thi', 'Xóa', 'okcancel', 'information');
+
+       // var width = 300;
+       // var height = 200;
+       // var left = (screen.width - width)/2;
+       // var top = (screen.height - height)/2;
+       // var params = 'width=' + width + ', height=' + height;
+       // params += ', top=' + top + ', left=' + left;
+       // params += ', directories=no';
+       // params += ', location=no';
+       // params += ', menubar=no';
+       // params += ', resizable=no';
+       // params += ', scrollbars=no';
+       // params += ', status=no';
+       // params += ', fullscreen=yes';
+       // params += ', toolbar=no';
+       // //newwin =
+       // window.open('NewOffice', 'Thông tin KPI cấp phòng', 'fullscreen=yes');
+       //// if (window.focus) { newwin.focus() }  NewOffice
+
+        var width = 1200;
+        var height = 650;
+        var top = parseInt((screen.availHeight/2) - (height/2));
+        var left = parseInt((screen.availWidth/2) - (width/2));
+        window.open('./NewOffice.cshtml',
+              "Thông tin KPI cấp phòng",
+              "menubar=no,resizable=no,width=1200,height=650,scrollbars=yes,left=" + left + ",top=" + top + ",screenX=" + left + ",screenY=" + top);
+
+        
+    });
+
+   $('#btn-save').on('click', function (e) {
+       e.preventDefault(); 
+        if ($('#txtngaydangky').val().length != 10) {
+            Thongbao("Ngày ngày đăng ký nhập không đúng định dạng (01/01/2018)?");
+            return false;
+        }
+        else if ($('#txtnguoilapkpi_dagui').val().trim() == "1") {
+            Thongbao("KPI cấp cá nhân đã gửi chờ duyệt. Bạn vui lòng không chỉnh sữa?");
+            return false;
+        }
+        else if ($('#txtphotongxemxetkpi_email').val().trim() == "") {
+            Thongbao("Nhập Email cấp quản lý trực tiếp");
+            return false;
+        }
+        var thuoccap = "A";
+        var data = [];
+        var DataJson = "{'data1':";
+        DataJson += "{";
+        DataJson += "'makpicanhancap':'" + $('#txtmakpicanhancap').val() + "',";
+        DataJson += "'maphongban':'" + $('#filter02').val() + "',";
+        DataJson += "'ngaybanhanh':'" + $('#txtngaybanhanh').val() + "',";
+        DataJson += "'ngaycapnhat':'" + $('#txtngaycapnhat').val() + "',";
+
+        DataJson += "'manhanvien':'" + $('#txtmanhanvien').val() + "',";
+        DataJson += "'hovaten':'" + $('#txthovaten').val() + "',";
+        DataJson += "'chucdanh':'" + $('#filter01').val() + "',";
+        DataJson += "'captrentructiep':'" + $('#txtcaptrentructiep').val() + "',";
+        DataJson += "'ngaydangky':'" + $('#txtngaydangky').val() + "',";
+        DataJson += "'ngaydanhgia':'" + $('#txtngaydanhgia').val() + "',";
+
+        DataJson += "'nguoilapkpi':'" + $('#txtnguoilapkpi').val() + "',";
+        DataJson += "'nguoilapkpi_email':'" + $('#txtnguoilapkpi_email').val() + "',";
+        DataJson += "'nguoilapkpi_ngay':'" + $('#txtnguoilapkpi_ngay').val() + "',";
+
+        DataJson += "'photongxemxetkpi':'" + $('#txtphotongxemxetkpi').val() + "',";
+        DataJson += "'photongxemxetkpi_email':'" + $('#txtphotongxemxetkpi_email').val() + "',";
+        DataJson += "'photongxemxetkpi_ngay':'" + $('#txtphotongxemxetkpi_ngay').val() + "',";
+
+        DataJson += "'tonggiamdocxemxetkpi':'" + $('#txttonggiamdocxemxetkpi').val() + "',";
+        DataJson += "'tonggiamdocxemxetkpi_email':'" + $('#txttonggiamdocxemxetkpi_email').val() + "',";
+        DataJson += "'tonggiamdocxemxetkpi_ngay':'" + $('#txttonggiamdocxemxetkpi_ngay').val() + "',";
+
+        DataJson += "}, 'data2':[";
+
+        $('#boxContent table tbody tr').each(function (index, item) {
+            debugger;
+            var b = $('#boxContent table tbody tr').length-1;
+            var makpicanhancap_chitiet = encodeURIComponent($(item).attr('makpicanhancap_chitiet'));
+            var makpicanhancap = encodeURIComponent($(item).attr('makpicanhancap'));
+            var stt = $(item).find('td.col1').text();
+            var muctieu = ""; var trongso = "0%"; var ketqua = "0%";
+            if (stt == "A" || stt == "B" || stt == "C" || stt == "D" || stt == "" || stt == null) {
+                muctieu = $(item).find('td.col2').text();
+                trongso = $(item).find('td.col3 input').val();
+                ketqua = $(item).find('td.col12 input').val();
+                thuoccap = stt;
+            }
+            else {
+                muctieu = $(item).find('td.col2 textarea').val();
+                trongso = $(item).find('td.col3 textarea').val();
+                ketqua = $(item).find('td.col12 textarea').val();
+            }
+            debugger;
+            muctieu = htmlspecialchars(muctieu);
+            var tieuchidanhgia = $(item).find('td.col4 textarea').val();
+            if (tieuchidanhgia == undefined) tieuchidanhgia = "";
+            else tieuchidanhgia = htmlspecialchars(tieuchidanhgia);
+
+            var cachtinh = $(item).find('td.col5 textarea').val();
+            if (cachtinh == undefined) cachtinh = "";
+            else cachtinh = htmlspecialchars(cachtinh);
+
+            var ngayghinhanketqua = $(item).find('td.col6 textarea').val();
+            if (ngayghinhanketqua == undefined) ngayghinhanketqua = "";
+            else ngayghinhanketqua = htmlspecialchars(ngayghinhanketqua);
+
+            var nguonchungminh = $(item).find('td.col7 textarea').val();
+            if (nguonchungminh == undefined) nguonchungminh = "";
+            else nguonchungminh = htmlspecialchars(nguonchungminh);
+
+            var donvitinh = $(item).find('td.col8 textarea').val();
+            if (donvitinh == undefined) donvitinh = "";
+            else donvitinh = htmlspecialchars(donvitinh);
+
+            var kehoach = $(item).find('td.col9 textarea').val();
+            if (kehoach == undefined)kehoach = "";
+            else kehoach = htmlspecialchars(kehoach);
+
+            var thuchien = $(item).find('td.col10 textarea').val();
+            if (thuchien == undefined) thuchien = "";
+            else thuchien = htmlspecialchars(thuchien);
+
+            var tilehoanthanh = $(item).find('td.col11 textarea').val();
+            if (tilehoanthanh == undefined) tilehoanthanh = "";
+            else tilehoanthanh = htmlspecialchars(tilehoanthanh);
+
+            var ghichu = $(item).find('td.col13 textarea').val();
+            if (ghichu == undefined) ghichu = "";
+            else ghichu = htmlspecialchars(ghichu);
+
+            DataJson += "{";
+            DataJson += "'makpicanhancap_chitiet':'" + makpicanhancap_chitiet + "',";
+            DataJson += "'makpicanhancap':'" + makpicanhancap + "',";
+            DataJson += "'stt':'" + stt + "',";
+            DataJson += "'muctieu':'" + muctieu + "',";
+            DataJson += "'trongso':'" + trongso + "',";
+            DataJson += "'tieuchidanhgia':'" + tieuchidanhgia + "',";
+            DataJson += "'cachtinh':'" + cachtinh + "',";
+            DataJson += "'ngayghinhanketqua':'" + ngayghinhanketqua + "',";
+            DataJson += "'nguonchungminh':'" + nguonchungminh + "',";
+            DataJson += "'donvitinh':'" + donvitinh + "',";
+            DataJson += "'kehoach':'" + kehoach + "',";
+            DataJson += "'thuchien':'" + thuchien + "',";
+            DataJson += "'tilehoanthanh':'" + tilehoanthanh + "',";
+            DataJson += "'ketqua':'" + ketqua + "',";
+            DataJson += "'thuoccap':'" + thuoccap + "',";
+            DataJson += "'ghichu':'" + ghichu + "'";
+
+            DataJson += "}";
+            var a = index;
+            if (a != b)
+                DataJson += ",";
+        });
+        DataJson += "]}";
+
+        $.ajax({
+            type: 'POST',
+            url: '/KpiCompany/Save_Du_Director_Tp',
+            datatype: "JSON",
+            data: "DataJson=" + DataJson,
+            cache: false,
+        })
+        .done(function (result) {
+            debugger;
+            var tb = JSON.stringify(result.success);
+            var makpicanhancap = JSON.stringify(result.makpicanhancap);
+            if (tb == "true") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu thành công.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmakpicanhancap').val(makpicanhancap);
+                    GetData_loaddata(false);
+                    dialogSuccess.modal('hide');
+                }, 2000);
+            } else {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu không thành công</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmakpicanhancap').val(makpicanhancap);
+                    dialogSuccess.modal('hide');
+                }, 2000);
+            }
+        })
+        .fail(function (result) {
+            alert("FAILED: " + JSON.stringify(result));
+        });
+   })
+
+   $('#btn-save-guimail').on('click', function (e) {
+       e.preventDefault();
+       if ($('#txtngaydangky').val().length != 10) {
+           Thongbao("Ngày ngày đăng ký nhập không đúng định dạng (01/01/2018)?");
+           return false;
+       }
+       else if ($('#txtnguoilapkpi_dagui').val().trim() == "1") {
+           Thongbao("KPI cấp cá nhân đã gửi chờ duyệt. Bạn vui lòng không chỉnh sữa?");
+           return false;
+       }
+       if (@Model.chucdanhkpi != "6" && @Model.chucdanhkpi != "7" && @Model.chucdanhkpi != "8" && @Model.maphongban != "67")
+       {
+           if ($('#txtphotongxemxetkpi_email').val().trim() == "") {
+               Thongbao("Nhập Email cấp quản lý trực tiếp");
+               return false;
+           }
+       }
+       debugger;
+       var thuoccap = "A";
+       var data = [];
+       var DataJson = "{'data1':";
+       DataJson += "{";
+       DataJson += "'makpicanhancap':'" + $('#txtmakpicanhancap').val() + "',";
+       DataJson += "'maphongban':'" + $('#filter02').val() + "',";
+       DataJson += "'ngaybanhanh':'" + $('#txtngaybanhanh').val() + "',";
+       DataJson += "'ngaycapnhat':'" + $('#txtngaycapnhat').val() + "',";
+
+       DataJson += "'tenchucdanhkpi':'',";
+       
+
+       DataJson += "'manhanvien':'" + $('#txtmanhanvien').val() + "',";
+       DataJson += "'hovaten':'" + $('#txthovaten').val() + "',";
+       DataJson += "'chucdanh':'" + $('#filter01').val() + "',";
+       DataJson += "'captrentructiep':'" + $('#txtcaptrentructiep').val() + "',";
+       DataJson += "'ngaydangky':'" + $('#txtngaydangky').val() + "',";
+       DataJson += "'ngaydanhgia':'" + $('#txtngaydanhgia').val() + "',";
+
+       DataJson += "'nguoilapkpi':'" + $('#txtnguoilapkpi').val() + "',";
+       DataJson += "'nguoilapkpi_email':'" + $('#txtnguoilapkpi_email').val() + "',";
+       DataJson += "'nguoilapkpi_ngay':'" + $('#txtnguoilapkpi_ngay').val() + "',";
+
+       DataJson += "'photongxemxetkpi':'" + $('#txtphotongxemxetkpi').val() + "',";
+       DataJson += "'photongxemxetkpi_email':'" + $('#txtphotongxemxetkpi_email').val() + "',";
+       DataJson += "'photongxemxetkpi_ngay':'" + $('#txtphotongxemxetkpi_ngay').val() + "',";
+
+       DataJson += "'tonggiamdocxemxetkpi':'" + $('#txttonggiamdocxemxetkpi').val() + "',";
+       DataJson += "'tonggiamdocxemxetkpi_email':'" + $('#txttonggiamdocxemxetkpi_email').val() + "',";
+       DataJson += "'tonggiamdocxemxetkpi_ngay':'" + $('#txttonggiamdocxemxetkpi_ngay').val() + "',";
+
+       DataJson += "}, 'data2':[";
+
+       $('#boxContent table tbody tr').each(function (index, item) {
+           debugger;
+           var makpicanhancap_chitiet = encodeURIComponent($(item).attr('makpicanhancap_chitiet'));
+           var makpicanhancap = encodeURIComponent($(item).attr('makpicanhancap'));
+           var stt = $(item).find('td.col1').text();
+           var muctieu = ""; var trongso = "0%"; var ketqua = "0%";
+           if (stt == "A" || stt == "B" || stt == "C" || stt == "D" || stt == "" || stt == null) {
+               muctieu = $(item).find('td.col2').text();
+               trongso = $(item).find('td.col3 input').val();
+               ketqua = $(item).find('td.col12 input').val();
+               thuoccap = stt;
+           }
+           else {
+               muctieu = $(item).find('td.col2 textarea').val();
+               trongso = $(item).find('td.col3 textarea').val();
+               ketqua = $(item).find('td.col12 textarea').val();
+           }
+
+           muctieu = htmlspecialchars(muctieu);
+           var tieuchidanhgia = $(item).find('td.col4 textarea').val();
+           if (tieuchidanhgia == undefined) tieuchidanhgia = "";
+           else tieuchidanhgia = htmlspecialchars(tieuchidanhgia);
+
+           var cachtinh = $(item).find('td.col5 textarea').val();
+           if (cachtinh == undefined) cachtinh = "";
+           else cachtinh = htmlspecialchars(cachtinh);
+
+           var ngayghinhanketqua = $(item).find('td.col6 textarea').val();
+           if (ngayghinhanketqua == undefined) ngayghinhanketqua = "";
+           else ngayghinhanketqua = htmlspecialchars(ngayghinhanketqua);
+
+           var nguonchungminh = $(item).find('td.col7 textarea').val();
+           if (nguonchungminh == undefined) nguonchungminh = "";
+           else nguonchungminh = htmlspecialchars(nguonchungminh);
+
+           var donvitinh = $(item).find('td.col8 textarea').val();
+           if (donvitinh == undefined) donvitinh = "";
+           else donvitinh = htmlspecialchars(donvitinh);
+
+           var kehoach = $(item).find('td.col9 textarea').val();
+           if (kehoach == undefined) kehoach = "";
+           else kehoach = htmlspecialchars(kehoach);
+
+           var thuchien = $(item).find('td.col10 textarea').val();
+           if (thuchien == undefined) thuchien = "";
+           else thuchien = htmlspecialchars(thuchien);
+
+           var tilehoanthanh = $(item).find('td.col11 textarea').val();
+           if (tilehoanthanh == undefined) tilehoanthanh = "";
+           else tilehoanthanh = htmlspecialchars(tilehoanthanh);
+
+           var ghichu = $(item).find('td.col13 textarea').val();
+           if (ghichu == undefined) ghichu = "";
+           else ghichu = htmlspecialchars(ghichu);
+
+           DataJson += "{";
+           DataJson += "'makpicanhancap_chitiet':'" + makpicanhancap_chitiet + "',";
+           DataJson += "'makpicanhancap':'" + makpicanhancap + "',";
+           DataJson += "'stt':'" + stt + "',";
+           DataJson += "'muctieu':'" + muctieu + "',";
+           DataJson += "'trongso':'" + trongso + "',";
+           DataJson += "'tieuchidanhgia':'" + tieuchidanhgia + "',";
+           DataJson += "'cachtinh':'" + cachtinh + "',";
+           DataJson += "'ngayghinhanketqua':'" + ngayghinhanketqua + "',";
+           DataJson += "'nguonchungminh':'" + nguonchungminh + "',";
+           DataJson += "'donvitinh':'" + donvitinh + "',";
+           DataJson += "'kehoach':'" + kehoach + "',";
+           DataJson += "'thuchien':'" + thuchien + "',";
+           DataJson += "'tilehoanthanh':'" + tilehoanthanh + "',";
+           DataJson += "'ketqua':'" + ketqua + "',";
+           DataJson += "'thuoccap':'" + thuoccap + "',";
+           DataJson += "'ghichu':'" + ghichu + "'";
+
+           DataJson += "}";
+           if (index != $('#boxContent table tbody tr').length - 1)
+               DataJson += ",";
+       });
+       DataJson += "]}";
+
+       $.ajax({
+           type: 'POST',
+           url: '/KpiCompany/Save_Du_Director_Tp_Guimail',
+           datatype: "JSON",
+           data: "DataJson=" + DataJson,
+           cache: false,
+       })
+       .done(function (result) {
+           debugger;
+           var tb = JSON.stringify(result.success);
+           var makpicanhancap = JSON.stringify(result.makpicanhancap);
+           if (tb == "true") {
+               var dialogSuccess = bootbox.dialog({
+                   message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu và gửi dữ liệu thành công.</span>",
+                   closeButton: false,
+                   onEscape: function () {
+                   }
+               });
+               setTimeout(function () {
+                   $('#txtmakpicanhancap').val(makpicanhancap);
+                   //$('#txtnguoilapkpi_dagui').val(1);
+                   dialogSuccess.modal('hide');
+                   history.back();
+               }, 2000);
+           } else {
+               var dialogSuccess = bootbox.dialog({
+                   message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu và gửi dữ liệu không thành công</span>",
+                   closeButton: false,
+                   onEscape: function () {
+                   }
+               });
+               setTimeout(function () {
+                   $('#txtmakpicanhancap').val(makpicanhancap);
+                   dialogSuccess.modal('hide');
+               }, 2000);
+           }
+       })
+       .fail(function (result) {
+           alert("FAILED: " + JSON.stringify(result));
+       });
+   })
+
+
+    function currencyFormatDE(num) {
+        return (num + "").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+    }
+
+    function calTotal() {
+        debugger;
+        var total = 0;
+        var sub = 0;
+        $('#boxContent table tbody tr').each(function (index, itemitem) {
+            debugger;
+            //var kpitong = $('#boxContent #tableContent tbody tr[kpicha="' + 1 + '"]').length;
+            //var kpitong1111 = $('#boxContent #tableContent tbody tr[kpicha="' + 1 + '"]');
+            //var bbbb = $(itemitem).find('tr[kpicha="' + 1 + '"]').length;
+            var kpicha = $(itemitem).attr('kpicha');
+            //var bbbbbbbb = $(itemitem).find('td.col3 input').val();
+            //var aaa = kpitong1111.find('td.col3 input').val();
+            sub = $(itemitem).find('td.col3 input').val();
+            if (kpicha == 1) {
+                sub = $(itemitem).find('td.col3 input').val().replace("%", "").replace("%", "").replace(" ", "");
+                sub = Number(sub);
+                if (isNaN(sub) == false)
+                    total = total + sub;
+            }
+        });
+
+        var currentRow2 = $('#boxContent table tbody tr:last').closest('.rows-box');
+        currentRow2.find('.col3 input').val(total + "%");
+    }
+
+    $('#tableContent').on('keyup', 'input', function (e) {
+        debugger;
+        var currentRow = $(this).closest('.rows-box');
+        var soluong = $(this).val().replace('%', '');
+        if (isNaN(soluong) == false)
+            currentRow.find('.col12 input').val(currencyFormatDE(soluong+"%")) ;
+        calTotal();
+    });
+
+
+    $('#boxContent').on('click', '.button-add', function () {
+        debugger;
+        var stt = $("#tableContent > tbody > tr").length + 1;
+        var target = $(this).closest('tr').attr('group');
+        //var destination = $('#boxContent #tableContent tr[group="' + target + '"]');
+        //var thutuinsert = destination.length;
+        //var row = $(this).closest('tr').clone();
+        //$(row).insertAfter($(destination[1]));
+
+        var destination = $(this).closest('tr');
+        //destination.find('.col1').val(2);
+        var thutuinsert = destination.length;
+        var row = $(this).closest('tr').clone();
+        $(row).insertAfter($(destination));
+
+
+        $(row).find('td.col1').text(thutuinsert);
+        $(row).find('td.col2 textarea').val('');
+        $(row).find('td.col3 textarea').val('');
+        $(row).find('td.col4 textarea').val('');
+        $(row).find('td.col5 textarea').val('');
+        $(row).find('td.col6 textarea').val('');
+        $(row).find('td.col7 textarea').val('');
+        $(row).find('td.col8 textarea').val('');
+        $(row).find('td.col9 textarea').val('');
+        $(row).find('td.col10 textarea').val('');
+        $(row).find('td.col11 textarea').val('');
+        $(row).find('td.col12 textarea').val('');
+        $(row).find('td.col13 textarea').val('');
+        $(row).find('tr codeid').val(0);
+        $(row).attr('codeid', '0');
+        $(row).attr('makpicanhancap_chitiet', '0');
+        var i = 1;
+        $('#boxContent table tbody tr[group="' + target + '"]').each(function (index, item) {
+            var aaa = index;
+            if (i > 1)
+                $(item).find('td.col1').text(i - 1);
+            i = i + 1;
+        });
+    });
+
+    $('#boxContent').on('click', '.button-del', function () {
+        debugger;
+        var target = $(this).closest('tr').attr('group');
+        if ($("#tableContent > tbody > tr[group='" + target + "'] ").length > 2) {
+            $(this).closest('tr').remove();
+            var i = 1;
+            $('#boxContent table tbody tr[group="' + target + '"]').each(function (index, item) {
+                var aaa = index;
+                if (i > 1)
+                    $(item).find('td.col1').text(i - 1);
+                i = i + 1;
+            });
+        }
+    });
+
+    function renderDate() {
+        var day = new Date();
+        var dd = day.getDate();
+        var mm = day.getMonth() + 1;
+        var yyyy = day.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        var today = dd + '/' + mm + '/' + yyyy;
+        var html = '';
+        html += '<tr>';
+        html += '<th rowspan="3" colspan="2">Logo</th>'
+        html += '<th colspan="11" style="font-size: 18pt;background-color: azure;color: #8e2bf1;">KPI CẤP CÁ NHÂN: @Model.tenchucdanhkpi - NĂM ' + day.getFullYear() + '</th>'
+        html += '<th rowspan="5" colspan="14">Chức năng</th>'
+        html += '</tr>'
+
+
+
+        html += '<tr>'
+        html += '<th colspan="2" style="text-align: left">Phòng Ban:</th>'
+        html += '<th colspan="6" class="ovh col2 boxEdit"><select id="filter02" style="width:100%;padding-left: 2px;border: 1px solid #aaa;  border-radius: 3px;background-color: #fff;height: 26px;" class="chosen-select-loaikehoach" name="maphongban">@Html.Raw(ViewBag.sbphongban)</select></th>'
+        if('@Model.chucdanhkpi'=="2")html += '<th colspan="3">Biễu mẫu: QP04FM16</th>'
+        else html += '<th colspan="3">Biễu mẫu: QP04FM15</th>'
+        html += '</tr>'
+
+        html += '<tr>'
+        html += '<th colspan="2" style="text-align: left">Ngày ban hành'
+        html += '<th colspan="2" class="ovh col2 boxEdit"><input type="text" style="width:100%; text-align: center" autocomplete="off" placeholder="Ngày ban hành" id="txtngaybanhanh" name="ngaybanhanh" value="' + today + '" /></th>'
+
+        html += '<th colspan="2" style="text-align: left">Ngày cập nhật</th>'
+        html += '<th colspan="2" class="ovh col2 boxEdit"><input type="text" style="width:100%;text-align: center"  autocomplete="off" placeholder="Ngày cập nhật" id="txtngaycapnhat" name="ngaycapnhat" value="' + today + '" /></th>'
+        html += '<th colspan="3">Lần cập nhật: 00/01</th>'
+        html += '</tr>'
+
+
+        html += '<tr class="boxEdit" style="box-shadow: none;">'
+        html += '<th colspan="6" style="text-align: left">'
+        html += '<div class="row">'
+        html +='<div class="col-md-1" style="min-width: 150px; padding-left:10px;">Họ và tên<label style="color:red;height:10px;">*</label>:</div>'
+        html += '<div class="col-md-7" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Họ và tên" id="txthovaten" name="hovaten" value="@Model.hoten" /></div>'
+        html += '</div>'
+
+        html += '<div class="row">'
+        html += '<div class="col-md-1" style="min-width: 150px; padding-left:10px;">Chức danh<label style="color:red;height:10px;">*</label>:</div>'
+        html += '<div class="col-md-7" style="padding-left:10px;"><select id="filter01" style="width:100%;padding-left: 2px;border: 1px solid #aaa;  border-radius: 3px;background-color: #fff;height: 26px;" class="chosen-select-loaikehoach" name="chucdanh">@Html.Raw(ViewBag.sbchucdanh)</select></div>'
+        html += '</div>'
+
+        html += '<div class="row">'
+        html += '<div class="col-md-1" style="min-width: 150px; padding-left:10px;">Cấp trên trực tiếp<label style="color:red;height:10px;">*</label>:</div>'
+        html += '<div class="col-md-7" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Cấp trên trực tiếp" id="txtcaptrentructiep" name="captrentructiep" value="@Model.captrentructiep" /></div>'
+        html += '</div>'
+        html += '</th>'
+
+
+        html += '<th colspan="7" style="text-align: left">'
+        html += '<div class="row">'
+        html += '<div class="col-md-1" style="min-width: 150px; padding-left:10px;">Mã nhân viên<label style="color:red;height:10px;">*</label>:</div>'
+        html += '<div class="col-md-7" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Nhập mã nhân viên" id="txtmanhanvien" name="manhanvien" value="@Model.manhanvien" /></div>'
+        html += '</div>'
+
+        html += '<div class="row">'
+        html += '<div class="col-md-1" style="min-width: 150px; padding-left:10px;">Ngày đăng ký<label style="color:red;height:10px;">*</label>:</div>'
+        html += '<div class="col-md-7" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Nhập ngày đăng ký" id="txtngaydangky" name="ngaydangky" value="' + today + '" /></div>'
+        html += '</div>'
+
+        html += '<div class="row">'
+        html += '<div class="col-md-1" style="min-width: 150px; padding-left:10px;">Ngày đánh giá<label style="color:red;height:10px;">*</label>:</div>'
+        html += '<div class="col-md-7" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Nhập ngày đánh giá" id="txtngaydanhgia" name="ngaydanhgia" value="' + today + '" /></div>'
+        html += '</div>'
+        html += '</th>'
+
+        html += '</tr>'
+
+
+        html += '<tr>';
+        html += '<th class="ovh col1">Stt</th>'
+        html += '<th class="ovh col2">Mục tiêu</th>'
+        html += '<th class="ovh col3">Trọng số</th>'
+        html += '<th class="ovh col4">Tiêu chí đánh giá (KPIs)</th>'
+        html += '<th class="ovh col5">Cách tính</th>'
+        html += '<th class="ovh col6">Thời điểm ghi nhận kết quả</th>'
+        html += '<th class="ovh col7">Nguồn chứng minh</th>'
+        html += '<th class="ovh col8">Đơn vị tính</th>'
+        html += '<th class="ovh col9">KPIs kế hoạch</th>'
+        html += '<th class="ovh col10">KPIs thực hiện</th>'
+        html += '<th class="ovh col11">Tỉ lệ % hoàn thành KPIs</th>'
+        html += '<th class="ovh col12">Kết quả</th>'
+        html += '<th class="ovh col13">Ghi chú</th>'
+
+        html += '</tr>';
+
+        $('#head-date').html(html);
+    }
+
+
+    function Thongbao(num) {
+        var dialogSuccess = bootbox.dialog({
+            message: "<i class='fa fa-check text-success'></i><span class='text-success'>" + num + "</span>",
+            closeButton: false,
+            onEscape: function () {
+            }
+        });
+        setTimeout(function () {
+            dialogSuccess.modal('hide');
+        }, 1000);
+    }
+
+</script>
+

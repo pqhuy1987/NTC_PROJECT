@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap
+  namespace="Listchange"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://ibatis.apache.org/mapping">
+  <statements>
+
+    <select id="CountRow_Lapdanhsachdieudong" resultClass="int">
+      SELECT
+      count(*)
+      FROM
+      ddns_addstaff
+      WHERE xoa = '0' and bantonggiamdoc_duyet='1'
+    </select>
+
+    <select id="SelectRow_Lapdanhsachdieudong" resultClass="System.Collections.Hashtable">
+      select * from (SELECT
+      *
+      ,ROW_NUMBER() OVER (ORDER BY mabosungnhansu  desc) as row
+      from ddns_addstaff
+      WHERE xoa='0' and bantonggiamdoc_duyet='1') tbl1
+      where tbl1.xoa='0' and tbl1.bantonggiamdoc_duyet='1' and  tbl1.row <![CDATA[>=]]> $trangbd$ and tbl1.row <![CDATA[<=]]> $trangkt$
+      order by mabosungnhansu desc
+    </select>
+
+
+    <select id="SelectRows_ddns_lapdanhsachdieudong_taomoi" resultClass="System.Collections.Hashtable">
+      SELECT
+      *
+      from ddns_lapdanhsachdieudong
+      WHERE xoa='0' and mabosungnhansu=$mabosungnhansu$ and thongtinlienlac='0'
+    </select>
+
+    <select id="SelectRows_ddns_lapdanhsachdieudong_thongtinlienlac" resultClass="System.Collections.Hashtable">
+      SELECT
+      *
+      from ddns_lapdanhsachdieudong
+      WHERE xoa='0' and mabosungnhansu=$mabosungnhansu$ and thongtinlienlac='1'
+    </select>
+    
+    
+    <select id="SelectRows_ddns_lapdanhsachdieudong_taomoi_timkiem" resultClass="System.Collections.Hashtable">
+      SELECT emp.ID
+      ,emp.EmployeeID as manhanvien
+      ,(emp.LastName +' '+emp.FirstName) as hovaten
+      ,emp.OrgID as noilamviec_cu
+      ,emp.PositionID as chucdanh_cu
+      ,emp.WorkStatus
+      ,empro.email as email
+      ,empro.Mobile as dienthoai
+      FROM Employees emp
+      left join (select EmployeeID,BirthDate,email,Mobile from EmployeeProfiles) empro on(empro.EmployeeID=emp.EmployeeID)
+      where emp.WorkStatus<![CDATA[<>]]>59
+      and ( rtrim(lower(emp.lastname +' ' + emp.firstname)) like rtrim(lower(N'%$thongtinnhansu$%')) or rtrim(lower(empro.Email)) = rtrim(lower(N'$thongtinnhansu$')) or rtrim(lower(emp.EmployeeID)) = rtrim(lower('$thongtinnhansu$')))
+    </select>
+
+
+    <update id="UpdateRow_ddns_addstaff_lapdsdieudong">
+      UPDATE
+      ddns_addstaff
+      SET
+      
+      nguoilap_dieudong=N'$nguoilap_dieudong$'
+      ,nguoilapemail_dieudong='$nguoilapemail_dieudong$'
+      ,nguoilap_dieudong_duyet=N'$nguoilap_dieudong_duyet$'
+
+      ,bangiamdoc_dieudong=N'$bangiamdoc_dieudong$'
+      ,bangiamdocemail_dieudong='$bangiamdocemail_dieudong$'
+      ,bangiamdoc_dieudong_duyet=N'$bangiamdoc_dieudong_duyet$'
+
+      ,ngaylapdanhsachdieudong='$ngaylapdanhsachdieudong$'
+
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      WHERE mabosungnhansu=$mabosungnhansu$
+    </update>
+    
+    <insert id="InsertRow_ddns_lapdanhsachdieudong">
+      INSERT INTO ddns_lapdanhsachdieudong
+      (
+      mabosungnhansu
+      ,manhanvien
+      ,hovaten
+      ,noilamviec_cu
+      ,chucdanh_cu
+      ,noilamviec_moi
+      ,chucdanh_moi
+      ,ngaydieudongdukien
+      ,ghichu
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      ,chuyenracongtruong
+      ,thongtinlienlac
+      ,dienthoai
+      ,email
+      )
+      VALUES
+      (
+      $mabosungnhansu$
+      ,'$manhanvien$'
+      ,N'$hovaten$'
+      ,'$noilamviec_cu$'
+      ,'$chucdanh_cu$'
+      ,'$noilamviec_moi$'
+      ,'$chucdanh_moi$'
+      ,'$ngaydieudongdukien$'
+      ,N'$ghichu$'
+      ,'0'
+      ,GETDATE()
+      ,$nguoitao$
+      ,'0'
+      ,'$thongtinlienlac$'
+      ,'$dienthoai$'
+      ,'$email$'
+      )
+    </insert>
+
+
+    <update id="UpdateRow_ddns_lapdanhsachdieudong">
+      UPDATE
+      ddns_lapdanhsachdieudong
+      SET
+      manhanvien='$manhanvien$'
+      ,hovaten=N'$hovaten$'
+      ,noilamviec_cu='$noilamviec_cu$'
+      ,chucdanh_cu='$chucdanh_cu$'
+      ,noilamviec_moi='$noilamviec_moi$'
+      ,chucdanh_moi='$chucdanh_moi$'
+      ,ngaydieudongdukien='$ngaydieudongdukien$'
+      ,ghichu=N'$ghichu$'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      ,thongtinlienlac='$thongtinlienlac$'
+      ,dienthoai = '$dienthoai$'
+      ,email = '$email$'
+      WHERE madanhsach=$madanhsach$
+    </update>
+
+    
+    <update id="UpdateRow_Duyetky_quyetdinh_dieudong">
+      UPDATE
+      ddns_addstaff
+      SET
+      bangiamdoc_dieudong_ngayduyet='$bangiamdoc_dieudong_ngayduyet$'
+      ,bangiamdoc_dieudong_duyet='$bangiamdoc_dieudong_duyet$'
+      ,ngayhieuchinh= GETDATE()
+      WHERE mabosungnhansu=$mabosungnhansu$
+    </update>
+
+    <update id="UpdateRow_chuyenhoso_congtruong_phongban">
+      UPDATE
+      ddns_lapdanhsachdieudong
+      SET
+      chuyenracongtruong='$chuyenracongtruong$'
+      ,ngayhieuchinh= GETDATE()
+      WHERE madanhsach=$madanhsach$ and chuyenracongtruong='0'
+    </update>
+
+    <select id="SelectRows_ddns_lapdanhsach_dieudong_thongbao" resultClass="System.Collections.Hashtable">
+      SELECT
+      dsdd.madanhsach
+      ,dsdd.mabosungnhansu
+      ,dsdd.manhanvien
+      ,dsdd.hovaten
+      ,dsdd.ngaydieudongdukien
+      ,dsdd.ghichu
+      ,dsdd.thongtinlienlac
+      ,(select PositionName from Positions where Positions.id= COALESCE(cast(dsdd.chucdanh_cu as integer),0)) as chucdanh_cu
+      ,(select PositionName from Positions where Positions.id= COALESCE(cast(dsdd.chucdanh_moi as integer),0)) as chucdanh_moi
+      ,(select tenphongban from m_donvi_phongban where m_donvi_phongban.maphongban= dsdd.noilamviec_cu) as noilamviec_cu
+      ,(select tenphongban from m_donvi_phongban where m_donvi_phongban.maphongban= dsdd.noilamviec_moi) as noilamviec_moi
+      ,convert(varchar(10),empro.BirthDate,103) as ngaysinh
+      ,empro.Mobile as dienthoai
+      ,empro.email as email
+      ,empro.Profession
+      ,empro.PhraseText as trinhdo
+      from ddns_lapdanhsachdieudong dsdd
+      left join (select EmployeeID,BirthDate,Mobile,Email,Profession, mtl.PhraseText  from EmployeeProfiles
+      left join(select Id,ItemCode,(select PhraseText from Phrases where Phrases.PhraseCode =  ('LBL_Profession_'+MasterLists.ItemCode)) as PhraseText  from MasterLists
+      )mtl on(mtl.Id=EmployeeProfiles.Profession)
+      )empro on(empro.EmployeeID=dsdd.manhanvien)
+      WHERE dsdd.xoa='0' and ($madanhsach$)
+    </select>
+    
+    
+    
+    
+    
+
+    <select id="CountRow_Danhsachdenlamviec" resultClass="int">
+      SELECT
+      count(*)
+      FROM
+      ddns_lapdanhsachdieudong
+      WHERE xoa = '0' and chuyenracongtruong = '1'
+      <isNotEmpty	property="noilamviec_moi">
+        and noilamviec_moi='$noilamviec_moi$'
+      </isNotEmpty>
+    </select>
+
+    <select id="SelectRow_Danhsachdenlamviec" resultClass="System.Collections.Hashtable">
+      select * from(SELECT
+      dsdd.madanhsach
+      ,dsdd.mabosungnhansu
+      ,dsdd.manhanvien
+      ,dsdd.hovaten
+      ,dsdd.ngaydieudongdukien
+      ,dsdd.ghichu
+      ,dsdd.thongtinlienlac
+      ,dsdd.nhansuden_ct_pb
+      ,dsdd.nhansuden_ct_pb_ngayden
+      ,dsdd.xoa
+      ,(select PositionName from Positions where Positions.id= COALESCE(cast(dsdd.chucdanh_cu as integer),0)) as chucdanh_cu
+      ,(select PositionName from Positions where Positions.id= COALESCE(cast(dsdd.chucdanh_moi as integer),0)) as chucdanh_moi
+      ,(select tenphongban from m_donvi_phongban where m_donvi_phongban.maphongban= dsdd.noilamviec_cu) as noilamviec_cu
+      ,(select tenphongban from m_donvi_phongban where m_donvi_phongban.maphongban= dsdd.noilamviec_moi) as noilamviec_moi
+      ,convert(varchar(10),empro.BirthDate,103) as ngaysinh
+      ,empro.Mobile as dienthoai
+      ,empro.email as email
+      ,empro.Profession
+      ,empro.PhraseText as trinhdo
+      ,ROW_NUMBER() OVER (ORDER BY mabosungnhansu  desc) as row
+      from ddns_lapdanhsachdieudong dsdd
+      left join (select EmployeeID,BirthDate,Mobile,Email,Profession, mtl.PhraseText  from EmployeeProfiles
+      left join(select Id,ItemCode,(select PhraseText from Phrases where Phrases.PhraseCode =  ('LBL_Profession_'+MasterLists.ItemCode)) as PhraseText  from MasterLists
+      )mtl on(mtl.Id=EmployeeProfiles.Profession)
+      )empro on(empro.EmployeeID=dsdd.manhanvien)
+      WHERE xoa='0'  and chuyenracongtruong='1' 
+      <isNotEmpty	property="noilamviec_moi">
+        and noilamviec_moi='$noilamviec_moi$'
+      </isNotEmpty>) tbl1
+      where tbl1.xoa='0' and  tbl1.row <![CDATA[>=]]> $trangbd$ and tbl1.row <![CDATA[<=]]> $trangkt$
+      order by madanhsach asc
+    </select>
+
+    <update id="UpdateRow_employee_worker">
+      UPDATE
+      ddns_lapdanhsachdieudong
+      SET
+      nhansuden_ct_pb='$nhansuden_ct_pb$'
+      ,nhansuden_ct_pb_ngaytra='$nhansuden_ct_pb_ngaytra$'
+      ,ngayhieuchinh= GETDATE()
+      WHERE madanhsach=$madanhsach$ and (nhansuden_ct_pb ='0')
+    </update>
+
+    
+    <select id="CountRow_Danhsachnhansutrave" resultClass="int">
+      SELECT
+      count(*)
+      FROM
+      ddns_lapdanhsachdieudong
+      WHERE xoa = '0' and chuyenracongtruong = '1' and (nhansuden_ct_pb='1' or nhansuden_ct_pb='2' or nhansuden_ct_pb='3')
+      <isNotEmpty	property="noilamviec_moi">
+        and noilamviec_moi='$noilamviec_moi$'
+      </isNotEmpty>
+    </select>
+
+    <select id="SelectRow_Danhsachnhansutrave" resultClass="System.Collections.Hashtable">
+      select * from(SELECT
+      dsdd.madanhsach
+      ,dsdd.mabosungnhansu
+      ,dsdd.manhanvien
+      ,dsdd.hovaten
+      ,dsdd.ngaydieudongdukien
+      ,dsdd.ghichu
+      ,dsdd.thongtinlienlac
+      ,dsdd.nhansuden_ct_pb
+      ,dsdd.nhansuden_ct_pb_ngayden
+      ,dsdd.nhansuden_ct_pb_ngaytra
+      ,dsdd.xoa
+      ,(select PositionName from Positions where Positions.id= COALESCE(cast(dsdd.chucdanh_cu as integer),0)) as chucdanh_cu
+      ,(select PositionName from Positions where Positions.id= COALESCE(cast(dsdd.chucdanh_moi as integer),0)) as chucdanh_moi
+      ,(select tenphongban from m_donvi_phongban where m_donvi_phongban.maphongban= dsdd.noilamviec_cu) as noilamviec_cu
+      ,(select tenphongban from m_donvi_phongban where m_donvi_phongban.maphongban= dsdd.noilamviec_moi) as noilamviec_moi
+      ,convert(varchar(10),empro.BirthDate,103) as ngaysinh
+      ,empro.Mobile as dienthoai
+      ,empro.email as email
+      ,empro.Profession
+      ,empro.PhraseText as trinhdo
+      ,ROW_NUMBER() OVER (ORDER BY mabosungnhansu  desc) as row
+      from ddns_lapdanhsachdieudong dsdd
+      left join (select EmployeeID,BirthDate,Mobile,Email,Profession, mtl.PhraseText  from EmployeeProfiles
+      left join(select Id,ItemCode,(select PhraseText from Phrases where Phrases.PhraseCode =  ('LBL_Profession_'+MasterLists.ItemCode)) as PhraseText  from MasterLists
+      )mtl on(mtl.Id=EmployeeProfiles.Profession)
+      )empro on(empro.EmployeeID=dsdd.manhanvien)
+      WHERE xoa='0'  and chuyenracongtruong='1' and (nhansuden_ct_pb='1' or nhansuden_ct_pb='2' or nhansuden_ct_pb='3')
+      <isNotEmpty	property="noilamviec_moi">
+        and noilamviec_moi='$noilamviec_moi$'
+      </isNotEmpty>) tbl1
+      where tbl1.xoa='0' and  tbl1.row <![CDATA[>=]]> $trangbd$ and tbl1.row <![CDATA[<=]]> $trangkt$
+      order by madanhsach asc
+    </select>
+
+    <update id="UpdateRow_Pay_employee_worker">
+      UPDATE
+      ddns_lapdanhsachdieudong
+      SET
+      nhansuden_ct_pb='$nhansuden_ct_pb$'
+      ,nhansuden_ct_pb_ngaytra='$nhansuden_ct_pb_ngaytra$'
+      ,ngayhieuchinh= GETDATE()
+      WHERE madanhsach=$madanhsach$ and nhansuden_ct_pb ='1'
+    </update>
+
+
+    <update id="UpdateRow_Pay_employe_PhongNS_hoantat">
+      UPDATE
+      ddns_lapdanhsachdieudong
+      SET
+      nhansuden_ct_pb='$nhansuden_ct_pb$'
+      <!--,nhansuden_ct_pb_ngaytra='$nhansuden_ct_pb_ngaytra$'
+      ,ngayhieuchinh= GETDATE()-->
+      WHERE madanhsach=$madanhsach$ and nhansuden_ct_pb ='2'
+    </update>
+
+
+<!--TRẢ NHÂN SỰ TU PHONG BAN VE PHONG BAN-->
+
+    <select id="SelectRows_ddns_lapdanhsachchuyentravephongban_vephongban_taomoi_timkiem" resultClass="System.Collections.Hashtable">
+      SELECT emp.ID
+      ,emp.EmployeeID as manhanvien
+      ,(emp.LastName +' '+emp.FirstName) as hovaten
+      ,emp.OrgID as noilamviec_cu
+      ,emp.PositionID as chucdanh_cu
+      ,(select PositionName from Positions where Positions.id =  emp.PositionID) as vitricongviec
+      ,emp.WorkStatus
+      ,empro.email as email
+      ,empro.Mobile as dienthoai
+      ,empro.PhraseText as trinhdo
+      ,empro.PhraseText1 as chuyenmon
+      FROM Employees emp
+      left join (select EmployeeID,BirthDate,Mobile,Email,Profession, mtl.PhraseText,mtlpro.PhraseText1  from EmployeeProfiles
+      left join(select Id
+      ,(select PhraseText from Phrases where Phrases.PhraseCode =  ('LBL_EducationLevel_' + rtrim(MasterLists.ItemCode))) as PhraseText
+      from MasterLists)mtl on(mtl.Id=EmployeeProfiles.EducationLevel)
+      left join(select Id
+      ,(select PhraseText from Phrases where Phrases.PhraseCode =  ('LBL_Profession_' + rtrim(MasterLists.ItemCode))) as PhraseText1
+      from MasterLists)mtlpro on(mtlpro.Id=EmployeeProfiles.Profession)
+      )empro on(empro.EmployeeID=emp.EmployeeID)
+      where emp.WorkStatus<![CDATA[<>]]>59
+      and ( rtrim(lower(emp.lastname +' ' + emp.firstname)) like rtrim(lower(N'%$thongtinnhansu$%')) or rtrim(lower(empro.Email)) = rtrim(lower(N'$thongtinnhansu$')) or rtrim(lower(emp.EmployeeID)) = rtrim(lower('$thongtinnhansu$')))
+    </select>
+    
+    
+    
+  </statements>
+</sqlMap>

@@ -1,0 +1,336 @@
+﻿@model RICONS.Web.Models.WeedMeetingModels
+@{
+    ViewBag.Title = "Tạo mới lịch họp tuần";
+}
+@*--css--*@
+@section CSS
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/controller/KpiEmployee/KpiEmployee_New.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/prism.css" />
+}
+
+@*--javascript--*@
+@section JavaScript
+{
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/controllers/KpiEmployee/KpiEmployee_Edit.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery.datepick-vi.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/chosen.jquery.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/prism.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/table/buildTable.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/colResizale/colResizable-1.3.source.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/plugins/jquery.blockui.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/scripts/app.min.js"></script>
+
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootbox.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/custom.js"></script>
+
+    <script src="~/Scripts/jquery-2.1.0.intellisense.js"></script>
+    <script src="~/Scripts/jquery-2.1.0.js"></script>
+    <script src="~/Scripts/jquery-2.1.0.min.js"></script>
+
+<script>
+        $(document).ready(function (e) {
+            setValueToCombobox();
+        });
+        function setValueToCombobox() {
+            $('#filter01').val('@Model.matuan');
+            $('#filter02').val('@Model.phonghop');
+            $('#filter03').val('@Model.maphongban');
+            $('#filter04').val('@Model.loaicuochop');
+
+            for (var selector in configChosenDanhmucvanphongpham) {
+                $(selector).change();
+                $(selector).trigger('chosen:updated');
+            }
+        }
+</script>
+
+}
+<script>
+    var linkContent = '@Url.Content("~")';
+</script>
+
+
+<div class="HeaderFixed">
+    <div class="b-b b-light">
+        <div class="p-left c-black">Cập nhật lịch họp tuần</div>
+        <div class="clearBoth"></div>
+    </div>
+</div>
+
+
+<div class="boxEdit">
+    @using (Html.BeginForm("Create", "WeedMeeting", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-md-1"><input type="text" class="hidden" style="width:100%" autocomplete="off" placeholder="macuochop" id="txtmacuochop" name="macuochop" value="@Model.macuochop" /></div>
+            <div class="col-md-1"><input type="text" class="hidden" style="width:100%" autocomplete="off" placeholder="tenfile" id="txtuploadfile" name="uploadfile" value="@Model.uploadfile" /></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Phòng ban/Bộ phận<label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-10" style="padding-left:10px;">
+                <select id="filter03" data-placeholder="Chọn " class="chosen-select-loaikehoach3" name="maphongban">
+                    @if (!string.IsNullOrEmpty(ViewBag.sbphongban))
+                    {
+                        @Html.Raw(ViewBag.sbphongban);
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Loại cuộc họp<label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-10" style="padding-left:10px;">
+                <select id="filter04" data-placeholder="Chọn " class="chosen-select-loaikehoach4" name="loaicuochop">
+                    <option value="0">Loại cuộc họp</option>
+                    <option value="1">Họp tuần phòng</option>
+                    <option value="2">Họp tuần BGĐ</option>
+                    <option value="3">Họp khác</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Tuần thứ <label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-10" style="padding-left:10px;">
+                <select id="filter01" data-placeholder="Chọn tuần họp" class="chosen-select-loaikehoach1" name="matuan">
+                    <option value="0">Lựa chọn tuần họp</option>
+                    @if (!string.IsNullOrEmpty(ViewBag.sbtuan))
+                    {
+                        @Html.Raw(ViewBag.sbtuan);
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Giờ bắt đầu họp <label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Giờ họp - VD: 8h20 or 15h00" id="txtgiohop" name="giohop" value="@Model.giohop" /></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Ngày họp <label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Ngày họp - VD: 01/01/2018" id="txtngayhop" name="ngayhop" value="@Model.ngayhop" /></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Phòng họp <label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-10" style="padding-left:10px;">
+                <select id="filter02" data-placeholder="Chọn tuần họp" class="chosen-select-loaikehoach2" name="phonghop">
+                    @if (!string.IsNullOrEmpty(ViewBag.sbphonghop))
+                    {
+                        @Html.Raw(ViewBag.sbphonghop);
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Lý do buổi họp <label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Lý do buổi họp" id="txtlydobuoihop" name="lydobuoihop" value="@Model.lydobuoihop" /></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1" style="min-width: 160px; padding-left:10px;">Thành phần tham dự <label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Thành phần tham dự" id="txtthanhphanthamdu" name="thanhphanthamdu" value="@Model.thanhphanthamdu" /></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Cấp lãnh đạo <label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Cấp lãnh đạo (Cấp giám đốc trở lên). Ghi rõ họ tên" id="txtcaplanhdao" name="caplanhdao" value="@Model.caplanhdao" /></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Tóm tắt nội dung cuộc họp <label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-10" style="padding-left:10px;"><textarea style="width:100%" rows="4" placeholder="Tóm tắt nội dung cuộc họp" id="txtnoidungcuochop" name="noidungcuochop">@Model.noidungcuochop</textarea></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Tập tin đính kèm <label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-5" style="padding-left: 10px; line-height: 21px; padding-top: 6px;">
+                <input type="file" id="FileUpload" />
+                <input type="text" style="width:100%" autocomplete="off" placeholder="File upload" id="txtuploadfile1" class="hidden" name="uploadfile" />
+            </div>
+            <div class="col-md-5">
+                <input type="text" readonly="readonly" style="width:100%" autocomplete="off" placeholder="file" id="txttenfile" name="tenfile" value="@Model.tenfile" />
+            </div>
+        </div>
+
+        <div class="row" style="padding-top: 12px; padding-bottom: 5px;">
+            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;"></div>
+            <div class="col-md-7" style="padding-left:10px;">
+                <button id="btn-save" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu"><i class="retweet_save"></i> Lưu</button>
+                <a href="@Url.Action("Index", "WeedMeeting")" class="buttoncustom WhiteButton"><i class="retweet_trove"></i> Trở về</a>
+            </div>
+        </div>
+
+    }
+</div>
+
+<script>
+
+    $(document).ready(function (e) {
+
+    });
+
+    $('#FileUpload').on("change", function () {
+        debugger;
+        if ($('#filter03').val() == 0) {
+            Thongbao("Chọn Phòng ban/Bộ phận?");
+            document.getElementById("FileUpload").value = "";
+            return false;
+        }
+        if ($('#filter01').val() == 0) {
+            Thongbao("Chọn tuần họp thứ?");
+            document.getElementById("FileUpload").value = "";
+            return false;
+        }
+        if ($('#txtgiohop').val() == '') {
+            Thongbao("Chọn giờ họp?");
+            document.getElementById("FileUpload").value = "";
+            return false;
+        }
+        if ($('#txtngayhop').val() == '') {
+            Thongbao("Ngày họp?");
+            document.getElementById("FileUpload").value = "";
+            return false;
+        }
+        var maphongban = $('#filter03').val();
+        var tuanhop = $('#filter01').val();
+        var giohop = $('#txtgiohop').val();
+        var ngayhop = $('#txtngayhop').val();
+        var chuoitonghop = maphongban + "." + tuanhop + "." + giohop + "." + ngayhop;
+        var formData = new FormData();
+        var totalFiles = document.getElementById("FileUpload").files.length;
+        for (var i = 0; i < totalFiles; i++) {
+            var file = document.getElementById("FileUpload").files[i];
+            formData.append("FileUpload", file);
+            document.getElementById('txttenfile').value = file.name;
+            formData.append("FileUpload", file);
+        }
+        $.ajax({
+            type: "POST",
+            url: '/WeedMeeting/Upload?macuochop=' + chuoitonghop + '',
+            data: formData,
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $('#txtuploadfile').val(chuoitonghop);
+                alert('Upload file thành công!');
+            },
+            error: function (error) {
+                alert("Lỗi khi upload file!");
+            }
+        });
+    });
+
+
+    $('#btn-save').on('click', function (e) {
+        e.preventDefault();
+        if ($('#filter03').val() == '0') {
+            Thongbao("Chọn phòng ban/Bộ phận?");
+            return false;
+        }
+        if ($('#filter01').val() == '0') {
+            Thongbao("Chọn Tuần họp?");
+            return false;
+        }
+        else if ($('#txtgiohop').val().length < 2) {
+            Thongbao("Nhập giờ họp?");
+            return false;
+        }
+        else if ($('#txtngayhop').val().length != 10) {
+            Thongbao("Nhập ngày họp trong tuần (01/01/2017)?");
+            return false;
+        }
+        else if ($('#filter02').val() == 0) {
+            Thongbao("Chọn phòng họp?");
+            return false;
+        }
+
+        else if ($('#filter04').val() == 0) {
+            Thongbao("Loại cuộc họp?");
+            return false;
+        }
+        debugger;
+        var lydobuoihop = $('#txtlydobuoihop').val();
+        var thanhphanthamdu = $('#txtthanhphanthamdu').val();
+        var noidungcuochop = $('#txtnoidungcuochop').val();
+
+        var DataJson = "{";
+        DataJson += "'macuochop':'" + $('#txtmacuochop').val() + "',";
+        DataJson += "'matuan':'" + $('#filter01').val() + "',";
+        DataJson += "'giohop':'" + $('#txtgiohop').val() + "',";
+        DataJson += "'ngayhop':'" + $('#txtngayhop').val() + "',";
+        DataJson += "'phonghop':'" + $('#filter02').val() + "',";
+        DataJson += "'maphongban':'" + $('#filter03').val() + "',";
+
+        DataJson += "'loaicuochop':'" + $('#filter04').val() + "',";
+
+        DataJson += "'lydobuoihop':'" + lydobuoihop.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+        DataJson += "'thanhphanthamdu':'" + thanhphanthamdu.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+        DataJson += "'caplanhdao':'" + $('#txtcaplanhdao').val() + "',";
+        DataJson += "'noidungcuochop':'" + noidungcuochop.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+      
+        DataJson += "'uploadfile':'" + $('#txtuploadfile').val() + "',";
+        DataJson += "'tenfile':'" + $('#txttenfile').val() + "'";
+        DataJson += "}";
+
+        $.ajax({
+            type: 'POST',
+            url: '/WeedMeeting/Save',
+            datatype: "JSON",
+            data: "DataJson=" + DataJson,
+            cache: false,
+        })
+        .done(function (result) {
+            debugger;
+            var tb = JSON.stringify(result.success);
+            var macuochop = JSON.stringify(result.macuochop);
+            if (tb == "true") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu thành công.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    dialogSuccess.modal('hide');
+                }, 2000);
+            } else {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu không thành công</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    dialogSuccess.modal('hide');
+                }, 2000);
+            }
+        })
+        .fail(function (result) {
+            alert("FAILED: " + JSON.stringify(result));
+
+        });
+    })
+
+    function Thongbao(num) {
+        var dialogSuccess = bootbox.dialog({
+            message: "<i class='fa fa-check text-success'></i><span class='text-success'>" + num + "</span>",
+            closeButton: false,
+            onEscape: function () {
+            }
+        });
+        setTimeout(function () {
+            dialogSuccess.modal('hide');
+        }, 1000);
+    }
+
+</script>
+

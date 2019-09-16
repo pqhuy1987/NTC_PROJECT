@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HopNoiBoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Collaborates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NguoiDi" Type="int" Nullable="false" />
+          <Property Name="TieuDe" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="TuNgay" Type="datetime" Nullable="false" />
+          <Property Name="DenNgay" Type="datetime" Nullable="false" />
+          <Property Name="NoiCongTac" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="3000" />
+          <Property Name="EmailNguoiDuyet" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="DaDuyet" Type="bit" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="NgayDuyet" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ConstructionMeetings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="GioHop" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="LoaiCuocHop" Type="int" Nullable="false" />
+          <Property Name="ThanhPhanThamDu" Type="nvarchar" MaxLength="2000" />
+          <Property Name="FileDinhKem" Type="varchar" MaxLength="250" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="GiamDoc" Type="int" Nullable="false" />
+          <Property Name="CongTruong" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="m_donvi_chucdanh">
+          <Key>
+            <PropertyRef Name="machucdanh" />
+          </Key>
+          <Property Name="machucdanh" Type="int" Nullable="false" />
+          <Property Name="tengiaodich" Type="nvarchar" MaxLength="500" />
+          <Property Name="tenchucdanh" Type="nvarchar" MaxLength="500" />
+          <Property Name="xoa" Type="char" MaxLength="1" />
+          <Property Name="nguoitao" Type="int" />
+          <Property Name="ngaytao" Type="datetime" />
+          <Property Name="nguoihieuchinh" Type="int" />
+          <Property Name="ngayhieuchinh" Type="datetime" />
+          <Property Name="ghichu" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="m_donvi_phongban">
+          <Key>
+            <PropertyRef Name="madonvi" />
+            <PropertyRef Name="maphongban" />
+          </Key>
+          <Property Name="madonvi" Type="int" Nullable="false" />
+          <Property Name="maphongban" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tenphongban" Type="nvarchar" MaxLength="256" />
+          <Property Name="xoa" Type="varchar" MaxLength="1" />
+          <Property Name="nguoitao" Type="int" />
+          <Property Name="ngaytao" Type="datetime" />
+          <Property Name="nguoihieuchinh" Type="int" />
+          <Property Name="ngayhieuchinh" Type="datetime" />
+          <Property Name="ghichu" Type="nvarchar" MaxLength="2050" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="hovaten" Type="nvarchar" MaxLength="250" />
+          <Property Name="thuocquanly" Type="int" />
+          <Property Name="hotenquanly" Type="nvarchar" MaxLength="250" />
+          <Property Name="sodienthoai" Type="nvarchar" MaxLength="200" />
+          <Property Name="phongban_congtruong" Type="int" />
+          <Property Name="thuocquanly1" Type="int" />
+          <Property Name="hotenquanly1" Type="nvarchar" MaxLength="250" />
+          <Property Name="ghichu1" Type="varchar" MaxLength="250" />
+          <Property Name="thuocquanly2" Type="int" />
+          <Property Name="hotenquanly2" Type="nvarchar" MaxLength="250" />
+          <Property Name="ghichu2" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="m_donvi_thongtingiamdoc">
+          <Key>
+            <PropertyRef Name="mathongtin" />
+          </Key>
+          <Property Name="mathongtin" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="hovaten" Type="nvarchar" MaxLength="500" />
+          <Property Name="email" Type="nvarchar" MaxLength="500" />
+          <Property Name="xoa" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="m_taikhoan">
+          <Key>
+            <PropertyRef Name="mataikhoan" />
+          </Key>
+          <Property Name="mataikhoan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="manhansu" Type="nvarchar" MaxLength="50" />
+          <Property Name="tendangnhap" Type="nvarchar" MaxLength="500" />
+          <Property Name="thudientu" Type="nvarchar" MaxLength="500" />
+          <Property Name="matkhau" Type="nvarchar" MaxLength="32" />
+          <Property Name="hoten" Type="nvarchar" MaxLength="100" />
+          <Property Name="gioitinh" Type="nvarchar" MaxLength="1" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="512" />
+          <Property Name="sodienthoai" Type="varchar" MaxLength="13" />
+          <Property Name="tenhinh" Type="nvarchar" MaxLength="1024" />
+          <Property Name="extensionfile" Type="nvarchar" MaxLength="10" />
+          <Property Name="filecontenttype" Type="nvarchar" MaxLength="100" />
+          <Property Name="binarydata" Type="binary" MaxLength="1" />
+          <Property Name="madonvi" Type="int" />
+          <Property Name="is_ada" Type="varchar" MaxLength="1" />
+          <Property Name="kichhoat" Type="varchar" MaxLength="1" />
+          <Property Name="xoa" Type="varchar" MaxLength="1" />
+          <Property Name="nguoitao" Type="int" />
+          <Property Name="ngaytao" Type="datetime" />
+          <Property Name="nguoihieuchinh" Type="int" />
+          <Property Name="ngayhieuchinh" Type="datetime" />
+          <Property Name="maphongban" Type="nchar" MaxLength="10" />
+          <Property Name="machucdanh" Type="nchar" MaxLength="10" />
+          <Property Name="grouptk" Type="char" MaxLength="1" />
+          <Property Name="chucdanhkpi" Type="char" MaxLength="1" />
+          <Property Name="phongban_congtruong" Type="char" MaxLength="1" />
+          <Property Name="chamcong" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="WeedMeeting">
+          <Key>
+            <PropertyRef Name="macuochop" />
+          </Key>
+          <Property Name="macuochop" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="matuan" Type="int" Nullable="false" />
+          <Property Name="giohop" Type="nvarchar" MaxLength="100" />
+          <Property Name="ngayhop" Type="varchar" MaxLength="10" />
+          <Property Name="phonghop" Type="int" />
+          <Property Name="lydobuoihop" Type="nvarchar" MaxLength="3050" />
+          <Property Name="thanhphanthamdu" Type="nvarchar(max)" />
+          <Property Name="caplanhdao" Type="nvarchar" MaxLength="3050" />
+          <Property Name="noidungcuochop" Type="nvarchar(max)" />
+          <Property Name="uploadfile" Type="nvarchar" MaxLength="256" />
+          <Property Name="tenfile" Type="nvarchar" MaxLength="256" />
+          <Property Name="xoa" Type="varchar" MaxLength="1" />
+          <Property Name="nguoitao" Type="int" />
+          <Property Name="ngaytao" Type="datetime" />
+          <Property Name="nguoihieuchinh" Type="int" />
+          <Property Name="ngayhieuchinh" Type="datetime" />
+          <Property Name="maphongban" Type="varchar" MaxLength="50" />
+          <Property Name="loaicuochop" Type="int" />
+        </EntityType>
+        <EntityContainer Name="HopNoiBoModelStoreContainer">
+          <EntitySet Name="Collaborates" EntityType="Self.Collaborates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConstructionMeetings" EntityType="Self.ConstructionMeetings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="m_donvi_chucdanh" EntityType="Self.m_donvi_chucdanh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="m_donvi_phongban" EntityType="Self.m_donvi_phongban" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="m_donvi_thongtingiamdoc" EntityType="Self.m_donvi_thongtingiamdoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="m_taikhoan" EntityType="Self.m_taikhoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WeedMeeting" EntityType="Self.WeedMeeting" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HopNoiBoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Collaborates" EntityType="HopNoiBoModel.Collaborate" />
+          <EntitySet Name="m_donvi_chucdanh" EntityType="HopNoiBoModel.m_donvi_chucdanh" />
+          <EntitySet Name="m_donvi_phongban" EntityType="HopNoiBoModel.m_donvi_phongban" />
+          <EntitySet Name="m_donvi_thongtingiamdoc" EntityType="HopNoiBoModel.m_donvi_thongtingiamdoc" />
+          <EntitySet Name="m_taikhoan" EntityType="HopNoiBoModel.m_taikhoan" />
+          <EntitySet Name="WeedMeetings" EntityType="HopNoiBoModel.WeedMeeting" />
+          <EntitySet Name="ConstructionMeetings" EntityType="HopNoiBoModel.ConstructionMeeting" />
+        </EntityContainer>
+        <EntityType Name="Collaborate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NguoiDi" Type="Int32" Nullable="false" />
+          <Property Name="TieuDe" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TuNgay" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DenNgay" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NoiCongTac" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Name="EmailNguoiDuyet" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DaDuyet" Type="Boolean" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NgayDuyet" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="m_donvi_chucdanh">
+          <Key>
+            <PropertyRef Name="machucdanh" />
+          </Key>
+          <Property Name="machucdanh" Type="Int32" Nullable="false" />
+          <Property Name="tengiaodich" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="tenchucdanh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="xoa" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="nguoitao" Type="Int32" />
+          <Property Name="ngaytao" Type="DateTime" Precision="3" />
+          <Property Name="nguoihieuchinh" Type="Int32" />
+          <Property Name="ngayhieuchinh" Type="DateTime" Precision="3" />
+          <Property Name="ghichu" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="m_donvi_phongban">
+          <Key>
+            <PropertyRef Name="madonvi" />
+            <PropertyRef Name="maphongban" />
+          </Key>
+          <Property Name="madonvi" Type="Int32" Nullable="false" />
+          <Property Name="maphongban" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tenphongban" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="xoa" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="nguoitao" Type="Int32" />
+          <Property Name="ngaytao" Type="DateTime" Precision="3" />
+          <Property Name="nguoihieuchinh" Type="Int32" />
+          <Property Name="ngayhieuchinh" Type="DateTime" Precision="3" />
+          <Property Name="ghichu" Type="String" MaxLength="2050" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hovaten" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="thuocquanly" Type="Int32" />
+          <Property Name="hotenquanly" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="sodienthoai" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="phongban_congtruong" Type="Int32" />
+          <Property Name="thuocquanly1" Type="Int32" />
+          <Property Name="hotenquanly1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ghichu1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="thuocquanly2" Type="Int32" />
+          <Property Name="hotenquanly2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ghichu2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="m_donvi_thongtingiamdoc">
+          <Key>
+            <PropertyRef Name="mathongtin" />
+          </Key>
+          <Property Name="mathongtin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hovaten" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="xoa" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="m_taikhoan">
+          <Key>
+            <PropertyRef Name="mataikhoan" />
+          </Key>
+          <Property Name="mataikhoan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="manhansu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tendangnhap" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="thudientu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="matkhau" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="hoten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="gioitinh" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="diachi" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="sodienthoai" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="tenhinh" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="extensionfile" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="filecontenttype" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="binarydata" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="madonvi" Type="Int32" />
+          <Property Name="is_ada" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="kichhoat" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="xoa" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="nguoitao" Type="Int32" />
+          <Property Name="ngaytao" Type="DateTime" Precision="3" />
+          <Property Name="nguoihieuchinh" Type="Int32" />
+          <Property Name="ngayhieuchinh" Type="DateTime" Precision="3" />
+          <Property Name="maphongban" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="machucdanh" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="grouptk" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="chucdanhkpi" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="phongban_congtruong" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="chamcong" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="WeedMeeting">
+          <Key>
+            <PropertyRef Name="macuochop" />
+          </Key>
+          <Property Name="macuochop" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="matuan" Type="Int32" Nullable="false" />
+          <Property Name="giohop" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ngayhop" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="phonghop" Type="Int32" />
+          <Property Name="lydobuoihop" Type="String" MaxLength="3050" FixedLength="false" Unicode="true" />
+          <Property Name="thanhphanthamdu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="caplanhdao" Type="String" MaxLength="3050" FixedLength="false" Unicode="true" />
+          <Property Name="noidungcuochop" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="uploadfile" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="tenfile" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="xoa" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="nguoitao" Type="Int32" />
+          <Property Name="ngaytao" Type="DateTime" Precision="3" />
+          <Property Name="nguoihieuchinh" Type="Int32" />
+          <Property Name="ngayhieuchinh" Type="DateTime" Precision="3" />
+          <Property Name="maphongban" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="loaicuochop" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ConstructionMeeting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="GioHop" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="LoaiCuocHop" Type="Int32" Nullable="false" />
+          <Property Name="ThanhPhanThamDu" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="FileDinhKem" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GiamDoc" Type="Int32" Nullable="false" />
+          <Property Name="CongTruong" Type="Int32" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HopNoiBoModelStoreContainer" CdmEntityContainer="DBContext">
+          <EntitySetMapping Name="Collaborates">
+            <EntityTypeMapping TypeName="HopNoiBoModel.Collaborate">
+              <MappingFragment StoreEntitySet="Collaborates">
+                <ScalarProperty Name="NgayDuyet" ColumnName="NgayDuyet" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DaDuyet" ColumnName="DaDuyet" />
+                <ScalarProperty Name="EmailNguoiDuyet" ColumnName="EmailNguoiDuyet" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="NoiCongTac" ColumnName="NoiCongTac" />
+                <ScalarProperty Name="DenNgay" ColumnName="DenNgay" />
+                <ScalarProperty Name="TuNgay" ColumnName="TuNgay" />
+                <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+                <ScalarProperty Name="NguoiDi" ColumnName="NguoiDi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="m_donvi_chucdanh">
+            <EntityTypeMapping TypeName="HopNoiBoModel.m_donvi_chucdanh">
+              <MappingFragment StoreEntitySet="m_donvi_chucdanh">
+                <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+                <ScalarProperty Name="ngayhieuchinh" ColumnName="ngayhieuchinh" />
+                <ScalarProperty Name="nguoihieuchinh" ColumnName="nguoihieuchinh" />
+                <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+                <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+                <ScalarProperty Name="xoa" ColumnName="xoa" />
+                <ScalarProperty Name="tenchucdanh" ColumnName="tenchucdanh" />
+                <ScalarProperty Name="tengiaodich" ColumnName="tengiaodich" />
+                <ScalarProperty Name="machucdanh" ColumnName="machucdanh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="m_donvi_phongban">
+            <EntityTypeMapping TypeName="HopNoiBoModel.m_donvi_phongban">
+              <MappingFragment StoreEntitySet="m_donvi_phongban">
+                <ScalarProperty Name="ghichu2" ColumnName="ghichu2" />
+                <ScalarProperty Name="hotenquanly2" ColumnName="hotenquanly2" />
+                <ScalarProperty Name="thuocquanly2" ColumnName="thuocquanly2" />
+                <ScalarProperty Name="ghichu1" ColumnName="ghichu1" />
+                <ScalarProperty Name="hotenquanly1" ColumnName="hotenquanly1" />
+                <ScalarProperty Name="thuocquanly1" ColumnName="thuocquanly1" />
+                <ScalarProperty Name="phongban_congtruong" ColumnName="phongban_congtruong" />
+                <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
+                <ScalarProperty Name="hotenquanly" ColumnName="hotenquanly" />
+                <ScalarProperty Name="thuocquanly" ColumnName="thuocquanly" />
+                <ScalarProperty Name="hovaten" ColumnName="hovaten" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+                <ScalarProperty Name="ngayhieuchinh" ColumnName="ngayhieuchinh" />
+                <ScalarProperty Name="nguoihieuchinh" ColumnName="nguoihieuchinh" />
+                <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+                <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+                <ScalarProperty Name="xoa" ColumnName="xoa" />
+                <ScalarProperty Name="tenphongban" ColumnName="tenphongban" />
+                <ScalarProperty Name="maphongban" ColumnName="maphongban" />
+                <ScalarProperty Name="madonvi" ColumnName="madonvi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="m_donvi_thongtingiamdoc">
+            <EntityTypeMapping TypeName="HopNoiBoModel.m_donvi_thongtingiamdoc">
+              <MappingFragment StoreEntitySet="m_donvi_thongtingiamdoc">
+                <ScalarProperty Name="xoa" ColumnName="xoa" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="hovaten" ColumnName="hovaten" />
+                <ScalarProperty Name="mathongtin" ColumnName="mathongtin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="m_taikhoan">
+            <EntityTypeMapping TypeName="HopNoiBoModel.m_taikhoan">
+              <MappingFragment StoreEntitySet="m_taikhoan">
+                <ScalarProperty Name="chamcong" ColumnName="chamcong" />
+                <ScalarProperty Name="phongban_congtruong" ColumnName="phongban_congtruong" />
+                <ScalarProperty Name="chucdanhkpi" ColumnName="chucdanhkpi" />
+                <ScalarProperty Name="grouptk" ColumnName="grouptk" />
+                <ScalarProperty Name="machucdanh" ColumnName="machucdanh" />
+                <ScalarProperty Name="maphongban" ColumnName="maphongban" />
+                <ScalarProperty Name="ngayhieuchinh" ColumnName="ngayhieuchinh" />
+                <ScalarProperty Name="nguoihieuchinh" ColumnName="nguoihieuchinh" />
+                <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+                <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+                <ScalarProperty Name="xoa" ColumnName="xoa" />
+                <ScalarProperty Name="kichhoat" ColumnName="kichhoat" />
+                <ScalarProperty Name="is_ada" ColumnName="is_ada" />
+                <ScalarProperty Name="madonvi" ColumnName="madonvi" />
+                <ScalarProperty Name="binarydata" ColumnName="binarydata" />
+                <ScalarProperty Name="filecontenttype" ColumnName="filecontenttype" />
+                <ScalarProperty Name="extensionfile" ColumnName="extensionfile" />
+                <ScalarProperty Name="tenhinh" ColumnName="tenhinh" />
+                <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+                <ScalarProperty Name="hoten" ColumnName="hoten" />
+                <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+                <ScalarProperty Name="thudientu" ColumnName="thudientu" />
+                <ScalarProperty Name="tendangnhap" ColumnName="tendangnhap" />
+                <ScalarProperty Name="manhansu" ColumnName="manhansu" />
+                <ScalarProperty Name="mataikhoan" ColumnName="mataikhoan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WeedMeetings">
+            <EntityTypeMapping TypeName="HopNoiBoModel.WeedMeeting">
+              <MappingFragment StoreEntitySet="WeedMeeting">
+                <ScalarProperty Name="loaicuochop" ColumnName="loaicuochop" />
+                <ScalarProperty Name="maphongban" ColumnName="maphongban" />
+                <ScalarProperty Name="ngayhieuchinh" ColumnName="ngayhieuchinh" />
+                <ScalarProperty Name="nguoihieuchinh" ColumnName="nguoihieuchinh" />
+                <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+                <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+                <ScalarProperty Name="xoa" ColumnName="xoa" />
+                <ScalarProperty Name="tenfile" ColumnName="tenfile" />
+                <ScalarProperty Name="uploadfile" ColumnName="uploadfile" />
+                <ScalarProperty Name="noidungcuochop" ColumnName="noidungcuochop" />
+                <ScalarProperty Name="caplanhdao" ColumnName="caplanhdao" />
+                <ScalarProperty Name="thanhphanthamdu" ColumnName="thanhphanthamdu" />
+                <ScalarProperty Name="lydobuoihop" ColumnName="lydobuoihop" />
+                <ScalarProperty Name="phonghop" ColumnName="phonghop" />
+                <ScalarProperty Name="ngayhop" ColumnName="ngayhop" />
+                <ScalarProperty Name="giohop" ColumnName="giohop" />
+                <ScalarProperty Name="matuan" ColumnName="matuan" />
+                <ScalarProperty Name="macuochop" ColumnName="macuochop" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConstructionMeetings">
+            <EntityTypeMapping TypeName="HopNoiBoModel.ConstructionMeeting">
+              <MappingFragment StoreEntitySet="ConstructionMeetings">
+                <ScalarProperty Name="CongTruong" ColumnName="CongTruong" />
+                <ScalarProperty Name="GiamDoc" ColumnName="GiamDoc" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="FileDinhKem" ColumnName="FileDinhKem" />
+                <ScalarProperty Name="ThanhPhanThamDu" ColumnName="ThanhPhanThamDu" />
+                <ScalarProperty Name="LoaiCuocHop" ColumnName="LoaiCuocHop" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="GioHop" ColumnName="GioHop" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

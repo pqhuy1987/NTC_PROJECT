@@ -1,0 +1,56 @@
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\RICONS.DataServices.dll.config
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\RICONS.DataServices.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\RICONS.DataServices.pdb
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\Castle.DynamicProxy.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\EntityFramework.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\EntityFramework.SqlServer.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\IBatisNet.Common.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\IBatisNet.DataMapper.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\log4net.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\RICONS.Core.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\RICONS.Logger.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\NPOI.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\NPOI.OOXML.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\ICSharpCode.SharpZipLib.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\NPOI.OpenXmlFormats.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\NPOI.OpenXml4Net.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\RICONS.Core.pdb
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\RICONS.Logger.pdb
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\EntityFramework.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\EntityFramework.SqlServer.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\IBatisNet.Common.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\IBatisNet.DataMapper.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Release\log4net.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Release\RICONS.DataServices.csprojAssemblyReference.cache
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Release\RICONS.DataServices.csproj.CoreCompileInputs.cache
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Release\RICONS.DataServices.csproj.CopyComplete
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Release\RICONS.DataServices.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Release\RICONS.DataServices.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\RICONS.DataServices.dll.config
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\RICONS.DataServices.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\RICONS.DataServices.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\Castle.DynamicProxy.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\EntityFramework.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\EntityFramework.SqlServer.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\IBatisNet.Common.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\IBatisNet.DataMapper.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\log4net.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\RICONS.Core.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\RICONS.Logger.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\NPOI.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\NPOI.OOXML.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\NPOI.OpenXmlFormats.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\NPOI.OpenXml4Net.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\RICONS.Core.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\RICONS.Logger.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\EntityFramework.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\EntityFramework.SqlServer.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\IBatisNet.Common.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\IBatisNet.DataMapper.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Release\log4net.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\obj\Release\RICONS.DataServices.csprojAssemblyReference.cache
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\obj\Release\RICONS.DataServices.csproj.CoreCompileInputs.cache
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\obj\Release\RICONS.DataServices.csproj.CopyComplete
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\obj\Release\RICONS.DataServices.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\obj\Release\RICONS.DataServices.pdb

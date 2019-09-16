@@ -1,0 +1,110 @@
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.csprojAssemblyReference.cache
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.csproj.CoreCompileInputs.cache
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.DataServices.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.DataServices.pdb
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\Castle.DynamicProxy.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.Common.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.DataMapper.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\log4net.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.Core.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.Logger.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\NPOI.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\NPOI.OOXML.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\ICSharpCode.SharpZipLib.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\NPOI.OpenXmlFormats.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\NPOI.OpenXml4Net.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.Core.pdb
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.Logger.pdb
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.Common.xml
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.DataMapper.xml
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\log4net.xml
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.csproj.CopyComplete
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.pdb
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.DataServices.dll.config
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.SqlServer.dll
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.xml
+E:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.SqlServer.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.DataServices.dll.config
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.DataServices.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.DataServices.pdb
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\Castle.DynamicProxy.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.SqlServer.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.Common.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.DataMapper.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\log4net.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.Core.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.Logger.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\NPOI.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\NPOI.OOXML.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\ICSharpCode.SharpZipLib.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\NPOI.OpenXmlFormats.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\NPOI.OpenXml4Net.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.Core.pdb
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.Logger.pdb
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.SqlServer.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.Common.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.DataMapper.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\log4net.xml
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.csprojAssemblyReference.cache
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.csproj.CoreCompileInputs.cache
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.csproj.CopyComplete
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.dll
+F:\TFS\Ricons\Meeting\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\RICONS.DataServices.dll.config
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\RICONS.DataServices.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\RICONS.DataServices.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\Castle.DynamicProxy.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.SqlServer.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.Common.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.DataMapper.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\log4net.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\RICONS.Core.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\RICONS.Logger.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\NPOI.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\NPOI.OOXML.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\NPOI.OpenXml4Net.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\RICONS.Core.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\RICONS.Logger.pdb
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.SqlServer.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.Common.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.DataMapper.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\bin\Debug\log4net.xml
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.csprojAssemblyReference.cache
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.csproj.CoreCompileInputs.cache
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.csproj.CopyComplete
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.dll
+D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.pdb
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.DataServices.dll.config
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.DataServices.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.DataServices.pdb
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\Castle.DynamicProxy.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.SqlServer.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.Common.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.DataMapper.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\log4net.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.Core.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.Logger.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\NPOI.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\NPOI.OOXML.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\NPOI.OpenXml4Net.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.Core.pdb
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\RICONS.Logger.pdb
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.xml
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.SqlServer.xml
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.Common.xml
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.DataMapper.xml
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\bin\Debug\log4net.xml
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.csprojResolveAssemblyReference.cache
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.dll
+D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.pdb

@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "assets/css/construction-meeting.css",
+    "inputFile": "assets/css/construction-meeting.scss"
+  },
+  {
+    "outputFile": "assets/css/collaborate.css",
+    "inputFile": "assets/css/collaborate.scss"
+  }
+]

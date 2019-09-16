@@ -1,0 +1,156 @@
+﻿@model RICONS.Web.Models.PhongBanModels
+@{
+    ViewBag.Title = "KPI cấp công trường";
+}
+
+
+@section CSS
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/controller/KpiConstruction/Index_Construction.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/css/components-rounded.min.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/layouts/css/blue.min.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/prism.css" />
+    @* <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/controller/MilestonesCSS.Create.css" />*@
+}
+
+@*--javascript--*@
+@section JavaScript
+{
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/controllers/KpiConstruction/Index_Construction.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery.datepick-vi.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/chosen.jquery.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/prism.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/table/buildTable.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/colResizale/colResizable-1.3.source.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/plugins/jquery.blockui.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/scripts/app.min.js"></script>
+
+
+
+
+}
+<script>
+    var linkContent = '@Url.Content("~")';
+</script>
+
+
+<div class="HeaderFixed">
+
+    <div class="b-b b-light1">
+        <div class="row">
+
+            <div class="col-md-2" style="width:102px;">
+                <a href="@Url.Action("Kpi_Level_Construction_New", "KpiCompany")" class="buttoncustom WhiteButton" style="width:95px;"> <i class="retweet_new"></i>Thêm mới</a>
+            </div>
+
+            <div class="col-md-1" style="width:95px;">
+                <a id="btnDeleted" href="@Url.Action("Deleted", "KpiCompany")" class="buttoncustom WhiteButton" style="width:95px;"><i class="retweet_xoa"></i>Xoá</a>
+            </div>
+
+            <div class="col-md-4" style="width: 320px; padding-left: 10px; padding-right:0px">
+                Lọc theo: &nbsp;
+                <select id="filter01" data-placeholder="Chọn phòng ban" class="chosen-select-loaikehoach" name="maphongban">
+                    @if (!string.IsNullOrEmpty(ViewBag.sbphongban))
+                    {
+                        @Html.Raw(ViewBag.sbphongban);
+                    }
+                </select>
+            </div>
+
+            <div class="col-md-1" style="width:220px;padding-left:0px;">
+                <select id="filter02" data-placeholder="Chọn tình trạng" class="chosen-select-loaikehoach1" name="tinhtrangduyet">
+                    <option value="0">Tình trạng Hồ sơ</option>
+                    <option value="1">Hồ sơ đã Duyệt</option>
+                    <option value="2">Hồ sơ không duyệt</option>
+                </select>
+            </div>
+
+            <div class="col-md-1" style="width:60px;"><input type="text" style="width: 60px; border-radius: 3px; border: 1px solid #bbb; height: 26px; text-align: center;" id="txttimkiemnam" name="timkiemnam" value="@Model.xoa" /></div>
+            <div class="col-md-1" style="line-height: 31px; width:105px;padding-left:5px;"> Export: <a href="@Url.Action("ExportLicensing", "Classtlist")"><i class="fa fa-file-excel-o" style="color:black;"></i>Excel</a></div>
+
+            <div class="p-right p-right-item2">
+                <div class="p-right-item t-export c-black">
+                    <div class="p-right-item t-export c-black" style="padding-right: 5px;"><a id="btnPre" style="cursor: pointer;"> < </a></div>
+
+                    <div class="p-right-item t-export c-black">
+                        <div class="col-md-1"><input type="text" style="width: 50px; border-radius: 3px; border: 1px solid #bbb; height: 26px; text-align: center; " id="txttrangthu" name="trangthu" value="1" /></div>
+                    </div>
+                    <div class="p-right-item t-export c-black" style="padding-right: 5px;"><a id="btnNext" style="cursor: pointer;"> > </a></div>
+
+                </div>
+                <div class="p-right-item1 t-export c-black" id="girdInfo">&nbsp; <span class="Pages">0</span>&nbsp; trang&nbsp; <span class="tongdong">0</span>&nbsp; kết quả &nbsp;</div>
+            </div>
+
+        </div>
+    </div>
+    <div class="clearBoth"></div>
+</div>
+
+<div style="width:100%; height:100%;">
+    <div id="boxContent">
+        <div class="row">
+            <div class="portlet-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table_danhSach" id="tableContent">
+                        <thead id="head-date" style="background-color: #87f1dd;">
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script>
+
+    $(document).ready(function (e) {
+        renderDate();
+    });
+
+
+    function renderDate() {
+        var html = '';
+        html += '<tr>';
+        html += '<th class="ovh col1" rowspan="2"><input type="checkbox" onclick="Select(this);" class="chkCheck"/></th>'
+            + '<th class="ovh col2" rowspan="2">Stt</th>'
+            + '<th class="ovh col3" rowspan="2">Biểu mẫu</th>'
+            + '<th class="ovh col4" rowspan="2">Tên dự án</th>'
+            + '<th class="ovh col5" rowspan="2">TG thi công</th>'
+            + '<th class="ovh col6" rowspan="2">TG kết thúc</th>'
+            + '<th class="ovh col13" rowspan="2">Trình trạng HS</th>'
+            + '<th colspan="3" style="background-color: #abfa8b;">Cấp trên trực tiếp</th>'
+            + '<th colspan="3" style="background-color: #dfff7a;">Tổng giám đốc</th>'
+            + '</tr>';
+        html += '<tr>';
+        html += '<th class="ovh col7" style="background-color: #abfa8b;">Họ và tên</th>';
+        html += '<th class="ovh col8" style="background-color: #abfa8b;">Đã duyệt</th>';
+        html += '<th class="ovh col9" style="background-color: #abfa8b;">Ngày duyệt</th>';
+        html += '<th class="ovh col10" style="background-color: #dfff7a;">Họ và tên</th>';
+        html += '<th class="ovh col11" style="background-color: #dfff7a;">Đã duyệt</th>';
+        html += '<th class="ovh col12"style="background-color: #dfff7a;">Ngày duyệt</th>';
+        html += '</tr>';
+        $('#head-date').html(html);
+    }
+
+    function Thongbao(num) {
+        var dialogSuccess = bootbox.dialog({
+            message: "<i class='fa fa-check text-success'></i><span class='text-success'>" + num + "</span>",
+            closeButton: false,
+            onEscape: function () {
+            }
+        });
+        setTimeout(function () {
+            dialogSuccess.modal('hide');
+        }, 1000);
+    }
+
+</script>
+
+
+

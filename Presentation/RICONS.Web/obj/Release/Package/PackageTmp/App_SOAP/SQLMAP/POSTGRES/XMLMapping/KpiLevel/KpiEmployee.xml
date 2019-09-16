@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap
+  namespace="KpiEmployee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://ibatis.apache.org/mapping">
+  <statements>
+
+    <select id="SelectRows_LoadKPIfromCompanyDetail_theophongban" resultClass="System.Collections.Hashtable">
+      SELECT *
+      FROM KPI_Level_Company_Detail
+      WHERE xoa='0'  and '$maphongban$' IN (SELECT * FROM fn_SplitStringToTable(nguonchungminh, ',')) or stt='A' or stt='B' or stt='C' or stt='D' or stt='';
+    </select>
+
+    <select id="SelectRow_KpiEmployee_XuatExcel" resultClass="System.Collections.Hashtable">
+      SELECT
+      *
+      ,(select tenphongban from m_donvi_phongban pb where pb.xoa='0' and pb.maphongban=KPI_Employee.maphongban) as tenphongban
+      ,(select tenchucdanh from m_donvi_chucdanh pb where pb.xoa='0' and pb.machucdanh=KPI_Employee.chucdanh) as tenchucdanh
+      ,ROW_NUMBER() OVER (ORDER BY makpinhanvien  desc) as row
+      from KPI_Employee
+      WHERE xoa='0'
+      <isNotEmpty property="maphongban">
+        and maphongban = '$maphongban$'
+      </isNotEmpty>
+      order by makpinhanvien desc
+    </select>
+    
+    
+    
+    
+    <select id="CountRows_KpiEmployee" resultClass="int">
+      SELECT
+      count(*)
+      FROM
+      KPI_Employee
+      WHERE xoa = '0'
+      <isNotEmpty property="hovaten">
+        and (manhanvien='$hovaten$' or lower(hovaten) like lower('%$hovaten$%') or lower(email) = lower('$hovaten$'))
+      </isNotEmpty>
+      <isNotEmpty property="nguoitao">
+        and nguoitao=$nguoitao$
+      </isNotEmpty>
+      <isNotEmpty property="maphongban">
+        and maphongban = '$maphongban$'
+      </isNotEmpty>
+
+      <isNotEmpty property="tinhtranghoso">
+        and truongphongxemxetkpi_duyet = '$tinhtranghoso$'
+      </isNotEmpty>
+
+      <isNotEmpty property="nguoilapkpi_dagui">
+        and nguoilapkpi_dagui = '$nguoilapkpi_dagui$'
+      </isNotEmpty>
+      
+    </select>
+
+    <select id="SelectRow_KpiEmployee" resultClass="System.Collections.Hashtable">
+      select * from (SELECT
+      *
+      ,(select tenphongban from m_donvi_phongban pb where pb.xoa='0' and pb.maphongban=KPI_Employee.maphongban) as tenphongban
+      ,(select tenchucdanh from m_donvi_chucdanh pb where pb.xoa='0' and pb.machucdanh=KPI_Employee.chucdanh) as tenchucdanh
+      ,ROW_NUMBER() OVER (ORDER BY makpinhanvien  desc) as row
+      from KPI_Employee
+      WHERE xoa='0'
+      <isNotEmpty property="hovaten">
+      and (manhanvien='$hovaten$' or lower(hovaten) like lower(N'%$hovaten$%') or lower(email) = lower('$hovaten$'))
+    </isNotEmpty>
+    <isNotEmpty property="nguoitao">
+      and nguoitao=$nguoitao$
+    </isNotEmpty>
+    <isNotEmpty property="maphongban">
+      and maphongban = '$maphongban$'
+    </isNotEmpty>
+      <isNotEmpty property="tinhtranghoso">
+        and truongphongxemxetkpi_duyet = '$tinhtranghoso$'
+      </isNotEmpty>
+      <isNotEmpty property="nguoilapkpi_dagui">
+        and nguoilapkpi_dagui = '$nguoilapkpi_dagui$'
+      </isNotEmpty>
+      ) tbl1
+      where tbl1.xoa='0' and  tbl1.row <![CDATA[>=]]> $trangbd$ and tbl1.row <![CDATA[<=]]> $trangkt$
+      <isNotEmpty property="hovaten">
+        and (manhanvien='$hovaten$' or lower(hovaten) like lower(N'%$hovaten$%') or lower(email) = lower('$hovaten$'))
+      </isNotEmpty>
+      <isNotEmpty property="nguoitao">
+        and nguoitao=$nguoitao$
+      </isNotEmpty>
+      <isNotEmpty property="maphongban">
+        and maphongban = '$maphongban$'
+      </isNotEmpty>
+      <isNotEmpty property="nguoilapkpi_dagui">
+        and nguoilapkpi_dagui = '$nguoilapkpi_dagui$'
+      </isNotEmpty>
+      <isNotEmpty property="tinhtranghoso">
+        and truongphongxemxetkpi_duyet = '$tinhtranghoso$'
+      </isNotEmpty>
+      order by makpinhanvien desc
+    </select>
+    
+    <insert id="InsertRow_KpiEmployee">
+      INSERT INTO KPI_Employee
+      (
+      makpinhanvien
+      ,maphongban
+      ,ngaybanhanh
+      ,lancapnhat
+      ,manhanvien
+      ,hovaten
+      ,chucdanh
+      ,captrentructiep
+      ,ngaydangky
+      ,ngaydanhgia
+      ,nguoilapkpi
+      ,email
+      ,nguoilapkpi_dagui
+      ,nguoilapkpi_ngay
+      ,truongphongxemxetkpi
+      ,truongphongemail
+      ,truongphongxemxetkpi_duyet
+      ,truongphongxemxetkpi_ngay
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      ,kpichinhsua
+      )
+      VALUES
+      (
+      $makpinhanvien$
+      ,'$maphongban$'
+      ,'$ngaybanhanh$'
+      ,'$lancapnhat$'
+      ,'$manhanvien$'
+      ,N'$hovaten$'
+      ,$chucdanh$
+      ,N'$captrentructiep$'
+      ,'$ngaydangky$'
+      ,'$ngaydanhgia$'
+      ,N'$nguoilapkpi$'
+      ,'$email$'
+      ,'$nguoilapkpi_dagui$'
+      ,'$nguoilapkpi_ngay$'
+      ,N'$truongphongxemxetkpi$'
+      ,'$truongphongemail$'
+      ,'$truongphongxemxetkpi_duyet$'
+      ,'$truongphongxemxetkpi_ngay$'
+      ,'0'
+      ,GETDATE()
+      ,$nguoitao$
+      ,'$kpichinhsua$'
+      )
+    </insert>
+
+    <update id="UpdateRow_KpiEmployee">
+      UPDATE
+      KPI_Employee
+      SET
+      maphongban='$maphongban$'
+      ,ngaybanhanh='$ngaybanhanh$'
+      ,lancapnhat='$lancapnhat$'
+
+      ,manhanvien='$manhanvien$'
+      ,hovaten=N'$hovaten$'
+      ,chucdanh=$chucdanh$
+      ,captrentructiep=N'$captrentructiep$'
+      ,ngaydangky='$ngaydangky$'
+      ,ngaydanhgia='$ngaydanhgia$'
+      
+      ,nguoilapkpi=N'$nguoilapkpi$'
+      ,email='$email$'
+      ,nguoilapkpi_dagui='$nguoilapkpi_dagui$'
+      ,nguoilapkpi_ngay='$nguoilapkpi_ngay$'
+
+      ,truongphongxemxetkpi=N'$truongphongxemxetkpi$'
+      ,truongphongemail=N'$truongphongemail$'
+      ,truongphongxemxetkpi_duyet='$truongphongxemxetkpi_duyet$'
+      ,truongphongxemxetkpi_ngay='$truongphongxemxetkpi_ngay$'
+      ,kpichinhsua='$kpichinhsua$'
+      ,nguoihieuchinh=$nguoitao$
+      ,ngayhieuchinh= GETDATE()
+      WHERE makpinhanvien=$makpinhanvien$
+    </update>
+
+
+    <update id="UpdateRow_KpiEmployee_nguoihoso">
+      UPDATE
+      KPI_Employee
+      SET
+      nguoilapkpi_dagui='0'     
+      WHERE makpinhanvien=$makpinhanvien$
+    </update>
+    
+    
+    <insert id="InsertRow_KpiEmployeeDetail">
+      INSERT INTO KPI_Employee_Detail
+      (
+      makpinhanvien
+      ,stt
+      ,muctieu
+      ,trongso
+      ,phuongphapdo
+      ,nguonchungminh
+      ,donvitinh
+      ,kehoach
+      ,thuchien
+      ,tilehoanthanh
+      ,ketqua
+      ,kyxacnhan
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      ,thuoccap
+      ,kpichinhsua
+      )
+      VALUES
+      (
+      '$makpinhanvien$'
+      ,'$stt$'
+      ,N'$muctieu$'
+      ,'$trongso$'
+      ,N'$phuongphapdo$'
+      ,N'$nguonchungminh$'
+      ,N'$donvitinh$'
+      ,N'$kehoach$'
+      ,N'$thuchien$'
+      ,N'$tilehoanthanh$'
+      ,'$ketqua$'
+      ,N'$kyxacnhan$'
+      ,'0'
+      ,GETDATE()
+      ,$nguoitao$
+      ,'$thuoccap$'
+      ,'$kpichinhsua$'
+      )
+    </insert>
+
+    
+    
+    <update id="UpdateRow_KpiEmployeeDetail">
+      UPDATE
+      KPI_Employee_Detail
+      SET
+       stt='$stt$'
+      ,muctieu=N'$muctieu$'
+      ,trongso='$trongso$'
+      ,phuongphapdo=N'$phuongphapdo$'
+      ,nguonchungminh=N'$nguonchungminh$'
+      ,donvitinh=N'$donvitinh$'
+      ,kehoach=N'$kehoach$'
+      ,thuchien=N'$thuchien$'
+      ,tilehoanthanh=N'$tilehoanthanh$'
+      ,ketqua='$ketqua$'
+      ,kpichinhsua='$kpichinhsua$'
+      ,kyxacnhan=N'$kyxacnhan$'
+      ,ngayhieuchinh= GETDATE()
+      WHERE makpinhanvien_chitiet=$makpinhanvien_chitiet$
+    </update>
+
+    <update id="UpdateRow_KpiEmployeeDetail_ketquakpi">
+      UPDATE
+      KPI_Employee_Detail
+      SET
+      thuchien=N'$thuchien$'
+      ,tilehoanthanh=N'$tilehoanthanh$'
+      ,ketqua='$ketqua$'
+      ,ngayhieuchinh= GETDATE()
+      WHERE makpinhanvien_chitiet=$makpinhanvien_chitiet$
+    </update>
+    
+    
+    
+      
+    <update id="DeleteRow_KpiEmployee">
+      Update KPI_Employee set xoa='1' where makpinhanvien=$makpinhanvien$
+    </update>
+    
+    <delete id="DeleteRow_KpiEmployeeDetail">
+      Delete KPI_Employee_Detail where makpinhanvien=$makpinhanvien$
+    </delete>
+
+    <update id="UpdateRow_Bantonggiamdoc_duyet_khongduyet">
+      UPDATE
+      KPI_Employee
+      SET
+      bantonggiamdoc_ngayky='$bantonggiamdoc_ngayky$'
+      ,bantonggiamdoc_duyet='$bantonggiamdoc_duyet$'
+      ,ngayhieuchinh= GETDATE()
+      WHERE makpinhanvien=$makpinhanvien$
+    </update>
+
+
+    <select id="SelectRows_KpiEmployee_hieuchinh" resultClass="System.Collections.Hashtable">
+      SELECT
+      *
+      ,(select tenchucdanh from m_donvi_chucdanh pb where pb.xoa='0' and pb.machucdanh=KPI_Employee.chucdanh) as tenchucdanh
+      from KPI_Employee
+      WHERE xoa='0' and makpinhanvien=$makpinhanvien$
+    </select>
+
+
+    <select id="SelectRows_KpiEmployeeDetail_hieuchinh" resultClass="System.Collections.Hashtable">
+      SELECT
+      makpinhanvien_chitiet
+      ,makpinhanvien
+      ,stt
+      ,REPLACE(CAST(muctieu AS NVARCHAR(MAX)),'\\','\') as muctieu
+      ,REPLACE(CAST(trongso AS NVARCHAR(MAX)),'\\','\') as trongso
+      ,REPLACE(CAST(phuongphapdo AS NVARCHAR(MAX)),'\\','\') as phuongphapdo
+      ,REPLACE(CAST(nguonchungminh AS NVARCHAR(MAX)),'\\','\') as nguonchungminh
+      ,REPLACE(CAST(donvitinh AS NVARCHAR(MAX)),'\\','\') as donvitinh
+      ,REPLACE(CAST(kehoach AS NVARCHAR(MAX)),'\\','\') as kehoach
+      ,REPLACE(CAST(thuchien AS NVARCHAR(MAX)),'\\','\') as thuchien
+      ,REPLACE(CAST(tilehoanthanh AS NVARCHAR(MAX)),'\\','\') as tilehoanthanh
+      ,REPLACE(CAST(ketqua AS NVARCHAR(MAX)),'\\','\') as ketqua
+      ,REPLACE(CAST(kyxacnhan AS NVARCHAR(MAX)),'\\','\') as kyxacnhan
+      ,thuoccap
+      ,kpichinhsua
+      ,khoaketqua
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      from KPI_Employee_Detail
+      WHERE xoa='0' and makpinhanvien=$makpinhanvien$
+      order by case when thuoccap ='' then 'III' else thuoccap end,makpinhanvien_chitiet
+    </select>
+
+    
+     <select id="SelectRows_KpiEmployeeDetail_html" resultClass="System.Collections.Hashtable">
+      SELECT
+       *
+      from KPI_Employee_Detail
+      WHERE xoa='0' and makpinhanvien=$makpinhanvien$
+    </select>
+    
+      
+
+    <update id="UpdateRow_Employee_duyet_khongduyet">
+      UPDATE
+      KPI_Employee
+      SET
+      truongphongxemxetkpi_duyet='$truongphongxemxetkpi_duyet$'
+      ,truongphongxemxetkpi_ngay='$truongphongxemxetkpi_ngay$'
+      ,kpichinhsua='$kpichinhsua$'
+      WHERE makpinhanvien=$makpinhanvien$
+    </update>
+    
+    
+
+    <update id="UpdateRow_Employee_detail_kpichinhsua">
+      UPDATE
+      KPI_Employee_Detail
+      SET
+      kpichinhsua='$kpichinhsua$'
+      WHERE makpinhanvien=$makpinhanvien$ 
+      <isNotEmpty property="makpinhanvien_chitiet">
+        and makpinhanvien_chitiet=$makpinhanvien_chitiet$
+      </isNotEmpty>
+      
+      
+    </update>
+
+    
+      
+    <update id="Save_Yeucauchinhsua_chitiet">
+      UPDATE
+      KPI_Employee_Detail
+      SET
+      kpichinhsua='$kpichinhsua$'
+      ,kyxacnhan=N'$kyxacnhan$'
+      ,ngayyeucauchinhsua='$ngayyeucauchinhsua$'
+      WHERE makpinhanvien_chitiet=$makpinhanvien_chitiet$ and makpinhanvien=$makpinhanvien$
+    </update>
+    
+    
+   <update id="UpdateEmployee_duyet_Yeucauchinhsua_chitiet">
+      UPDATE
+      KPI_Employee_Detail
+      SET
+      kpichinhsua='$kpichinhsua$'
+      ,ngayyeucauchinhsua_duyet='$ngayyeucauchinhsua_duyet$'
+      WHERE makpinhanvien_chitiet=$makpinhanvien_chitiet$ and makpinhanvien=$makpinhanvien$
+    </update>
+    
+    <update id="UpdateEmployee_duyet_Yeucauchinhsua">
+      UPDATE
+      KPI_Employee
+      SET
+      kpichinhsua='$kpichinhsua$'
+      WHERE makpinhanvien=$makpinhanvien$
+    </update>
+    
+    
+   <update id="UpdateRow_Employee_Khoaketquakpi">
+      UPDATE
+      KPI_Employee
+      SET
+      khoaketqua='1'
+      WHERE makpinhanvien=$makpinhanvien$
+    </update>
+    
+    
+  <update id="UpdateRow_Employee_Khoaketquakpi_chitiet">
+      UPDATE
+      KPI_Employee_Detail
+      SET
+      khoaketqua='1'
+      WHERE makpinhanvien=$makpinhanvien$
+    </update>
+
+
+    <select id="SelectRows_KpiLevelDepartmentDetail_hieuchinh" resultClass="System.Collections.Hashtable">
+      SELECT
+      makpiphongban_chitiet
+      ,detail.makpiphongban
+      ,stt
+      ,REPLACE(CAST(muctieu AS NVARCHAR(MAX)),'\\','\') as muctieu
+      ,REPLACE(CAST(trongso AS NVARCHAR(MAX)),'\\','\') as trongso
+      ,REPLACE(CAST(tieuchidanhgia AS NVARCHAR(MAX)),'\\','\') as tieuchidanhgia
+      ,REPLACE(CAST(cachtinh AS NVARCHAR(MAX)),'\\','\') as cachtinh
+      ,REPLACE(CAST(ngayghinhanketqua AS NVARCHAR(MAX)),'\\','\') as ngayghinhanketqua
+      ,REPLACE(CAST(nguonchungminh AS NVARCHAR(MAX)),'\\','\') as nguonchungminh
+      ,REPLACE(CAST(donvitinh AS NVARCHAR(MAX)),'\\','\') as donvitinh
+      ,thuoccap
+      ,xoa
+      ,ngaytao
+      ,nguoitao
+      from KPI_Level_Department_Detail detail
+      left join (select abc.maphongban,abc.makpiphongban,abc.nam from KPI_Level_Department abc where maphongban='$maphongban$' and nam='$nam$')de on(de.makpiphongban=detail.makpiphongban)
+      WHERE xoa='0'
+      and de.maphongban='$maphongban$' and de.nam='$nam$'
+    </select>
+
+
+    <delete id="DeletedRow_KpiEmployee">
+      delete from
+      KPI_Employee
+      WHERE makpinhanvien=$makpinhanvien$
+    </delete>
+
+    <delete id="DeletedRow_KpiEmployee_detail">
+      delete from
+      KPI_Employee_Detail
+      WHERE makpinhanvien=$makpinhanvien$
+    </delete>
+
+    <delete id="DeletedRow_KpiEmployee_detail_Deleted">
+      delete from
+      KPI_Employee_Detail
+      WHERE makpinhanvien_chitiet=$makpinhanvien_chitiet$
+    </delete>
+    
+    
+    
+  </statements>
+</sqlMap>

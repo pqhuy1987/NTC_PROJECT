@@ -1,0 +1,701 @@
+﻿@model RICONS.Web.Models.KpiLevelDepartmentModels
+@{
+    ViewBag.Title = "Cập nhật KPI cấp Phòng ban";
+}
+@*--css--*@
+@section CSS
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/controller/KpiCompany/KpiDepartment_New.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/prism.css" />
+}
+
+@*--javascript--*@
+@section JavaScript
+{
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/controllers/KpiCompany/KpiDepartment_Edit.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery.datepick-vi.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/chosen.jquery.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/prism.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/table/buildTable.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/colResizale/colResizable-1.3.source.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/plugins/jquery.blockui.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/scripts/app.min.js"></script>
+
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootbox.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/custom.js"></script>
+}
+<script>
+    var linkContent = '@Url.Content("~")';
+</script>
+
+
+<div class="HeaderFixed">
+    <div class="b-b b-light">
+        <div class="p-left c-black">Cập nhật Kpi cấp Phòng ban</div>
+        <div class="clearBoth"></div>
+    </div>
+</div>
+
+    <div id="boxContent">
+        <div style="width:100%; height:100%">
+            <div class="portlet-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table_danhSach" id="tableContent" style="font-size:12px;">
+                        <thead id="head-date">
+                        </thead>
+                        <tbody id="head-date1"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div style="padding-top:5px;"></div>
+
+<div class="boxEdit">
+
+    <div class="row">
+        <div class="col-md-1"><input type="text" class="hidden" style="width: 100%;" autocomplete="off" placeholder="" id="txtmakpiphongban" name="makpiphongban" value="@Model.makpiphongban" /></div>
+        <div class="col-md-1"><input type="text" class="hidden" style="width: 100%;" autocomplete="off" placeholder="" id="txtnguoilapkpi_dagui" name="nguoilapkpi_dagui" value="@Model.nguoilapkpi_dagui" /></div>
+        <div class="col-md-1"><input type="text" class="hidden" style="width: 100%;" autocomplete="off" placeholder="" id="txtbankiemsoat_duyet" name="bankiemsoat_duyet" value="@Model.bankiemsoat_duyet" /></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1" style="min-width: 150px; padding-left:10px;">Người lập KPI<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-3" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Họ tên người lập KPI" id="txtnguoilapkpi" name="nguoilapkpi" value="@Model.nguoilapkpi" /></div>
+
+        <div class="col-md-1" style="padding-left: 10px; min-width: 115px; ">Email<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Địa chỉ Email" id="txtnguoilapkpi_email" name="nguoilapkpi_email" value="@Model.nguoilapkpi_email" /></div>
+
+        <div class="col-md-1" style="padding-left: 10px; min-width: 115px; ">Ngày lập KPI<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Ngày lập KPI" id="txtnguoilapkpi_ngay" name="nguoilapkpi_ngay" value="@Model.nguoilapkpi_ngay" /></div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-1" style="min-width: 150px; padding-left: 10px; ">Phó tổng xem xét<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-3" style="padding-left:10px; "><input type="text" style="width:100%" autocomplete="off" placeholder="Họ tên phó tổng xem xét" id="txtphotongxemxetkpi" name="photongxemxetkpi" value="@Model.photongxemxetkpi" /></div>
+
+        <div class="col-md-1" style="padding-left: 10px; min-width: 115px; ">Email<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Địa chỉ Email" id="txtphotongxemxetkpi_email" name="photongxemxetkpi_email" value="@Model.photongxemxetkpi_email" /></div>
+
+
+        <div class="col-md-1" style="padding-left: 10px; min-width: 115px; ">Ngày xem xét<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Ngày xem xét" id="txtphotongxemxetkpi_ngay" name="photongxemxetkpi_ngay" value="@Model.photongxemxetkpi_ngay" /></div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-1" style="min-width: 150px; padding-left: 10px; ">Tổng giám đốc<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-3" style="padding-left:10px;"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Họ tên tổng giám đốc duyệt" id="txttonggiamdocxemxetkpi" name="tonggiamdocxemxetkpi" value="@Model.tonggiamdocxemxetkpi" /></div>
+
+        <div class="col-md-1" style="padding-left: 10px; min-width: 115px; ">Email<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Địa chỉ Email" id="txttonggiamdocxemxetkpi_email" name="tonggiamdocxemxetkpi_email" value="@Model.tonggiamdocxemxetkpi_email" /></div>
+
+        <div class="col-md-1" style="padding-left: 10px; min-width: 115px">Ngày xét duyệt<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-2" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Ngày xét duyệt" id="txttonggiamdocxemxetkpi_ngay" name="tonggiamdocxemxetkpi_ngay" value="@Model.tonggiamdocxemxetkpi_ngay" /></div>
+    </div>
+
+    <div class="row" style="padding-top:10px; padding-bottom:50px;">
+        <div class="col-md-1" style="min-width: 160px; padding-left: 10px;"></div>
+            <button id="btn-save" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu"><i class="retweet_save"></i> Lưu</button>
+            <button id="btn-save-guimail" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu & gửi" style="width:100px"><i class="retweet_save"></i> Lưu & gửi</button>
+            @if (@Model.xoa == "0")
+            {
+                <button id="btn-save-Duyet" type="button" class="buttoncustom WhiteButton" name="luu" value="Duyệt KPI" style="width:130px"><i class="retweet_save"></i> Ban KPI Duyệt</button>
+                <button id="btn-save-Khongduyet" type="button" class="buttoncustom WhiteButton" name="luu" value="Không Duyệt KPI" style="width:175px"><i class="retweet_save"></i> Ban KPI Không Duyệt</button>
+            }
+            <a href="@Url.Action("Index_Department", "KpiCompany")" class="buttoncustom WhiteButton"><i class="retweet_trove"></i> Trở về</a>
+    </div>
+
+</div>
+
+
+<script>
+
+    $(document).ready(function (e) {
+        renderDate();
+    });
+
+    $('#btn-save').on('click', function (e) {
+        e.preventDefault();
+        if ($('#txtngaybanhanh').val().length != 10) {
+            Thongbao("Ngày ban hành nhập không đúng định dạng (01/01/2018)?");
+            return false;
+        }
+        else if ($('#txtnguoilapkpi_dagui').val().trim() == "1") {
+            Thongbao("KPI phòng đã gửi chờ duyệt. Bạn vui lòng không chỉnh sữa?");
+            return false;
+        }
+        debugger;
+        var thuoccap = "A";
+        var data = [];
+        var DataJson = "{'data1':";
+        DataJson += "{";
+        DataJson += "'makpiphongban':'" + $('#txtmakpiphongban').val() + "',";
+        DataJson += "'maphongban':'" + $('#filter02').val() + "',";
+        DataJson += "'nam':'" + $('#txtnam').val() + "',";
+        DataJson += "'ngaybanhanh':'" + $('#txtngaybanhanh').val() + "',";
+        DataJson += "'ngaycapnhat':'" + $('#txtngaycapnhat').val() + "',";
+        DataJson += "'nguoilapkpi':'" + $('#txtnguoilapkpi').val() + "',";
+        DataJson += "'nguoilapkpi_ngay':'" + $('#txtnguoilapkpi_ngay').val() + "',";
+        DataJson += "'photongxemxetkpi':'" + $('#txtphotongxemxetkpi').val() + "',";
+        DataJson += "'photongxemxetkpi_ngay':'" + $('#txtphotongxemxetkpi_ngay').val() + "',";
+        DataJson += "'tonggiamdocxemxetkpi':'" + $('#txttonggiamdocxemxetkpi').val() + "',";
+        DataJson += "'tonggiamdocxemxetkpi_ngay':'" + $('#txttonggiamdocxemxetkpi_ngay').val() + "',";
+        DataJson += "'nguoilapkpi_email':'" + $('#txtnguoilapkpi_email').val() + "',";
+        DataJson += "'photongxemxetkpi_email':'" + $('#txtphotongxemxetkpi_email').val() + "',";
+        DataJson += "'tonggiamdocxemxetkpi_email':'" + $('#txttonggiamdocxemxetkpi_email').val() + "',";
+        DataJson += "'bankiemsoat_email':''";
+
+        DataJson += "}, 'data2':[";
+
+        $('#boxContent table tbody tr').each(function (index, item) {
+            debugger;
+            var makpiphongban_chitiet = encodeURIComponent($(item).attr('makpiphongban_chitiet'));
+            var makpiphongban = encodeURIComponent($(item).attr('makpiphongban'));
+            var stt = $(item).find('td.col1').text();
+
+            var congty = $(item).attr('congty');
+            var sttcon = $(item).attr('sttcon');
+            var sttcha = $(item).attr('sttcha');
+
+
+            var muctieu = ""; var trongso = "0%"; var ketqua = "0%";
+            if (stt == "A" || stt == "B" || stt == "C" || stt == "D" || stt == "" || stt == null) {
+                muctieu = $(item).find('td.col2').text();
+                trongso = $(item).find('td.col3 input').val();
+                ketqua = $(item).find('td.col12 input').val();
+                thuoccap = stt;
+            }
+            else {
+                muctieu = $(item).find('td.col2 textarea').val();
+                trongso = $(item).find('td.col3 textarea').val();
+                ketqua = $(item).find('td.col12 textarea').val();
+            }
+
+            if (congty == undefined) congty = "0";
+            if (sttcon == undefined) sttcon = "0";
+            if (congty == undefined) congty = "0";
+
+            var tieuchidanhgia = $(item).find('td.col4 textarea').val(); if (tieuchidanhgia == undefined) tieuchidanhgia = "";
+            var cachtinh = $(item).find('td.col5 textarea').val(); if (cachtinh == undefined) cachtinh = "";
+            var ngayghinhanketqua = $(item).find('td.col6 textarea').val(); if (ngayghinhanketqua == undefined) ngayghinhanketqua = "";
+            var nguonchungminh = $(item).find('td.col7 textarea').val(); if (nguonchungminh == undefined) nguonchungminh = "";
+            var donvitinh = $(item).find('td.col8 textarea').val(); if (donvitinh == undefined) donvitinh = "";
+            var kehoach = $(item).find('td.col9 textarea').val(); if (kehoach == undefined) kehoach = "";
+            var thuchien = $(item).find('td.col10 textarea').val(); if (thuchien == undefined) thuchien = "";
+            var tilehoanthanh = $(item).find('td.col11 textarea').val(); if (tilehoanthanh == undefined) tilehoanthanh = "";
+            var ghichu = $(item).find('td.col13 textarea').val(); if (ghichu == undefined) ghichu = "";
+
+
+            DataJson += "{";
+            DataJson += "'makpiphongban_chitiet':'" + makpiphongban_chitiet + "',";
+            DataJson += "'makpiphongban':'" + makpiphongban + "',";
+
+            DataJson += "'congty':'" + congty + "',";
+            DataJson += "'sttcon':'" + sttcon + "',";
+            DataJson += "'sttcha':'" + sttcha + "',";
+
+
+            DataJson += "'stt':'" + stt + "',";
+            DataJson += "'muctieu':'" + muctieu.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'trongso':'" + trongso + "',";
+            DataJson += "'tieuchidanhgia':'" + tieuchidanhgia.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'cachtinh':'" + cachtinh.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'ngayghinhanketqua':'" + ngayghinhanketqua.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'nguonchungminh':'" + nguonchungminh.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'donvitinh':'" + donvitinh.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'kehoach':'" + kehoach.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'thuchien':'" + thuchien.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'tilehoanthanh':'" + tilehoanthanh + "',";
+            DataJson += "'ketqua':'" + ketqua + "',";
+            DataJson += "'thuoccap':'" + thuoccap + "',";
+            DataJson += "'ghichu':'" + ghichu.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "'";
+
+            DataJson += "}";
+            if (index != $('#boxContent table tbody tr').length - 1)
+                DataJson += ",";
+        });
+        DataJson += "]}";
+
+        $.ajax({
+            type: 'POST',
+            url: '/KpiCompany/Save_Department',
+            datatype: "JSON",
+            data: "DataJson=" + DataJson,
+            cache: false,
+        })
+        .done(function (result) {
+            debugger;
+            var tb = JSON.stringify(result.success);
+            var makpiphongban = JSON.stringify(result.makpiphongban);
+            if (tb == "true") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu thành công.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmakpiphongban').val(makpiphongban);
+                    GetData(false);
+                    dialogSuccess.modal('hide');
+                }, 2000);
+            } else {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu không thành công</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmakpiphongban').val(makpiphongban);
+                    dialogSuccess.modal('hide');
+                }, 2000);
+            }
+        })
+        .fail(function (result) {
+            alert("FAILED: " + JSON.stringify(result));
+        });
+    })
+
+    $('#btn-save-guimail').on('click', function (e) {
+
+        e.preventDefault();
+        if ($('#txtngaybanhanh').val().length != 10) {
+            Thongbao("Ngày ban hành nhập không đúng định dạng (01/01/2018)?");
+            return false;
+        }
+        else if ($('#txtnguoilapkpi_dagui').val().trim() == "1") {
+            Thongbao("KPI phòng đã gửi chờ duyệt. Bạn vui lòng không chỉnh sữa?");
+            return false;
+        }
+        debugger;
+        var thuoccap = "A";
+        var data = [];
+        var DataJson = "{'data1':";
+        DataJson += "{";
+        DataJson += "'makpiphongban':'" + $('#txtmakpiphongban').val() + "',";
+        DataJson += "'maphongban':'" + $('#filter02').val() + "',";
+        DataJson += "'nam':'" + $('#txtnam').val() + "',";
+        DataJson += "'ngaybanhanh':'" + $('#txtngaybanhanh').val() + "',";
+        DataJson += "'ngaycapnhat':'" + $('#txtngaycapnhat').val() + "',";
+        DataJson += "'nguoilapkpi':'" + $('#txtnguoilapkpi').val() + "',";
+        DataJson += "'nguoilapkpi_ngay':'" + $('#txtnguoilapkpi_ngay').val() + "',";
+        DataJson += "'photongxemxetkpi':'" + $('#txtphotongxemxetkpi').val() + "',";
+        DataJson += "'photongxemxetkpi_ngay':'" + $('#txtphotongxemxetkpi_ngay').val() + "',";
+        DataJson += "'tonggiamdocxemxetkpi':'" + $('#txttonggiamdocxemxetkpi').val() + "',";
+        DataJson += "'tonggiamdocxemxetkpi_ngay':'" + $('#txttonggiamdocxemxetkpi_ngay').val() + "',";
+        DataJson += "'nguoilapkpi_email':'" + $('#txtnguoilapkpi_email').val() + "',";
+        DataJson += "'photongxemxetkpi_email':'" + $('#txtphotongxemxetkpi_email').val() + "',";
+        DataJson += "'tonggiamdocxemxetkpi_email':'" + $('#txttonggiamdocxemxetkpi_email').val() + "',";
+        DataJson += "'bankiemsoat_email':''";
+
+        DataJson += "}, 'data2':[";
+
+        $('#boxContent table tbody tr').each(function (index, item) {
+            debugger;
+            var makpiphongban_chitiet = encodeURIComponent($(item).attr('makpiphongban_chitiet'));
+            var makpiphongban = encodeURIComponent($(item).attr('makpiphongban'));
+
+            var congty = $(item).attr('congty');
+            var sttcon = $(item).attr('sttcon');
+            var sttcha = $(item).attr('sttcha');
+
+            var stt = $(item).find('td.col1').text();
+            var muctieu = ""; var trongso = "0%"; var ketqua = "0%";
+            if (stt == "A" || stt == "B" || stt == "C" || stt == "D" || stt == "" || stt == null) {
+                muctieu = $(item).find('td.col2').text();
+                trongso = $(item).find('td.col3 input').val();
+                ketqua = $(item).find('td.col12 input').val();
+                thuoccap = stt;
+            }
+            else {
+                muctieu = $(item).find('td.col2 textarea').val();
+                trongso = $(item).find('td.col3 textarea').val();
+                ketqua = $(item).find('td.col12 textarea').val();
+            }
+
+            if (congty == undefined) congty = "0";
+            if (sttcon == undefined) sttcon = "0";
+            if (congty == undefined) congty = "0";
+
+            var tieuchidanhgia = $(item).find('td.col4 textarea').val(); if (tieuchidanhgia == undefined) tieuchidanhgia = "";
+            var cachtinh = $(item).find('td.col5 textarea').val(); if (cachtinh == undefined) cachtinh = "";
+            var ngayghinhanketqua = $(item).find('td.col6 textarea').val(); if (ngayghinhanketqua == undefined) ngayghinhanketqua = "";
+            var nguonchungminh = $(item).find('td.col7 textarea').val(); if (nguonchungminh == undefined) nguonchungminh = "";
+            var donvitinh = $(item).find('td.col8 textarea').val(); if (donvitinh == undefined) donvitinh = "";
+            var kehoach = $(item).find('td.col9 textarea').val(); if (kehoach == undefined) kehoach = "";
+            var thuchien = $(item).find('td.col10 textarea').val(); if (thuchien == undefined) thuchien = "";
+            var tilehoanthanh = $(item).find('td.col11 textarea').val(); if (tilehoanthanh == undefined) tilehoanthanh = "";
+            var ghichu = $(item).find('td.col13 textarea').val(); if (ghichu == undefined) ghichu = "";
+
+            DataJson += "{";
+            DataJson += "'makpiphongban_chitiet':'" + makpiphongban_chitiet + "',";
+            DataJson += "'makpiphongban':'" + makpiphongban + "',";
+            DataJson += "'congty':'" + congty + "',";
+            DataJson += "'sttcon':'" + sttcon + "',";
+            DataJson += "'sttcha':'" + sttcha + "',";
+            DataJson += "'stt':'" + stt + "',";
+            DataJson += "'muctieu':'" + muctieu.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'trongso':'" + trongso + "',";
+            DataJson += "'tieuchidanhgia':'" + tieuchidanhgia.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'cachtinh':'" + cachtinh.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'ngayghinhanketqua':'" + ngayghinhanketqua.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'nguonchungminh':'" + nguonchungminh.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'donvitinh':'" + donvitinh.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'kehoach':'" + kehoach.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'thuchien':'" + thuchien.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'tilehoanthanh':'" + tilehoanthanh.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+            DataJson += "'ketqua':'" + ketqua + "',";
+            DataJson += "'thuoccap':'" + thuoccap + "',";
+            DataJson += "'ghichu':'" + ghichu.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "'";
+
+            DataJson += "}";
+            if (index != $('#boxContent table tbody tr').length - 1)
+                DataJson += ",";
+        });
+        DataJson += "]}";
+
+        $.ajax({
+            type: 'POST',
+            url: '/KpiCompany/Save_Department_guimail',
+            datatype: "JSON",
+            data: "DataJson=" + DataJson,
+            cache: false,
+        })
+        .done(function (result) {
+            debugger;
+            var tb = JSON.stringify(result.success);
+            var makpiphongban = JSON.stringify(result.makpiphongban);
+            if (tb == "true") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu và gửi dữ liệu thành công.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmakpiphongban').val(makpiphongban);
+                    dialogSuccess.modal('hide');
+                    history.back();
+                }, 2000);
+            }
+            else if (tb == "1") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Đã xảy ra lỗi trong quá trình xử lý.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmakpiphongban').val(makpiphongban);
+                    dialogSuccess.modal('hide');
+                    history.back();
+                }, 2000);
+            }
+            else {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu và gửi dữ liệu không thành công</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmakpiphongban').val(makpiphongban);
+                    $('#txtnguoilapkpi_dagui').val('0');
+                    dialogSuccess.modal('hide');
+                }, 2000);
+            }
+        })
+        .fail(function (result) {
+            alert("FAILED: " + JSON.stringify(result));
+        });
+    })
+
+    $('#btn-save-Duyet').on('click', function (e) {
+        e.preventDefault();
+        debugger;
+        if ($('#txtnguoilapkpi_dagui').val() != "1") {
+            Thongbao("KPI tháng chưa được gửi. Bạn vui lòng kiểm tra lại");
+            return false;
+        }
+        else if ($('#txtbankiemsoat_duyet').val() == "1") {
+            Thongbao("KPI đã được Ban kiểm soát KPI duyệt. Vui lòng k duyệt nữa. Chờ quản lý cấp trên duyệt.");
+            return false;
+        }
+        var DataJson = "{";
+        DataJson += "'makpiphongban':'" + $('#txtmakpiphongban').val() + "',";
+        DataJson += "'dongy':'1',";
+        DataJson += "'capdoduyet':'1',";
+        DataJson += "'nguoilapkpi_email':'" + $('#txtnguoilapkpi_email').val() + "'";
+        DataJson += "}";
+
+        $.ajax({
+            type: 'POST',
+            url: '/Duyetmail/DuyetKPIDepartment_html',
+            datatype: "JSON",
+            data: "DataJson=" + DataJson,
+            cache: false,
+        })
+        .done(function (result) {
+            debugger;
+            var tb = JSON.stringify(result.success);
+            var makpiphongban = JSON.stringify(result.makpiphongban);
+            if (tb == "true") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Duyệt KPI thành công.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmakpiphongban').val(makpiphongban);
+                    $('#txtbankiemsoat_duyet').val(1);
+                    dialogSuccess.modal('hide');
+                    history.back();
+                }, 4000);
+            } else {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lỗi Duyệt KPI. Liên hệ quản trị được hướng dẫn</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmakpiphongban').val(makpiphongban);
+                    $('#txtbankiemsoat_duyet').val(0);
+                    dialogSuccess.modal('hide');
+                }, 4000);
+            }
+        })
+        .fail(function (result) {
+            alert("FAILED: " + JSON.stringify(result));
+        });
+    })
+
+    $('#btn-save-Khongduyet').on('click', function (e) {
+        e.preventDefault();
+        debugger;
+        if ($('#txtnguoilapkpi_dagui').val() != "1") {
+            Thongbao("KPI tháng chưa được gửi. Bạn vui lòng kiểm tra lại");
+            return false;
+        }
+        else if ($('#txtbankiemsoat_duyet').val() == "1") {
+            Thongbao("KPI đã được Ban kiểm soát KPI duyệt. Vui lòng k duyệt nữa. Chờ quản lý cấp trên duyệt.");
+            return false;
+        }
+        var DataJson = "{";
+        DataJson += "'makpiphongban':'" + $('#txtmakpiphongban').val() + "',";
+        DataJson += "'dongy':'2',";
+        DataJson += "'capdoduyet':'1',";
+        DataJson += "'nguoilapkpi_email':'" + $('#txtnguoilapkpi_email').val() + "'";
+        DataJson += "}";
+
+        $.ajax({
+            type: 'POST',
+            url: '/Duyetmail/DuyetKPIDepartment_html',
+            datatype: "JSON",
+            data: "DataJson=" + DataJson,
+            cache: false,
+        })
+        .done(function (result) {
+            debugger;
+            var tb = JSON.stringify(result.success);
+            var makpiphongban = JSON.stringify(result.makpiphongban);
+            if (tb == "true") {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Duyệt KPI thành công.</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmakpiphongban').val(makpiphongban);
+                    $('#txtbankiemsoat_duyet').val(1);
+                    dialogSuccess.modal('hide');
+                    history.back();
+                }, 4000);
+            } else {
+                var dialogSuccess = bootbox.dialog({
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lỗi Duyệt KPI. Liên hệ quản trị được hướng dẫn</span>",
+                    closeButton: false,
+                    onEscape: function () {
+                    }
+                });
+                setTimeout(function () {
+                    $('#txtmakpiphongban').val(makpiphongban);
+                    $('#txtbankiemsoat_duyet').val(0);
+                    dialogSuccess.modal('hide');
+                }, 4000);
+            }
+        })
+        .fail(function (result) {
+            alert("FAILED: " + JSON.stringify(result));
+        });
+    })
+
+    function currencyFormatDE(num) {
+        return (num + "").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+    }
+    function calTotal() {
+        debugger;
+        var total = 0;
+        var sub = 0;
+        $('#boxContent table tbody tr').each(function (index, itemitem) {
+            debugger;
+            //var kpitong = $('#boxContent #tableContent tbody tr[kpicha="' + 1 + '"]').length;
+            //var kpitong1111 = $('#boxContent #tableContent tbody tr[kpicha="' + 1 + '"]');
+            //var bbbb = $(itemitem).find('tr[kpicha="' + 1 + '"]').length;
+            var kpicha = $(itemitem).attr('kpicha');
+            //var bbbbbbbb = $(itemitem).find('td.col3 input').val();
+            //var aaa = kpitong1111.find('td.col3 input').val();
+            sub = $(itemitem).find('td.col3 input').val();
+            if (kpicha == 1) {
+                sub = $(itemitem).find('td.col3 input').val().replace("%", "").replace("%", "").replace(" ", "");
+                sub = Number(sub);
+                if (isNaN(sub) == false)
+                    total = total + sub;
+            }
+        });
+
+        var currentRow2 = $('#boxContent table tbody tr:last').closest('.rows-box');
+        currentRow2.find('.col3 input').val(total + "%");
+    }
+
+     $('#tableContent').on('keyup', 'input', function (e) {
+        debugger;
+        var currentRow = $(this).closest('.rows-box');
+        var soluong = $(this).val().replace('%', '');
+        if (isNaN(soluong) == false)
+            currentRow.find('.col12 input').val(currencyFormatDE(soluong+"%")) ;
+        calTotal();
+    });
+
+    $('#boxContent').on('click', '.button-add', function () {
+        debugger;
+        var stt = $("#tableContent > tbody > tr").length + 1;
+        var target = $(this).closest('tr').attr('group');
+        var destination = $('#boxContent #tableContent tr[group="' + target + '"]');
+        //destination.find('.col1').val(2);
+        var thutuinsert = destination.length;
+        var row = $(this).closest('tr').clone();
+        $(row).insertAfter($(destination[1]));
+        $(row).find('td.col1').text(thutuinsert);
+        $(row).find('td.col2 textarea').val('');
+        $(row).find('td.col3 textarea').val('');
+        $(row).find('td.col4 textarea').val('');
+        $(row).find('td.col5 textarea').val('');
+        $(row).find('td.col6 textarea').val('');
+        $(row).find('td.col7 textarea').val('');
+        $(row).find('td.col8 textarea').val('');
+        $(row).find('td.col9 textarea').val('');
+        $(row).find('td.col10 textarea').val('');
+        $(row).find('td.col11 textarea').val('');
+        $(row).find('td.col12 textarea').val('');
+        $(row).find('td.col13 textarea').val('');
+        $(row).find('tr codeid').val(0);
+        $(row).attr('codeid', '0');
+        $(row).attr('makpiphongban_chitiet', '0');
+        var i = 1;
+        $('#boxContent table tbody tr[group="' + target + '"]').each(function (index, item) {
+            var aaa = index;
+            if (i > 1)
+                $(item).find('td.col1').text(i - 1);
+            i = i + 1;
+        });
+    });
+
+    $('#boxContent').on('click', '.button-del', function () {
+        debugger;
+        var target = $(this).closest('tr').attr('group');
+        if ($("#tableContent > tbody > tr[group='" + target + "'] ").length > 2) {
+            $(this).closest('tr').remove();
+            var i = 1;
+            $('#boxContent table tbody tr[group="' + target + '"]').each(function (index, item) {
+                var aaa = index;
+                if (i > 1)
+                    $(item).find('td.col1').text(i - 1);
+                i = i + 1;
+            });
+        }
+    });
+
+    function renderDate() {
+        var day = new Date();
+        var dd = day.getDate();
+        var mm = day.getMonth() + 1;
+        var yyyy = day.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        var today = dd + '/' + mm + '/' + yyyy;
+        var html = '';
+        //debugger;
+        html += '<tr>';
+        html += '<th rowspan="4" colspan="2" class="boxEdit" style="font-size: 16pt;color:#f3332e;padding-top: 35px">NĂM KPI<textarea style="width:100%; font-size: 29pt; color:#8e2bf1; border: 0px; text-align: center; resize:none;" rows="1" placeholder="" id="txtnam" name="nam">@Model.nam</textarea></th>'
+        html += '<th colspan="11" style="font-size: 18pt;background-color: azure;color: #8e2bf1;">KPI CẤP PHÒNG/BAN - NĂM ' + day.getFullYear() + '</th>'
+        html += '<th rowspan="5" colspan="14">Chức năng</th>'
+        html += '</tr>'
+
+        html += '<tr>'
+        html += '<th colspan="11" style="text-align: left">Công Ty Cổ Phần Đầu Tư Xây Dựng Ricons</th>'
+        html += '</tr>'
+
+        html += '<tr>'
+        html += '<th colspan="2" style="text-align: left">Phòng Ban:</th>'
+        html += '<th colspan="6" class="ovh col2 boxEdit"><select id="filter02" style="width:100%;padding-left: 2px;border: 1px solid #aaa;  border-radius: 3px;background-color: #fff;height: 26px;" class="chosen-select-loaikehoach" name="maphongban">@Html.Raw(ViewBag.sbphongban)</select></th>'
+        html += '<th colspan="3">Biễu mẫu: QP04FM13</th>'
+        html += '</tr>'
+
+        html += '<tr>'
+        html += '<th colspan="2" style="text-align: left">Ngày ban hành'
+        html += '<th colspan="2" class="ovh col2 boxEdit"><input type="text" style="width:100%; text-align: center" autocomplete="off" placeholder="Ngày ban hành" id="txtngaybanhanh" name="ngaybanhanh" value="@Model.ngaybanhanh" /></th>'
+
+        html += '<th colspan="2" style="text-align: left">Ngày cập nhật</th>'
+        html += '<th colspan="2" class="ovh col2 boxEdit"><input type="text" style="width:100%;text-align: center"  autocomplete="off" placeholder="Ngày cập nhật" id="txtngaycapnhat" name="ngaycapnhat" value="@Model.ngaycapnhat" /></th>'
+        html += '<th colspan="3">Lần cập nhật: 00/01</th>'
+        html += '</tr>'
+
+        html += '<tr>';
+        html += '<th class="ovh col1">Stt</th>'
+        html += '<th class="ovh col2">Mục tiêu</th>'
+        html += '<th class="ovh col3">Trọng số</th>'
+        html += '<th class="ovh col4">Tiêu chí đánh giá (KPIs)</th>'
+        html += '<th class="ovh col5">Cách tính</th>'
+        html += '<th class="ovh col6">Thời điểm ghi nhận kết quả</th>'
+        html += '<th class="ovh col7">Nguồn chứng minh</th>'
+        html += '<th class="ovh col8">Đơn vị tính</th>'
+        html += '<th class="ovh col9">KPIs kế hoạch</th>'
+        html += '<th class="ovh col10">KPIs thực hiện</th>'
+        html += '<th class="ovh col11">Tỉ lệ % hoàn thành KPIs</th>'
+        html += '<th class="ovh col12">Kết quả</th>'
+        html += '<th class="ovh col13">Ghi chú</th>'
+
+        html += '</tr>';
+
+        $('#head-date').html(html);
+    }
+
+    function Thongbao(num) {
+        var dialogSuccess = bootbox.dialog({
+            message: "<i class='fa fa-check text-success'></i><span class='text-success'>" + num + "</span>",
+            closeButton: false,
+            onEscape: function () {
+            }
+        });
+        setTimeout(function () {
+            dialogSuccess.modal('hide');
+        }, 1000);
+    }
+
+</script>
+
+

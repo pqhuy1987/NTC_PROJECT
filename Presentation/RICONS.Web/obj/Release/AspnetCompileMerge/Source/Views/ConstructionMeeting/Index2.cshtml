@@ -1,0 +1,85 @@
+﻿@model RICONS.Web.Models.PhongBanModels
+@{
+    ViewBag.Title = "KPI nhân viên";
+}
+
+
+<link rel="stylesheet" type="text/css" href="/Themes/RICONS-2015/css/TableBuild/layouts/css/blue.min.css" />
+<link rel="stylesheet" type="text/css" href="/themes/RICONS-2015/css/chosen/chosen.css" />
+<link href="~/assets/css/construction-meeting.min.css" rel="stylesheet" />
+
+<script>
+    var linkContent = '/';
+</script>
+
+
+<div class="HeaderFixed">
+    <div class="b-b b-light1">
+        <div class="row">
+            <div class="col-md-2" style="width:102px;">
+                <a href="@Url.Action("Create", "WeedMeeting")" class="buttoncustom WhiteButton" style="width:95px;"> <i class="retweet_new"></i>Thêm mới</a>
+            </div>
+            @*<div class="col-md-1" style="width:95px;">
+                    <a id="btnDeleted" href="@Url.Action("Deleted", "WeedMeeting")" class="buttoncustom WhiteButton" style="width:95px;"><i class="retweet_xoa"></i>Xoá</a>
+                </div>*@
+
+            <div class="col-md-4" style="width: 320px; padding-left: 10px; padding-right:0px">
+                Lọc theo: &nbsp;
+                <select id="filter01" data-placeholder="Chọn phòng ban" class="chosen-select-loaikehoach" name="maphongban">
+                    @if (!string.IsNullOrEmpty(ViewBag.sbphongban))
+                    {
+                        @Html.Raw(ViewBag.sbphongban);
+                    }
+                </select>
+            </div>
+
+
+            <div class="col-md-1" style="width:220px;padding-left:0px;">
+                <select id="filter02" data-placeholder="Chọn tình trạng" class="chosen-select-loaikehoach1" name="tinhtrangduyet">
+                    <option value="0">Loại cuộc họp</option>
+                    <option value="1">Họp tuần phòng</option>
+                    <option value="2">Họp tuần BGĐ</option>
+                    <option value="3">Họp khác</option>
+                </select>
+            </div>
+
+
+            <div class="col-md-1" style="line-height: 31px; width:105px;padding-left:7px;"> Export: <a id="btnXuatexcell" href="@Url.Action("ExportDanhSachTong", "KpiEmployee")"><i class="fa fa-file-excel-o" style="color:black;"></i>Excel</a></div>
+
+            <div class="p-right p-right-item2">
+                <div class="p-right-item t-export c-black">
+                    <div class="p-right-item t-export c-black" style="padding-right: 5px;"><a id="btnPre" style="cursor: pointer;"> < </a></div>
+
+                    <div class="p-right-item t-export c-black">
+                        <div class="col-md-1"><input type="text" style="width: 50px; border-radius: 3px; border: 1px solid #bbb; height: 26px; text-align: center; " id="txttrangthu" name="trangthu" value="1" /></div>
+                    </div>
+                    <div class="p-right-item t-export c-black" style="padding-right: 5px;"><a id="btnNext" style="cursor: pointer;"> > </a></div>
+
+                </div>
+                <div class="p-right-item1 t-export c-black" id="girdInfo">&nbsp; <span class="Pages">0</span>&nbsp; trang&nbsp; <span class="tongdong">0</span>&nbsp; kết quả &nbsp;</div>
+            </div>
+
+        </div>
+    </div>
+    <div class="clearBoth"></div>
+</div>
+
+<div style="width:100%; height:100%;">
+    <div id="boxContent" style="background: #fff; padding: 15px">
+        <div class="row">
+            <div class="portlet-body">
+                <div class="fullcalendar-languages"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Themes/RICONS-2015/js/moment.min.js"></script>
+<script src="~/assets/js/fullcalendar.min.js"></script>
+<script src="~/assets/js/lang.js"></script>
+<script src="/themes/RICONS-2015/js/chosen/chosen.jquery.js"></script>
+<script src="/themes/RICONS-2015/js/chosen/prism.js"></script>
+<script src="~/assets/js/construction-meeting.js"></script>
+
+
