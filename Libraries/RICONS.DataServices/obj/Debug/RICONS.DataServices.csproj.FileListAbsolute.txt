@@ -108,3 +108,29 @@ D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RIC
 D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.csprojResolveAssemblyReference.cache
 D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.dll
 D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.pdb
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\RICONS.DataServices.dll.config
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\RICONS.DataServices.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\RICONS.DataServices.pdb
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\Castle.DynamicProxy.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.SqlServer.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.Common.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.DataMapper.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\log4net.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\RICONS.Core.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\RICONS.Logger.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\NPOI.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\NPOI.OOXML.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\NPOI.OpenXml4Net.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\RICONS.Core.pdb
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\RICONS.Logger.pdb
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.xml
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\EntityFramework.SqlServer.xml
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.Common.xml
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\IBatisNet.DataMapper.xml
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Debug\log4net.xml
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.csprojResolveAssemblyReference.cache
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\obj\Debug\RICONS.DataServices.pdb

@@ -92,7 +92,7 @@ namespace RICONS.Web.Controllers
                     var passWordDecrypt = EncDec.DecryptStringAES(model.matkhau);
                     try
                     {
-                        using (PrincipalContext context = new PrincipalContext(ContextType.Domain, "ricons.vn"))
+                        using (PrincipalContext context = new PrincipalContext(ContextType.Domain, "newtecons.vn"))
                         {
                             validAD = context.ValidateCredentials(tendangnhap, passWordDecrypt);
                             UserPrincipal user_ad = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, tendangnhap);

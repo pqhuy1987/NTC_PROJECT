@@ -31,3 +31,9 @@ D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RIC
 D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.csprojResolveAssemblyReference.cache
 D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.dll
 D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.pdb
+D:\NTC_PROJECT\Libraries\RICONS.Logger\bin\Debug\RICONS.Logger.dll
+D:\NTC_PROJECT\Libraries\RICONS.Logger\bin\Debug\RICONS.Logger.pdb
+D:\NTC_PROJECT\Libraries\RICONS.Logger\bin\Debug\log4net.dll
+D:\NTC_PROJECT\Libraries\RICONS.Logger\bin\Debug\log4net.xml
+D:\NTC_PROJECT\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.dll
+D:\NTC_PROJECT\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.pdb

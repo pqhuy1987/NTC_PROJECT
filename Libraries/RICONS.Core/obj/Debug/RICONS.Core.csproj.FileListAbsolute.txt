@@ -96,3 +96,26 @@ D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RIC
 D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Debug\RICONS.Core.csprojResolveAssemblyReference.cache
 D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Debug\RICONS.Core.dll
 D:\Google Drive\22_PMHOPNOIBO\RICONS-PMHOPNOIBO1\RICONS-PMHOPNOIBO\Libraries\RICONS.Core\obj\Debug\RICONS.Core.pdb
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\RICONS.Core.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\RICONS.Core.pdb
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\log4net.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\Npgsql.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\NPOI.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\NPOI.OOXML.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\NPOI.OpenXml4Net.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\RICONS.Logger.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\System.ValueTuple.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\RICONS.Logger.pdb
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\log4net.xml
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\Npgsql.pdb
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\Npgsql.xml
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Debug\System.ValueTuple.xml
+D:\NTC_PROJECT\Libraries\RICONS.Core\obj\Debug\RICONS.Core.csprojResolveAssemblyReference.cache
+D:\NTC_PROJECT\Libraries\RICONS.Core\obj\Debug\RICONS.Core.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\obj\Debug\RICONS.Core.pdb
