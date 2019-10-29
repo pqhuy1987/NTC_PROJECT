@@ -113,6 +113,14 @@
        m_donvi_chucdanh
        WHERE xoa='0'
      </select>
+    
+     <select id="SelectRows_2" resultClass="System.Collections.Hashtable">
+       SELECT
+       *
+       FROM
+       m_donvi_phongban
+       WHERE xoa='0'
+     </select>
 
     <select id="SelectRows_danhmucchucdanh" resultClass="System.Collections.Hashtable">
       SELECT ID as machucdanh
