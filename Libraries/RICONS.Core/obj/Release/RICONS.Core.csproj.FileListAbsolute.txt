@@ -48,3 +48,26 @@ D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\obj\Release\RICONS.Cor
 D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\obj\Release\RICONS.Core.csproj.CopyComplete
 D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\obj\Release\RICONS.Core.dll
 D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Core\obj\Release\RICONS.Core.pdb
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\RICONS.Core.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\RICONS.Core.pdb
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\log4net.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\Npgsql.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\NPOI.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\NPOI.OOXML.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\NPOI.OpenXml4Net.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\NPOI.OpenXmlFormats.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\RICONS.Logger.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\System.Threading.Tasks.Extensions.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\System.ValueTuple.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\RICONS.Logger.pdb
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\log4net.xml
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\Npgsql.pdb
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\Npgsql.xml
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\System.Threading.Tasks.Extensions.xml
+D:\NTC_PROJECT\Libraries\RICONS.Core\bin\Release\System.ValueTuple.xml
+D:\NTC_PROJECT\Libraries\RICONS.Core\obj\Release\RICONS.Core.csprojResolveAssemblyReference.cache
+D:\NTC_PROJECT\Libraries\RICONS.Core\obj\Release\RICONS.Core.dll
+D:\NTC_PROJECT\Libraries\RICONS.Core\obj\Release\RICONS.Core.pdb

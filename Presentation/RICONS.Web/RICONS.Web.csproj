@@ -330,7 +330,9 @@
     <Content Include="App_SOAP\SQLMAP\POSTGRES\XMLMapping\Main\m_loailichsuhoatdong.xml" />
     <Content Include="App_SOAP\SQLMAP\POSTGRES\XMLMapping\Main\m_loaidonvi.xml" />
     <Content Include="App_SOAP\SQLMAP\POSTGRES\XMLMapping\Main\m_lichsuhoatdong.xml" />
-    <Content Include="App_SOAP\SQLMAP\POSTGRES\XMLMapping\Main\m_donvi_phongban.xml" />
+    <Content Include="App_SOAP\SQLMAP\POSTGRES\XMLMapping\Main\m_donvi_phongban.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_SOAP\SQLMAP\POSTGRES\XMLMapping\Main\m_donvi_chucdanh.xml" />
     <Content Include="App_SOAP\SQLMAP\POSTGRES\XMLMapping\Main\m_donvi.xml" />
     <Content Include="App_SOAP\SQLMAP\POSTGRES\XMLMapping\mau chung.xml" />

@@ -182,7 +182,7 @@
 
 
 
-var configChosenDanhmucphongban = {
+var configChosenDanhmucchucvu = {
     '.chosen-select-plan': { width: "290px", disable_search_threshold: 10 },
     '.chosen-select-loaikehoach': { width: "357px", disable_search_threshold: 10 }
 }
@@ -207,86 +207,27 @@ var dataHeader_Milestones =
         colspan: 1,
         col_class: 'ovh col3',
         col_id: '',
-        col_value: 'Mã PB'
+        col_value: 'Mã '
     },
     {
         colspan: 1,
         col_class: 'ovh col4',
         col_id: '',
-        col_value: 'Tên phòng ban'
+        col_value: 'Tên chức danh'
     },
     {
         colspan: 1,
         col_class: 'ovh col5',
         col_id: '',
-        col_value: 'Họ và tên'
+        col_value: 'Tên giao dịch'
     },
-
     {
         colspan: 1,
         col_class: 'ovh col6',
         col_id: '',
-        col_value: 'Email TBP/CHT'
-    },
-        {
-            colspan: 1,
-            col_class: 'ovh col8',
-            col_id: '',
-            col_value: 'Email thư ký'
-        },
-
-    {
-        colspan: 1,
-        col_class: 'ovh col7',
-        col_id: '',
-        col_value: 'Người quản lý 1'
-    },
-
-    {
-        colspan: 1,
-        col_class: 'ovh col9',
-        col_id: '',
-        col_value: 'Email QL 1'
-        },
-
-
-
-    {
-        colspan: 1,
-        col_class: 'ovh col10',
-        col_id: '',
-        col_value: ''
-    },
-        {
-            colspan: 1,
-            col_class: 'ovh col11',
-            col_id: '',
-            col_value: 'Người quản lý 2'
-        },
-
-        {
-            colspan: 1,
-            col_class: 'ovh col12',
-            col_id: '',
-            col_value: 'Email QL 2'
-        },
-
-        {
-            colspan: 1,
-            col_class: 'ovh col13',
-            col_id: '',
-            col_value: 'Người quản lý 3'
-        },
-
-        {
-            colspan: 1,
-            col_class: 'ovh col14',
-            col_id: '',
-            col_value: 'Email QL 3'
-        },
-]
+        col_value: 'Ghi chú'
+    }]
 }];
-
 
 //$(document).ready(function (e) {
 //    $('#ScrollContent .boxTable2').slimscroll({ height: getWindowHeight() - $('.RICONS-body header.header').height() - $(".HeaderFixed").height() });
@@ -312,15 +253,15 @@ var dataHeader_Milestones =
 //}
 
 
-//function ShowSubLine(e) {
-//    //tim nhung dong sub
-//    var maKeHoach = "";//$(e).attr('mpb');
-//    var tableContent = $("#tableContent");
-//    var rows = tableContent.find('tr[subparent="' + maKeHoach + '"]');
-//    if (rows.length > 0) {
-//        rows.slideToggle();
-//    }
-//    else {
-//        GetData(false, maKeHoach, $(e).parent().parent().find(".stt").html().trim());
-//    }
-//}
+function ShowSubLine(e) {
+    //tim nhung dong sub
+    var maKeHoach = "";//$(e).attr('mpb');
+    var tableContent = $("#tableContent");
+    var rows = tableContent.find('tr[subparent="' + maKeHoach + '"]');
+    if (rows.length > 0) {
+        rows.slideToggle();
+    }
+    else {
+        GetData(false, maKeHoach, $(e).parent().parent().find(".stt").html().trim());
+    }
+}

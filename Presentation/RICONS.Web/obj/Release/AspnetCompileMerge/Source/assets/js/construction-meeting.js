@@ -32,7 +32,14 @@ var HopCongTruongViewModel = function () {
         s.weeks.removeAll();
         for (var i = 0; i < 6; i++) {
             var w = moment([year, m - 1, 1]).add(i, 'weeks');
-            var wobj = new Week(w.diff(daunam, 'weeks'));
+            var wi = w.diff(daunam, 'weeks') + 1;
+
+            var rangs = w.diff(daunam, 'days');
+            rangs = rangs % 7;
+            if (rangs + daunam.days() > 7) {
+                wi++;
+            }
+            var wobj = new Week(wi);
             for (var j = 0; j < 7; j++) {
                 wobj.days.push(new Day(w.day(j + 1)));
             }
@@ -151,38 +158,43 @@ var HopCongTruongViewModel = function () {
                     var meeting = this;
                     var date = new Date(parseInt(this.Date.replace("/Date(", "").replace(")/", ""), 10));
                     var w = moment(date);
-
-                    console.log(w.format('DD/MM/YYYY'));
-
-                    var wi = w.diff(daunam, 'weeks');
-
+                    var wi = w.diff(daunam, 'weeks') + 1 ;
                     var rangs = w.diff(daunam, 'days');
-                    rangs = rangs % 7;
-
-                    console.log(rangs);
-
+                    
+                    rangs = rangs % 7; 
+                    console.log(daunam.day() + ' - ' + w.format('DD/MM/YYYY') + ' - ' + rangs + ' - ' + wi);
                     if (daunam.day() > 0 && rangs + daunam.day() > 7) {
                         wi++;
                     }
-                   
+                    //else if (rangs + daunam.day() < 7) {
+                    //    wi--;
+                    //}
+                    var str = wi;
+                    
                     $(s.weeks()).each(function () {
-
-                        if(this.n() == wi) {
-                           
-                            $(this.days()).each(function () {
-                                //console.log(w.format("D"));
+                        
+                        if(this.n() == wi) { 
+                            $(this.days()).each(function () { 
                                 if (this.d() == w.format("D")) {
                                    
                                     this.meetings.push(new Meeting(meeting));
                                 }
                             });
                         }
-                    });
+                    }); 
                 });
             }
         });
     }
     s.init = function () {
+
+        var daunam = moment([year, 0, 1]);
+        var d1 = moment([year, 5, 3]);
+        var d2 = moment([year, 0, 1]);
+        console.log(d1.format('DD/MM/YYYY'))
+        //console.log(w.diff(daunam, 'weeks'));
+
+
         year = $('.chosen-3').val();
         month = $('.chosen-4').val();
         s.changeMonth(year, month);

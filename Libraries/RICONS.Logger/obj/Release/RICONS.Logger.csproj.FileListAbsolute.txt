@@ -15,3 +15,10 @@ D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\obj\Release\RICONS.L
 D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\obj\Release\RICONS.Logger.csproj.CopyComplete
 D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\obj\Release\RICONS.Logger.dll
 D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.Logger\obj\Release\RICONS.Logger.pdb
+D:\NTC_PROJECT\Libraries\RICONS.Logger\bin\Release\RICONS.Logger.dll
+D:\NTC_PROJECT\Libraries\RICONS.Logger\bin\Release\RICONS.Logger.pdb
+D:\NTC_PROJECT\Libraries\RICONS.Logger\bin\Release\log4net.dll
+D:\NTC_PROJECT\Libraries\RICONS.Logger\bin\Release\log4net.xml
+D:\NTC_PROJECT\Libraries\RICONS.Logger\obj\Release\RICONS.Logger.csprojResolveAssemblyReference.cache
+D:\NTC_PROJECT\Libraries\RICONS.Logger\obj\Release\RICONS.Logger.dll
+D:\NTC_PROJECT\Libraries\RICONS.Logger\obj\Release\RICONS.Logger.pdb

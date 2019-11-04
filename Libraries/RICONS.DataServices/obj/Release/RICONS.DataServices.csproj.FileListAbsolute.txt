@@ -54,3 +54,29 @@ D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\obj\Release\RI
 D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\obj\Release\RICONS.DataServices.csproj.CopyComplete
 D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\obj\Release\RICONS.DataServices.dll
 D:\TFS2017\RICONS-PMHOPNOIBO - Copy\Libraries\RICONS.DataServices\obj\Release\RICONS.DataServices.pdb
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\RICONS.DataServices.dll.config
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\RICONS.DataServices.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\RICONS.DataServices.pdb
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\Castle.DynamicProxy.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\EntityFramework.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\EntityFramework.SqlServer.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\IBatisNet.Common.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\IBatisNet.DataMapper.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\log4net.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\RICONS.Core.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\RICONS.Logger.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\NPOI.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\NPOI.OOXML.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\NPOI.OpenXmlFormats.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\NPOI.OpenXml4Net.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\RICONS.Core.pdb
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\RICONS.Logger.pdb
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\EntityFramework.xml
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\EntityFramework.SqlServer.xml
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\IBatisNet.Common.xml
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\IBatisNet.DataMapper.xml
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\bin\Release\log4net.xml
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\obj\Release\RICONS.DataServices.csprojResolveAssemblyReference.cache
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\obj\Release\RICONS.DataServices.dll
+D:\NTC_PROJECT\Libraries\RICONS.DataServices\obj\Release\RICONS.DataServices.pdb
