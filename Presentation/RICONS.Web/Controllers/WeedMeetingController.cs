@@ -30,7 +30,7 @@ namespace RICONS.Web.Controllers
             List<PhongBanModels> lstResult_phongban = service.SelectRows(parampb);
             StringBuilder sbphongban = new StringBuilder();
             string pb = "";
-            string maphongban = Session["maphongban"].ToString().Trim();
+            string thudientu = Session["thudientu"].ToString().Trim();
             if (Session["loginid"].ToString().Trim().ToLower() == "admin" || Session["grouptk"].ToString().Trim() == "1")
             {
                 //var lstpban = lstResult_phongban.Where(p => p.maphongban == maphongban).ToList();
@@ -42,7 +42,7 @@ namespace RICONS.Web.Controllers
             }
             else
             {
-                foreach (var item in lstResult_phongban.Where(p => p.maphongban == maphongban))
+                foreach (var item in lstResult_phongban.Where(p => p.email == thudientu || p.ghichu == thudientu))
                     pb = pb + "<option value=" + item.maphongban + "> " + item.tenphongban + " </option>";
             }
             ViewBag.sbphongban = pb.ToString();
