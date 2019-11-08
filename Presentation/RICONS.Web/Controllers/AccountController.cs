@@ -92,10 +92,11 @@ namespace RICONS.Web.Controllers
                     var passWordDecrypt = EncDec.DecryptStringAES(model.matkhau);
                     try
                     {
-                        using (PrincipalContext context = new PrincipalContext(ContextType.Domain, "newtecons.vn"))
+                        using (PrincipalContext context = new PrincipalContext(ContextType.Domain, "newtecons.vn", tendangnhap, passWordDecrypt))
                         {
+
                             validAD = context.ValidateCredentials(tendangnhap, passWordDecrypt);
-                            //UserPrincipal user_ad = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, tendangnhap);
+                            UserPrincipal user_ad = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, tendangnhap);
                             if (validAD)
                             {
                                 #region
@@ -127,7 +128,7 @@ namespace RICONS.Web.Controllers
                                     }
                                     modeltk.tendangnhap = tendangnhap;
                                     model.madonvi = 1;
-                                    //modeltk.thudientu = user_ad.EmailAddress;
+                                    modeltk.thudientu = user_ad.EmailAddress;
                                     modeltk.chucdanhkpi = "1";
                                     bool kq = serTaiKhoan.AddUser(modeltk, 0);
                                     user = service.GetLoginData(new M_TaiKhoan()
@@ -147,7 +148,7 @@ namespace RICONS.Web.Controllers
                                     user.tenchucdanh = dlemployee.tenchucdanh;
                                     user.hoten = dlemployee.hoten;
                                     user.sodienthoai = dlemployee.sodienthoai;
-                                    //user.thudientu = user_ad.EmailAddress;
+                                    user.thudientu = user_ad.EmailAddress;
                                     user.ngaysinh = dlemployee.ngaysinh;
                                     user.chucdanhkpi = user.chucdanhkpi;
                                     if(dlemployee.phongban_congtruong.ToString().ToLower()=="false")

@@ -10,7 +10,6 @@
       *
       FROM
       m_donvi_thongtingiamdoc
-      WHERE xoa='0'
     </select>
     
     
@@ -29,13 +28,13 @@
       ,hotenquanly=N'$hotenquanly$'
       ,ghichu=N'$ghichu$'
 
-      <!--,thuocquanly1='$thuocquanly1$'
+      ,thuocquanly1='$thuocquanly1$'
       ,hotenquanly1=N'$hotenquanly1$'
       ,ghichu1=N'$ghichu1$'
 
       ,thuocquanly2='$thuocquanly2$'
       ,hotenquanly2=N'$hotenquanly2$'
-      ,ghichu2=N'$ghichu2$'-->
+      ,ghichu2=N'$ghichu2$'
 
 
 
@@ -74,13 +73,13 @@
       ,(select hovaten from m_donvi_thongtingiamdoc gd where gd.mathongtin=m_donvi_phongban.thuocquanly) as hotenquanly
       ,ghichu
 
-      <!--,thuocquanly1
+      ,thuocquanly1
       ,(select hovaten from m_donvi_thongtingiamdoc gd where gd.mathongtin=m_donvi_phongban.thuocquanly1) as hotenquanly1
       ,ghichu1
 
       ,thuocquanly2
       ,(select hovaten from m_donvi_thongtingiamdoc gd where gd.mathongtin=m_donvi_phongban.thuocquanly2) as hotenquanly2
-      ,ghichu2-->
+      ,ghichu2
 
       ,phongban_congtruong
 
