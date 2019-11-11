@@ -389,6 +389,7 @@
     <Content Include="assets\js\sweet_alert.min.js" />
     <Content Include="assets\js\ultra-form.js" />
     <Content Include="assets\js\webaby.ui.table.js" />
+    <Content Include="favicon.ico" />
     <Content Include="Themes\images\jquery\jquery\ui-bg_glass_55_fbf9ee_1x400.png" />
     <Content Include="Themes\jQueryGantt\gantt.css" />
     <Content Include="Themes\jQueryGantt\ganttDrawer.js" />
@@ -436,7 +437,6 @@
     <Content Include="Themes\Login\js\md5.js" />
     <Content Include="Themes\RICONS-2015\css\bitrix.css" />
     <Content Include="Themes\RICONS-2015\css\bootstrap.css" />
-    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1488,7 +1488,8 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

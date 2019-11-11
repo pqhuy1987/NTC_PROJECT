@@ -10,9 +10,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Net.Mime;
 
 namespace RICONS.Web.Controllers
 {
@@ -209,22 +211,22 @@ namespace RICONS.Web.Controllers
                 sbResult.Append("\"col_value\":\"" + "<a href='" + Url.Action("Edit", "WeedMeeting", new { macuochop = strEncryptCode }) + "'title='" + model.maphongban + "'>" + model.tenphongban + "</a>\"");
                 sbResult.Append("},");
 
-                //Tên phòng ban
-                sbResult.Append("{");
-                sbResult.Append("\"colspan\":\"1\",");
-                sbResult.Append("\"col_class\":\"ovh col7\",");
-                sbResult.Append("\"col_id\":\"7\",");
-                sbResult.Append("\"col_value\":\"" + model.lydobuoihop + "\"");
-                sbResult.Append("},");
+                ////Tên phòng ban
+                //sbResult.Append("{");
+                //sbResult.Append("\"colspan\":\"1\",");
+                //sbResult.Append("\"col_class\":\"ovh col7\",");
+                //sbResult.Append("\"col_id\":\"7\",");
+                //sbResult.Append("\"col_value\":\"" + model.lydobuoihop + "\"");
+                //sbResult.Append("},");
 
-                //Tên phòng ban
-                sbResult.Append("{");
-                sbResult.Append("\"colspan\":\"1\",");
-                sbResult.Append("\"col_class\":\"ovh col8\",");
-                sbResult.Append("\"col_id\":\"8\",");
+                ////Tên phòng ban
+                //sbResult.Append("{");
+                //sbResult.Append("\"colspan\":\"1\",");
+                //sbResult.Append("\"col_class\":\"ovh col8\",");
+                //sbResult.Append("\"col_id\":\"8\",");
 
-                sbResult.Append("\"col_value\":\"" + model.thanhphanthamdu + "\"");
-                sbResult.Append("},");
+                //sbResult.Append("\"col_value\":\"" + model.thanhphanthamdu + "\"");
+                //sbResult.Append("},");
 
                 //Tên phòng ban
                 sbResult.Append("{");
@@ -299,14 +301,23 @@ namespace RICONS.Web.Controllers
             JsonResult Data = new JsonResult();
 
             JObject json = JObject.Parse(DataJson);
-            string macuochop = json["macuochop"].ToString();
+            string macuochop = json["uploadfile"].ToString();
+            string filename = json["tenfile"].ToString();
+            string maphongban = json["maphongban"].ToString();
 
             DaotaoServices servicevpp = new DaotaoServices();
             string nguoitao = Session["userid"].ToString();
             string iresult = servicevpp.Save_WeedMeeting(DataJson, nguoitao);
 
+            var directoryPath = Server.MapPath("~/FileUpload/") + macuochop.Replace("/", ".");
+            if (!System.IO.Directory.Exists(directoryPath))
+                System.IO.Directory.CreateDirectory(directoryPath);
+            string path = Path.Combine(directoryPath, filename);
+
             if (iresult != "-1")
              {
+                 iresult = "1";
+                 MailLich("TEST", path, filename, maphongban);
                  return Json(new { success = true, macuochop = int.Parse(iresult) }, JsonRequestBehavior.AllowGet);
              }
              else
@@ -433,6 +444,100 @@ namespace RICONS.Web.Controllers
          {
              var FileVirtualPath = "~/FileUpload/" + idcode + "/" + tenfile;
              return File(FileVirtualPath, "application/force-download", Path.GetFileName(FileVirtualPath));
+         }
+
+         public void MailLich(string NoiDung, string path, string filename, string maphongban)
+         {
+             string sMailGui = System.Configuration.ConfigurationManager.AppSettings["MailSend"];
+             string sPass = System.Configuration.ConfigurationManager.AppSettings["MailPass"];
+             string sHost = System.Configuration.ConfigurationManager.AppSettings["MailHost"];
+             string sPort = System.Configuration.ConfigurationManager.AppSettings["MailPort"];
+             string sTieuDe = System.Configuration.ConfigurationManager.AppSettings["ScheduleSubject"];
+             string sMailTo = System.Configuration.ConfigurationManager.AppSettings["schedulerman"];
+
+             // gui mail
+            
+             var fromAddress = new MailAddress(sMailGui);
+             
+             string fromPassword = sPass;
+             string subject = sTieuDe;
+             string body = NoiDung;
+
+             DanhmucServices service = new DanhmucServices();
+             PhongBanModels parampb = new PhongBanModels();
+             List<PhongBanModels> lstResult_phongban = service.SelectRows(parampb);
+
+             var lstcaptrentt = lstResult_phongban.Where(p => p.maphongban == maphongban).ToList();
+
+             sMailTo = lstcaptrentt[0].email;
+             var toAddress = new MailAddress(sMailTo);
+
+             var smtp = new SmtpClient
+             {
+                 Host = sHost,
+                 Port = int.Parse(sPort),
+                 EnableSsl = false,
+                 DeliveryMethod = SmtpDeliveryMethod.Network,
+                 UseDefaultCredentials = false,
+                 Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+             };
+             //var smtp = new SmtpClient();
+
+             using (var message = new MailMessage(fromAddress, toAddress)
+             {
+                 IsBodyHtml = true,
+                 Subject = subject,
+                 Body = body
+             })
+             {
+                 try
+                 {
+                     //path = path + "/" + filename;
+                     Attachment data = new Attachment(path, MediaTypeNames.Application.Octet);
+                     message.Attachments.Add(data);
+                     message.CC.Add(lstcaptrentt[0].sodienthoai);
+                     message.CC.Add(lstcaptrentt[0].ghichu);
+                     message.CC.Add(lstcaptrentt[0].ghichu1);
+                     message.CC.Add(lstcaptrentt[0].ghichu2);
+                     message.CC.Add("quanghuy.pham@newtecons.vn");
+                     smtp.Send(message);
+                     smtp.Dispose();
+                 }
+                 catch (SmtpFailedRecipientsException ex)
+                 {
+                     for (int i = 0; i < ex.InnerExceptions.Length; i++)
+                     {
+                         SmtpStatusCode status = ex.InnerExceptions[i].StatusCode;
+                         if (status == SmtpStatusCode.MailboxBusy || status == SmtpStatusCode.MailboxUnavailable)
+                         {
+                             // Console.WriteLine("Delivery failed - retrying in 5 seconds.");
+                             System.Threading.Thread.Sleep(5000);
+                             smtp.Send(message);
+                         }
+                         else
+                         {
+                             //  Console.WriteLine("Failed to deliver message to {0}", ex.InnerExceptions[i].FailedRecipient);
+                             throw ex;
+                         }
+                     }
+                 }
+                 catch (Exception ex)
+                 {
+                     //  Console.WriteLine("Exception caught in RetryIfBusy(): {0}",ex.ToString());
+                     throw ex;
+                 }
+                 finally
+                 {
+                     smtp.Dispose();
+                 }
+             }
+
+         }
+
+         protected override void Dispose(bool disposing)
+         {
+             //taskService.Dispose();
+             base.Dispose(disposing);
          }
     }
 }
