@@ -483,6 +483,9 @@ namespace RICONS.Web.Controllers
              };
              //var smtp = new SmtpClient();
 
+             subject = "NEWTECONS PROJECT REPORT: " + lstcaptrentt[0].tenphongban;
+             body = "<p>Kính gửi anh chị,</p><p>Đính kèm là báo cáo tuần gửi từ hệ thống của: " + lstcaptrentt[0].tenphongban + "</p>" + "<p>Trân trọng,</p>";
+
              using (var message = new MailMessage(fromAddress, toAddress)
              {
                  IsBodyHtml = true,
@@ -492,14 +495,13 @@ namespace RICONS.Web.Controllers
              {
                  try
                  {
-                     //path = path + "/" + filename;
+
                      Attachment data = new Attachment(path, MediaTypeNames.Application.Octet);
                      message.Attachments.Add(data);
                      message.CC.Add(lstcaptrentt[0].sodienthoai);
                      message.CC.Add(lstcaptrentt[0].ghichu);
                      message.CC.Add(lstcaptrentt[0].ghichu1);
                      message.CC.Add(lstcaptrentt[0].ghichu2);
-                     message.CC.Add("quanghuy.pham@newtecons.vn");
                      smtp.Send(message);
                      smtp.Dispose();
                  }
