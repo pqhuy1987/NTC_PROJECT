@@ -329,6 +329,23 @@
             }
         })
 
+        $('#btn-delete').on('click', function (e) {
+            var form = $(this).closest('form');
+            var checked = $('.chkCheck:checked');
+            if (checked && checked.length <= 0) {
+                alert('Vui long chon 1 ');
+                return false;
+            } else {
+
+                var listChecked = $('.chkCheck:checked');
+                var ID = $(listChecked[0]).attr('mpb');
+                var row = $(listChecked[0]).closest('tr.rows-box');
+                form.find('input[name="act"]').val('delete')
+                form.find('input[name="ID"]').val(ID);
+                form.submit();
+            }
+        })
+
         $('#content').on('click', 'a.edit', function (e) {
             e.preventDefault();
             // Bo check tat ca
@@ -356,23 +373,6 @@
 
             $('#btn-save').trigger('click');
         });
-
-        $('#btn-delete').on('click', function (e) {
-            var form = $(this).closest('form');
-            var checked = $('.chkCheck:checked');
-            if (checked && checked.length <= 0) {
-                alert('Vui long chon 1 ');
-                return false;
-            } else {
-
-                var listChecked = $('.chkCheck:checked');
-                var ID = $(listChecked[0]).attr('mpb');
-                var row = $(listChecked[0]).closest('tr.rows-box');
-                form.find('input[name="act"]').val('delete')
-                form.find('input[name="ID"]').val(ID);
-                form.submit();
-            }
-        })
 
 
     })

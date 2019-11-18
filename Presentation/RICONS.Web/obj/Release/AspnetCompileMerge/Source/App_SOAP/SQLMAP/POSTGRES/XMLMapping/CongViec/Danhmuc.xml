@@ -10,7 +10,6 @@
       *
       FROM
       m_donvi_thongtingiamdoc
-      WHERE xoa='0'
     </select>
     
     

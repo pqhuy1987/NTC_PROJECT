@@ -430,6 +430,7 @@
     <Content Include="Themes\jQueryGantt\teamworkFont.css" />
     <Content Include="Themes\Login\css\loader.css" />
     <Content Include="Themes\Login\images\KPI.jpg" />
+    <Content Include="Themes\Login\images\Logo.png" />
     <Content Include="Themes\Login\images\RiconsBR.jpg" />
     <Content Include="Themes\Login\js\aes.js" />
     <Content Include="Themes\Login\js\core.js" />

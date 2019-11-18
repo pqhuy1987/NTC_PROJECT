@@ -39,7 +39,7 @@
 
 <div class="HeaderFixed">
     <div class="b-b b-light">
-        <div class="p-left c-black">Thêm mới lịch họp tuần</div>
+        <div class="p-left c-black">Thêm mới báo cáo tuần</div>
         <div class="clearBoth"></div>
     </div>
 </div>
@@ -66,13 +66,13 @@
             </div>
         
         <div class="row">
-                <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Loại cuộc họp<label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Loại báo cáo<label style="color:red;height:10px;">*</label>:</div>
                 <div class="col-md-10" style="padding-left:10px;">
                     <select id="filter04" data-placeholder="Chọn " class="chosen-select-loaikehoach" name="loaicuochop">
-                        <option value="0">Loại cuộc họp</option>
-                        <option value="1">Họp tuần phòng</option>
-                        <option value="2">Họp tuần BGĐ</option>
-                        <option value="3">Họp khác</option>
+                        <option value="0">Loại báo cáo</option>
+                        <option value="1">Báo cáo tuần phòng</option>
+                        <option value="2">Báo cáo tuần BGĐ</option>
+                        <option value="3">Báo cáo khác</option>
                     </select>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                 <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Tuần thứ <label style="color:red;height:10px;">*</label>:</div>
                 <div class="col-md-10" style="padding-left:10px;">
                     <select id="filter01" data-placeholder="Chọn tuần họp" class="chosen-select-loaikehoach" name="matuan">
-                        <option value="0">Lựa chọn tuần họp</option>
+                        <option value="0">Lựa chọn tuần báo cáo</option>
                         @if (!string.IsNullOrEmpty(ViewBag.sbtuan))
                         {
                             @Html.Raw(ViewBag.sbtuan);
@@ -90,17 +90,17 @@
                 </div>
             </div>
 
-        <div class="row">
+        @*<div class="row">
                 <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Giờ bắt đầu họp <label style="color:red;height:10px;">*</label>:</div>
                 <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Giờ họp - VD: 8h20 or 15h00" id="txtgiohop" name="giohop" /></div>
-            </div>
+            </div>*@
         
            <div class="row">
-                <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Ngày họp <label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Ngày up báo cáo <label style="color:red;height:10px;">*</label>:</div>
                 <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Ngày họp - VD: 01/01/2018" id="txtngayhop" name="ngayhop" /></div>
             </div>
 
-         <div class="row">
+         @*<div class="row">
                 <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Phòng họp <label style="color:red;height:10px;">*</label>:</div>
                 <div class="col-md-10" style="padding-left:10px;">
                     <select id="filter02" data-placeholder="Chọn tuần họp" class="chosen-select-loaikehoach" name="phonghop">
@@ -110,9 +110,9 @@
                         }
                     </select>
                 </div>
-            </div>
+            </div>*@
         
-           <div class="row">
+           @*<div class="row">
                 <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Lý do buổi họp <label style="color:red;height:10px;">*</label>:</div>
                 <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Lý do buổi họp" id="txtlydobuoihop" name="lydobuoihop" /></div>
             </div>
@@ -125,12 +125,12 @@
             <div class="row">
                 <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Cấp lãnh đạo <label style="color:red;height:10px;">*</label>:</div>
                 <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Cấp lãnh đạo (Cấp giám đốc trở lên). Ghi rõ họ tên" id="txtcaplanhdao" name="caplanhdao" /></div>
-            </div>
+            </div>*@
         
-            <div class="row">
+            @*<div class="row">
                 <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Tóm tắt nội dung cuộc họp <label style="color:red;height:10px;">*</label>:</div>
                 <div class="col-md-10" style="padding-left:10px;"><textarea style="width:100%" rows="4" placeholder="Tóm tắt nội dung cuộc họp" id="txtnoidungcuochop" name="noidungcuochop"> </textarea></div>
-            </div>
+            </div>*@
         
             <div class="row">
                 <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Tập tin đính kèm <label style="color:red;height:10px;">*</label>:</div>
@@ -224,34 +224,36 @@
             Thongbao("Chọn Tuần họp?");
             return false;
         }
-        else if ($('#txtgiohop').val().length <2) {
-            Thongbao("Nhập giờ họp?");
-            return false;
-        }
-        else if ($('#txtngayhop').val().length != 10) {
-            Thongbao("Nhập ngày họp trong tuần (01/01/2017)?");
-            return false;
-        }
-        else if ($('#filter02').val() == 0) {
-            Thongbao("Chọn phòng họp?");
-            return false;
-        }
-
         else if ($('#filter04').val() == 0) {
             Thongbao("Loại cuộc họp?");
             return false;
         }
+        //else if ($('#txtgiohop').val().length <2) {
+            //Thongbao("Nhập giờ họp?");
+            //return false;
+            //$('#txtgiohop').val() = '8h30';
+        //}
+        else if ($('#txtngayhop').val().length != 10) {
+            Thongbao("Nhập ngày họp trong tuần (01/01/2017)?");
+            return false;
+        }
+        //else if ($('#filter02').val() == 0) {
+            //Thongbao("Chọn phòng họp?");
+            //return false;
+            //$('#filter02').val() = "1";
+        //}
+
         
-        var lydobuoihop = $('#txtlydobuoihop').val();
-        var thanhphanthamdu = $('#txtthanhphanthamdu').val();
-        var noidungcuochop = $('#txtnoidungcuochop').val();
+        var lydobuoihop = "lydobuoihop";
+        var thanhphanthamdu = "thanhphanthamdu";
+        var noidungcuochop = "noidungcuochop";
 
         var DataJson = "{";
         DataJson += "'macuochop':'" + $('#txtmacuochop').val() + "',";
         DataJson += "'matuan':'" + $('#filter01').val() + "',";
-        DataJson += "'giohop':'" + $('#txtgiohop').val() + "',";
+        DataJson += "'giohop':'" + "8h30" + "',";
         DataJson += "'ngayhop':'" + $('#txtngayhop').val() + "',";
-        DataJson += "'phonghop':'" + $('#filter02').val() + "',";
+        DataJson += "'phonghop':'" + "1" + "',";
         DataJson += "'maphongban':'" + $('#filter03').val() + "',";
 
         DataJson += "'loaicuochop':'" + $('#filter04').val() + "',";

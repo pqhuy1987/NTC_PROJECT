@@ -85,7 +85,7 @@
 
       FROM
       m_donvi_phongban
-      WHERE xoa='0'
+      WHERE xoa='0' and phongban_congtruong = '0'
       <isNotEmpty property="maphongban">
         and maphongban='$maphongban$'
       </isNotEmpty>

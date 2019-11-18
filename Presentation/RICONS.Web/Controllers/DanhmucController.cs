@@ -279,6 +279,7 @@ namespace RICONS.Web.Controllers
                 paramphongban.xoa = "0";
                 paramphongban.nguoitao = int.Parse(Session["userid"].ToString());
                 paramphongban.ngaytao = ngaytao;
+                paramphongban.phongban_congtruong = "0";
                 DanhmucServices services = new DanhmucServices();
                 string result = services.Insert_phongban(paramphongban);
                 maphongban = result;
