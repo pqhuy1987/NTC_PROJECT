@@ -90,12 +90,12 @@ namespace RICONS.Web.Data.Services
                 sqlMap.BeginTransaction();
                 Hashtable param = new Hashtable();
                 param = base.SetDataToHashtable(false, clParam);
-                param["seqname"] = "seq_vb_capdouutien";
-                string strid = sqlMap.ExecuteQueryForObject("Common.GetNextVal", param).ToString();
-                param["macapdouutien"] = strid;
-                sqlMap.Insert("m_donvi_phongban.InsertRow", param);
+                //param["seqname"] = "seq_vb_capdouutien";
+                //string strid = sqlMap.ExecuteQueryForObject("Common.GetNextVal", param).ToString();
+                //param["macapdouutien"] = strid;
+                sqlMap.Insert("m_donvi_phongban.Insert", param);
                 sqlMap.CommitTransaction();
-                strResult = param["macapdouutien"].ToString();
+                //strResult = param["macapdouutien"].ToString();
             }
             catch (Exception ex)
             {

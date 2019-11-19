@@ -52,26 +52,26 @@ var dataHeader_Milestones =
             col_value: 'Email thư ký'
         },
 
-    {
-        colspan: 1,
-        col_class: 'ovh col7',
-        col_id: '',
-        col_value: 'Người quản lý 1'
-    },
+    //{
+    //    colspan: 1,
+    //    col_class: 'ovh col7',
+    //    col_id: '',
+    //    col_value: 'Người quản lý 1'
+    //},
 
-    {
+        {
         colspan: 1,
         col_class: 'ovh col9',
         col_id: '',
         col_value: 'Email QL 1'
         },
 
-        {
-            colspan: 1,
-            col_class: 'ovh col11',
-            col_id: '',
-            col_value: 'Người quản lý 2'
-        },
+        //{
+        //    colspan: 1,
+        //    col_class: 'ovh col11',
+        //    col_id: '',
+        //    col_value: 'Người quản lý 2'
+        //},
 
         {
             colspan: 1,
@@ -80,12 +80,12 @@ var dataHeader_Milestones =
             col_value: 'Email QL 2'
         },
 
-        {
-            colspan: 1,
-            col_class: 'ovh col13',
-            col_id: '',
-            col_value: 'Người quản lý 3'
-        },
+        //{
+        //    colspan: 1,
+        //    col_class: 'ovh col13',
+        //    col_id: '',
+        //    col_value: 'Người quản lý 3'
+        //},
 
         {
             colspan: 1,

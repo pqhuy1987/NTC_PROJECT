@@ -1,0 +1,284 @@
+﻿@model RICONS.Web.Models.PhongBanModels
+@{
+    ViewBag.Title = "Danh mục giáo viên";
+}
+@*--css--*@
+@section CSS
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/controller/Daotao/Danhmuc_giaovien.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/prism.css" />
+}
+
+@*--javascript--*@
+@section JavaScript
+{
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/controllers/Daotao/Danhmuc_giaovien.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/prism.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/table/buildTable.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/colResizale/colResizable-1.3.source.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/chosen.jquery.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery.datepick-vi.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/plugins/jquery.blockui.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/scripts/app.min.js"></script>
+
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootbox.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/custom.js"></script>
+}
+<script>
+    var linkContent = '@Url.Content("~")';
+</script>
+
+
+<div class="HeaderFixed">
+    <div class="b-b b-light">
+        <div class="p-left c-black">Danh mục thông tin giáo viên</div>
+        <div class="clearBoth"></div>
+    </div>
+</div>
+
+<div class="boxEdit">
+    <div id="frm-create">
+        @using (Html.BeginForm("Updategiaovien", "Danhmuc", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+        {
+            <input type="hidden" name="act" value="create" />
+            <input type="hidden" name="ID" value="" />
+
+            <div class="row" style="width:100%">
+
+                    <div class="row">
+                        <div class="col-md-1" style="min-width:115px;padding-left:10px"></div>
+                        <div class="col-md-7" style="padding-left:10px;"><label style="color:red" id="lblthongbao" class="hidden"></label></div>
+                    </div>
+            </div>
+
+            <div class="row" style="width:100%">
+                <div class="col-md-1" style="min-width:115px;padding-left:10px">Họ và tên:</div>
+                <div class="col-md-3" style="padding-left: 10px"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Họ tên giáo viên" id="txthovaten" name="hovaten" /></div>
+
+                <div class="col-md-1" style="min-width: 115px; padding-left: 10px">Số điện thoại:</div>
+                <div class="col-md-2" style="padding-left:10px"><input type="text" style="width:100%;" autocomplete="off" placeholder="Số điện thoại" id="txtsodienthoai" name="sodienthoai" /></div>
+            </div>
+
+            <div class="row" style="width:100%">
+                <div class="col-md-1" style="min-width: 115px; padding-left: 10px">Nguồn giáo viên:</div>
+                <div class="col-md-3" style="padding-left:10px">
+                    <select id="filter01" data-placeholder="Trực thuộc đơn vị" class="chosen-select-loaikehoach" name="nguongiaovien">
+                        <option value="0">Nguồn giáo viên</option>
+                        @if (!string.IsNullOrEmpty(ViewBag.keHoachs))
+                        {
+                            @Html.Raw(ViewBag.keHoachs);
+                        }
+                    </select>
+                </div>
+                <div class="col-md-1" style="min-width: 115px; padding-left: 10px">Email:</div>
+                <div class="col-md-2" style="padding-left:10px"><input type="text" style="width: 100%" autocomplete="off" placeholder="Email" name="email" /></div>
+                <div class="col-md-1" style="min-width: 115px; padding-left: 10px">Số điện thoại:</div>
+                <div class="col-md-2" style="padding-left:10px"><input type="text" style="width:100%;" autocomplete="off" placeholder="Số điện thoại" id="txtsodienthoai1" name="sodienthoai1" /></div>
+            </div>
+
+            <div class="row" style="width:100%;padding-top:5px">
+                <div class="col-md-1" style="min-width: 115px; padding-left: 10px"></div>
+                <div class="col-md-3" style="padding-left:10px">
+
+                    <button id="btn-create" type="button" class="buttoncustom WhiteButton" name="luu" value="Thêm mới"><i class="retweet_new"></i>Thêm mới</button>
+                    <button id="btn-save" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu"><i class="retweet_save"></i>Lưu</button>
+                    <input type="button" id="btn-edit" class="hidden" class="buttoncustom WhiteButton" name="Update" value="Hiệu chỉnh" />
+                    <input type="button" class="hidden" id="btn-delete" class="buttoncustom WhiteButton" name="Delete" value="Xoá" />
+                </div>
+            </div>
+
+        }
+
+    </div>
+
+</div>
+
+<div style="width:100%; height:75%;">
+    <div id="boxContent">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table_danhSach" id="tableContent">
+                            <thead id="head-date">
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+
+        renderDate();
+
+        $('#btn-create').on('click', function (e) {
+            var form = $(this).closest('form');
+            form.find('input[name="act"]').val('create');
+            form.find('input[name="ID"]').val('');
+            form[0].reset();
+        });
+
+        $('#btn-save').on('click', function (e) {
+
+            debugger;
+
+            $("#lblthongbao").removeClass('hidden');
+            if ($("#txthovaten").val().length < 3) {
+                $('#lblthongbao').html('Nhập họ và tên giáo viên?');
+                return false;
+            }
+            else if ($("#txtsodienthoai").val().length < 3) {
+                $('#lblthongbao').html('Nhập số điện thoại?');
+                return false;
+            }
+            //else if ($("#txtemail").val().length > 5) {
+            //    var email = $("#txtemail").val();
+            //    var dodai = email.length - 1;
+            //    var daucham = email.lastIndexOf('.');
+            //    var acong = email.lastIndexOf('.') - 2;
+            //    var daucach = email.indexOf(' ');
+            //    if ((dodai <= 5) || (acong < 1) || (daucham <= acong + 1) || (daucach != -1)) {
+            //        $('#lblthongbao').html('Email không hợp lệ?');
+            //        return false;
+            //    }
+            //}
+            //else if ($("#txtemail").val().length < 5) {
+            //    $('#lblthongbao').html('Email không hợp lệ?');
+            //    return false;
+            //}
+
+            else if ($("#filter01").val() == 0) {
+                $('#lblthongbao').html('Chọn nguồn giáo viên?');
+                return false;
+            }
+            var form = $(this).closest('form');
+            form.submit();
+        });
+        // hieu chinh
+        $('#btn-edit').on('click', function (e) {
+            debugger;
+            var form = $(this).closest('form');
+            var checked = $('.chkCheck:checked');
+            if (checked && checked.length <= 0) {
+                alert('Vui lòng check dòng cần hiệu chỉnh');
+                return false;
+            } else {
+                var listChecked = $('.chkCheck:checked');
+                var ID = $(listChecked[0]).attr('codeid'); //encodeURIComponent(ID)); //Encoder.htmlDecode(ID)
+                var row = $(listChecked[0]).closest('tr.rows-box');
+                form.find('input[name="act"]').val('update')
+                form.find('input[name="ID"]').val(ID);
+                form.find('input[name="hovaten"]').val(row.find('.col3').text());
+                form.find('input[name="sodienthoai"]').val(row.find('.col4').text());
+                form.find('input[name="nguongiaovien"]').val(row.find('.col5').attr('title'));
+                form.find('input[name="email"]').val(row.find('.col6').text());
+                form.find('input[name="sodienthoai1"]').val(row.find('.col7').text());
+
+                $('#filter01').val(madonvi);
+                for (var selector in configChosenDanhmucphongban) {
+                    $(selector).change();
+                    $(selector).trigger('chosen:updated');
+                }
+            }
+        })
+
+        $('#content').on('click', 'a.edit', function (e) {
+            e.preventDefault();
+            // Bo check tat ca
+            $('#tableContent input[type="checkbox"]').prop('checked', false);
+            // check dong dang chon
+            $(this).closest('tr').find('input[type="checkbox"]').prop('checked', true);
+            // Goi nut edit click
+            $('#btn-edit').trigger('click');
+        });
+
+        $('#content').on('click', 'a.del', function (e) {
+            e.preventDefault();
+            debugger;
+            // Bo check tat ca
+            $('#tableContent input[type="checkbox"]').prop('checked', false);
+            // check dong dang chon
+            $(this).closest('tr').find('input[type="checkbox"]').prop('checked', true);
+            // Goi nut edit click
+            var form = $('#frm-create > form');
+            var check = $('.chkCheck:checked');
+            form.find('input[name="act"]').val('delete');
+
+            var maphongban = $(check[0]).attr('codeid');
+            //alert(maphongban);
+            form.find('input[name="ID"]').val(maphongban);
+            form.submit();
+            //$('#btn-save').trigger('click');
+        });
+
+        $('#btn-delete').on('click', function (e) {
+            var form = $(this).closest('form');
+            var checked = $('.chkCheck:checked');
+            if (checked && checked.length <= 0) {
+                alert('Vui long chon 1 ');
+                return false;
+            } else {
+
+                var listChecked = $('.chkCheck:checked');
+                var ID = $(listChecked[0]).attr('codeid');
+                var row = $(listChecked[0]).closest('tr.rows-box');
+                form.find('input[name="act"]').val('delete')
+                form.find('input[name="ID"]').val(ID);
+                form.submit();
+            }
+        })
+
+
+
+    })
+
+    function renderDate() {
+
+        var pb = "<option value='0'>Nguồn giáo viên</option>";
+        pb = pb + "<option value= 1>Nội bộ</option>";
+        pb = pb + "<option value= 2>Bên ngoài</option>";
+
+        var html = '';
+        html += '<tr>';
+        html += '<th class="ovh col1"><input type="checkbox" onclick="Select(this);" class="chkCheck"/></th>'
+                + '<th class="ovh col2">Stt</th>'
+                + '<th class="ovh col3">Họ tên GV</th>'
+                + '<th class="ovh col4">Số điện thoại</th>'
+                + '<th class="ovh col5">Nguồn giáo viên</th>'
+                + '<th class="ovh col6">Email</th>'
+                + '<th class="ovh col7">Số điện thoại ngoài</th>'
+                 + '<th class="ovh col8">Chức năng</th>'
+                + ' </tr>';
+
+        html += '<tr>';
+        html += '<th class="ovh col1 boxEdit"></th>'
+             + '<th class="ovh col2 boxEdit"><input type="text" id="txttenhoso" style="width:100%;height:24px" autocomplete="off" placeholder="" name="tenhoso" /></th>'
+             + '<th class="ovh col3 boxEdit"><input type="text" id="txthovatens" style="width:100%;height:24px" autocomplete="off" placeholder="" name="hovatens" /></th>'
+
+             + '<th class="ovh col4 boxEdit"><input type="text" id="txtmanhanvien" style="width:100%;height:24px" autocomplete="off" placeholder="" name="xacnhanhoso" /></th>'
+             + '<th class="ovh col5 boxEdit"><select id="filter02" style="width:100%;padding-left: 2px;border: 1px solid #aaa; border-radius: 3px;background-color: #fff;height: 22px;" class="chosen-select-loaikehoach" name="nguongiaovien">"' + pb + '"</select></th>'
+
+             + '<th class="ovh col6 boxEdit"><input type="text" id="txtmanhanvien" style="width:100%;height:24px" autocomplete="off" placeholder="" name="manhanvien" /></th>'
+             + '<th class="ovh col7 boxEdit"><input type="text" id="txtmanhanvien" style="width:100%;height:24px" autocomplete="off" placeholder="" name="manhanvien" /></th>'
+              + '<th class="ovh col8 boxEdit"></th>'
+            
+             + ' </tr>';
+
+        $('#head-date').html(html);
+    }
+</script>
+
+
+
+

@@ -163,6 +163,7 @@
     <Compile Include="Controllers\AftertrainingController.cs" />
     <Compile Include="Controllers\CollaborateController.cs" />
     <Compile Include="Controllers\ConstructionMeetingController.cs" />
+    <Compile Include="Controllers\Danhmuc2Controller.cs" />
     <Compile Include="Controllers\WeedMeetingController.cs" />
     <Compile Include="Controllers\KpiConstructionController.cs" />
     <Compile Include="Controllers\ReportKpiController.cs" />
@@ -1457,6 +1458,11 @@
     <Content Include="Views\Collaborate\ApprovalCollaborate.cshtml" />
     <Content Include="Views\Collaborate\Partials\CollaborateEdit.cshtml" />
     <Content Include="Views\Collaborate\Emails\MailCongTac.cshtml" />
+    <Content Include="Views\Danhmuc2\Create.cshtml" />
+    <Content Include="Views\Danhmuc2\Edit.cshtml" />
+    <Content Include="Views\Danhmuc2\Index.cshtml" />
+    <Content Include="Views\Danhmuc2\Indexchucdanh.cshtml" />
+    <Content Include="Views\Danhmuc2\Indexgiaovien.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\files\" />

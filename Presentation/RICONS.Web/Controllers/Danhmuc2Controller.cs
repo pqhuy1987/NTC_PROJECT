@@ -14,7 +14,7 @@ using System.Web;
 using System.Web.Mvc;
 namespace RICONS.Web.Controllers
 {
-    public class DanhmucController : BaseController
+    public class Danhmuc2Controller : BaseController
     {
         public static string maphongban = "";
         string ngaytao = "GETDATE()";
@@ -118,7 +118,7 @@ namespace RICONS.Web.Controllers
                 sbResult.Append("\"col_value\":\"" + model.maphongban.Trim() + "\"");
                 sbResult.Append("},");
 
-               //Mã phòng ban
+                //Mã phòng ban
                 sbResult.Append("{");
                 sbResult.Append("\"colspan\":\"1\",");
                 sbResult.Append("\"col_class\":\"ovh col4\",");
@@ -151,14 +151,14 @@ namespace RICONS.Web.Controllers
 
 
 
-                ////thuoc quan ly
-                //sbResult.Append("{");
-                //sbResult.Append("\"colspan\":\"1\",");
-                //sbResult.Append("\"col_class\":\"ovh col7\",");
-                //sbResult.Append("\"col_id\":\"7\",");
-                //sbResult.Append("\"title\":\""+model.thuocquanly.Trim()+"\",");
-                //sbResult.Append("\"col_value\":\"" + model.hotenquanly + "\"");
-                //sbResult.Append("},");
+                //thuoc quan ly
+                sbResult.Append("{");
+                sbResult.Append("\"colspan\":\"1\",");
+                sbResult.Append("\"col_class\":\"ovh col7\",");
+                sbResult.Append("\"col_id\":\"7\",");
+                sbResult.Append("\"title\":\"" + model.thuocquanly.Trim() + "\",");
+                sbResult.Append("\"col_value\":\"" + model.hotenquanly + "\"");
+                sbResult.Append("},");
 
                 //Ghi chú
                 sbResult.Append("{");
@@ -169,14 +169,14 @@ namespace RICONS.Web.Controllers
                 sbResult.Append("},");
 
 
-                ////thuoc quan ly1
-                //sbResult.Append("{");
-                //sbResult.Append("\"colspan\":\"1\",");
-                //sbResult.Append("\"col_class\":\"ovh col11\",");
-                //sbResult.Append("\"col_id\":\"11\",");
-                //sbResult.Append("\"title\":\"" + model.thuocquanly1.Trim() + "\",");
-                //sbResult.Append("\"col_value\":\"" + model.hotenquanly1 + "\"");
-                //sbResult.Append("},");
+                //thuoc quan ly1
+                sbResult.Append("{");
+                sbResult.Append("\"colspan\":\"1\",");
+                sbResult.Append("\"col_class\":\"ovh col11\",");
+                sbResult.Append("\"col_id\":\"11\",");
+                sbResult.Append("\"title\":\"" + model.thuocquanly1.Trim() + "\",");
+                sbResult.Append("\"col_value\":\"" + model.hotenquanly1 + "\"");
+                sbResult.Append("},");
 
                 //Ghi chú1
                 sbResult.Append("{");
@@ -187,14 +187,14 @@ namespace RICONS.Web.Controllers
                 sbResult.Append("},");
 
 
-                ////thuoc quan ly2
-                //sbResult.Append("{");
-                //sbResult.Append("\"colspan\":\"1\",");
-                //sbResult.Append("\"col_class\":\"ovh col13\",");
-                //sbResult.Append("\"col_id\":\"13\",");
-                //sbResult.Append("\"title\":\"" + model.thuocquanly2.Trim() + "\",");
-                //sbResult.Append("\"col_value\":\"" + model.hotenquanly2 + "\"");
-                //sbResult.Append("},");
+                //thuoc quan ly2
+                sbResult.Append("{");
+                sbResult.Append("\"colspan\":\"1\",");
+                sbResult.Append("\"col_class\":\"ovh col13\",");
+                sbResult.Append("\"col_id\":\"13\",");
+                sbResult.Append("\"title\":\"" + model.thuocquanly2.Trim() + "\",");
+                sbResult.Append("\"col_value\":\"" + model.hotenquanly2 + "\"");
+                sbResult.Append("},");
 
                 //Ghi chú2
                 sbResult.Append("{");
@@ -251,29 +251,29 @@ namespace RICONS.Web.Controllers
                 paramphongban.hovaten = model.hovaten;
 
 
-                //var lstcaptrentt = lstthongtingiamdoc.Where(p => p.mathongtin == model.thuocquanly).ToList();
-                //if (lstcaptrentt.Count > 0)
-                //{
-                    //paramphongban.thuocquanly = model.thuocquanly;
-                    //paramphongban.hotenquanly = lstcaptrentt[0].hovaten;
+                var lstcaptrentt = lstthongtingiamdoc.Where(p => p.mathongtin == model.thuocquanly).ToList();
+                if (lstcaptrentt.Count > 0)
+                {
+                    paramphongban.thuocquanly = model.thuocquanly;
+                    paramphongban.hotenquanly = lstcaptrentt[0].hovaten;
                     paramphongban.ghichu = model.ghichu;
-                //}
+                }
 
-                //var lstcaptrentt1 = lstthongtingiamdoc.Where(p => p.mathongtin == model.thuocquanly1).ToList();
-                //if (lstcaptrentt1.Count > 0)
-                //{
-                    //paramphongban.thuocquanly1 = model.thuocquanly1;
-                    //paramphongban.hotenquanly1 = lstcaptrentt1[0].hovaten;
+                var lstcaptrentt1 = lstthongtingiamdoc.Where(p => p.mathongtin == model.thuocquanly1).ToList();
+                if (lstcaptrentt1.Count > 0)
+                {
+                    paramphongban.thuocquanly1 = model.thuocquanly1;
+                    paramphongban.hotenquanly1 = lstcaptrentt1[0].hovaten;
                     paramphongban.ghichu1 = model.ghichu1;
-                //}
+                }
 
-                //var lstcaptrentt2 = lstthongtingiamdoc.Where(p => p.mathongtin == model.thuocquanly2).ToList();
-                //if (lstcaptrentt2.Count > 0)
-                //{
-                    //paramphongban.thuocquanly2 = model.thuocquanly2;
-                    //paramphongban.hotenquanly2 = lstcaptrentt1[0].hovaten;
+                var lstcaptrentt2 = lstthongtingiamdoc.Where(p => p.mathongtin == model.thuocquanly2).ToList();
+                if (lstcaptrentt2.Count > 0)
+                {
+                    paramphongban.thuocquanly2 = model.thuocquanly2;
+                    paramphongban.hotenquanly2 = lstcaptrentt1[0].hovaten;
                     paramphongban.ghichu2 = model.ghichu2;
-                //}
+                }
 
 
                 paramphongban.xoa = "0";
@@ -282,9 +282,6 @@ namespace RICONS.Web.Controllers
                 paramphongban.phongban_congtruong = "0";
                 DanhmucServices services = new DanhmucServices();
                 string result = services.Insert_phongban(paramphongban);
-
-                //PhongBanServices services = new PhongBanServices();
-                //string result = services.InsertRow(paramphongban);
                 maphongban = result;
             }
             else if (act == "update")
@@ -299,29 +296,29 @@ namespace RICONS.Web.Controllers
                 paramphongban.email = model.email;
                 paramphongban.hovaten = model.hovaten;
 
-                //var lstcaptrentt = lstthongtingiamdoc.Where(p => p.mathongtin == model.thuocquanly).ToList();
-                //if (lstcaptrentt.Count > 0)
-                //{
-                    //paramphongban.thuocquanly = model.thuocquanly;
-                    //paramphongban.hotenquanly = lstcaptrentt[0].hovaten;
+                var lstcaptrentt = lstthongtingiamdoc.Where(p => p.mathongtin == model.thuocquanly).ToList();
+                if (lstcaptrentt.Count > 0)
+                {
+                    paramphongban.thuocquanly = model.thuocquanly;
+                    paramphongban.hotenquanly = lstcaptrentt[0].hovaten;
                     paramphongban.ghichu = model.ghichu;
-                //}
+                }
 
-                //var lstcaptrentt1 = lstthongtingiamdoc.Where(p => p.mathongtin == model.thuocquanly1).ToList();
-                //if (lstcaptrentt1.Count > 0)
-                //{
-                    //paramphongban.thuocquanly1 = model.thuocquanly1;
-                    //paramphongban.hotenquanly1 = lstcaptrentt1[0].hovaten;
+                var lstcaptrentt1 = lstthongtingiamdoc.Where(p => p.mathongtin == model.thuocquanly1).ToList();
+                if (lstcaptrentt1.Count > 0)
+                {
+                    paramphongban.thuocquanly1 = model.thuocquanly1;
+                    paramphongban.hotenquanly1 = lstcaptrentt1[0].hovaten;
                     paramphongban.ghichu1 = model.ghichu1;
-                //}
+                }
 
-                //var lstcaptrentt2 = lstthongtingiamdoc.Where(p => p.mathongtin == model.thuocquanly2).ToList();
-                //if (lstcaptrentt2.Count > 0)
-                //{
-                    //paramphongban.thuocquanly2 = model.thuocquanly2;
-                    //paramphongban.hotenquanly2 = lstcaptrentt1[0].hovaten;
+                var lstcaptrentt2 = lstthongtingiamdoc.Where(p => p.mathongtin == model.thuocquanly2).ToList();
+                if (lstcaptrentt2.Count > 0)
+                {
+                    paramphongban.thuocquanly2 = model.thuocquanly2;
+                    paramphongban.hotenquanly2 = lstcaptrentt1[0].hovaten;
                     paramphongban.ghichu2 = model.ghichu2;
-                //}
+                }
 
                 paramphongban.xoa = "0";
                 paramphongban.nguoitao = int.Parse(Session["userid"].ToString());
@@ -343,7 +340,7 @@ namespace RICONS.Web.Controllers
             return RedirectToAction("Index", "Danhmuc");
         }
 
-     
+
 
 
 
@@ -435,7 +432,7 @@ namespace RICONS.Web.Controllers
                 sbResult.Append("\"colspan\":\"1\",");
                 sbResult.Append("\"col_class\":\"ovh col4\",");
                 sbResult.Append("\"col_id\":\"4\",");
-                sbResult.Append("\"col_value\":\"" + model.tenchucdanh + "<a href='" + Url.Action("Indexchucdanh", "Danhmuc", new { mapb = strEncryptCode }) + "' title='" + model.tenchucdanh +"'></a>"+"\"");
+                sbResult.Append("\"col_value\":\"" + model.tenchucdanh + "<a href='" + Url.Action("Indexchucdanh", "Danhmuc", new { mapb = strEncryptCode }) + "' title='" + model.tenchucdanh + "'></a>" + "\"");
                 sbResult.Append("},");
 
                 //Mã phòng ban
@@ -510,7 +507,7 @@ namespace RICONS.Web.Controllers
                 ChucDanhModels param = new ChucDanhModels();
                 FunctionXML function = new FunctionXML(Functions.MapPath("~/Xml/Config/encryptionkeyEncodeLink.config"));
                 param.machucdanh = int.Parse(AES.DecryptText(ID, function.ReadXMLGetKeyEncrypt()));
-              
+
                 param.nguoihieuchinh = int.Parse(Session["userid"].ToString());
                 DanhmucServices services = new DanhmucServices();
 
@@ -532,10 +529,10 @@ namespace RICONS.Web.Controllers
             ViewBag.keHoachs = sbTendonvi.ToString();
             return View();
         }
-     
 
-      
 
-      
-	}
+
+
+
+    }
 }
