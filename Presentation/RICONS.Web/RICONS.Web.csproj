@@ -164,6 +164,7 @@
     <Compile Include="Controllers\CollaborateController.cs" />
     <Compile Include="Controllers\ConstructionMeetingController.cs" />
     <Compile Include="Controllers\Danhmuc2Controller.cs" />
+    <Compile Include="Controllers\WeedMeeting2Controller.cs" />
     <Compile Include="Controllers\WeedMeetingController.cs" />
     <Compile Include="Controllers\KpiConstructionController.cs" />
     <Compile Include="Controllers\ReportKpiController.cs" />
@@ -899,6 +900,7 @@
     <Content Include="Themes\RICONS-2015\js\colResizale\jquery.colResizableMidle.js" />
     <Content Include="Themes\RICONS-2015\js\colResizale\jquery.colResizableRight.js" />
     <Content Include="Themes\RICONS-2015\js\colResizale\jquery.colResizableTop.js" />
+    <Content Include="Themes\RICONS-2015\js\Controllers\Danhmuc2.js" />
     <Content Include="Themes\RICONS-2015\js\Controllers\jquery.min.js" />
     <Content Include="Themes\RICONS-2015\js\Controllers\Account.ManageJS.js" />
     <Content Include="Themes\RICONS-2015\js\Controllers\Account.PersonalJS.js" />
@@ -1463,6 +1465,9 @@
     <Content Include="Views\Danhmuc2\Index.cshtml" />
     <Content Include="Views\Danhmuc2\Indexchucdanh.cshtml" />
     <Content Include="Views\Danhmuc2\Indexgiaovien.cshtml" />
+    <Content Include="Views\WeedMeeting2\Index.cshtml" />
+    <Content Include="Views\WeedMeeting2\Create.cshtml" />
+    <Content Include="Views\WeedMeeting2\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\files\" />

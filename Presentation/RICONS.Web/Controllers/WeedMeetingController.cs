@@ -18,7 +18,7 @@ using System.Net.Mime;
 
 namespace RICONS.Web.Controllers
 {
-    public class WeedMeetingController : BaseController
+    public class WeedMeeting2Controller : BaseController
     {
         Log4Net _logger = new Log4Net(typeof(WeedMeetingController));
 

@@ -63,6 +63,26 @@ namespace RICONS.Web.Data.Services
             return lstResult;
         }
 
+        public List<PhongBanModels> SelectRows2(PhongBanModels clParam)
+        {
+            logger.Start("SelectRows2");
+            List<PhongBanModels> lstResult = new List<PhongBanModels>();
+            try
+            {
+                Hashtable param = new Hashtable();
+                param = base.SetDataToHashtable(false, clParam);
+                IList ilist = sqlMap.ExecuteQueryForList("Danhmuc.SelectRows2", param);
+                CastDataType cast = new CastDataType();
+                lstResult = cast.AdvanceCastDataToList<PhongBanModels>(ilist);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Loi ---> " + ex.Message);
+            }
+            logger.End("SelectRows2");
+            return lstResult;
+        }
+
         public List<PhongBanModels> SelectRows_ma(string maphongban)
         {
             logger.Start("SelectRows");

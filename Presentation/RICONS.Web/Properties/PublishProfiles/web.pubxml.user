@@ -54,19 +54,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/28/2018 11:32:47</publishTime>
     </File>
     <File Include="App_SOAP/providers.config">
-      <publishTime>12/03/2018 23:51:39</publishTime>
+      <publishTime>11/18/2019 18:40:43</publishTime>
     </File>
     <File Include="App_SOAP/SQLMAP/index.html">
-      <publishTime>12/03/2018 23:51:39</publishTime>
+      <publishTime>11/18/2019 18:25:55</publishTime>
     </File>
     <File Include="App_SOAP/SQLMAP/POSTGRES/index.html">
-      <publishTime>12/03/2018 23:51:40</publishTime>
+      <publishTime>11/20/2019 08:49:52</publishTime>
     </File>
     <File Include="App_SOAP/SQLMAP/POSTGRES/SqlMap.config">
       <publishTime>12/03/2018 23:51:39</publishTime>
     </File>
     <File Include="App_SOAP/SQLMAP/POSTGRES/XMLMapping/Common.xml">
-      <publishTime>12/03/2018 23:51:39</publishTime>
+      <publishTime>11/20/2019 15:10:17</publishTime>
     </File>
     <File Include="App_SOAP/SQLMAP/POSTGRES/XMLMapping/CongViec/AddStaff.xml">
       <publishTime>12/03/2018 23:51:39</publishTime>
@@ -84,7 +84,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/03/2018 23:51:39</publishTime>
     </File>
     <File Include="App_SOAP/SQLMAP/POSTGRES/XMLMapping/CongViec/cv_kehoach_lichsu.xml">
-      <publishTime>12/03/2018 23:51:40</publishTime>
+      <publishTime>11/19/2019 10:58:12</publishTime>
     </File>
     <File Include="App_SOAP/SQLMAP/POSTGRES/XMLMapping/CongViec/cv_kehoach_nguoithuchien.xml">
       <publishTime>12/03/2018 23:51:40</publishTime>
@@ -99,7 +99,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/03/2018 23:51:40</publishTime>
     </File>
     <File Include="App_SOAP/SQLMAP/POSTGRES/XMLMapping/CongViec/Danhmuc.xml">
-      <publishTime>11/08/2019 17:52:08</publishTime>
+      <publishTime>11/20/2019 16:08:13</publishTime>
     </File>
     <File Include="App_SOAP/SQLMAP/POSTGRES/XMLMapping/CongViec/index.html">
       <publishTime>12/03/2018 23:51:40</publishTime>
@@ -156,7 +156,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/03/2018 23:51:40</publishTime>
     </File>
     <File Include="App_SOAP/SQLMAP/POSTGRES/XMLMapping/Main/m_donvi_phongban.xml">
-      <publishTime>11/05/2019 09:41:18</publishTime>
+      <publishTime>11/19/2019 16:08:04</publishTime>
     </File>
     <File Include="App_SOAP/SQLMAP/POSTGRES/XMLMapping/Main/m_lichsuhoatdong.xml">
       <publishTime>12/03/2018 23:51:40</publishTime>
@@ -201,7 +201,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/03/2018 23:51:40</publishTime>
     </File>
     <File Include="App_SOAP/SQLMAP/POSTGRES/XMLMapping/mau chung.xml">
-      <publishTime>12/03/2018 23:51:39</publishTime>
+      <publishTime>11/18/2019 18:25:30</publishTime>
     </File>
     <File Include="App_SOAP/SQLMAP/POSTGRES/XMLMapping/Nhap_Xuat/Nhapkho.xml">
       <publishTime>12/03/2018 23:51:40</publishTime>
@@ -282,10 +282,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/10/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>11/18/2019 11:20:51</publishTime>
+      <publishTime>11/20/2019 17:45:56</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>11/18/2019 11:20:50</publishTime>
+      <publishTime>11/20/2019 17:45:56</publishTime>
     </File>
     <File Include="bin/Castle.DynamicProxy.dll">
       <publishTime>04/22/2015 23:59:08</publishTime>
@@ -369,7 +369,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/08/2019 11:13:38</publishTime>
     </File>
     <File Include="bin/RICONS.DataServices.dll">
-      <publishTime>11/18/2019 11:20:16</publishTime>
+      <publishTime>11/20/2019 17:11:23</publishTime>
     </File>
     <File Include="bin/RICONS.DataServices.dll.config">
       <publishTime>12/06/2018 10:42:54</publishTime>
@@ -384,7 +384,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/08/2019 11:13:37</publishTime>
     </File>
     <File Include="bin/RICONS.Web.dll">
-      <publishTime>11/18/2019 11:20:20</publishTime>
+      <publishTime>11/20/2019 17:45:42</publishTime>
     </File>
     <File Include="bin/RICONS.Web.pdb">
       <publishTime>03/08/2019 11:44:06</publishTime>
@@ -432,7 +432,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2019 09:24:40</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>11/18/2019 11:20:33</publishTime>
+      <publishTime>11/20/2019 17:45:45</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>12/03/2018 23:51:46</publishTime>
@@ -471,7 +471,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/03/2018 23:51:47</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>12/03/2018 23:51:46</publishTime>
+      <publishTime>11/20/2019 09:49:18</publishTime>
     </File>
     <File Include="Themes/images/jquery/jquery/ui-bg_glass_55_fbf9ee_1x400.png">
       <publishTime>12/03/2018 23:51:47</publishTime>
@@ -608,11 +608,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Themes/Login/images/KPI.jpg">
       <publishTime>12/03/2018 23:51:48</publishTime>
     </File>
+    <File Include="Themes/Login/images/Logo.png">
+      <publishTime>11/11/2019 07:56:09</publishTime>
+    </File>
     <File Include="Themes/Login/images/NHGBg.jpg">
       <publishTime>12/03/2018 23:51:49</publishTime>
     </File>
     <File Include="Themes/Login/images/RiconsBR.jpg">
-      <publishTime>12/03/2018 23:51:48</publishTime>
+      <publishTime>11/18/2019 17:54:45</publishTime>
     </File>
     <File Include="Themes/Login/js/aes.js">
       <publishTime>12/03/2018 23:51:48</publishTime>
@@ -2688,7 +2691,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/03/2018 23:52:16</publishTime>
     </File>
     <File Include="Themes/RICONS-2015/js/Controllers/Danhmuc.js">
-      <publishTime>11/07/2019 13:58:51</publishTime>
+      <publishTime>11/20/2019 10:24:16</publishTime>
+    </File>
+    <File Include="Themes/RICONS-2015/js/Controllers/Danhmuc2.js">
+      <publishTime>11/20/2019 15:47:56</publishTime>
     </File>
     <File Include="Themes/RICONS-2015/js/Controllers/Danhmucchucvu.js">
       <publishTime>11/01/2019 09:29:36</publishTime>
@@ -3003,7 +3009,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/03/2018 23:52:12</publishTime>
     </File>
     <File Include="Themes/RICONS-2015/js/jquery.common-functions.js">
-      <publishTime>09/30/2019 10:37:53</publishTime>
+      <publishTime>11/20/2019 10:24:51</publishTime>
     </File>
     <File Include="Themes/RICONS-2015/js/jquery.datepick-vi.js">
       <publishTime>12/03/2018 23:52:11</publishTime>
@@ -3111,10 +3117,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/03/2018 23:52:20</publishTime>
     </File>
     <File Include="Themes/RICONS-2015/Views/Shared/_Layout.cshtml">
-      <publishTime>11/11/2019 07:56:09</publishTime>
+      <publishTime>11/20/2019 08:26:46</publishTime>
     </File>
     <File Include="Themes/RICONS-2015/Views/Shared/_LoginPartial.cshtml">
-      <publishTime>12/03/2018 23:52:20</publishTime>
+      <publishTime>11/20/2019 08:49:05</publishTime>
     </File>
     <File Include="Themes/RICONS-2015/Views/Web.config">
       <publishTime>12/03/2018 23:52:20</publishTime>
@@ -3201,19 +3207,34 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/22/2019 20:32:27</publishTime>
     </File>
     <File Include="Views/Danhmuc/Create.cshtml">
-      <publishTime>12/03/2018 23:52:21</publishTime>
+      <publishTime>11/19/2019 10:42:58</publishTime>
     </File>
     <File Include="Views/Danhmuc/Edit.cshtml">
       <publishTime>11/04/2019 16:48:08</publishTime>
     </File>
     <File Include="Views/Danhmuc/Index.cshtml">
-      <publishTime>11/11/2019 07:56:09</publishTime>
+      <publishTime>11/19/2019 17:25:22</publishTime>
     </File>
     <File Include="Views/Danhmuc/Indexchucdanh.cshtml">
       <publishTime>10/30/2019 10:12:34</publishTime>
     </File>
     <File Include="Views/Danhmuc/Indexgiaovien.cshtml">
       <publishTime>12/03/2018 23:52:21</publishTime>
+    </File>
+    <File Include="Views/Danhmuc2/Create.cshtml">
+      <publishTime>11/19/2019 10:43:16</publishTime>
+    </File>
+    <File Include="Views/Danhmuc2/Edit.cshtml">
+      <publishTime>11/19/2019 10:43:06</publishTime>
+    </File>
+    <File Include="Views/Danhmuc2/Index.cshtml">
+      <publishTime>11/20/2019 16:01:52</publishTime>
+    </File>
+    <File Include="Views/Danhmuc2/Indexchucdanh.cshtml">
+      <publishTime>10/30/2019 10:12:34</publishTime>
+    </File>
+    <File Include="Views/Danhmuc2/Indexgiaovien.cshtml">
+      <publishTime>11/19/2019 10:46:51</publishTime>
     </File>
     <File Include="Views/Design/Index.cshtml">
       <publishTime>12/03/2018 23:52:21</publishTime>
@@ -3431,6 +3452,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/WeedMeeting/Index.cshtml">
       <publishTime>11/11/2019 10:22:59</publishTime>
     </File>
+    <File Include="Views/WeedMeeting2/Create.cshtml">
+      <publishTime>11/11/2019 14:39:18</publishTime>
+    </File>
+    <File Include="Views/WeedMeeting2/Edit.cshtml">
+      <publishTime>12/03/2018 23:52:24</publishTime>
+    </File>
+    <File Include="Views/WeedMeeting2/Index.cshtml">
+      <publishTime>11/20/2019 17:11:07</publishTime>
+    </File>
     <File Include="Views/WeedMeetingBGD/Create.cshtml">
       <publishTime>12/03/2018 23:52:24</publishTime>
     </File>
@@ -3456,7 +3486,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/03/2018 23:52:24</publishTime>
     </File>
     <File Include="Xml/Config/sitemap.config">
-      <publishTime>11/11/2019 07:56:09</publishTime>
+      <publishTime>11/20/2019 09:16:04</publishTime>
     </File>
     <File Include="Xml/Config/StringEmailTo.xml">
       <publishTime>12/03/2018 23:52:24</publishTime>

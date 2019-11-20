@@ -29,6 +29,17 @@ namespace RICONS.Web.Models
         public string hotenquanly2 { get; set; } //
         public string ghichu2 { get; set; } //email quản lý
 
+        public string cv_thietbi { get; set; }
+        public string gs_thietbi { get; set; } //
+
+        public string cv_hsse { get; set; }
+        public string gs_hsse { get; set; } //
+
+        public string cv_qaqc { get; set; }
+        public string gs_qaqc { get; set; } //
+
+        public string cv_mep { get; set; }
+        public string gs_mep { get; set; } //
 
         public string xoa { get; set; }
       

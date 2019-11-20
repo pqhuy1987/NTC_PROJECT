@@ -275,7 +275,6 @@ namespace RICONS.Web.Controllers
                     paramphongban.ghichu2 = model.ghichu2;
                 //}
 
-
                 paramphongban.xoa = "0";
                 paramphongban.nguoitao = int.Parse(Session["userid"].ToString());
                 paramphongban.ngaytao = ngaytao;
