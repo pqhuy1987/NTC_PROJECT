@@ -17,7 +17,7 @@
 @*--javascript--*@
 @section JavaScript
 {
-    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/controllers/KpiEmployee/Index_Employee.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/controllers/KpiEmployee/Index_Employee2.js"></script>
     <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery-ui-1.10.0.custom.min.js"></script>
     <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery.datepick-vi.js"></script>
     <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/chosen.jquery.js"></script>
@@ -46,7 +46,7 @@
 
             <div class="col-md-4" style="width: 320px; padding-left: 10px; padding-right:0px">
                 Lọc theo: &nbsp;
-                <select id="filter01" data-placeholder="Chọn phòng ban" class="chosen-select-loaikehoach" name="maphongban">
+                <select id="filter01" data-placeholder="Chọn công trường" class="chosen-select-loaikehoach" name="maphongban">
                     @if (!string.IsNullOrEmpty(ViewBag.sbphongban))
                     {
                         @Html.Raw(ViewBag.sbphongban);

@@ -18,9 +18,9 @@ using System.Net.Mime;
 
 namespace RICONS.Web.Controllers
 {
-    public class WeedMeetingController : BaseController
+    public class WeedMeeting2Controller : BaseController
     {
-        Log4Net _logger = new Log4Net(typeof(WeedMeetingController));
+        Log4Net _logger = new Log4Net(typeof(WeedMeeting2Controller));
 
         public ActionResult Index()
         {
@@ -29,7 +29,7 @@ namespace RICONS.Web.Controllers
                 return BackToLogin();
             DanhmucServices service = new DanhmucServices();
             PhongBanModels parampb = new PhongBanModels();
-            List<PhongBanModels> lstResult_phongban = service.SelectRows(parampb);
+            List<PhongBanModels> lstResult_phongban = service.SelectRows2(parampb);
             StringBuilder sbphongban = new StringBuilder();
             string pb = "";
             string thudientu = Session["thudientu"].ToString().Trim();
@@ -71,7 +71,7 @@ namespace RICONS.Web.Controllers
                 param.nguoitao = 0;
             }
 
-            int tongsodong = service.CountRows_WeedMeeting(param);
+            int tongsodong = service.CountRows_WeedMeeting2(param);
             int sotrang = 1;
             if (tongsodong > 20)
             {
@@ -95,7 +95,7 @@ namespace RICONS.Web.Controllers
             List<WeedMeetingModels> lstResult = new List<WeedMeetingModels>();
             if (curentPage <= sotrang)
             {
-                lstResult = service.SelectRows_WeedMeeting(param, trangbd, trangkt);
+                lstResult = service.SelectRows_WeedMeeting2(param, trangbd, trangkt);
             }
             else if (curentPage != 1 && curentPage > sotrang) curentPage = curentPage - 1;
 

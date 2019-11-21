@@ -43,6 +43,30 @@ namespace RICONS.Web.Data.Services
             return iResult;
         }
 
+        public int CountRows_WeedMeeting2(WeedMeetingModels clparam)
+        {
+            logger.Start("CountRows_WeedMeeting2");
+            int iResult = 0;
+            try
+            {
+                Hashtable param = new Hashtable();
+                param = base.SetDataToHashtable(false, clparam);
+
+                if (clparam.maphongban == "0" || clparam.maphongban == null) param["maphongban"] = "";
+                else param["maphongban"] = clparam.maphongban;
+
+                iResult = (int)sqlMap.ExecuteQueryForObject("WeedMeeting.CountRows_WeedMeeting2", param);
+            }
+            catch (Exception ex)
+            {
+                sqlMap.RollbackTransaction();
+                iResult = 0;
+                logger.Error(ex.Message);
+            }
+            logger.End("CountRows_WeedMeeting2");
+            return iResult;
+        }
+
         public List<WeedMeetingModels> SelectRows_WeedMeeting(WeedMeetingModels clParam, int trangbd, int trangkt)
         {
             logger.Start("SelectRows_WeedMeeting");
@@ -69,6 +93,35 @@ namespace RICONS.Web.Data.Services
                 logger.Error("Loi ---> " + ex.Message);
             }
             logger.End("SelectRows_WeedMeeting");
+            return lstResult;
+        }
+
+        public List<WeedMeetingModels> SelectRows_WeedMeeting2(WeedMeetingModels clParam, int trangbd, int trangkt)
+        {
+            logger.Start("SelectRows_WeedMeeting2");
+            List<WeedMeetingModels> lstResult = new List<WeedMeetingModels>();
+            try
+            {
+                Hashtable param = new Hashtable();
+                param = base.SetDataToHashtable(false, clParam);
+
+                if (clParam.nguoitao == 0) param["nguoitao"] = "";
+
+                if (clParam.maphongban == "0") param["maphongban"] = "";
+                else param["maphongban"] = clParam.maphongban;
+
+                param["trangbd"] = trangbd;
+                param["trangkt"] = trangkt;
+
+                IList ilist = sqlMap.ExecuteQueryForList("WeedMeeting.SelectRow_WeedMeeting2", param);
+                CastDataType cast = new CastDataType();
+                lstResult = cast.AdvanceCastDataToList<WeedMeetingModels>(ilist);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Loi ---> " + ex.Message);
+            }
+            logger.End("SelectRows_WeedMeeting2");
             return lstResult;
         }
 
