@@ -114,6 +114,7 @@
       ,nguoitao
       ,maphongban
       ,loaicuochop
+      ,phongban_congtruong
       )
       VALUES
       (
@@ -131,7 +132,8 @@
       ,GETDATE()
       ,$nguoitao$
       ,'$maphongban$'
-      ,$loaicuochop$
+      ,'$loaicuochop$'
+      ,$phongban_congtruong$
       )
     </insert>
 
@@ -153,6 +155,7 @@
       ,ngayhieuchinh= GETDATE()
       ,maphongban='$maphongban$'
       ,loaicuochop=$loaicuochop$
+      ,phongban_congtruong=$phongban_congtruong$
       WHERE macuochop=$macuochop$
     </update>
 

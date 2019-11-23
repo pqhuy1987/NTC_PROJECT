@@ -37,4 +37,3 @@ D:\NTC_PROJECT\Libraries\RICONS.Logger\bin\Debug\log4net.dll
 D:\NTC_PROJECT\Libraries\RICONS.Logger\bin\Debug\log4net.xml
 D:\NTC_PROJECT\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.dll
 D:\NTC_PROJECT\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.pdb
-D:\NTC_PROJECT\Libraries\RICONS.Logger\obj\Debug\RICONS.Logger.csprojResolveAssemblyReference.cache

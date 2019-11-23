@@ -65,7 +65,7 @@
                 </div>
             </div>
         
-        <div class="row">
+            <div class="row">
                 <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Loại báo cáo<label style="color:red;height:10px;">*</label>:</div>
                 <div class="col-md-10" style="padding-left:10px;">
                     <select id="filter04" data-placeholder="Chọn " class="chosen-select-loaikehoach" name="loaicuochop">
@@ -76,7 +76,16 @@
                     </select>
                 </div>
             </div>
-        
+
+    <div class="row">
+        <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Báo cáo Phòng Ban/Công trường<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-10" style="padding-left:10px;">
+            <select id="filter05" data-placeholder="Chọn " class="chosen-select-loaikehoach" name="loaicuochop">
+                <option value="0">Báo cáo phòng ban</option>
+            </select>
+        </div>
+    </div>
+
         <div class="row">
                 <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Tuần thứ <label style="color:red;height:10px;">*</label>:</div>
                 <div class="col-md-10" style="padding-left:10px;">
@@ -257,6 +266,8 @@
         DataJson += "'maphongban':'" + $('#filter03').val() + "',";
 
         DataJson += "'loaicuochop':'" + $('#filter04').val() + "',";
+
+        DataJson += "'phongban_congtruong':'" + $('#filter05').val() + "',";
 
         DataJson += "'lydobuoihop':'" + lydobuoihop.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
         DataJson += "'thanhphanthamdu':'" + thanhphanthamdu.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";

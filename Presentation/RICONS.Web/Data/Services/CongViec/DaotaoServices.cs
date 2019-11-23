@@ -148,6 +148,7 @@ namespace RICONS.Web.Data.Services
                 param["nguoitao"] = nguoitao;
                 param["maphongban"] = json["maphongban"].ToString();
                 param["loaicuochop"] = json["loaicuochop"].ToString();
+                param["phongban_congtruong"] = json["phongban_congtruong"].ToString();
                 if (param["macuochop"].ToString().Trim() == "0")
                 {
                     param["macuochop"] = GetSequence_All("dm_seq", "weedmeeting");

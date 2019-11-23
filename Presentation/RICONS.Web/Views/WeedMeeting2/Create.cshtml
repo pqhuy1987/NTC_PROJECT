@@ -46,7 +46,7 @@
 
 
 <div class="boxEdit">
-    @using (Html.BeginForm("Create", "WeedMeeting", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+    @using (Html.BeginForm("Create", "WeedMeeting2", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
     {
          <div class="row">
              <div class="col-md-1"><input type="text" class="hidden" style="width:100%" autocomplete="off" placeholder="macuochop" id="txtmacuochop" name="macuochop" value="0" /></div>
@@ -76,7 +76,16 @@
                     </select>
                 </div>
             </div>
-        
+
+    <div class="row">
+        <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Báo cáo Phòng Ban/Công trường<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-10" style="padding-left:10px;">
+            <select id="filter05" data-placeholder="Chọn " class="chosen-select-loaikehoach" name="loaicuochop">
+                <option value="1">Báo cáo phòng ban</option>
+            </select>
+        </div>
+    </div>
+
         <div class="row">
                 <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Tuần thứ <label style="color:red;height:10px;">*</label>:</div>
                 <div class="col-md-10" style="padding-left:10px;">
@@ -148,7 +157,7 @@
                 <div class="col-md-7" style="padding-left:10px;">
                     <button id="btn-save" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu"><i class="retweet_save"></i> Lưu</button>
 
-                    <a href="@Url.Action("Index", "WeedMeeting")" class="buttoncustom WhiteButton"><i class="retweet_trove"></i> Trở về</a>
+                    <a href="@Url.Action("Index", "WeedMeeting2")" class="buttoncustom WhiteButton"><i class="retweet_trove"></i> Trở về</a>
                 </div>
             </div>
 
@@ -258,6 +267,8 @@
 
         DataJson += "'loaicuochop':'" + $('#filter04').val() + "',";
 
+        DataJson += "'phongban_congtruong':'" + $('#filter05').val() + "',";
+
         DataJson += "'lydobuoihop':'" + lydobuoihop.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
         DataJson += "'thanhphanthamdu':'" + thanhphanthamdu.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
         DataJson += "'caplanhdao':'" + $('#txtcaplanhdao').val() + "',";
@@ -268,7 +279,7 @@
 
         $.ajax({
             type: 'POST',
-            url: '/WeedMeeting/Save',
+            url: '/WeedMeeting2/Save',
             datatype: "JSON",
             data: "DataJson=" + DataJson,
             cache: false,

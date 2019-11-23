@@ -304,6 +304,7 @@ namespace RICONS.Web.Controllers
             string macuochop = json["uploadfile"].ToString();
             string filename = json["tenfile"].ToString();
             string maphongban = json["maphongban"].ToString();
+            int phongban_congtruong = (int)json["phongban_congtruong"];
 
             DaotaoServices servicevpp = new DaotaoServices();
             string nguoitao = Session["userid"].ToString();
@@ -317,7 +318,7 @@ namespace RICONS.Web.Controllers
             if (iresult != "-1")
              {
                  iresult = "1";
-                 MailLich("TEST", path, filename, maphongban);
+                 MailLich("TEST", path, filename, maphongban, phongban_congtruong);
                  return Json(new { success = true, macuochop = int.Parse(iresult) }, JsonRequestBehavior.AllowGet);
              }
              else
@@ -446,7 +447,7 @@ namespace RICONS.Web.Controllers
              return File(FileVirtualPath, "application/force-download", Path.GetFileName(FileVirtualPath));
          }
 
-         public void MailLich(string NoiDung, string path, string filename, string maphongban)
+         public void MailLich(string NoiDung, string path, string filename, string maphongban, int phongban_congtruong)
          {
              string sMailGui = System.Configuration.ConfigurationManager.AppSettings["MailSend"];
              string sPass = System.Configuration.ConfigurationManager.AppSettings["MailPass"];
@@ -456,20 +457,33 @@ namespace RICONS.Web.Controllers
              string sMailTo = System.Configuration.ConfigurationManager.AppSettings["schedulerman"];
 
              // gui mail
-            
+
              var fromAddress = new MailAddress(sMailGui);
-             
+
              string fromPassword = sPass;
              string subject = sTieuDe;
              string body = NoiDung;
 
              DanhmucServices service = new DanhmucServices();
              PhongBanModels parampb = new PhongBanModels();
-             List<PhongBanModels> lstResult_phongban = service.SelectRows(parampb);
 
-             var lstcaptrentt = lstResult_phongban.Where(p => p.maphongban == maphongban).ToList();
+             List<PhongBanModels> lstResult_phongban;
+             List<PhongBanModels> y = null;
+             var lstcaptrentt = y;
 
-             sMailTo = lstcaptrentt[0].email;
+             if (phongban_congtruong == 0)
+             {
+                 lstResult_phongban = service.SelectRows(parampb);
+                 lstcaptrentt = lstResult_phongban.Where(p => p.maphongban == maphongban).ToList();
+                 sMailTo = lstcaptrentt[0].email;
+             }
+             else
+             {
+                 lstResult_phongban = service.SelectRows2(parampb);
+                 lstcaptrentt = lstResult_phongban.Where(p => p.maphongban == maphongban).ToList();
+                 sMailTo = lstcaptrentt[0].email;
+             }
+
              var toAddress = new MailAddress(sMailTo);
 
              var smtp = new SmtpClient
