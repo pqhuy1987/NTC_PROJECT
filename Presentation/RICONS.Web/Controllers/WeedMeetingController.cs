@@ -292,6 +292,15 @@ namespace RICONS.Web.Controllers
             sbphonghop.Append(string.Format("<option value={0}>{1}</option>", "5", "Tầng 3A - Phòng họp lớn"));
             sbphonghop.Append(string.Format("<option value={0}>{1}</option>", "6", "Khác"));
             ViewBag.sbphonghop = sbphonghop.ToString();
+
+            StringBuilder sbloaibaocao = new StringBuilder();
+            sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "1", "Báo cáo tuần CHT/TPB"));
+            //sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "2", "Báo cáo tuần Thiết Bị"));
+            //sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "3", "Báo cáo tuần HSSE"));
+            //sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "4", "Báo cáo tuần QAQC"));
+            //sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "5", "Báo cáo tuần MEP"));
+            ViewBag.sbloaibaocao = sbloaibaocao.ToString();
+
             return View();
         }
 

@@ -146,6 +146,8 @@ namespace RICONS.Web.Models
         public string ngaytao { get; set; }
         public int nguoihieuchinh { get; set; }
         public string ngayhieuchinh { get; set; }
+        public int loaibaocao { get; set; }
+        public string tenloaibaocao { get; set; }
     }
 
 }

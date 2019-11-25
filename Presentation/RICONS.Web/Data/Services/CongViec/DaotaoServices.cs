@@ -55,6 +55,9 @@ namespace RICONS.Web.Data.Services
                 if (clparam.maphongban == "0" || clparam.maphongban == null) param["maphongban"] = "";
                 else param["maphongban"] = clparam.maphongban;
 
+                if (clparam.loaibaocao == 0 || clparam.loaibaocao == null) param["loaibaocao"] = "";
+                else param["loaibaocao"] = clparam.loaibaocao;
+
                 iResult = (int)sqlMap.ExecuteQueryForObject("WeedMeeting.CountRows_WeedMeeting2", param);
             }
             catch (Exception ex)
@@ -110,6 +113,9 @@ namespace RICONS.Web.Data.Services
                 if (clParam.maphongban == "0") param["maphongban"] = "";
                 else param["maphongban"] = clParam.maphongban;
 
+                if (clParam.loaibaocao == 0) param["loaibaocao"] = "";
+                else param["loaibaocao"] = clParam.loaibaocao;
+
                 param["trangbd"] = trangbd;
                 param["trangkt"] = trangkt;
 
@@ -149,6 +155,7 @@ namespace RICONS.Web.Data.Services
                 param["maphongban"] = json["maphongban"].ToString();
                 param["loaicuochop"] = json["loaicuochop"].ToString();
                 param["phongban_congtruong"] = json["phongban_congtruong"].ToString();
+                param["loaibaocao"] = json["loaibaocao"].ToString();
                 if (param["macuochop"].ToString().Trim() == "0")
                 {
                     param["macuochop"] = GetSequence_All("dm_seq", "weedmeeting");

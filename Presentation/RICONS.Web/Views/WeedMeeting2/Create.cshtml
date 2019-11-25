@@ -53,7 +53,7 @@
              <div class="col-md-1"><input type="text" class="hidden" style="width:100%" autocomplete="off" placeholder="tenfile" id="txtuploadfile" name="uploadfile" value="" /></div>
          </div>
         
-        <div class="row">
+            <div class="row">
                 <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Phòng ban/Bộ phận<label style="color:red;height:10px;">*</label>:</div>
                 <div class="col-md-10" style="padding-left:10px;">
                     <select id="filter03" data-placeholder="Chọn " class="chosen-select-loaikehoach" name="maphongban">
@@ -64,24 +64,35 @@
                     </select>
                 </div>
             </div>
-        
-        <div class="row">
-                <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Loại báo cáo<label style="color:red;height:10px;">*</label>:</div>
+
+            <div class="row">
+                <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Loại Báo Cáo<label style="color:red;height:10px;">*</label>:</div>
                 <div class="col-md-10" style="padding-left:10px;">
+                    <select id="filter06" data-placeholder="Chọn " class="chosen-select-loaikehoach" name="maphongban">
+                        @if (!string.IsNullOrEmpty(ViewBag.sbloaibaocao))
+                        {
+                            @Html.Raw(ViewBag.sbloaibaocao);
+                        }
+                    </select>
+                </div>
+            </div>
+
+        @*<div class="row">
+                <div class="col-md-1" style="min-width: 160px; padding-left: 10px; visibility: collapse;">Loại báo cáo<label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-10" style="padding-left:10px; visibility: collapse;">
                     <select id="filter04" data-placeholder="Chọn " class="chosen-select-loaikehoach" name="loaicuochop">
-                        <option value="0">Loại báo cáo</option>
                         <option value="1">Báo cáo tuần phòng</option>
                         <option value="2">Báo cáo tuần BGĐ</option>
                         <option value="3">Báo cáo khác</option>
                     </select>
                 </div>
-            </div>
+            </div>*@
 
     <div class="row">
-        <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Báo cáo Phòng Ban/Công trường<label style="color:red;height:10px;">*</label>:</div>
+        <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">PB/Công Trường<label style="color:red;height:10px;">*</label>:</div>
         <div class="col-md-10" style="padding-left:10px;">
             <select id="filter05" data-placeholder="Chọn " class="chosen-select-loaikehoach" name="loaicuochop">
-                <option value="1">Báo cáo phòng ban</option>
+                <option value="1">Báo cáo công trường</option>
             </select>
         </div>
     </div>
@@ -233,10 +244,10 @@
             Thongbao("Chọn Tuần họp?");
             return false;
         }
-        else if ($('#filter04').val() == 0) {
-            Thongbao("Loại cuộc họp?");
-            return false;
-        }
+        //else if ($('#filter04').val() == 0) {
+        //    Thongbao("Loại cuộc họp?");
+        //    return false;
+        //}
         //else if ($('#txtgiohop').val().length <2) {
             //Thongbao("Nhập giờ họp?");
             //return false;
@@ -265,9 +276,9 @@
         DataJson += "'phonghop':'" + "1" + "',";
         DataJson += "'maphongban':'" + $('#filter03').val() + "',";
 
-        DataJson += "'loaicuochop':'" + $('#filter04').val() + "',";
-
+        DataJson += "'loaicuochop':'" + "1" + "',";
         DataJson += "'phongban_congtruong':'" + $('#filter05').val() + "',";
+        DataJson += "'loaibaocao':'" + $('#filter06').val() + "',";
 
         DataJson += "'lydobuoihop':'" + lydobuoihop.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
         DataJson += "'thanhphanthamdu':'" + thanhphanthamdu.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
@@ -283,11 +294,15 @@
             datatype: "JSON",
             data: "DataJson=" + DataJson,
             cache: false,
+            beforeSend: function () {
+                AddLoader();
+            },
         })
         .done(function (result) {
             debugger;
             var tb = JSON.stringify(result.success);
             var macuochop = JSON.stringify(result.macuochop);
+            RemoveLoader();
             if (tb == "true") {
                 var dialogSuccess = bootbox.dialog({
                     message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu thành công.</span>",

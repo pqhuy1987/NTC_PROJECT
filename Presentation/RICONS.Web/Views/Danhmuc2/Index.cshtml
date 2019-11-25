@@ -318,7 +318,9 @@
                 $('#lblthongbao').html('Chọn BGĐ quản lý?');
                 return false;
             }
-            var form = $(this).closest('form');
+            //var form = $(this).closest('form');
+
+            var form = $('#frm-create > form'); //sau viet kieu nay
             form.submit();
         });
         // hieu chinh

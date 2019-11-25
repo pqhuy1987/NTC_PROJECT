@@ -184,7 +184,7 @@ function GetData(isHeader, stt ) {
 
     var DataJson = "{'curentPage':'" + currentRow + "'," +
                     "'maphongban':'" + maphongban + "'," +
-                    "'loaicuochop':'" + trinhtranghoso + "'" +
+                    "'loaibaocao':'" + trinhtranghoso + "'" +
                    "}";
 
     fncGetData_Timekeeping(linkContent + 'WeedMeeting2/SelectRows_WeedMeeting', DataJson, isHeader);
