@@ -64,6 +64,7 @@ namespace RICONS.Web.Controllers
         {
             WeedMeetingModels param = new WeedMeetingModels();
             DaotaoServices service = new DaotaoServices();
+            DanhmucServices service_danhmuc = new DanhmucServices();
             //param.nguoitao = int.Parse(Session["userid"].ToString());
             param.maphongban = model.maphongban;
             param.loaibaocao = model.loaibaocao;
@@ -71,6 +72,46 @@ namespace RICONS.Web.Controllers
             //{
                 param.nguoitao = 0;
             //}
+            string thudientu = Session["thudientu"].ToString().Trim();
+
+
+
+            List<PhongBanModels> y = null;
+            var lstcaptrentt = y;
+
+            PhongBanModels parampb = new PhongBanModels();
+            List<PhongBanModels> lstResult_phongban = service_danhmuc.SelectRows2(parampb);
+            lstcaptrentt = lstResult_phongban.Where(p => p.maphongban == model.maphongban).ToList();
+
+            //StringBuilder sbloaibaocao = new StringBuilder();
+            //sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "1", "Báo cáo tuần CHT/TPB"));
+            if (lstcaptrentt[0].email == thudientu || lstcaptrentt[0].ghichu == thudientu || lstcaptrentt[0].sodienthoai == thudientu
+                || lstcaptrentt[0].ghichu1 == thudientu || lstcaptrentt[0].ghichu2 == thudientu || Session["loginid"].ToString().Trim().ToLower() == "admin" || Session["grouptk"].ToString().Trim() == "1")
+            {
+                param.loaibaocao = param.loaibaocao;
+            }
+            else if (model.loaibaocao == 2 && (lstcaptrentt[0].cv_thietbi == thudientu || lstcaptrentt[0].gs_thietbi == thudientu))
+            {
+                param.loaibaocao = 2;
+            }
+            else if (model.loaibaocao == 3 && (lstcaptrentt[0].cv_hsse == thudientu || lstcaptrentt[0].gs_hsse == thudientu))
+            {
+                param.loaibaocao = 3;
+            }
+
+            else if (model.loaibaocao == 4 && (lstcaptrentt[0].cv_qaqc == thudientu || lstcaptrentt[0].gs_qaqc == thudientu))
+            {
+                param.loaibaocao = 4;
+            }
+
+            else if (model.loaibaocao == 5 && (lstcaptrentt[0].cv_mep == thudientu || lstcaptrentt[0].gs_mep == thudientu))
+            {
+                param.loaibaocao = 5;
+            }
+            else
+            {
+                param.loaibaocao = 6;
+            }
 
             int tongsodong = service.CountRows_WeedMeeting2(param);
             int sotrang = 1;
@@ -258,6 +299,7 @@ namespace RICONS.Web.Controllers
             DanhmucServices service = new DanhmucServices();
             List<Item_weedModels> lstResult_Tuan = service.SelectRows_giaovien(param);
             StringBuilder sbtuan = new StringBuilder();
+
             foreach (var item in lstResult_Tuan)
             {
                 item.tentuan = item.tentuan + "   " + item.tungay + " - " + item.denngay;

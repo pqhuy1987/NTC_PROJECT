@@ -318,9 +318,9 @@
                 $('#lblthongbao').html('Chọn BGĐ quản lý?');
                 return false;
             }
-            //var form = $(this).closest('form');
+            var form = $(this).closest('form');
 
-            var form = $('#frm-create > form'); //sau viet kieu nay
+            //var form = $('#frm-create > form'); //sau viet kieu nay
             form.submit();
         });
         // hieu chinh
@@ -425,7 +425,7 @@
             form.find('input[name="act"]').val('delete');
 
             var maphongban = $(check[0]).attr('mpb');
-            alert(maphongban);
+            alert("Bạn có muốn xóa ?");
             form.find('input[name="ID"]').val(maphongban);
 
             $('#btn-save').trigger('click');
