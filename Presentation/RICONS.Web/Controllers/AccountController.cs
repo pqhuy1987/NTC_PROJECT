@@ -109,23 +109,23 @@ namespace RICONS.Web.Controllers
                                 TaiKhoanServices serTaiKhoan = new TaiKhoanServices();
                                 TaiKhoanModels modeltk = new TaiKhoanModels();
                                 // Lay du lieu employee
-                                var dlemployee = serTaiKhoan.GetDataEmployee(tendangnhap);
+                                //var dlemployee = serTaiKhoan.GetDataEmployee(tendangnhap);
                                 if (user == null)
                                 {
                                     #region
-                                    if (dlemployee != null)
-                                    {
-                                        modeltk.manhansu = dlemployee.manhansu;
-                                        modeltk.hoten = dlemployee.hoten;
-                                        modeltk.machucdanh = dlemployee.machucdanh;
-                                        modeltk.tenchucdanh = dlemployee.tenchucdanh;
-                                        modeltk.maphongban = dlemployee.maphongban;
+                                    //if (dlemployee != null)
+                                    //{
+                                    //    modeltk.manhansu = dlemployee.manhansu;
+                                    //    modeltk.hoten = dlemployee.hoten;
+                                    //    modeltk.machucdanh = dlemployee.machucdanh;
+                                    //    modeltk.tenchucdanh = dlemployee.tenchucdanh;
+                                    //    modeltk.maphongban = dlemployee.maphongban;
 
-                                        if (dlemployee.phongban_congtruong.ToString().ToLower() == "false")
-                                            modeltk.phongban_congtruong = "0";
-                                        else modeltk.phongban_congtruong = "1";
+                                    //    if (dlemployee.phongban_congtruong.ToString().ToLower() == "false")
+                                    //        modeltk.phongban_congtruong = "0";
+                                    //    else modeltk.phongban_congtruong = "1";
 
-                                    }
+                                    //}
                                     modeltk.tendangnhap = tendangnhap;
                                     model.madonvi = 1;
                                     modeltk.thudientu = user_ad.EmailAddress;
@@ -139,26 +139,26 @@ namespace RICONS.Web.Controllers
                                     });
                                     #endregion
                                 }
-                                else if (dlemployee != null)
-                                {
-                                    //Cập nhật manhansu,machucdanh,maphongban
-                                    user.manhansu = dlemployee.manhansu;
-                                    user.maphongban = dlemployee.maphongban;
-                                    user.machucdanh = dlemployee.machucdanh;
-                                    user.tenchucdanh = dlemployee.tenchucdanh;
-                                    user.hoten = dlemployee.hoten;
-                                    user.sodienthoai = dlemployee.sodienthoai;
-                                    user.thudientu = user_ad.EmailAddress;
-                                    user.ngaysinh = dlemployee.ngaysinh;
-                                    user.chucdanhkpi = user.chucdanhkpi;
-                                    if(dlemployee.phongban_congtruong.ToString().ToLower()=="false")
-                                        user.phongban_congtruong = "0";
-                                    else user.phongban_congtruong = "1";
+                                //else if (dlemployee != null)
+                                //{
+                                //    //Cập nhật manhansu,machucdanh,maphongban
+                                //    user.manhansu = dlemployee.manhansu;
+                                //    user.maphongban = dlemployee.maphongban;
+                                //    user.machucdanh = dlemployee.machucdanh;
+                                //    user.tenchucdanh = dlemployee.tenchucdanh;
+                                //    user.hoten = dlemployee.hoten;
+                                //    user.sodienthoai = dlemployee.sodienthoai;
+                                //    user.thudientu = user_ad.EmailAddress;
+                                //    user.ngaysinh = dlemployee.ngaysinh;
+                                //    user.chucdanhkpi = user.chucdanhkpi;
+                                //    if(dlemployee.phongban_congtruong.ToString().ToLower()=="false")
+                                //        user.phongban_congtruong = "0";
+                                //    else user.phongban_congtruong = "1";
 
-                                    if (user.chucdanhkpi.Trim() == "" || user.chucdanhkpi == null)
-                                        user.chucdanhkpi = "1";
-                                    bool kqcapnhat = serTaiKhoan.Updatemanhansu(user.mataikhoan, user.manhansu, user.machucdanh.ToString(), user.maphongban, user.hoten, user.chucdanhkpi, user.phongban_congtruong);
-                                }
+                                //    if (user.chucdanhkpi.Trim() == "" || user.chucdanhkpi == null)
+                                //        user.chucdanhkpi = "1";
+                                //    bool kqcapnhat = serTaiKhoan.Updatemanhansu(user.mataikhoan, user.manhansu, user.machucdanh.ToString(), user.maphongban, user.hoten, user.chucdanhkpi, user.phongban_congtruong);
+                                //}
                                 var lstPhongBanDonVis = serTaiKhoan.SelectPhongBanDonVi(new M_TaiKhoan()
                                 {
                                     mataikhoan = user.mataikhoan
@@ -340,8 +340,9 @@ namespace RICONS.Web.Controllers
                 return BackToLogin();
             DonViServices donViSer = new DonViServices();
             PhongBanServices phongBanSer = new PhongBanServices();
+            PhongBanServices CongTruonger = new PhongBanServices();
             DanhmucServices chucdanhser = new DanhmucServices();
-            ManageUserViewModel model = PrepareManageUserViewModel(phongBanSer.SelectRows(new PhongBanModels()), donViSer.SelectRows(new DonviModels()), chucdanhser.SelectRows_chucvu(new ChucDanhModels()));
+            ManageUserViewModel model = PrepareManageUserViewModel(CongTruonger.SelectRows2(new PhongBanModels()), phongBanSer.SelectRows(new PhongBanModels()), donViSer.SelectRows(new DonviModels()), chucdanhser.SelectRows_chucvu(new ChucDanhModels()));
             return View(model);
         }
 
@@ -576,6 +577,35 @@ namespace RICONS.Web.Controllers
                 //chucdanh
                 sbResult.Append("{");
                 sbResult.Append("\"colspan\":\"1\",");
+                sbResult.Append("\"col_class\":\"ovh col11\",");
+                sbResult.Append("\"col_id\":\"11\",");
+                sbResult.Append("\"title\":\"" + model.macongtruong.Trim() + "\",");
+                sbResult.Append("\"col_value\":\"" + model.tencongtruong + "\"");
+                sbResult.Append("},");
+
+                //chucdanh
+                sbResult.Append("{");
+                sbResult.Append("\"colspan\":\"1\",");
+                sbResult.Append("\"col_class\":\"ovh col12\",");
+                sbResult.Append("\"col_id\":\"12\",");
+                sbResult.Append("\"title\":\"" + model.loaicuochop + "\",");
+                if (model.loaicuochop == 1)
+                    sbResult.Append("\"col_value\":\"" + "Trưởng PB/CT" + "\"");
+                else if (model.loaicuochop == 2)
+                    sbResult.Append("\"col_value\":\"" + "Thiết Bị" + "\"");
+                else if (model.loaicuochop == 3)
+                    sbResult.Append("\"col_value\":\"" + "HSSE" + "\"");
+                else if (model.loaicuochop == 4)
+                    sbResult.Append("\"col_value\":\"" + "QAQC" + "\"");
+                else if (model.loaicuochop == 5)
+                    sbResult.Append("\"col_value\":\"" + "MEP" + "\"");
+                else
+                    sbResult.Append("\"col_value\":\"" + "Khác" + "\"");
+                sbResult.Append("},");
+
+                //chucdanh
+                sbResult.Append("{");
+                sbResult.Append("\"colspan\":\"1\",");
                 sbResult.Append("\"col_class\":\"ovh col8\",");
                 sbResult.Append("\"col_id\":\"8\",");
                 sbResult.Append("\"title\":\"" + model.chucdanhkpi + "\",");
@@ -590,6 +620,8 @@ namespace RICONS.Web.Controllers
                 sbResult.Append("\"title\":\"" + model.madonvi + "\",");
                 sbResult.Append("\"col_value\":\"" + model.tendonvi + "\"");
                 sbResult.Append("},");
+
+
 
                 //dinh kem tap tin
                 string strHTML_Attachment = "";
@@ -627,12 +659,13 @@ namespace RICONS.Web.Controllers
         }
 
 
-        private ManageUserViewModel PrepareManageUserViewModel(List<PhongBanModels> phongBans, List<DonviModels> donVis, List<ChucDanhModels> chucDanhs)
+        private ManageUserViewModel PrepareManageUserViewModel(List<PhongBanModels> CongTruongs, List<PhongBanModels> phongBans, List<DonviModels> donVis, List<ChucDanhModels> chucDanhs)
         {
             ManageUserViewModel model = new ManageUserViewModel();
             try
             {
                 model.PhongBans = phongBans;
+                model.CongTruongs = CongTruongs;
                 model.DonVis = donVis;
                 model.ChucDanhs = chucDanhs;
             }
@@ -671,32 +704,51 @@ namespace RICONS.Web.Controllers
                 return BackToLogin();
             if (act == "create")
             {
-                TaiKhoanModels param = new TaiKhoanModels();
-                param.hoten = model.hoten;
-                param.tendangnhap = model.tendangnhap;
-                if (model.matkhau != null)
+                LoginServices service = new LoginServices();
+                TaiKhoanServices serTaiKhoan = new TaiKhoanServices();
+                TaiKhoanModels modeltk = new TaiKhoanModels();
+                // Lay du lieu employee
+                var user = service.GetLoginData(new M_TaiKhoan()
                 {
-                    param.matkhau = EncDec.EncodePassword(model.matkhau);
-                }
-                param.thudientu = model.thudientu;
-                param.maphongban = model.maphongban;
-                param.machucdanh = model.machucdanh;
-                param.chucdanhkpi = model.machucdanh.ToString();
+                    tendangnhap = model.tendangnhap,
+                    xoa = CST_Common.CST_NOT_DELETE,
+                    kichhoat = CST_Common.CST_ACTIVE
+                });
+                if (user == null)
+                {
+                    TaiKhoanModels param = new TaiKhoanModels();
+                    param.hoten = model.hoten;
+                    param.tendangnhap = model.tendangnhap;
+                    if (model.matkhau != null)
+                    {
+                        param.matkhau = EncDec.EncodePassword(model.matkhau);
+                    }
+                    param.thudientu = model.thudientu;
+                    param.maphongban = model.maphongban;
+                    param.machucdanh = model.machucdanh;
+                    param.chucdanhkpi = model.machucdanh.ToString();
+                    param.macongtruong = model.macongtruong;
+                    param.loaicuochop = model.loaicuochop;
 
-                if (model.machucdanh.ToString().Trim() == "2" || model.machucdanh.ToString().Trim() == "4")
-                {
-                    param.grouptk = "2";
-                }
-                else if (model.machucdanh.ToString() == "9")
-                {
-                    param.grouptk = "1";
-                }
-                else param.grouptk = "0";
+                    if (model.machucdanh.ToString().Trim() == "2" || model.machucdanh.ToString().Trim() == "4")
+                    {
+                        param.grouptk = "2";
+                    }
+                    else if (model.machucdanh.ToString() == "9")
+                    {
+                        param.grouptk = "1";
+                    }
+                    else param.grouptk = "0";
 
-                param.madonvi = 1;
-                int nguoitao = int.Parse(Session["userid"].ToString());
-                TaiKhoanServices taikhoan = new TaiKhoanServices();
-                bool kq = taikhoan.AddUser(param, nguoitao);
+                    param.madonvi = 1;
+                    int nguoitao = int.Parse(Session["userid"].ToString());
+                    TaiKhoanServices taikhoan = new TaiKhoanServices();
+                    bool kq = taikhoan.AddUser(param, nguoitao);
+                }
+                else
+                {
+                    return RedirectToAction("Manage", "Account");
+                }
             }
             else if (act == "update")
             {
@@ -731,6 +783,10 @@ namespace RICONS.Web.Controllers
                 //param.machucdanh = model.machucdanh;
                 param.chucdanhkpi = model.machucdanh.ToString();
                 param.madonvi = 1;
+
+                param.macongtruong = model.macongtruong;
+                param.loaicuochop = model.loaicuochop;
+
                 int nguoihieuchinh = int.Parse(Session["userid"].ToString());
                 TaiKhoanServices taikhoan = new TaiKhoanServices();
                 bool kq = taikhoan.UpdateUser(param, nguoihieuchinh);

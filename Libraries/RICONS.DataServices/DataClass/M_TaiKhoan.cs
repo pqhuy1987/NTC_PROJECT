@@ -32,5 +32,7 @@ namespace RICONS.DataServices.DataClass
         public string nguoihieuchinh { get; set; }
         public string ngayhieuchinh { get; set; }
         public string chucdanhkpi { get; set; }
+        public int loaicuochop { get; set; }
+        public string macongtruong { get; set; }
     }
 }

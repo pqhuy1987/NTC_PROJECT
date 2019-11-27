@@ -154,7 +154,7 @@
                 <div class="col-md-1" style="padding-left: 10px; min-width: 120px;">Phòng ban:</div>
                 <div class="col-md-3" style="padding-left:10px;">
                     <select id="filter04" data-placeholder="Chọn phòng ban..." class="chosen-select-phongbannew" name="maphongban">
-                        <option value="">Tất cả phòng ban</option>
+                        <option value="">Chọn phòng ban</option>
                         @foreach (var item in Model.PhongBans)
                         {
                             <option value="@item.maphongban">@item.tenphongban</option>
@@ -163,8 +163,33 @@
                 </div>
 
             </div>
-            
 
+            <div class="row" style="width:100%">
+
+                <div class="col-md-1" style="padding-left: 10px; min-width: 120px;">Công trường:</div>
+                <div class="col-md-3" style="padding-left:10px;">
+                    <select id="filter06" data-placeholder="Công trường ..." class="chosen-select-chucdanhnew" name="macongtruong">
+                        <option value="">Chọn công trường</option>
+                        @foreach (var item in Model.CongTruongs)
+                        {
+                            <option value="@item.maphongban">@item.tenphongban</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-1" style="padding-left: 10px; min-width: 120px;">Loại báo cáo:</div>
+                <div class="col-md-3" style="padding-left:10px;">
+                    <select id="filter07" data-placeholder="Chọn loại báo cáo..." class="chosen-select-phongbannew" name="loaicuochop">
+                                <option value="6">Chọn loại báo cáo tuần</option>
+                                <option value="1">Báo cáo tuần CHT/TPB</option>
+                                <option value="2">Báo cáo tuần Thiết Bị</option>
+                                <option value="3">Báo cáo tuần HSSE</option>
+                                <option value="4">Báo cáo tuần QAQC</option>
+                                <option value="5">Báo cáo tuần MEP</option>
+                    </select>
+                </div>
+
+            </div>
              <div class="row" style="width:100%">
 
                  <div class="col-md-1" style="padding-left: 10px; min-width: 120px;">Đơn vị:</div>
@@ -190,8 +215,8 @@
                 </div>
 
             </div>
-            
-            
+
+
             @*<table>
 
                 <tr>
@@ -337,6 +362,8 @@
                 var maphongban = $(row).find('.col7').attr('title');
                 var machucdanh = $(row).find('.col8').attr('title');
                 var madonvi = $(row).find('.col9').attr('title');
+                //var macongtruong = $(row).find('.col11').attr('title');
+                //var loaibaocao = $(row).find('.col12').attr('title');
 
                 form.find('input[name="act"]').val('update');
                 form.find('input[name="mataikhoan"]').val(mataikhoan);
@@ -347,10 +374,14 @@
                 form.find('input[name="tenphongban"]').val(row.find('.col7').text());
                 form.find('input[name="tenchucdanh"]').val(row.find('.col8').text());              
                 form.find('input[name="tendonvi"]').val(row.find('.col9').text());
+                //form.find('input[name="tencongtruong"]').val(row.find('.col11').text());
+                //form.find('input[name="loaibaocao"]').val(row.find('.col12').text());
 
                 $('#filter03').val(machucdanh);
                 $('#filter04').val(maphongban);
                 $('#filter05').val(madonvi);
+                //$('#filter06').val(macongtruong);
+                //$('#filter07').val(loaicuochop);
                 for (var selector in configChosenMilestones) {
                     $(selector).change();
                     $(selector).trigger('chosen:updated');

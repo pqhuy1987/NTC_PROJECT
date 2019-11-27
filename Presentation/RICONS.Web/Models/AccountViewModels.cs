@@ -31,6 +31,7 @@ namespace RICONS.Web.Models
         public string kichhoat { get; set; }
 
         public List<PhongBanModels> PhongBans { get; set; }
+        public List<PhongBanModels> CongTruongs { get; set; }
         public List<DonviModels> DonVis { get; set; }
         public List<ChucDanhModels> ChucDanhs { get; set; }
 
@@ -39,6 +40,9 @@ namespace RICONS.Web.Models
         public string ngaytao { get; set; }
         public string xoa { get; set; }
         public string grouptk { get; set; }
+
+        public string macongtruong { get; set; }
+        public int loaicuochop { get; set; }
 
     }
 

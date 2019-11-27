@@ -38,7 +38,7 @@ namespace RICONS.Web.Controllers
                 //var lstpban = lstResult_phongban.Where(p => p.maphongban == maphongban).ToList();
                 //if (lstpban.Count() > 0)
                 //    pb = "<option value=" + lstpban[0].maphongban + ">" + lstpban[0].tenphongban + "</option>";
-                pb = pb + "<option value=0>Chọn phòng ban</option>";
+                //pb = pb + "<option value=0>Chọn phòng ban</option>";
                 foreach (var item in lstResult_phongban)
                     pb = pb + "<option value=" + item.maphongban + "> " + item.tenphongban + " </option>";
             }

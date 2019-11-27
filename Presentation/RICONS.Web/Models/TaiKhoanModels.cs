@@ -62,6 +62,9 @@ namespace RICONS.Web.Models
         public string tenchucdanhkpi { get; set; }
         public string phongban_congtruong { get; set; }
         public string maphongban { get; set; }
+        public string tencongtruong { get; set; }
+        public string macongtruong { get; set; }
+        public int loaicuochop { get; set; }
         public List<PhongBanDonViModels> phongBanDonVis { get; set; }
 
     }
