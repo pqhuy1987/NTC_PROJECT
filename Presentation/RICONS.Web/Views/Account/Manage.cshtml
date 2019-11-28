@@ -248,10 +248,10 @@
                             <tbody></tbody>
                             <tfoot>
                                 <tr>
-                                    <td colspan="10" id="girdInfo">Tổng số: @*<span class="currentRow">0</span>/*@<span class="sumRow">0</span></td>
+                                    <td colspan="12" id="girdInfo">Tổng số: @*<span class="currentRow">0</span>/*@<span class="sumRow">0</span></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="10" id="girdInfoLoad">
+                                    <td colspan="12" id="girdInfoLoad">
                                         <div class="divExentd"><i class="retweet_32"></i>Xem thêm</div>
                                     </td>
                                 </tr>
@@ -362,8 +362,8 @@
                 var maphongban = $(row).find('.col7').attr('title');
                 var machucdanh = $(row).find('.col8').attr('title');
                 var madonvi = $(row).find('.col9').attr('title');
-                //var macongtruong = $(row).find('.col11').attr('title');
-                //var loaibaocao = $(row).find('.col12').attr('title');
+                var macongtruong = $(row).find('.col11').attr('title');
+                var loaibaocao = $(row).find('.col12').attr('title');
 
                 form.find('input[name="act"]').val('update');
                 form.find('input[name="mataikhoan"]').val(mataikhoan);
@@ -380,8 +380,8 @@
                 $('#filter03').val(machucdanh);
                 $('#filter04').val(maphongban);
                 $('#filter05').val(madonvi);
-                //$('#filter06').val(macongtruong);
-                //$('#filter07').val(loaicuochop);
+                $('#filter06').val(macongtruong);
+                $('#filter07').val(loaibaocao);
                 for (var selector in configChosenMilestones) {
                     $(selector).change();
                     $(selector).trigger('chosen:updated');

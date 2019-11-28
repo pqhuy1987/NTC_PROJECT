@@ -53,6 +53,18 @@ var dataHeader_Milestones =
         col_value: 'Phòng ban'
     },
     {
+            colspan: 1,
+            col_class: 'ovh col11',
+            col_id: '',
+            col_value: 'Công trường'
+    },
+    {
+        colspan: 1,
+        col_class: 'ovh col12',
+        col_id: '',
+        col_value: 'Loại báo cáo'
+    },
+    {
         colspan: 1,
         col_class: 'ovh col8',
         col_id: '',

@@ -35,6 +35,8 @@
       ,rtrim(tk.thudientu) as thudientu
       ,rtrim(tk.chucdanhkpi) as chucdanhkpi
       ,phongban_congtruong
+      ,macongtruong
+      ,loaicuochop
       FROM
       M_TAIKHOAN tk
       WHERE

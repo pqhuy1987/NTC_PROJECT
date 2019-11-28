@@ -381,6 +381,8 @@ namespace RICONS.Web.Controllers
             Session["chucdanhkpi"] = model.chucdanhkpi;
             Session["ngaysinh"] = model.ngaysinh;
             Session["grouptk"] = model.grouptk;
+            Session["macongtruong"] = model.macongtruong;
+            Session["loaicuochop"] = model.loaicuochop;
             if (GetPhongBanDonVi() != null)
             {
                 Session["tenchucvu"] = GetPhongBanDonVi().tenchucdanh;

@@ -484,13 +484,19 @@ namespace RICONS.Web.Controllers
              {
                  lstResult_phongban = service.SelectRows(parampb);
                  lstcaptrentt = lstResult_phongban.Where(p => p.maphongban == maphongban).ToList();
-                 sMailTo = lstcaptrentt[0].email;
+                 if (lstcaptrentt[0].email.ToString().Trim() == null)
+                    sMailTo = "it360@newtecons.vn";
+                 else
+                    sMailTo = lstcaptrentt[0].email;
              }
              else
              {
                  lstResult_phongban = service.SelectRows2(parampb);
                  lstcaptrentt = lstResult_phongban.Where(p => p.maphongban == maphongban).ToList();
-                 sMailTo = lstcaptrentt[0].email;
+                 if (lstcaptrentt[0].email.ToString().Trim() == null)
+                     sMailTo = "it360@newtecons.vn";
+                 else
+                     sMailTo = lstcaptrentt[0].email;
              }
 
              var toAddress = new MailAddress(sMailTo);
@@ -521,10 +527,18 @@ namespace RICONS.Web.Controllers
 
                      Attachment data = new Attachment(path, MediaTypeNames.Application.Octet);
                      message.Attachments.Add(data);
-                     message.CC.Add(lstcaptrentt[0].sodienthoai);
-                     message.CC.Add(lstcaptrentt[0].ghichu);
-                     message.CC.Add(lstcaptrentt[0].ghichu1);
-                     message.CC.Add(lstcaptrentt[0].ghichu2);
+                     if (!string.IsNullOrEmpty(lstcaptrentt[0].sodienthoai))
+                        message.CC.Add(lstcaptrentt[0].sodienthoai);
+
+                     if (!string.IsNullOrEmpty(lstcaptrentt[0].ghichu))
+                        message.CC.Add(lstcaptrentt[0].ghichu);
+
+                     if (!string.IsNullOrEmpty(lstcaptrentt[0].ghichu1))
+                        message.CC.Add(lstcaptrentt[0].ghichu1);
+
+                     if (!string.IsNullOrEmpty(lstcaptrentt[0].ghichu2))
+                        message.CC.Add(lstcaptrentt[0].ghichu2);
+
                      smtp.Send(message);
                      smtp.Dispose();
                  }

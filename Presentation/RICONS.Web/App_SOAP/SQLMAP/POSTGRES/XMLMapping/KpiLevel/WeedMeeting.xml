@@ -46,7 +46,7 @@
     </select>
 
     <select id="SelectRow_WeedMeeting" resultClass="System.Collections.Hashtable">
-      select * ,tuan.tentuan1 +'  '+ tuan.tungay+' - '+tuan.denngay as tentuan from (SELECT
+      select * ,tuan.tentuan1 as tentuan from (SELECT
       *
       ,(select tenphongban from m_donvi_phongban pb where pb.xoa='0' and pb.maphongban=WeedMeeting.maphongban) as tenphongban
       ,ROW_NUMBER() OVER (ORDER BY macuochop  desc) as row
@@ -74,7 +74,7 @@
     </select>
 
     <select id="SelectRow_WeedMeeting2" resultClass="System.Collections.Hashtable">
-      select * ,tuan.tentuan1 +'  '+ tuan.tungay+' - '+tuan.denngay as tentuan from (SELECT
+      select * ,tuan.tentuan1 as tentuan from (SELECT
       *
       ,(select tenphongban from m_donvi_phongban pb where pb.xoa='0' and pb.maphongban=WeedMeeting.maphongban) as tenphongban
       ,ROW_NUMBER() OVER (ORDER BY macuochop  desc) as row
@@ -178,7 +178,7 @@
 
       
     <update id="DeleteRow_KpiEmployee">
-      Update KPI_Employee set xoa='1' where makpinhanvien=$makpinhanvien$
+      Update WeedMeeting set xoa='1' where makpinhanvien=$makpinhanvien$
     </update>
     
     

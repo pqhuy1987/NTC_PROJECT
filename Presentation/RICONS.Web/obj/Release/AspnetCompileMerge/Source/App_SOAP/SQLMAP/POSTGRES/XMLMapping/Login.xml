@@ -35,6 +35,8 @@
       ,rtrim(tk.thudientu) as thudientu
       ,rtrim(tk.chucdanhkpi) as chucdanhkpi
       ,phongban_congtruong
+      ,macongtruong
+      ,loaicuochop
       FROM
       M_TAIKHOAN tk
       WHERE
@@ -94,6 +96,8 @@
       (
       tendangnhap
       ,matkhau
+      ,macongtruong
+      ,loaicuochop
       ,hoten
       ,thudientu
       ,madonvi
@@ -113,6 +117,8 @@
       (
       '$tendangnhap$'
       <isNotEmpty	property="matkhau">	, '$matkhau$'	</isNotEmpty>	<isEmpty	property="matkhau">	,null	</isEmpty>
+      <isNotEmpty	property="macongtruong">	, N'$macongtruong$'	</isNotEmpty>	<isEmpty	property="macongtruong">	,null	</isEmpty>
+      <isNotEmpty	property="loaicuochop">	, '$loaicuochop$'	</isNotEmpty>	<isEmpty	property="loaicuochop">	,null	</isEmpty>
       <isNotEmpty	property="hoten">	, N'$hoten$'	</isNotEmpty>	<isEmpty	property="hoten">	,null	</isEmpty>
       <isNotEmpty	property="thudientu">	, '$thudientu$'	</isNotEmpty>	<isEmpty	property="thudientu">	,null	</isEmpty>
       <isNotEmpty	property="madonvi">	, '$madonvi$'	</isNotEmpty>	<isEmpty	property="madonvi">	,null	</isEmpty>
@@ -157,6 +163,12 @@
       </isNotEmpty>
       <isNotEmpty	property="maphongban">
         ,maphongban = '$maphongban$'
+      </isNotEmpty>
+      <isNotEmpty	property="macongtruong">
+        ,macongtruong = '$macongtruong$'
+      </isNotEmpty>
+      <isNotEmpty	property="loaicuochop">
+        ,loaicuochop = '$loaicuochop$'
       </isNotEmpty>
       <!--<isNotEmpty	property="machucdanh">
         ,machucdanh = '$machucdanh$'

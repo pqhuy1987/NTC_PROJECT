@@ -16,7 +16,10 @@
       ,(SELECT tendonvi from m_donvi dv where dv.xoa = '0' and dv.madonvi = tk.madonvi) as tendonvi
       ,maphongban
       ,(SELECT tenphongban from m_donvi_phongban dv where dv.xoa = '0' and dv.maphongban = tk.maphongban) as tenphongban
+      ,macongtruong
+      ,(SELECT tenphongban from m_donvi_phongban dv where dv.xoa = '0' and dv.maphongban = tk.macongtruong) as tencongtruong
       ,machucdanh
+      ,loaicuochop
       <!--,(SELECT PositionName from Positions dv where dv.ID = tk.machucdanh) as tenchucdanh-->
       ,chucdanhkpi
       ,(SELECT tenchucdanh from m_donvi_chucdanh dv where dv.xoa = '0' and dv.machucdanh = tk.chucdanhkpi) as tenchucdanhkpi

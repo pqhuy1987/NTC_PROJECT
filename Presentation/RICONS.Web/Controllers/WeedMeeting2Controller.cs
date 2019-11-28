@@ -302,7 +302,7 @@ namespace RICONS.Web.Controllers
 
             foreach (var item in lstResult_Tuan)
             {
-                item.tentuan = item.tentuan + "   " + item.tungay + " - " + item.denngay;
+                item.tentuan = item.tentuan + "   " + item.tungay + "  " + item.denngay;
                 sbtuan.Append(string.Format("<option value='{0}'>{1}</option>", item.matuan, item.tentuan));
             }
             ViewBag.sbtuan = sbtuan.ToString();
@@ -313,6 +313,8 @@ namespace RICONS.Web.Controllers
             StringBuilder sbphongban = new StringBuilder();
             string pb = "";
             string maphongban = Session["maphongban"].ToString().Trim();
+            string macongtruong = Session["macongtruong"].ToString().Trim();
+            int loaicuochop = (int)Session["loaicuochop"];
             if (Session["loginid"].ToString().Trim().ToLower() == "admin" || Session["grouptk"].ToString().Trim() == "1")
             {
                 pb = pb + "<option value=0>Chọn phòng ban</option>";
@@ -321,7 +323,7 @@ namespace RICONS.Web.Controllers
             }
             else
             {
-                foreach (var item in lstResult_phongban.Where(p => p.maphongban == maphongban))
+                foreach (var item in lstResult_phongban.Where(p => p.maphongban == macongtruong))
                     pb = pb + "<option value=" + item.maphongban + "> " + item.tenphongban + " </option>";
             }
             ViewBag.sbphongban = pb.ToString();
@@ -337,11 +339,19 @@ namespace RICONS.Web.Controllers
             ViewBag.sbphonghop = sbphonghop.ToString();
 
             StringBuilder sbloaibaocao = new StringBuilder();
-            sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "1", "Báo cáo tuần CHT/TPB"));
-            sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "2", "Báo cáo tuần Thiết Bị"));
-            sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "3", "Báo cáo tuần HSSE"));
-            sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "4", "Báo cáo tuần QAQC"));
-            sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "5", "Báo cáo tuần MEP"));
+            if (loaicuochop == 1)
+                sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "1", "Báo cáo tuần CHT/TPB"));
+            else if (loaicuochop == 2)
+                sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "2", "Báo cáo tuần Thiết Bị"));
+            else if (loaicuochop == 3)
+                sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "3", "Báo cáo tuần HSSE"));
+            else if (loaicuochop == 4)
+                sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "4", "Báo cáo tuần QAQC"));
+            else if (loaicuochop == 5)
+                sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "5", "Báo cáo tuần MEP"));
+            else
+                sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "6", "Chọn loại báo cáo"));
+
             ViewBag.sbloaibaocao = sbloaibaocao.ToString();
 
             return View();
@@ -356,6 +366,7 @@ namespace RICONS.Web.Controllers
             string macuochop = json["uploadfile"].ToString();
             string filename = json["tenfile"].ToString();
             string maphongban = json["maphongban"].ToString();
+            int loaibaocao = (int)json["loaibaocao"];
             int phongban_congtruong = (int)json["phongban_congtruong"];
 
             DaotaoServices servicevpp = new DaotaoServices();
@@ -370,7 +381,8 @@ namespace RICONS.Web.Controllers
             if (iresult != "-1")
             {
                 iresult = "1";
-                MailLich("TEST", path, filename, maphongban, phongban_congtruong);
+                if (loaibaocao == 1)
+                    MailLich("TEST", path, filename, maphongban, phongban_congtruong);
                 return Json(new { success = true, macuochop = int.Parse(iresult) }, JsonRequestBehavior.AllowGet);
             }
             else
@@ -560,13 +572,19 @@ namespace RICONS.Web.Controllers
             {
                 try
                 {
-
                     Attachment data = new Attachment(path, MediaTypeNames.Application.Octet);
                     message.Attachments.Add(data);
-                    message.CC.Add(lstcaptrentt[0].sodienthoai);
-                    message.CC.Add(lstcaptrentt[0].ghichu);
-                    message.CC.Add(lstcaptrentt[0].ghichu1);
-                    message.CC.Add(lstcaptrentt[0].ghichu2);
+                    if (!string.IsNullOrEmpty(lstcaptrentt[0].sodienthoai))
+                        message.CC.Add(lstcaptrentt[0].sodienthoai);
+
+                    if (!string.IsNullOrEmpty(lstcaptrentt[0].ghichu))
+                        message.CC.Add(lstcaptrentt[0].ghichu);
+
+                    if (!string.IsNullOrEmpty(lstcaptrentt[0].ghichu1))
+                        message.CC.Add(lstcaptrentt[0].ghichu1);
+
+                    if (!string.IsNullOrEmpty(lstcaptrentt[0].ghichu2))
+                        message.CC.Add(lstcaptrentt[0].ghichu2);
                     smtp.Send(message);
                     smtp.Dispose();
                 }

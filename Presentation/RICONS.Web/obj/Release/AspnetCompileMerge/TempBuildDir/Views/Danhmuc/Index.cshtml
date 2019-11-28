@@ -72,7 +72,7 @@
             <div class="row" style="width:100%">
                 <div class="col-md-10">
                     <div class="row">
-                        <div class="col-md-2" style="width: 115px; padding-left: 10px">Email trợ lý GĐ:</div>
+                        <div class="col-md-2" style="width: 115px; padding-left: 10px">Email quản lý:</div>
                         <div class="col-md-3" style="padding-left:10px"><input type="text" style="width: 100%" autocomplete="off" placeholder="Địa chỉ email" id="txtemail" name="email" /></div>
                         <div class="col-md-2" style="width: 115px; padding-left: 10px">Email trợ lý GĐ:</div>
                         <div class="col-md-3" style="padding-left:10px"><input type="text" style="width: 100%" autocomplete="off" placeholder="Email trợ lý" name="sodienthoai" /></div>
@@ -368,7 +368,7 @@
             form.find('input[name="act"]').val('delete');
 
             var maphongban = $(check[0]).attr('mpb');
-            alert(maphongban);
+            alert("Bạn có muốn xóa ?");
             form.find('input[name="ID"]').val(maphongban);
 
             $('#btn-save').trigger('click');
