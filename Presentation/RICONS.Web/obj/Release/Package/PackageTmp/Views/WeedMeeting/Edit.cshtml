@@ -82,7 +82,7 @@
             </div>
         </div>
 
-        <div class="row">
+        @*<div class="row">
             <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Loại cuộc họp<label style="color:red;height:10px;">*</label>:</div>
             <div class="col-md-10" style="padding-left:10px;">
                 <select id="filter04" data-placeholder="Chọn " class="chosen-select-loaikehoach4" name="loaicuochop">
@@ -92,7 +92,7 @@
                     <option value="3">Họp khác</option>
                 </select>
             </div>
-        </div>
+        </div>*@
 
         <div class="row">
             <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Tuần thứ <label style="color:red;height:10px;">*</label>:</div>
@@ -107,17 +107,17 @@
             </div>
         </div>
 
-        <div class="row">
+        @*<div class="row">
             <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Giờ bắt đầu họp <label style="color:red;height:10px;">*</label>:</div>
             <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Giờ họp - VD: 8h20 or 15h00" id="txtgiohop" name="giohop" value="@Model.giohop" /></div>
-        </div>
+        </div>*@
 
         <div class="row">
-            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Ngày họp <label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Ngày upload <label style="color:red;height:10px;">*</label>:</div>
             <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Ngày họp - VD: 01/01/2018" id="txtngayhop" name="ngayhop" value="@Model.ngayhop" /></div>
         </div>
 
-        <div class="row">
+        @*<div class="row">
             <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Phòng họp <label style="color:red;height:10px;">*</label>:</div>
             <div class="col-md-10" style="padding-left:10px;">
                 <select id="filter02" data-placeholder="Chọn tuần họp" class="chosen-select-loaikehoach2" name="phonghop">
@@ -127,9 +127,9 @@
                     }
                 </select>
             </div>
-        </div>
+        </div>*@
 
-        <div class="row">
+        @*<div class="row">
             <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Lý do buổi họp <label style="color:red;height:10px;">*</label>:</div>
             <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Lý do buổi họp" id="txtlydobuoihop" name="lydobuoihop" value="@Model.lydobuoihop" /></div>
         </div>
@@ -147,7 +147,7 @@
         <div class="row">
             <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Tóm tắt nội dung cuộc họp <label style="color:red;height:10px;">*</label>:</div>
             <div class="col-md-10" style="padding-left:10px;"><textarea style="width:100%" rows="4" placeholder="Tóm tắt nội dung cuộc họp" id="txtnoidungcuochop" name="noidungcuochop">@Model.noidungcuochop</textarea></div>
-        </div>
+        </div>*@
 
         <div class="row">
             <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Tập tin đính kèm <label style="color:red;height:10px;">*</label>:</div>
@@ -163,7 +163,7 @@
         <div class="row" style="padding-top: 12px; padding-bottom: 5px;">
             <div class="col-md-1" style="min-width: 160px; padding-left: 10px;"></div>
             <div class="col-md-7" style="padding-left:10px;">
-                <button id="btn-save" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu"><i class="retweet_save"></i> Lưu</button>
+                <button id="btn-del" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu"><i class="retweet_save"></i> Xóa</button>
                 <a href="@Url.Action("Index", "WeedMeeting")" class="buttoncustom WhiteButton"><i class="retweet_trove"></i> Trở về</a>
             </div>
         </div>
@@ -230,33 +230,9 @@
     });
 
 
-    $('#btn-save').on('click', function (e) {
+    $('#btn-del').on('click', function (e) {
         e.preventDefault();
-        if ($('#filter03').val() == '0') {
-            Thongbao("Chọn phòng ban/Bộ phận?");
-            return false;
-        }
-        if ($('#filter01').val() == '0') {
-            Thongbao("Chọn Tuần họp?");
-            return false;
-        }
-        else if ($('#txtgiohop').val().length < 2) {
-            Thongbao("Nhập giờ họp?");
-            return false;
-        }
-        else if ($('#txtngayhop').val().length != 10) {
-            Thongbao("Nhập ngày họp trong tuần (01/01/2017)?");
-            return false;
-        }
-        else if ($('#filter02').val() == 0) {
-            Thongbao("Chọn phòng họp?");
-            return false;
-        }
 
-        else if ($('#filter04').val() == 0) {
-            Thongbao("Loại cuộc họp?");
-            return false;
-        }
         debugger;
         var lydobuoihop = $('#txtlydobuoihop').val();
         var thanhphanthamdu = $('#txtthanhphanthamdu').val();

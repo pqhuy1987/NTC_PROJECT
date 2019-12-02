@@ -178,7 +178,7 @@
 
       
     <update id="DeleteRow_KpiEmployee">
-      Update KPI_Employee set xoa='1' where makpinhanvien=$makpinhanvien$
+      Update WeedMeeting set xoa='1' where makpinhanvien=$makpinhanvien$
     </update>
     
     
