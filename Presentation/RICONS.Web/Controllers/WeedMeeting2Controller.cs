@@ -45,7 +45,11 @@ namespace RICONS.Web.Controllers
             else
             {
                 foreach (var item in lstResult_phongban.Where(p => p.email == thudientu || p.sodienthoai == thudientu || p.ghichu == thudientu
-                    || p.ghichu1 == thudientu || p.ghichu2 == thudientu))
+                    || p.ghichu1 == thudientu       || p.ghichu2 == thudientu
+                    || p.cv_thietbi == thudientu    || p.gs_thietbi == thudientu
+                    || p.cv_hsse == thudientu       || p.gs_hsse == thudientu
+                    || p.cv_qaqc == thudientu       || p.gs_qaqc == thudientu
+                    || p.cv_mep == thudientu        || p.gs_mep == thudientu))
                     pb = pb + "<option value=" + item.maphongban + "> " + item.tenphongban + " </option>";
             }
             ViewBag.sbphongban = pb.ToString();
