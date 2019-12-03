@@ -188,6 +188,7 @@
     <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="Controllers\DesignController.cs" />
     <Compile Include="Controllers\TodoController.cs" />
+    <Compile Include="Controllers\WeedMeetingGDDAController.cs" />
     <Compile Include="Data\Services\AddStaff\AddStaffServices.cs" />
     <Compile Include="Data\Services\calendar\SuKien010000Service.cs" />
     <Compile Include="Data\Services\CongViec\CongViecServices.cs" />
@@ -1469,6 +1470,9 @@
     <Content Include="Views\WeedMeeting2\Index.cshtml" />
     <Content Include="Views\WeedMeeting2\Create.cshtml" />
     <Content Include="Views\WeedMeeting2\Edit.cshtml" />
+    <Content Include="Views\WeedMeetingGDDA\Create.cshtml" />
+    <Content Include="Views\WeedMeetingGDDA\Edit.cshtml" />
+    <Content Include="Views\WeedMeetingGDDA\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\files\" />
