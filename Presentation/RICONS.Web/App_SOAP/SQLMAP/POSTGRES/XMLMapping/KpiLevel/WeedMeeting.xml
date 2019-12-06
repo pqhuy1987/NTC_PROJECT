@@ -44,6 +44,50 @@
       and phongban_congtruong = '1'
 
     </select>
+    
+      <select id="CountRows_WeedMeetingGDDA" resultClass="int">
+      SELECT
+      count(*)
+      FROM
+      WeedMeeting
+      WHERE xoa = '0'
+      <isNotEmpty property="hovaten">
+        and (manhanvien='$hovaten$' or lower(hovaten) like lower('%$hovaten$%') or lower(email) = lower('$hovaten$'))
+      </isNotEmpty>
+
+      <isNotEmpty property="maphongban">
+        and maphongban = '$maphongban$'
+      </isNotEmpty>
+
+      <isNotEmpty property="loaibaocao">
+        and loaibaocao = '$loaibaocao$'
+      </isNotEmpty>
+      
+      and phongban_congtruong = '2'
+
+    </select>
+    
+    <select id="CountRows_WeedMeetingBCTC" resultClass="int">
+      SELECT
+      count(*)
+      FROM
+      WeedMeeting
+      WHERE xoa = '0'
+      <isNotEmpty property="hovaten">
+        and (manhanvien='$hovaten$' or lower(hovaten) like lower('%$hovaten$%') or lower(email) = lower('$hovaten$'))
+      </isNotEmpty>
+
+      <isNotEmpty property="maphongban">
+        and maphongban = '$maphongban$'
+      </isNotEmpty>
+
+      <isNotEmpty property="loaibaocao">
+        and loaibaocao = '$loaibaocao$'
+      </isNotEmpty>
+      
+      and phongban_congtruong = '3'
+
+    </select>
 
     <select id="SelectRow_WeedMeeting" resultClass="System.Collections.Hashtable">
       select * ,tuan.tentuan1 as tentuan from (SELECT
@@ -108,6 +152,82 @@
       </isNotEmpty>
       
         and phongban_congtruong = '1'
+      order by macuochop desc
+    </select>
+    
+        <select id="SelectRow_WeedMeetingGDDA" resultClass="System.Collections.Hashtable">
+      select * ,tuan.tentuan1 as tentuan from (SELECT
+      *
+      ,(select tenphongban from m_donvi_phongban pb where pb.xoa='0' and pb.maphongban=WeedMeeting.maphongban) as tenphongban
+      ,ROW_NUMBER() OVER (ORDER BY macuochop  desc) as row
+      from WeedMeeting
+      WHERE xoa='0'
+      <isNotEmpty property="hovaten">
+        and (manhanvien='$hovaten$' or lower(hovaten) like lower(N'%$hovaten$%') or lower(email) = lower('$hovaten$'))
+      </isNotEmpty>
+
+      <isNotEmpty property="maphongban">
+        and maphongban = '$maphongban$'
+      </isNotEmpty>
+
+      <isNotEmpty property="loaibaocao">
+        and loaibaocao = '$loaibaocao$'
+      </isNotEmpty>
+      
+      ) tbl1
+      left join (select Item_weed.matuan as matuan1,Item_weed.tentuan as tentuan1,Item_weed.tungay,Item_weed.denngay from Item_weed where xoa='0')tuan on(tuan.matuan1=tbl1.matuan)
+      where tbl1.xoa='0' and  tbl1.row <![CDATA[>=]]> $trangbd$ and tbl1.row <![CDATA[<=]]> $trangkt$
+      <isNotEmpty property="hovaten">
+        and (manhanvien='$hovaten$' or lower(hovaten) like lower(N'%$hovaten$%') or lower(email) = lower('$hovaten$'))
+      </isNotEmpty>
+
+      <isNotEmpty property="maphongban">
+        and maphongban = '$maphongban$'
+      </isNotEmpty>
+
+      <isNotEmpty property="loaibaocao">
+        and loaibaocao = '$loaibaocao$'
+      </isNotEmpty>
+      
+        and phongban_congtruong = '2'
+      order by macuochop desc
+    </select>
+    
+        <select id="SelectRow_WeedMeetingBCTC" resultClass="System.Collections.Hashtable">
+      select * ,tuan.tentuan1 as tentuan from (SELECT
+      *
+      ,(select tenphongban from m_donvi_phongban pb where pb.xoa='0' and pb.maphongban=WeedMeeting.maphongban) as tenphongban
+      ,ROW_NUMBER() OVER (ORDER BY macuochop  desc) as row
+      from WeedMeeting
+      WHERE xoa='0'
+      <isNotEmpty property="hovaten">
+        and (manhanvien='$hovaten$' or lower(hovaten) like lower(N'%$hovaten$%') or lower(email) = lower('$hovaten$'))
+      </isNotEmpty>
+
+      <isNotEmpty property="maphongban">
+        and maphongban = '$maphongban$'
+      </isNotEmpty>
+
+      <isNotEmpty property="loaibaocao">
+        and loaibaocao = '$loaibaocao$'
+      </isNotEmpty>
+      
+      ) tbl1
+      left join (select Item_weed.matuan as matuan1,Item_weed.tentuan as tentuan1,Item_weed.tungay,Item_weed.denngay from Item_weed where xoa='0')tuan on(tuan.matuan1=tbl1.matuan)
+      where tbl1.xoa='0' and  tbl1.row <![CDATA[>=]]> $trangbd$ and tbl1.row <![CDATA[<=]]> $trangkt$
+      <isNotEmpty property="hovaten">
+        and (manhanvien='$hovaten$' or lower(hovaten) like lower(N'%$hovaten$%') or lower(email) = lower('$hovaten$'))
+      </isNotEmpty>
+
+      <isNotEmpty property="maphongban">
+        and maphongban = '$maphongban$'
+      </isNotEmpty>
+
+      <isNotEmpty property="loaibaocao">
+        and loaibaocao = '$loaibaocao$'
+      </isNotEmpty>
+      
+        and phongban_congtruong = '3'
       order by macuochop desc
     </select>
     
