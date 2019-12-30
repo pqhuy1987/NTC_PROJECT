@@ -155,7 +155,7 @@
       order by macuochop desc
     </select>
     
-        <select id="SelectRow_WeedMeetingGDDA" resultClass="System.Collections.Hashtable">
+    <select id="SelectRow_WeedMeetingGDDA" resultClass="System.Collections.Hashtable">
       select * ,tuan.tentuan1 as tentuan from (SELECT
       *
       ,(select tenphongban from m_donvi_phongban pb where pb.xoa='0' and pb.maphongban=WeedMeeting.maphongban) as tenphongban

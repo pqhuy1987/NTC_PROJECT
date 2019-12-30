@@ -71,7 +71,7 @@ namespace RICONS.Web.Controllers
                 param.nguoitao = 0;
             }
 
-            int tongsodong = service.CountRows_WeedMeeting(param);
+            int tongsodong = service.CountRows_WeedMeetingGDDA(param);
             int sotrang = 1;
             if (tongsodong > 20)
             {
@@ -95,7 +95,7 @@ namespace RICONS.Web.Controllers
             List<WeedMeetingModels> lstResult = new List<WeedMeetingModels>();
             if (curentPage <= sotrang)
             {
-                lstResult = service.SelectRows_WeedMeeting(param, trangbd, trangkt);
+                lstResult = service.SelectRows_WeedMeetingGDDA(param, trangbd, trangkt);
             }
             else if (curentPage != 1 && curentPage > sotrang) curentPage = curentPage - 1;
 

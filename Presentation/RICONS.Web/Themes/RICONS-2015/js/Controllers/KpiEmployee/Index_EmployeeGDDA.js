@@ -1,5 +1,4 @@
-﻿/// <reference path="Index_Employee.js" />
-
+﻿
 var configChosenDangkyvanphongpham = {
     '.chosen-select-plan': { width: "290px", disable_search_threshold: 10 },
     '.chosen-select-chonthang': { width: "120px", disable_search_threshold: 10 },
@@ -188,7 +187,7 @@ function GetData(isHeader, stt ) {
                     "'loaibaocao':'" + trinhtranghoso + "'" +
                    "}";
 
-    fncGetData_Timekeeping(linkContent + 'WeedMeeting2/SelectRows_WeedMeeting', DataJson, isHeader);
+    fncGetData_Timekeeping(linkContent + 'WeedMeetingGDDA/SelectRows_WeedMeeting', DataJson, isHeader);
 }
 
 function ShowSubLine(e) {

@@ -70,6 +70,60 @@ namespace RICONS.Web.Data.Services
             return iResult;
         }
 
+        public int CountRows_WeedMeetingGDDA(WeedMeetingModels clparam)
+        {
+            logger.Start("CountRows_WeedMeetingGDDA");
+            int iResult = 0;
+            try
+            {
+                Hashtable param = new Hashtable();
+                param = base.SetDataToHashtable(false, clparam);
+
+                if (clparam.maphongban == "0" || clparam.maphongban == null) param["maphongban"] = "";
+                else param["maphongban"] = clparam.maphongban;
+
+                if (clparam.loaibaocao == 0 || clparam.loaibaocao == null) param["loaibaocao"] = "";
+                else param["loaibaocao"] = clparam.loaibaocao;
+
+                iResult = (int)sqlMap.ExecuteQueryForObject("WeedMeeting.CountRows_WeedMeetingGDDA", param);
+            }
+            catch (Exception ex)
+            {
+                sqlMap.RollbackTransaction();
+                iResult = 0;
+                logger.Error(ex.Message);
+            }
+            logger.End("CountRows_WeedMeetingGDDA");
+            return iResult;
+        }
+
+        public int CountRows_WeedMeetingBCTC(WeedMeetingModels clparam)
+        {
+            logger.Start("CountRows_WeedMeetingBCTC");
+            int iResult = 0;
+            try
+            {
+                Hashtable param = new Hashtable();
+                param = base.SetDataToHashtable(false, clparam);
+
+                if (clparam.maphongban == "0" || clparam.maphongban == null) param["maphongban"] = "";
+                else param["maphongban"] = clparam.maphongban;
+
+                if (clparam.loaibaocao == 0 || clparam.loaibaocao == null) param["loaibaocao"] = "";
+                else param["loaibaocao"] = clparam.loaibaocao;
+
+                iResult = (int)sqlMap.ExecuteQueryForObject("WeedMeeting.CountRows_WeedMeetingBCTC", param);
+            }
+            catch (Exception ex)
+            {
+                sqlMap.RollbackTransaction();
+                iResult = 0;
+                logger.Error(ex.Message);
+            }
+            logger.End("CountRows_WeedMeetingBCTC");
+            return iResult;
+        }
+
         public List<WeedMeetingModels> SelectRows_WeedMeeting(WeedMeetingModels clParam, int trangbd, int trangkt)
         {
             logger.Start("SelectRows_WeedMeeting");
@@ -128,6 +182,70 @@ namespace RICONS.Web.Data.Services
                 logger.Error("Loi ---> " + ex.Message);
             }
             logger.End("SelectRows_WeedMeeting2");
+            return lstResult;
+        }
+
+        public List<WeedMeetingModels> SelectRows_WeedMeetingGDDA(WeedMeetingModels clParam, int trangbd, int trangkt)
+        {
+            logger.Start("SelectRows_WeedMeetingGDDA");
+            List<WeedMeetingModels> lstResult = new List<WeedMeetingModels>();
+            try
+            {
+                Hashtable param = new Hashtable();
+                param = base.SetDataToHashtable(false, clParam);
+
+                if (clParam.nguoitao == 0) param["nguoitao"] = "";
+
+                if (clParam.maphongban == "0") param["maphongban"] = "";
+                else param["maphongban"] = clParam.maphongban;
+
+                if (clParam.loaibaocao == 0) param["loaibaocao"] = "";
+                else param["loaibaocao"] = clParam.loaibaocao;
+
+                param["trangbd"] = trangbd;
+                param["trangkt"] = trangkt;
+
+                IList ilist = sqlMap.ExecuteQueryForList("WeedMeeting.SelectRow_WeedMeetingGDDA", param);
+                CastDataType cast = new CastDataType();
+                lstResult = cast.AdvanceCastDataToList<WeedMeetingModels>(ilist);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Loi ---> " + ex.Message);
+            }
+            logger.End("SelectRows_WeedMeetingGDDA");
+            return lstResult;
+        }
+
+        public List<WeedMeetingModels> SelectRows_WeedMeetingBCTC(WeedMeetingModels clParam, int trangbd, int trangkt)
+        {
+            logger.Start("SelectRows_WeedMeetingBCTC");
+            List<WeedMeetingModels> lstResult = new List<WeedMeetingModels>();
+            try
+            {
+                Hashtable param = new Hashtable();
+                param = base.SetDataToHashtable(false, clParam);
+
+                if (clParam.nguoitao == 0) param["nguoitao"] = "";
+
+                if (clParam.maphongban == "0") param["maphongban"] = "";
+                else param["maphongban"] = clParam.maphongban;
+
+                if (clParam.loaibaocao == 0) param["loaibaocao"] = "";
+                else param["loaibaocao"] = clParam.loaibaocao;
+
+                param["trangbd"] = trangbd;
+                param["trangkt"] = trangkt;
+
+                IList ilist = sqlMap.ExecuteQueryForList("WeedMeeting.SelectRow_WeedMeetingBCTC", param);
+                CastDataType cast = new CastDataType();
+                lstResult = cast.AdvanceCastDataToList<WeedMeetingModels>(ilist);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Loi ---> " + ex.Message);
+            }
+            logger.End("SelectRows_WeedMeetingBCTC");
             return lstResult;
         }
 

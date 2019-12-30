@@ -948,6 +948,8 @@
     <Content Include="Themes\RICONS-2015\js\Controllers\KpiConstruction\KpiConstruction_New.js" />
     <Content Include="Themes\RICONS-2015\js\Controllers\KpiEmployee\Index_Employee.js" />
     <Content Include="Themes\RICONS-2015\js\Controllers\KpiEmployee\Index_Employee2.js" />
+    <Content Include="Themes\RICONS-2015\js\Controllers\KpiEmployee\Index_EmployeeBCTC.js" />
+    <Content Include="Themes\RICONS-2015\js\Controllers\KpiEmployee\Index_EmployeeGDDA.js" />
     <Content Include="Themes\RICONS-2015\js\Controllers\KpiEmployee\KpiEmployee_Edit.js" />
     <Content Include="Themes\RICONS-2015\js\Controllers\KpiEmployee\KpiEmployee_New.js" />
     <Content Include="Themes\RICONS-2015\js\Controllers\LibraryJS.js" />
