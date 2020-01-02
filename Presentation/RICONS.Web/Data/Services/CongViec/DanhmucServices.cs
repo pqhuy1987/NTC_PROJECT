@@ -83,6 +83,46 @@ namespace RICONS.Web.Data.Services
             return lstResult;
         }
 
+        public List<PhongBanModels> SelectRowsGDDA(PhongBanModels clParam)
+        {
+            logger.Start("SelectRowsGDDA");
+            List<PhongBanModels> lstResult = new List<PhongBanModels>();
+            try
+            {
+                Hashtable param = new Hashtable();
+                param = base.SetDataToHashtable(false, clParam);
+                IList ilist = sqlMap.ExecuteQueryForList("Danhmuc.SelectRowsGDDA", param);
+                CastDataType cast = new CastDataType();
+                lstResult = cast.AdvanceCastDataToList<PhongBanModels>(ilist);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Loi ---> " + ex.Message);
+            }
+            logger.End("SelectRowsGDDA");
+            return lstResult;
+        }
+
+        public List<PhongBanModels> SelectRowsBCTC(PhongBanModels clParam)
+        {
+            logger.Start("SelectRowsBCTC");
+            List<PhongBanModels> lstResult = new List<PhongBanModels>();
+            try
+            {
+                Hashtable param = new Hashtable();
+                param = base.SetDataToHashtable(false, clParam);
+                IList ilist = sqlMap.ExecuteQueryForList("Danhmuc.SelectRowsBCTC", param);
+                CastDataType cast = new CastDataType();
+                lstResult = cast.AdvanceCastDataToList<PhongBanModels>(ilist);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Loi ---> " + ex.Message);
+            }
+            logger.End("SelectRowsBCTC");
+            return lstResult;
+        }
+
         public List<PhongBanModels> SelectRows_ma(string maphongban)
         {
             logger.Start("SelectRows");

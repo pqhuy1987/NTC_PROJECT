@@ -164,7 +164,10 @@
     <Compile Include="Controllers\CollaborateController.cs" />
     <Compile Include="Controllers\ConstructionMeetingController.cs" />
     <Compile Include="Controllers\Danhmuc2Controller.cs" />
+    <Compile Include="Controllers\DanhmucBCTCController.cs" />
+    <Compile Include="Controllers\DanhmucGDDAController.cs" />
     <Compile Include="Controllers\WeedMeeting2Controller.cs" />
+    <Compile Include="Controllers\WeedMeetingBCTCController.cs" />
     <Compile Include="Controllers\WeedMeetingController.cs" />
     <Compile Include="Controllers\KpiConstructionController.cs" />
     <Compile Include="Controllers\ReportKpiController.cs" />
@@ -1475,6 +1478,19 @@
     <Content Include="Views\WeedMeetingGDDA\Create.cshtml" />
     <Content Include="Views\WeedMeetingGDDA\Edit.cshtml" />
     <Content Include="Views\WeedMeetingGDDA\Index.cshtml" />
+    <Content Include="Views\WeedMeetingBCTC\Create.cshtml" />
+    <Content Include="Views\WeedMeetingBCTC\Edit.cshtml" />
+    <Content Include="Views\WeedMeetingBCTC\Index.cshtml" />
+    <Content Include="Views\DanhmucGDDA\Create.cshtml" />
+    <Content Include="Views\DanhmucGDDA\Edit.cshtml" />
+    <Content Include="Views\DanhmucGDDA\Index.cshtml" />
+    <Content Include="Views\DanhmucGDDA\Indexchucdanh.cshtml" />
+    <Content Include="Views\DanhmucGDDA\Indexgiaovien.cshtml" />
+    <Content Include="Views\DanhmucBCTC\Create.cshtml" />
+    <Content Include="Views\DanhmucBCTC\Edit.cshtml" />
+    <Content Include="Views\DanhmucBCTC\Index.cshtml" />
+    <Content Include="Views\DanhmucBCTC\Indexchucdanh.cshtml" />
+    <Content Include="Views\DanhmucBCTC\Indexgiaovien.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\files\" />

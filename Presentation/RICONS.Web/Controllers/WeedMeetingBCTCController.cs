@@ -18,9 +18,9 @@ using System.Net.Mime;
 
 namespace RICONS.Web.Controllers
 {
-    public class WeedMeetingGDDAController : BaseController
+    public class WeedMeetingBCTCController : BaseController
     {
-        Log4Net _logger = new Log4Net(typeof(WeedMeetingController));
+        Log4Net _logger = new Log4Net(typeof(WeedMeeting2Controller));
 
         public ActionResult Index()
         {
@@ -29,7 +29,7 @@ namespace RICONS.Web.Controllers
                 return BackToLogin();
             DanhmucServices service = new DanhmucServices();
             PhongBanModels parampb = new PhongBanModels();
-            List<PhongBanModels> lstResult_phongban = service.SelectRowsGDDA(parampb);
+            List<PhongBanModels> lstResult_phongban = service.SelectRows2(parampb);
             StringBuilder sbphongban = new StringBuilder();
             string pb = "";
             string thudientu = Session["thudientu"].ToString().Trim();
@@ -45,7 +45,11 @@ namespace RICONS.Web.Controllers
             else
             {
                 foreach (var item in lstResult_phongban.Where(p => p.email == thudientu || p.sodienthoai == thudientu || p.ghichu == thudientu
-                    || p.ghichu1 == thudientu || p.ghichu2 == thudientu))
+                    || p.ghichu1 == thudientu || p.ghichu2 == thudientu
+                    || p.cv_thietbi == thudientu || p.gs_thietbi == thudientu
+                    || p.cv_hsse == thudientu || p.gs_hsse == thudientu
+                    || p.cv_qaqc == thudientu || p.gs_qaqc == thudientu
+                    || p.cv_mep == thudientu || p.gs_mep == thudientu))
                     pb = pb + "<option value=" + item.maphongban + "> " + item.tenphongban + " </option>";
             }
             ViewBag.sbphongban = pb.ToString();
@@ -64,14 +68,56 @@ namespace RICONS.Web.Controllers
         {
             WeedMeetingModels param = new WeedMeetingModels();
             DaotaoServices service = new DaotaoServices();
+            DanhmucServices service_danhmuc = new DanhmucServices();
             //param.nguoitao = int.Parse(Session["userid"].ToString());
             param.maphongban = model.maphongban;
-            if (Session["loginid"].ToString().Trim().ToLower() == "admin" || Session["grouptk"].ToString().Trim() == "1")
+            param.loaibaocao = model.loaibaocao;
+            //if (Session["loginid"].ToString().Trim().ToLower() == "admin" || Session["grouptk"].ToString().Trim() == "1")
+            //{
+            param.nguoitao = 0;
+            //}
+            string thudientu = Session["thudientu"].ToString().Trim();
+
+
+
+            List<PhongBanModels> y = null;
+            var lstcaptrentt = y;
+
+            PhongBanModels parampb = new PhongBanModels();
+            List<PhongBanModels> lstResult_phongban = service_danhmuc.SelectRows2(parampb);
+            lstcaptrentt = lstResult_phongban.Where(p => p.maphongban == model.maphongban).ToList();
+
+            //StringBuilder sbloaibaocao = new StringBuilder();
+            //sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "1", "Báo cáo tuần CHT/TPB"));
+            if (lstcaptrentt[0].email == thudientu || lstcaptrentt[0].ghichu == thudientu || lstcaptrentt[0].sodienthoai == thudientu
+                || lstcaptrentt[0].ghichu1 == thudientu || lstcaptrentt[0].ghichu2 == thudientu || Session["loginid"].ToString().Trim().ToLower() == "admin" || Session["grouptk"].ToString().Trim() == "1")
             {
-                param.nguoitao = 0;
+                param.loaibaocao = param.loaibaocao;
+            }
+            else if (model.loaibaocao == 2 && (lstcaptrentt[0].cv_thietbi == thudientu || lstcaptrentt[0].gs_thietbi == thudientu))
+            {
+                param.loaibaocao = 2;
+            }
+            else if (model.loaibaocao == 3 && (lstcaptrentt[0].cv_hsse == thudientu || lstcaptrentt[0].gs_hsse == thudientu))
+            {
+                param.loaibaocao = 3;
             }
 
-            int tongsodong = service.CountRows_WeedMeetingGDDA(param);
+            else if (model.loaibaocao == 4 && (lstcaptrentt[0].cv_qaqc == thudientu || lstcaptrentt[0].gs_qaqc == thudientu))
+            {
+                param.loaibaocao = 4;
+            }
+
+            else if (model.loaibaocao == 5 && (lstcaptrentt[0].cv_mep == thudientu || lstcaptrentt[0].gs_mep == thudientu))
+            {
+                param.loaibaocao = 5;
+            }
+            else
+            {
+                param.loaibaocao = 6;
+            }
+
+            int tongsodong = service.CountRows_WeedMeeting2(param);
             int sotrang = 1;
             if (tongsodong > 20)
             {
@@ -95,7 +141,7 @@ namespace RICONS.Web.Controllers
             List<WeedMeetingModels> lstResult = new List<WeedMeetingModels>();
             if (curentPage <= sotrang)
             {
-                lstResult = service.SelectRows_WeedMeetingGDDA(param, trangbd, trangkt);
+                lstResult = service.SelectRows_WeedMeeting2(param, trangbd, trangkt);
             }
             else if (curentPage != 1 && curentPage > sotrang) curentPage = curentPage - 1;
 
@@ -257,19 +303,22 @@ namespace RICONS.Web.Controllers
             DanhmucServices service = new DanhmucServices();
             List<Item_weedModels> lstResult_Tuan = service.SelectRows_giaovien(param);
             StringBuilder sbtuan = new StringBuilder();
+
             foreach (var item in lstResult_Tuan)
             {
-                item.tentuan = item.tentuan + "   " + item.tungay + " - " + item.denngay;
+                item.tentuan = item.tentuan + "   " + item.tungay + "  " + item.denngay;
                 sbtuan.Append(string.Format("<option value='{0}'>{1}</option>", item.matuan, item.tentuan));
             }
             ViewBag.sbtuan = sbtuan.ToString();
 
             //phong ban
             PhongBanModels parampb = new PhongBanModels();
-            List<PhongBanModels> lstResult_phongban = service.SelectRowsGDDA(parampb);
+            List<PhongBanModels> lstResult_phongban = service.SelectRows2(parampb);
             StringBuilder sbphongban = new StringBuilder();
             string pb = "";
             string maphongban = Session["maphongban"].ToString().Trim();
+            string macongtruong = Session["macongtruong"].ToString().Trim();
+            int loaicuochop = (int)Session["loaicuochop"];
             if (Session["loginid"].ToString().Trim().ToLower() == "admin" || Session["grouptk"].ToString().Trim() == "1")
             {
                 pb = pb + "<option value=0>Chọn phòng ban</option>";
@@ -278,7 +327,7 @@ namespace RICONS.Web.Controllers
             }
             else
             {
-                foreach (var item in lstResult_phongban.Where(p => p.maphongban == maphongban))
+                foreach (var item in lstResult_phongban.Where(p => p.maphongban == macongtruong))
                     pb = pb + "<option value=" + item.maphongban + "> " + item.tenphongban + " </option>";
             }
             ViewBag.sbphongban = pb.ToString();
@@ -294,11 +343,19 @@ namespace RICONS.Web.Controllers
             ViewBag.sbphonghop = sbphonghop.ToString();
 
             StringBuilder sbloaibaocao = new StringBuilder();
-            sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "1", "Báo cáo tuần CHT/TPB"));
-            //sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "2", "Báo cáo tuần Thiết Bị"));
-            //sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "3", "Báo cáo tuần HSSE"));
-            //sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "4", "Báo cáo tuần QAQC"));
-            //sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "5", "Báo cáo tuần MEP"));
+            if (loaicuochop == 1)
+                sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "1", "Báo cáo tuần CHT/TPB"));
+            else if (loaicuochop == 2)
+                sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "2", "Báo cáo tuần Thiết Bị"));
+            else if (loaicuochop == 3)
+                sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "3", "Báo cáo tuần HSSE"));
+            else if (loaicuochop == 4)
+                sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "4", "Báo cáo tuần QAQC"));
+            else if (loaicuochop == 5)
+                sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "5", "Báo cáo tuần MEP"));
+            else
+                sbloaibaocao.Append(string.Format("<option value={0}>{1}</option>", "6", "Chọn loại báo cáo"));
+
             ViewBag.sbloaibaocao = sbloaibaocao.ToString();
 
             return View();
@@ -313,6 +370,7 @@ namespace RICONS.Web.Controllers
             string macuochop = json["uploadfile"].ToString();
             string filename = json["tenfile"].ToString();
             string maphongban = json["maphongban"].ToString();
+            int loaibaocao = (int)json["loaibaocao"];
             int phongban_congtruong = (int)json["phongban_congtruong"];
 
             DaotaoServices servicevpp = new DaotaoServices();
@@ -327,7 +385,8 @@ namespace RICONS.Web.Controllers
             if (iresult != "-1")
             {
                 iresult = "1";
-                MailLich("TEST", path, filename, maphongban, phongban_congtruong);
+                if (loaibaocao == 1)
+                    MailLich("TEST", path, filename, maphongban, phongban_congtruong);
                 return Json(new { success = true, macuochop = int.Parse(iresult) }, JsonRequestBehavior.AllowGet);
             }
             else
@@ -353,7 +412,7 @@ namespace RICONS.Web.Controllers
 
             //phong ban
             PhongBanModels parampb = new PhongBanModels();
-            List<PhongBanModels> lstResult_phongban = service.SelectRowsGDDA(parampb);
+            List<PhongBanModels> lstResult_phongban = service.SelectRows(parampb);
             StringBuilder sbphongban = new StringBuilder();
             string pb = "";
             string maphongban = Session["maphongban"].ToString().Trim();
@@ -484,37 +543,13 @@ namespace RICONS.Web.Controllers
             {
                 lstResult_phongban = service.SelectRows(parampb);
                 lstcaptrentt = lstResult_phongban.Where(p => p.maphongban == maphongban).ToList();
-                if (lstcaptrentt[0].email.ToString().Trim() == null)
-                    sMailTo = "it360@newtecons.vn";
-                else
-                    sMailTo = lstcaptrentt[0].email;
+                sMailTo = lstcaptrentt[0].email;
             }
-            else if (phongban_congtruong == 1)
+            else
             {
                 lstResult_phongban = service.SelectRows2(parampb);
                 lstcaptrentt = lstResult_phongban.Where(p => p.maphongban == maphongban).ToList();
-                if (lstcaptrentt[0].email.ToString().Trim() == null)
-                    sMailTo = "it360@newtecons.vn";
-                else
-                    sMailTo = lstcaptrentt[0].email;
-            }
-            else if (phongban_congtruong == 2)
-            {
-                lstResult_phongban = service.SelectRowsGDDA(parampb);
-                lstcaptrentt = lstResult_phongban.Where(p => p.maphongban == maphongban).ToList();
-                if (lstcaptrentt[0].email.ToString().Trim() == null)
-                    sMailTo = "it360@newtecons.vn";
-                else
-                    sMailTo = lstcaptrentt[0].email;
-            }
-            else if (phongban_congtruong == 3)
-            {
-                lstResult_phongban = service.SelectRowsBCTC(parampb);
-                lstcaptrentt = lstResult_phongban.Where(p => p.maphongban == maphongban).ToList();
-                if (lstcaptrentt[0].email.ToString().Trim() == null)
-                    sMailTo = "it360@newtecons.vn";
-                else
-                    sMailTo = lstcaptrentt[0].email;
+                sMailTo = lstcaptrentt[0].email;
             }
 
             var toAddress = new MailAddress(sMailTo);
@@ -542,7 +577,6 @@ namespace RICONS.Web.Controllers
             {
                 try
                 {
-
                     Attachment data = new Attachment(path, MediaTypeNames.Application.Octet);
                     message.Attachments.Add(data);
                     if (!string.IsNullOrEmpty(lstcaptrentt[0].sodienthoai))
@@ -556,7 +590,6 @@ namespace RICONS.Web.Controllers
 
                     if (!string.IsNullOrEmpty(lstcaptrentt[0].ghichu2))
                         message.CC.Add(lstcaptrentt[0].ghichu2);
-
                     smtp.Send(message);
                     smtp.Dispose();
                 }
