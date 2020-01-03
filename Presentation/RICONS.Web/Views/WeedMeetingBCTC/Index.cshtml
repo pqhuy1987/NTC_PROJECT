@@ -46,7 +46,7 @@
 
             <div class="col-md-4" style="width: 320px; padding-left: 10px; padding-right:0px">
                 Lọc theo: &nbsp;
-                <select id="filter01" data-placeholder="Chọn công trường" class="chosen-select-loaikehoach" name="maphongban">
+                <select id="filter01" data-placeholder="Chọn BCTC công trường" class="chosen-select-loaikehoach" name="maphongban">
                     @if (!string.IsNullOrEmpty(ViewBag.sbphongban))
                     {
                         @Html.Raw(ViewBag.sbphongban);
@@ -56,11 +56,9 @@
 
             <div class="col-md-1" style="width:220px;padding-left:0px;">
                 <select id="filter02" data-placeholder="Chọn tình trạng" class="chosen-select-loaikehoach1" name="tinhtrangduyet">
-                    <option value="1">Báo cáo tuần CHT/TPB</option>
-                    <option value="2">Báo cáo tuần Thiết Bị</option>
-                    <option value="3">Báo cáo tuần HSSE</option>
-                    <option value="4">Báo cáo tuần QAQC</option>
-                    <option value="5">Báo cáo tuần MEP</option>
+                    <option value="1">BCTC Công trường</option>
+                    <option value="2">BCTC CCM</option>
+                    <option value="3">BCTC Kế toán</option>
                 </select>
             </div>
 

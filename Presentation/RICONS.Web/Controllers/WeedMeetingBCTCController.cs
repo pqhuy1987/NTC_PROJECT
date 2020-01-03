@@ -29,7 +29,7 @@ namespace RICONS.Web.Controllers
                 return BackToLogin();
             DanhmucServices service = new DanhmucServices();
             PhongBanModels parampb = new PhongBanModels();
-            List<PhongBanModels> lstResult_phongban = service.SelectRows2(parampb);
+            List<PhongBanModels> lstResult_phongban = service.SelectRowsBCTC(parampb);
             StringBuilder sbphongban = new StringBuilder();
             string pb = "";
             string thudientu = Session["thudientu"].ToString().Trim();
@@ -84,7 +84,7 @@ namespace RICONS.Web.Controllers
             var lstcaptrentt = y;
 
             PhongBanModels parampb = new PhongBanModels();
-            List<PhongBanModels> lstResult_phongban = service_danhmuc.SelectRows2(parampb);
+            List<PhongBanModels> lstResult_phongban = service_danhmuc.SelectRowsBCTC(parampb);
             lstcaptrentt = lstResult_phongban.Where(p => p.maphongban == model.maphongban).ToList();
 
             //StringBuilder sbloaibaocao = new StringBuilder();
