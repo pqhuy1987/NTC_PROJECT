@@ -141,7 +141,7 @@ namespace RICONS.Web.Controllers
             List<WeedMeetingModels> lstResult = new List<WeedMeetingModels>();
             if (curentPage <= sotrang)
             {
-                lstResult = service.SelectRows_WeedMeeting2(param, trangbd, trangkt);
+                lstResult = service.SelectRows_WeedMeetingBCTC(param, trangbd, trangkt);
             }
             else if (curentPage != 1 && curentPage > sotrang) curentPage = curentPage - 1;
 
