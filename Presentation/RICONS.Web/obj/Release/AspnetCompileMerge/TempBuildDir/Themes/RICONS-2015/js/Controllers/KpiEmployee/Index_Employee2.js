@@ -1,4 +1,5 @@
-﻿
+﻿/// <reference path="Index_Employee.js" />
+
 var configChosenDangkyvanphongpham = {
     '.chosen-select-plan': { width: "290px", disable_search_threshold: 10 },
     '.chosen-select-chonthang': { width: "120px", disable_search_threshold: 10 },

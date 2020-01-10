@@ -404,22 +404,36 @@ namespace RICONS.Web.Controllers
             return View();
         }
 
-         public ActionResult Deleted(string madangky)
+        [HttpPost]
+        public ActionResult Deleted(string DataJson)
          {
-             if (!IsLogged())
-                 return BackToLogin();
-             if (madangky != null)
-             {
-                 FunctionXML function = new FunctionXML(Functions.MapPath("~/Xml/Config/encryptionkeyEncodeLink.config"));
-                 madangky = AES.DecryptText(madangky, function.ReadXMLGetKeyEncrypt());
-                 DaotaoServices service = new DaotaoServices();
-                 bool kq = service.DeletedRow_Dangky_vpp(madangky, Session["userid"].ToString());
-                 if (kq)
-                 {
+             JsonResult Data = new JsonResult();
 
-                 }
+             JObject json = JObject.Parse(DataJson);
+             string macuochop = json["uploadfile"].ToString();
+             string filename = json["tenfile"].ToString();
+             string maphongban = json["maphongban"].ToString();
+             //int phongban_congtruong = (int)json["phongban_congtruong"];
+
+             DaotaoServices servicevpp = new DaotaoServices();
+             string nguoitao = Session["userid"].ToString();
+             string iresult = servicevpp.Delete_WeedMeeting(DataJson, nguoitao);
+
+             var directoryPath = Server.MapPath("~/FileUpload/") + macuochop.Replace("/", ".");
+             if (!System.IO.Directory.Exists(directoryPath))
+                 System.IO.Directory.CreateDirectory(directoryPath);
+             string path = Path.Combine(directoryPath, filename);
+
+             if (iresult != "-1")
+             {
+                 iresult = "1";
+                 //MailLich("TEST", path, filename, maphongban, phongban_congtruong);
+                 return Json(new { success = true, macuochop = int.Parse(iresult) }, JsonRequestBehavior.AllowGet);
              }
-             return RedirectToAction("Index");
+             else
+             {
+                 return Json(new { success = false, macuochop = int.Parse(macuochop) }, JsonRequestBehavior.AllowGet);
+             }
          }
 
          [HttpPost]

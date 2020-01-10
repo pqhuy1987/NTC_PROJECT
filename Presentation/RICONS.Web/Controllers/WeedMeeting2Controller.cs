@@ -227,7 +227,7 @@ namespace RICONS.Web.Controllers
                 sbResult.Append("\"col_class\":\"ovh col3\",");
                 sbResult.Append("\"col_id\":\"3\",");
                 //sbResult.Append("\"col_value\":\"" + model.tenlop + "\"");
-                sbResult.Append("\"col_value\":\"" + "<a href='" + Url.Action("Edit", "WeedMeeting", new { macuochop = strEncryptCode }) + "'title='" + model.matuan + "'>" + model.tentuan + "</a>\"");
+                sbResult.Append("\"col_value\":\"" + "<a href='" + Url.Action("Edit", "WeedMeeting2", new { macuochop = strEncryptCode }) + "'title='" + model.matuan + "'>" + model.tentuan + "</a>\"");
                 sbResult.Append("},");
 
                 //Mã nhân viên
@@ -235,7 +235,7 @@ namespace RICONS.Web.Controllers
                 sbResult.Append("\"colspan\":\"1\",");
                 sbResult.Append("\"col_class\":\"ovh col4\",");
                 sbResult.Append("\"col_id\":\"4\",");
-                sbResult.Append("\"col_value\":\"" + "<a href='" + Url.Action("Edit", "WeedMeeting", new { macuochop = strEncryptCode }) + "'title='" + model.ngayhop + "'>" + model.ngayhop + "</a>\"");
+                sbResult.Append("\"col_value\":\"" + "<a href='" + Url.Action("Edit", "WeedMeeting2", new { macuochop = strEncryptCode }) + "'title='" + model.ngayhop + "'>" + model.ngayhop + "</a>\"");
                 //sbResult.Append("\"col_value\":\"" + model.tenkhoahoc + "\"");
                 sbResult.Append("},");
 
@@ -244,7 +244,7 @@ namespace RICONS.Web.Controllers
                 sbResult.Append("\"colspan\":\"1\",");
                 sbResult.Append("\"col_class\":\"ovh col5\",");
                 sbResult.Append("\"col_id\":\"5\",");
-                sbResult.Append("\"col_value\":\"" + "<a href='" + Url.Action("Edit", "WeedMeeting", new { macuochop = strEncryptCode }) + "'title='" + model.loaicuochop + "'>" + model.tenloaicuochop + "</a>\"");
+                sbResult.Append("\"col_value\":\"" + "<a href='" + Url.Action("Edit", "WeedMeeting2", new { macuochop = strEncryptCode }) + "'title='" + model.loaicuochop + "'>" + model.tenloaicuochop + "</a>\"");
                 sbResult.Append("},");
 
 
@@ -254,7 +254,7 @@ namespace RICONS.Web.Controllers
                 sbResult.Append("\"col_class\":\"ovh col6\",");
                 sbResult.Append("\"col_id\":\"6\",");
                 //sbResult.Append("\"title\":\"" + model.madonvi + "\",");
-                sbResult.Append("\"col_value\":\"" + "<a href='" + Url.Action("Edit", "WeedMeeting", new { macuochop = strEncryptCode }) + "'title='" + model.maphongban + "'>" + model.tenphongban + "</a>\"");
+                sbResult.Append("\"col_value\":\"" + "<a href='" + Url.Action("Edit", "WeedMeeting2", new { macuochop = strEncryptCode }) + "'title='" + model.maphongban + "'>" + model.tenphongban + "</a>\"");
                 sbResult.Append("},");
 
                 ////Tên phòng ban
@@ -279,7 +279,7 @@ namespace RICONS.Web.Controllers
                 sbResult.Append("\"colspan\":\"1\",");
                 sbResult.Append("\"col_class\":\"ovh col9\",");
                 sbResult.Append("\"col_id\":\"9\",");
-                sbResult.Append("\"col_value\":\"<a href='" + Url.Action("DownloadFile", "WeedMeeting", new { tenfile = model.tenfile, idcode = model.uploadfile }) + "'>" + model.tenfile + "</a>\"");
+                sbResult.Append("\"col_value\":\"<a href='" + Url.Action("DownloadFile", "WeedMeeting2", new { tenfile = model.tenfile, idcode = model.uploadfile }) + "'>" + model.tenfile + "</a>\"");
                 sbResult.Append("}");
 
                 #endregion
@@ -412,7 +412,7 @@ namespace RICONS.Web.Controllers
 
             //phong ban
             PhongBanModels parampb = new PhongBanModels();
-            List<PhongBanModels> lstResult_phongban = service.SelectRows(parampb);
+            List<PhongBanModels> lstResult_phongban = service.SelectRows2(parampb);
             StringBuilder sbphongban = new StringBuilder();
             string pb = "";
             string maphongban = Session["maphongban"].ToString().Trim();

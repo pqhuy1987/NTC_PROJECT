@@ -31,7 +31,7 @@
     <script src="~/Scripts/jquery-2.1.0.js"></script>
     <script src="~/Scripts/jquery-2.1.0.min.js"></script>
 
-<script>
+    <script>
         $(document).ready(function (e) {
             setValueToCombobox();
         });
@@ -46,7 +46,7 @@
                 $(selector).trigger('chosen:updated');
             }
         }
-</script>
+    </script>
 
 }
 <script>
@@ -82,17 +82,17 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Loại cuộc họp<label style="color:red;height:10px;">*</label>:</div>
-            <div class="col-md-10" style="padding-left:10px;">
-                <select id="filter04" data-placeholder="Chọn " class="chosen-select-loaikehoach4" name="loaicuochop">
-                    <option value="0">Loại cuộc họp</option>
-                    <option value="1">Họp tuần phòng</option>
-                    <option value="2">Họp tuần BGĐ</option>
-                    <option value="3">Họp khác</option>
-                </select>
-            </div>
-        </div>
+        @*<div class="row">
+                <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Loại cuộc họp<label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-10" style="padding-left:10px;">
+                    <select id="filter04" data-placeholder="Chọn " class="chosen-select-loaikehoach4" name="loaicuochop">
+                        <option value="0">Loại cuộc họp</option>
+                        <option value="1">Họp tuần phòng</option>
+                        <option value="2">Họp tuần BGĐ</option>
+                        <option value="3">Họp khác</option>
+                    </select>
+                </div>
+            </div>*@
 
         <div class="row">
             <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Tuần thứ <label style="color:red;height:10px;">*</label>:</div>
@@ -107,47 +107,47 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Giờ bắt đầu họp <label style="color:red;height:10px;">*</label>:</div>
-            <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Giờ họp - VD: 8h20 or 15h00" id="txtgiohop" name="giohop" value="@Model.giohop" /></div>
-        </div>
+        @*<div class="row">
+                <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Giờ bắt đầu họp <label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Giờ họp - VD: 8h20 or 15h00" id="txtgiohop" name="giohop" value="@Model.giohop" /></div>
+            </div>*@
 
         <div class="row">
-            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Ngày họp <label style="color:red;height:10px;">*</label>:</div>
+            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Ngày upload <label style="color:red;height:10px;">*</label>:</div>
             <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Ngày họp - VD: 01/01/2018" id="txtngayhop" name="ngayhop" value="@Model.ngayhop" /></div>
         </div>
 
-        <div class="row">
-            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Phòng họp <label style="color:red;height:10px;">*</label>:</div>
-            <div class="col-md-10" style="padding-left:10px;">
-                <select id="filter02" data-placeholder="Chọn tuần họp" class="chosen-select-loaikehoach2" name="phonghop">
-                    @if (!string.IsNullOrEmpty(ViewBag.sbphonghop))
-                    {
-                        @Html.Raw(ViewBag.sbphonghop);
-                    }
-                </select>
+        @*<div class="row">
+                <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Phòng họp <label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-10" style="padding-left:10px;">
+                    <select id="filter02" data-placeholder="Chọn tuần họp" class="chosen-select-loaikehoach2" name="phonghop">
+                        @if (!string.IsNullOrEmpty(ViewBag.sbphonghop))
+                        {
+                            @Html.Raw(ViewBag.sbphonghop);
+                        }
+                    </select>
+                </div>
+            </div>*@
+
+        @*<div class="row">
+                <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Lý do buổi họp <label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Lý do buổi họp" id="txtlydobuoihop" name="lydobuoihop" value="@Model.lydobuoihop" /></div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Lý do buổi họp <label style="color:red;height:10px;">*</label>:</div>
-            <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Lý do buổi họp" id="txtlydobuoihop" name="lydobuoihop" value="@Model.lydobuoihop" /></div>
-        </div>
+            <div class="row">
+                <div class="col-md-1" style="min-width: 160px; padding-left:10px;">Thành phần tham dự <label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Thành phần tham dự" id="txtthanhphanthamdu" name="thanhphanthamdu" value="@Model.thanhphanthamdu" /></div>
+            </div>
 
-        <div class="row">
-            <div class="col-md-1" style="min-width: 160px; padding-left:10px;">Thành phần tham dự <label style="color:red;height:10px;">*</label>:</div>
-            <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Thành phần tham dự" id="txtthanhphanthamdu" name="thanhphanthamdu" value="@Model.thanhphanthamdu" /></div>
-        </div>
+            <div class="row">
+                <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Cấp lãnh đạo <label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Cấp lãnh đạo (Cấp giám đốc trở lên). Ghi rõ họ tên" id="txtcaplanhdao" name="caplanhdao" value="@Model.caplanhdao" /></div>
+            </div>
 
-        <div class="row">
-            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Cấp lãnh đạo <label style="color:red;height:10px;">*</label>:</div>
-            <div class="col-md-10" style="padding-left:10px;"><input type="text" style="width:100%" autocomplete="off" placeholder="Cấp lãnh đạo (Cấp giám đốc trở lên). Ghi rõ họ tên" id="txtcaplanhdao" name="caplanhdao" value="@Model.caplanhdao" /></div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Tóm tắt nội dung cuộc họp <label style="color:red;height:10px;">*</label>:</div>
-            <div class="col-md-10" style="padding-left:10px;"><textarea style="width:100%" rows="4" placeholder="Tóm tắt nội dung cuộc họp" id="txtnoidungcuochop" name="noidungcuochop">@Model.noidungcuochop</textarea></div>
-        </div>
+            <div class="row">
+                <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Tóm tắt nội dung cuộc họp <label style="color:red;height:10px;">*</label>:</div>
+                <div class="col-md-10" style="padding-left:10px;"><textarea style="width:100%" rows="4" placeholder="Tóm tắt nội dung cuộc họp" id="txtnoidungcuochop" name="noidungcuochop">@Model.noidungcuochop</textarea></div>
+            </div>*@
 
         <div class="row">
             <div class="col-md-1" style="min-width: 160px; padding-left: 10px;">Tập tin đính kèm <label style="color:red;height:10px;">*</label>:</div>
@@ -163,8 +163,8 @@
         <div class="row" style="padding-top: 12px; padding-bottom: 5px;">
             <div class="col-md-1" style="min-width: 160px; padding-left: 10px;"></div>
             <div class="col-md-7" style="padding-left:10px;">
-                <button id="btn-save" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu"><i class="retweet_save"></i> Lưu</button>
-                <a href="@Url.Action("Index", "WeedMeeting")" class="buttoncustom WhiteButton"><i class="retweet_trove"></i> Trở về</a>
+                <button id="btn-del" type="button" class="buttoncustom WhiteButton" name="luu" value="Lưu"><i class="retweet_save"></i> Xóa</button>
+                <a href="@Url.Action("Index", "WeedMeeting2")" class="buttoncustom WhiteButton"><i class="retweet_trove"></i> Trở về</a>
             </div>
         </div>
 
@@ -230,33 +230,9 @@
     });
 
 
-    $('#btn-save').on('click', function (e) {
+    $('#btn-del').on('click', function (e) {
         e.preventDefault();
-        if ($('#filter03').val() == '0') {
-            Thongbao("Chọn phòng ban/Bộ phận?");
-            return false;
-        }
-        if ($('#filter01').val() == '0') {
-            Thongbao("Chọn Tuần họp?");
-            return false;
-        }
-        else if ($('#txtgiohop').val().length < 2) {
-            Thongbao("Nhập giờ họp?");
-            return false;
-        }
-        else if ($('#txtngayhop').val().length != 10) {
-            Thongbao("Nhập ngày họp trong tuần (01/01/2017)?");
-            return false;
-        }
-        else if ($('#filter02').val() == 0) {
-            Thongbao("Chọn phòng họp?");
-            return false;
-        }
 
-        else if ($('#filter04').val() == 0) {
-            Thongbao("Loại cuộc họp?");
-            return false;
-        }
         debugger;
         var lydobuoihop = $('#txtlydobuoihop').val();
         var thanhphanthamdu = $('#txtthanhphanthamdu').val();
@@ -265,25 +241,26 @@
         var DataJson = "{";
         DataJson += "'macuochop':'" + $('#txtmacuochop').val() + "',";
         DataJson += "'matuan':'" + $('#filter01').val() + "',";
-        DataJson += "'giohop':'" + $('#txtgiohop').val() + "',";
+        DataJson += "'giohop':'" + "8h30" + "',";
         DataJson += "'ngayhop':'" + $('#txtngayhop').val() + "',";
-        DataJson += "'phonghop':'" + $('#filter02').val() + "',";
+        DataJson += "'phonghop':'" + "1" + "',";
         DataJson += "'maphongban':'" + $('#filter03').val() + "',";
 
-        DataJson += "'loaicuochop':'" + $('#filter04').val() + "',";
+        DataJson += "'loaicuochop':'" + "1" + "',";
 
-        DataJson += "'lydobuoihop':'" + lydobuoihop.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
-        DataJson += "'thanhphanthamdu':'" + thanhphanthamdu.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+        //DataJson += "'lydobuoihop':'" + lydobuoihop.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+        //DataJson += "'thanhphanthamdu':'" + thanhphanthamdu.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
         DataJson += "'caplanhdao':'" + $('#txtcaplanhdao').val() + "',";
-        DataJson += "'noidungcuochop':'" + noidungcuochop.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
-      
+        //DataJson += "'noidungcuochop':'" + noidungcuochop.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+
         DataJson += "'uploadfile':'" + $('#txtuploadfile').val() + "',";
+        DataJson += "'xoa':'" + 1 + "',";
         DataJson += "'tenfile':'" + $('#txttenfile').val() + "'";
         DataJson += "}";
 
         $.ajax({
             type: 'POST',
-            url: '/WeedMeeting/Save',
+            url: '/WeedMeeting/Deleted',
             datatype: "JSON",
             data: "DataJson=" + DataJson,
             cache: false,
@@ -294,7 +271,7 @@
             var macuochop = JSON.stringify(result.macuochop);
             if (tb == "true") {
                 var dialogSuccess = bootbox.dialog({
-                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu thành công.</span>",
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Xóa dữ liệu thành công.</span>",
                     closeButton: false,
                     onEscape: function () {
                     }
@@ -304,7 +281,7 @@
                 }, 2000);
             } else {
                 var dialogSuccess = bootbox.dialog({
-                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu không thành công</span>",
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Xóa dữ liệu không thành công</span>",
                     closeButton: false,
                     onEscape: function () {
                     }

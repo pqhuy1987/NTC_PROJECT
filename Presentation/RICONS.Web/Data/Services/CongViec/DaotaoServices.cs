@@ -296,6 +296,39 @@ namespace RICONS.Web.Data.Services
             return macuochop;
         }
 
+        public string Delete_WeedMeeting(string DataJson, string nguoitao)
+        {
+            logger.Start("Delete_WeedMeeting");
+            string macuochop = "";
+            try
+            {
+                sqlMap.BeginTransaction();
+                Hashtable param = new Hashtable();
+                JObject json = JObject.Parse(DataJson);
+                param["macuochop"] = json["macuochop"].ToString();
+                param["xoa"] = json["xoa"].ToString();
+                if (param["macuochop"].ToString().Trim() == "0")
+                {
+                    param["macuochop"] = GetSequence_All("dm_seq", "weedmeeting");
+                    sqlMap.Insert("WeedMeeting.InsertRow_WeedMeeting", param);
+                }
+                else
+                {
+                    sqlMap.Update("WeedMeeting.DeleteRow_KpiEmployee", param);
+                }
+                macuochop = param["macuochop"].ToString();
+                sqlMap.CommitTransaction();
+            }
+            catch (Exception ex)
+            {
+                macuochop = "-1";
+                sqlMap.RollbackTransaction();
+                logger.Error(ex.Message);
+            }
+            logger.End("Delete_WeedMeeting");
+            return macuochop;
+        }
+
         public List<WeedMeetingModels> SelectRows_WeedMeeting_hieuchinh(string macuochop)
         {
             logger.Start("SelectRows_WeedMeeting");

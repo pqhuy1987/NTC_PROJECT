@@ -1,0 +1,440 @@
+﻿@model RICONS.Web.Models.PhongBanModels
+@{
+    ViewBag.Title = "Danh mục công trường";
+}
+@*--css--*@
+@section CSS
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/controller/Danhmuc.css" />
+    @*<link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/controller/MilestonesCSS.css" />*@
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/chosen/prism.css" />
+    @*<link rel="stylesheet" type="text/css" href="@Url.Content("~")themes/RICONS-2015/css/controller/MilestonesCSS.Create.css" />*@
+}
+
+@*--javascript--*@
+@section JavaScript
+{
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/controllers/Danhmuc2.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/prism.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/table/buildTable.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/colResizale/colResizable-1.3.source.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/chosen/chosen.jquery.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/jquery.datepick-vi.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/plugins/jquery.blockui.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")Themes/RICONS-2015/css/TableBuild/global/scripts/app.min.js"></script>
+
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/bootbox.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~")themes/RICONS-2015/js/custom.js"></script>
+}
+<script>
+    var linkContent = '@Url.Content("~")';
+</script>
+
+
+<div class="HeaderFixed">
+    <div class="b-b b-light">
+        <div class="p-left c-black">Danh mục công trường</div>
+        <div class="clearBoth"></div>
+    </div>
+</div>
+
+<div class="boxEdit">
+    <div id="frm-create">
+        @using (Html.BeginForm("Updatephongban", "Danhmuc2", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+        {
+            <input type="hidden" name="act" value="create" />
+            <input type="hidden" name="ID" value="" />
+
+            <div class="row" style="width:100%">
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-2" style="width:115px"></div>
+                        <div class="col-md-7"><label style="color:red" id="lblthongbao" class="hidden"></label></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="width:100%">
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-2" style="width:115px;padding-left:10px">Tên phòng ban:</div>
+                        <div class="col-md-3" style="padding-left: 10px"><input type="text" style="width: 100%;" autocomplete="off" placeholder="Tên phòng ban" id="txttenphongban" name="tenphongban" /></div>
+
+                        <div class="col-md-2" style="width: 115px; padding-left: 10px">Họ tên quản lý:</div>
+                        <div class="col-md-3" style="padding-left:10px"><input type="text" style="width:100%;" autocomplete="off" placeholder="Họ tên quản lý phòng ban" id="txthovaten" name="hovaten" /></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="width:100%">
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-2" style="width: 115px; padding-left: 10px">Email quản lý:</div>
+                        <div class="col-md-3" style="padding-left:10px"><input type="text" style="width: 100%" autocomplete="off" placeholder="Địa chỉ email" id="txtemail" name="email" /></div>
+                        <div class="col-md-2" style="width: 115px; padding-left: 10px">Email thư ký:</div>
+                        <div class="col-md-3" style="padding-left:10px"><input type="text" style="width: 100%" autocomplete="off" placeholder="Email thư ký" name="sodienthoai" /></div>
+                    </div>
+                </div>
+            </div>
+    <div class="row" style="width:100%">
+        <div class="col-md-10">
+            <div class="row">
+                @*<div class="col-md-2" style="width: 115px; padding-left: 10px">Chọn BGĐ QL 1:</div>
+                    <div class="col-md-3" style="padding-left:10px">
+                        <select id="filter01" data-placeholder="Trực thuộc đơn vị" class="chosen-select-loaikehoach" name="thuocquanly">
+                            <option value="0">Chọn ban giám đốc quản lý</option>
+                            @if (!string.IsNullOrEmpty(ViewBag.keHoachs))
+                            {
+                                @Html.Raw(ViewBag.keHoachs);
+                            }
+                        </select>
+                    </div>*@
+                <div class="col-md-2" style="width: 115px; padding-left: 10px">Email TGĐ:</div>
+                <div class="col-md-3" style="padding-left: 10px"><input type="text" style="width:100%;" autocomplete="off" placeholder="" name="ghichu" /></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="width:100%">
+        <div class="col-md-10">
+            <div class="row">
+                @*<div class="col-md-2" style="width: 115px; padding-left: 10px">Chọn BGĐ QL 2:</div>
+                    <div class="col-md-3" style="padding-left:10px">
+                        <select id="filter02" data-placeholder="Trực thuộc đơn vị" class="chosen-select-loaikehoach" name="thuocquanly1">
+                            <option value="0">Chọn ban giám đốc quản lý</option>
+                            @if (!string.IsNullOrEmpty(ViewBag.keHoachs))
+                            {
+                                @Html.Raw(ViewBag.keHoachs);
+                            }
+                        </select>
+                    </div>*@
+                <div class="col-md-2" style="width: 115px; padding-left: 10px">Email PTGĐ 1:</div>
+                <div class="col-md-3" style="padding-left: 10px"><input type="text" style="width:100%;" autocomplete="off" placeholder="" name="ghichu1" /></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="width:100%">
+        <div class="col-md-10">
+            <div class="row">
+                @*<div class="col-md-2" style="width: 115px; padding-left: 10px">Chọn BGĐ QL 3:</div>
+                    <div class="col-md-3" style="padding-left:10px">
+                        <select id="filter03" data-placeholder="Trực thuộc đơn vị" class="chosen-select-loaikehoach" name="thuocquanly2">
+                            <option value="0">Chọn ban giám đốc quản lý</option>
+                            @if (!string.IsNullOrEmpty(ViewBag.keHoachs))
+                            {
+                                @Html.Raw(ViewBag.keHoachs);
+                            }
+                        </select>
+                    </div>*@
+                <div class="col-md-2" style="width: 115px; padding-left: 10px">Email PTGĐ 2:</div>
+                <div class="col-md-3" style="padding-left: 10px"><input type="text" style="width:100%;" autocomplete="off" placeholder="" name="ghichu2" /></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="width:100%">
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-2" style="width: 115px; padding-left: 10px">Chuyên viên TB:</div>
+                <div class="col-md-3" style="padding-left: 10px"><input type="text" style="width:100%;" autocomplete="off" placeholder="" name="cv_thietbi" /></div>
+
+                <div class="col-md-2" style="width: 115px; padding-left: 10px">Giám sát TB:</div>
+                <div class="col-md-3" style="padding-left: 10px"><input type="text" style="width:100%;" autocomplete="off" placeholder="" name="gs_thietbi" /></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row" style="width:100%">
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-2" style="width: 115px; padding-left: 10px">CV HSSE:</div>
+                <div class="col-md-3" style="padding-left: 10px"><input type="text" style="width:100%;" autocomplete="off" placeholder="" name="cv_hsse" /></div>
+
+                <div class="col-md-2" style="width: 115px; padding-left: 10px">GS HSSE:</div>
+                <div class="col-md-3" style="padding-left: 10px"><input type="text" style="width:100%;" autocomplete="off" placeholder="" name="gs_hsse" /></div>
+            </div>
+        </div>
+    </div>
+            
+    <div class="row" style="width:100%">
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-2" style="width: 115px; padding-left: 10px">CV QA/QC:</div>
+                <div class="col-md-3" style="padding-left: 10px"><input type="text" style="width:100%;" autocomplete="off" placeholder="" name="cv_qaqc" /></div>
+
+                <div class="col-md-2" style="width: 115px; padding-left: 10px">GS QA/QC:</div>
+                <div class="col-md-3" style="padding-left: 10px"><input type="text" style="width:100%;" autocomplete="off" placeholder="" name="gs_qaqc" /></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="width:100%">
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-2" style="width: 115px; padding-left: 10px">CV MEP:</div>
+                <div class="col-md-3" style="padding-left: 10px"><input type="text" style="width:100%;" autocomplete="off" placeholder="" name="cv_mep" /></div>
+
+                <div class="col-md-2" style="width: 115px; padding-left: 10px">GS MEP:</div>
+                <div class="col-md-3" style="padding-left: 10px"><input type="text" style="width:100%;" autocomplete="off" placeholder="" name="gs_mep" /></div>
+            </div>
+        </div>
+    </div>
+
+            <div class="row" style="width: 100%; padding-left: 10px">
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-2" style="width:115px"></div>
+                        <div class="col-md-9">
+                            <input type="button" id="btn-create" class="buttoncustom WhiteButton" name="New" value="Thêm mới" />
+                            <input type="button" id="btn-save" class="buttoncustom WhiteButton" name="luu" value="Lưu" />
+                            <input type="button" id="btn-edit" class="hidden" class="buttoncustom WhiteButton" name="Update" value="Hiệu chỉnh" />
+                            <input type="button" class="hidden" id="btn-delete" class="buttoncustom WhiteButton" name="Delete" value="Xoá" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+
+</div>
+
+<br />
+
+<div style="width:100%; height:75%; resize: both;">
+    <div id="boxContent" c>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table_danhSach" id="tableContent">
+                            <thead>
+                            </thead>
+                            <tbody></tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="10" id="girdInfo">Tổng số: <span class="currentRow">0</span>/<span class="sumRow">0</span></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="16" id="girdInfoLoad">
+                                        <div class="divExentd"><i class="retweet_32"></i>Xem thêm</div>
+                                    </td>
+                                </tr>
+                                @*<tr>
+                                        <td colspan="16" id="footerInfo">
+                                            <div class="companyName">Ricons Construction Investment JSC</div>
+                                            <div class="address">236/6 Dien Bien Phu, Ward 17, Binh Thanh Dist., HCMC, Vietnam</div>
+                                        </td>
+                                    </tr>*@
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@*<div id="boxContent">
+    <div class="boxTable boxTable1" style="padding-left:10px;padding-right:10px;">
+        <table class="table_danhSach table_fixed" id="tableFixedHeader"></table>
+    </div>
+
+    <div class="boxTable boxTable2" style="padding-left:10px;padding-right:10px;">
+        <table class="table_danhSach table_fixed" id="tableContent">
+            <thead>
+            </thead>
+
+            <tbody></tbody>
+
+            <tfoot>
+                <tr>
+                    <td colspan="9" id="girdInfo">Tổng số: <span class="currentRow">0</span>/<span class="sumRow">0</span></td>
+                </tr>
+                <tr>
+                    <td colspan="16" id="girdInfoLoad">
+                        <div class="divExentd"><i class="retweet_32"></i>Xem thêm</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="16" id="footerInfo">
+                        <div class="companyName">Ricons Construction Investment JSC</div>
+                        <div class="address">236/6 Dien Bien Phu, Ward 17, Binh Thanh Dist., HCMC, Vietnam</div>
+                    </td>
+                </tr>
+            </tfoot>
+
+
+
+        </table>
+    </div>
+</div>*@
+
+<script>
+    $(document).ready(function () {
+        $('#btn-create').on('click', function (e) {
+            var form = $(this).closest('form');
+            form.find('input[name="act"]').val('create');
+            form.find('input[name="ID"]').val('');
+            form[0].reset();
+        });
+
+        $('#btn-save').on('click', function (e) {
+
+            debugger;
+
+            $("#lblthongbao").removeClass('hidden');
+            if ($("#txttenphongban").val().length < 3) {
+                $('#lblthongbao').html('Nhập tên phòng ban?');
+                return false;
+            }
+            else if ($("#txthovaten").val().length < 3) {
+                $('#lblthongbao').html('Nhập họ và tên của trưởng phòng?');
+                return false;
+            }
+            else if ($("#txtemail").val().length > 5) {
+                var email = $("#txtemail").val();
+                var dodai = email.length - 1;
+                var daucham = email.lastIndexOf('.');
+                var acong = email.lastIndexOf('.') - 2;
+                var daucach = email.indexOf(' ');
+                if ((dodai <= 5) || (acong < 1) || (daucham <= acong + 1) || (daucach != -1)) {
+                    $('#lblthongbao').html('Email không hợp lệ?');
+                    return false;
+                }
+            }
+            else if ($("#txtemail").val().length < 5) {
+                $('#lblthongbao').html('Email không hợp lệ?');
+                return false;
+            }
+
+            else if ($("#filter01").val() == 0) {
+                $('#lblthongbao').html('Chọn BGĐ quản lý?');
+                return false;
+            }
+            var form = $(this).closest('form');
+
+            //var form = $('#frm-create > form'); //sau viet kieu nay
+            form.submit();
+        });
+        // hieu chinh
+        $('#btn-edit').on('click', function (e) {
+
+            debugger;
+            var form = $(this).closest('form');
+            var checked = $('.chkCheck:checked');
+            if (checked && checked.length <= 0) {
+                alert('Vui lòng check dòng cần hiệu chỉnh');
+                return false;
+            } else {
+                var listChecked = $('.chkCheck:checked');
+                var ID = $(listChecked[0]).attr('mpb'); //encodeURIComponent(ID)); //Encoder.htmlDecode(ID)
+                var row = $(listChecked[0]).closest('tr.rows-box');
+                form.find('input[name="act"]').val('update');
+                form.find('input[name="ID"]').val(ID);
+                form.find('input[name="maphongban"]').val(row.find('.col3').text());
+                form.find('input[name="tenphongban"]').val(row.find('.col4').text());
+
+                form.find('input[name="hovaten"]').val(row.find('.col5').text());
+                form.find('input[name="email"]').val(row.find('.col6').text());
+                form.find('input[name="sodienthoai"]').val(row.find('.col8').text());
+
+                form.find('input[name="thuocquanly"]').val(row.find('.col7').attr('title'));
+                form.find('input[name="ghichu"]').val(row.find('.col9').text());
+
+                //var aaa = row.find('.col11').attr('title');
+
+                form.find('input[name="thuocquanly1"]').val(row.find('.col11').attr('title'));
+                form.find('input[name="ghichu1"]').val(row.find('.col12').text());
+
+                form.find('input[name="thuocquanly2"]').val(row.find('.col13').attr('title'));
+                form.find('input[name="ghichu2"]').val(row.find('.col14').text());
+               
+                form.find('input[name="cv_thietbi"]').val(row.find('.col15').text());
+                form.find('input[name="gs_thietbi"]').val(row.find('.col16').text());
+
+                form.find('input[name="cv_hsse"]').val(row.find('.col17').text());
+                form.find('input[name="gs_hsse"]').val(row.find('.col18').text());
+
+                form.find('input[name="cv_qaqc"]').val(row.find('.col19').text());
+                form.find('input[name="gs_qaqc"]').val(row.find('.col20').text());
+
+                form.find('input[name="cv_mep"]').val(row.find('.col21').text());
+                form.find('input[name="gs_mep"]').val(row.find('.col22').text());
+
+
+                //debugger;
+                var madonvi = $(row).find('.col7').attr('title');
+                $('#filter01').val(madonvi);
+
+                var madonvi1 = $(row).find('.col11').attr('title');
+                $('#filter02').val(madonvi1);
+
+                var madonvi2 = $(row).find('.col13').attr('title');
+                $('#filter03').val(madonvi2);
+
+                for (var selector in configChosenDanhmucphongban) {
+                    $(selector).change();
+                    $(selector).trigger('chosen:updated');
+                }
+            }
+        })
+
+        $('#btn-delete').on('click', function (e) {
+            var form = $(this).closest('form');
+            var checked = $('.chkCheck:checked');
+            if (checked && checked.length <= 0) {
+                alert('Vui long chon 1 ');
+                return false;
+            } else {
+
+                var listChecked = $('.chkCheck:checked');
+                var ID = $(listChecked[0]).attr('mpb');
+                var row = $(listChecked[0]).closest('tr.rows-box');
+                form.find('input[name="act"]').val('delete')
+                form.find('input[name="ID"]').val(ID);
+                form.submit();
+            }
+        })
+
+        $('#content').on('click', 'a.edit', function (e) {
+            e.preventDefault();
+            // Bo check tat ca
+            $('#tableContent input[type="checkbox"]').prop('checked', false);
+            // check dong dang chon
+            $(this).closest('tr').find('input[type="checkbox"]').prop('checked', true);
+            // Goi nut edit click
+            $('#btn-edit').trigger('click');
+        });
+
+        $('#content').on('click', 'a.del', function (e) {
+            e.preventDefault();
+            // Bo check tat ca
+            $('#tableContent input[type="checkbox"]').prop('checked', false);
+            // check dong dang chon
+            $(this).closest('tr').find('input[type="checkbox"]').prop('checked', true);
+            // Goi nut edit click
+            var form = $('#frm-create > form');
+            var check = $('.chkCheck:checked');
+            form.find('input[name="act"]').val('delete');
+
+            var maphongban = $(check[0]).attr('mpb');
+            alert("Bạn có muốn xóa ?");
+            form.find('input[name="ID"]').val(maphongban);
+
+            $('#btn-save').trigger('click');
+        });
+
+
+    })
+</script>
+
+
+
+

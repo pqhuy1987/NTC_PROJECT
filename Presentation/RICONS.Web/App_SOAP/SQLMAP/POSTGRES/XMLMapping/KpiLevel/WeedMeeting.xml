@@ -298,7 +298,7 @@
 
       
     <update id="DeleteRow_KpiEmployee">
-      Update WeedMeeting set xoa='1' where makpinhanvien=$makpinhanvien$
+      Update WeedMeeting set xoa='1' where macuochop=$macuochop$
     </update>
     
     

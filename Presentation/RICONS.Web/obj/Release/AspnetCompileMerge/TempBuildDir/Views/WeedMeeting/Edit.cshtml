@@ -63,7 +63,7 @@
 
 
 <div class="boxEdit">
-    @using (Html.BeginForm("Create", "WeedMeeting", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+    @using (Html.BeginForm("Create", "WeedMeeting2", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
     {
         <div class="row">
             <div class="col-md-1"><input type="text" class="hidden" style="width:100%" autocomplete="off" placeholder="macuochop" id="txtmacuochop" name="macuochop" value="@Model.macuochop" /></div>
@@ -241,25 +241,26 @@
         var DataJson = "{";
         DataJson += "'macuochop':'" + $('#txtmacuochop').val() + "',";
         DataJson += "'matuan':'" + $('#filter01').val() + "',";
-        DataJson += "'giohop':'" + $('#txtgiohop').val() + "',";
+        DataJson += "'giohop':'" + "8h30" + "',";
         DataJson += "'ngayhop':'" + $('#txtngayhop').val() + "',";
-        DataJson += "'phonghop':'" + $('#filter02').val() + "',";
+        DataJson += "'phonghop':'" + "1" + "',";
         DataJson += "'maphongban':'" + $('#filter03').val() + "',";
 
-        DataJson += "'loaicuochop':'" + $('#filter04').val() + "',";
+        DataJson += "'loaicuochop':'" + "1" + "',";
 
-        DataJson += "'lydobuoihop':'" + lydobuoihop.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
-        DataJson += "'thanhphanthamdu':'" + thanhphanthamdu.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+        //DataJson += "'lydobuoihop':'" + lydobuoihop.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+        //DataJson += "'thanhphanthamdu':'" + thanhphanthamdu.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
         DataJson += "'caplanhdao':'" + $('#txtcaplanhdao').val() + "',";
-        DataJson += "'noidungcuochop':'" + noidungcuochop.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
+        //DataJson += "'noidungcuochop':'" + noidungcuochop.replace(/'/g, "daunhaydon").replace(/"/g, '').replace(/&/g, 'daukytuva') + "',";
       
         DataJson += "'uploadfile':'" + $('#txtuploadfile').val() + "',";
+        DataJson += "'xoa':'" + 1 + "',";
         DataJson += "'tenfile':'" + $('#txttenfile').val() + "'";
         DataJson += "}";
 
         $.ajax({
             type: 'POST',
-            url: '/WeedMeeting/Save',
+            url: '/WeedMeeting/Deleted',
             datatype: "JSON",
             data: "DataJson=" + DataJson,
             cache: false,
@@ -270,7 +271,7 @@
             var macuochop = JSON.stringify(result.macuochop);
             if (tb == "true") {
                 var dialogSuccess = bootbox.dialog({
-                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu thành công.</span>",
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Xóa dữ liệu thành công.</span>",
                     closeButton: false,
                     onEscape: function () {
                     }
@@ -280,7 +281,7 @@
                 }, 2000);
             } else {
                 var dialogSuccess = bootbox.dialog({
-                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Lưu dữ liệu không thành công</span>",
+                    message: "<i class='fa fa-check text-success'></i><span class='text-success'>Xóa dữ liệu không thành công</span>",
                     closeButton: false,
                     onEscape: function () {
                     }
