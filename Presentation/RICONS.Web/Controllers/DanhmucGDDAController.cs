@@ -45,7 +45,7 @@ namespace RICONS.Web.Controllers
         {
             PhongBanModels param = new PhongBanModels();
             DanhmucServices service = new DanhmucServices();
-            List<PhongBanModels> lstResult = service.SelectRows(param);
+            List<PhongBanModels> lstResult = service.SelectRowsGDDA(param);
             StringBuilder sbResult = new StringBuilder();
             StringBuilder sbRows = new StringBuilder();
             if (lstResult.Count > 0)
