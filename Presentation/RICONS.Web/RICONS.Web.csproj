@@ -905,6 +905,8 @@
     <Content Include="Themes\RICONS-2015\js\colResizale\jquery.colResizableRight.js" />
     <Content Include="Themes\RICONS-2015\js\colResizale\jquery.colResizableTop.js" />
     <Content Include="Themes\RICONS-2015\js\Controllers\Danhmuc2.js" />
+    <Content Include="Themes\RICONS-2015\js\Controllers\DanhmucBCTC.js" />
+    <Content Include="Themes\RICONS-2015\js\Controllers\DanhmucGDDA.js" />
     <Content Include="Themes\RICONS-2015\js\Controllers\jquery.min.js" />
     <Content Include="Themes\RICONS-2015\js\Controllers\Account.ManageJS.js" />
     <Content Include="Themes\RICONS-2015\js\Controllers\Account.PersonalJS.js" />
