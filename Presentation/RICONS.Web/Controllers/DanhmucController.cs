@@ -453,13 +453,19 @@ namespace RICONS.Web.Controllers
                 //sbResult.Append("\"col_value\":\"" + model.tenphongban + "\"");
                 //sbResult.Append("},");
 
-                // Số diện thoại
+                //dinh kem tap tin
+                string strHTML_Attachment = "";
+                #region
+                //string link = Url.Action("Edit", "Account", new { id = EncDec.EncodeCrypto(model.mataikhoan) });
+                strHTML_Attachment = "<a href='#' class='edit' ><i class='fa fa-pencil-square-o' ></i></a>&nbsp;<a href='#' class='del'><i class='fa fa-trash-o' ></i></a>";
+                #endregion
                 sbResult.Append("{");
                 sbResult.Append("\"colspan\":\"1\",");
-                sbResult.Append("\"col_class\":\"ovh col6\",");
-                sbResult.Append("\"col_id\":\"6\",");
-                sbResult.Append("\"col_value\":\"" + model.ghichu + "\"");
+                sbResult.Append("\"col_class\":\"ovh col10\",");
+                sbResult.Append("\"col_id\":\"10\",");
+                sbResult.Append("\"col_value\":\"" + strHTML_Attachment + "\"");
                 sbResult.Append("}");
+
                 #endregion
 
                 sbResult.Append("]");

@@ -363,6 +363,7 @@
             // check dong dang chon
             $(this).closest('tr').find('input[type="checkbox"]').prop('checked', true);
             // Goi nut edit click
+            $('#btn-edit').trigger('click');
             var form = $('#frm-create > form');
             var check = $('.chkCheck:checked');
             form.find('input[name="act"]').val('delete');
