@@ -278,7 +278,7 @@ namespace RICONS.Web.Controllers
                 paramphongban.xoa = "0";
                 paramphongban.nguoitao = int.Parse(Session["userid"].ToString());
                 paramphongban.ngaytao = ngaytao;
-                paramphongban.phongban_congtruong = "0";
+                paramphongban.phongban_congtruong = "2";
                 DanhmucServices services = new DanhmucServices();
                 string result = services.Insert_phongban(paramphongban);
 
@@ -339,7 +339,7 @@ namespace RICONS.Web.Controllers
                 string result = services.Deleted_phongban(paramphongban.maphongban.ToString(), paramphongban.nguoihieuchinh.ToString());
                 maphongban = result;
             }
-            return RedirectToAction("Index", "Danhmuc");
+            return RedirectToAction("Index", "DanhmucGDDA");
         }
 
 

@@ -94,7 +94,61 @@ var dataHeader_Milestones =
             col_value: 'Email QL 3'
         },
 
+        {
+            colspan: 1,
+            col_class: 'ovh col15',
+            col_id: '',
+            col_value: 'Chuyên viên TB'
+        },
 
+        {
+            colspan: 1,
+            col_class: 'ovh col16',
+            col_id: '',
+            col_value: 'Giám sát TB'
+        },
+
+                {
+                    colspan: 1,
+                    col_class: 'ovh col17',
+                    col_id: '',
+                    col_value: 'Chuyên viên HSSE'
+                },
+
+        {
+            colspan: 1,
+            col_class: 'ovh col18',
+            col_id: '',
+            col_value: 'Giám sát HSSE'
+        },
+
+                {
+                    colspan: 1,
+                    col_class: 'ovh col19',
+                    col_id: '',
+                    col_value: 'Chuyên viên QAQC'
+                },
+
+        {
+            colspan: 1,
+            col_class: 'ovh col20',
+            col_id: '',
+            col_value: 'Giám sát QAQC'
+        },
+
+                {
+                    colspan: 1,
+                    col_class: 'ovh col21',
+                    col_id: '',
+                    col_value: 'Chuyên viên MEP'
+                },
+
+        {
+            colspan: 1,
+            col_class: 'ovh col22',
+            col_id: '',
+            col_value: 'Giám sát MEP'
+        },
 
     {
     colspan: 1,
@@ -162,7 +216,7 @@ function GetData(isHeader, mkh, stt) {
     var STT = CheckNullOrEmpty(stt) == true ? "0" : stt;
     var DataJson = "";
     //fncGetData_Kiemkekho(linkContent + 'Danhmuc/SelectRows', DataJson, isHeader);
-    fncGetData(linkContent + 'DanhmucGDDA/SelectRows', DataJson, isHeader);
+    fncGetData(linkContent + 'Danhmuc2/SelectRows2', DataJson, isHeader);
 }
 
 function ShowSubLine(e) {

@@ -162,7 +162,7 @@ function GetData(isHeader, mkh, stt) {
     var STT = CheckNullOrEmpty(stt) == true ? "0" : stt;
     var DataJson = "";
     //fncGetData_Kiemkekho(linkContent + 'Danhmuc/SelectRows', DataJson, isHeader);
-    fncGetData(linkContent + 'DanhmucGDDA/SelectRows', DataJson, isHeader);
+    fncGetData(linkContent + 'Danhmuc/SelectRows', DataJson, isHeader);
 }
 
 function ShowSubLine(e) {

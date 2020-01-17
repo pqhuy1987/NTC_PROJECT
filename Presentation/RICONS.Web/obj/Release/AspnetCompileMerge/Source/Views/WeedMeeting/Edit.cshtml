@@ -273,12 +273,13 @@
                 var dialogSuccess = bootbox.dialog({
                     message: "<i class='fa fa-check text-success'></i><span class='text-success'>Xóa dữ liệu thành công.</span>",
                     closeButton: false,
-                    onEscape: function () {
+                    onEscape: function () {   
                     }
                 });
                 setTimeout(function () {
                     dialogSuccess.modal('hide');
                 }, 2000);
+                window.location.replace(/WeedMeeting/);
             } else {
                 var dialogSuccess = bootbox.dialog({
                     message: "<i class='fa fa-check text-success'></i><span class='text-success'>Xóa dữ liệu không thành công</span>",

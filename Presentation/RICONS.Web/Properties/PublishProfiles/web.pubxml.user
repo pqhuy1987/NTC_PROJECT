@@ -48,7 +48,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/04/2019 10:47:38</publishTime>
     </File>
     <File Include="App_SOAP/database.config">
-      <publishTime>11/08/2019 14:41:20</publishTime>
+      <publishTime>01/17/2020 09:22:49</publishTime>
     </File>
     <File Include="App_SOAP/index.html">
       <publishTime>12/03/2019 10:02:04</publishTime>
@@ -282,10 +282,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/10/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>01/10/2020 17:13:26</publishTime>
+      <publishTime>01/17/2020 09:52:22</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>01/10/2020 17:13:26</publishTime>
+      <publishTime>01/17/2020 09:52:21</publishTime>
     </File>
     <File Include="bin/Castle.DynamicProxy.dll">
       <publishTime>04/22/2015 23:59:08</publishTime>
@@ -384,7 +384,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/08/2019 11:13:37</publishTime>
     </File>
     <File Include="bin/RICONS.Web.dll">
-      <publishTime>01/10/2020 17:12:52</publishTime>
+      <publishTime>01/17/2020 09:50:30</publishTime>
     </File>
     <File Include="bin/RICONS.Web.pdb">
       <publishTime>03/08/2019 11:44:06</publishTime>
@@ -432,7 +432,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2019 09:24:40</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>01/10/2020 17:13:04</publishTime>
+      <publishTime>01/17/2020 09:51:03</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>12/03/2018 23:51:46</publishTime>
@@ -471,7 +471,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/03/2018 23:51:47</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>12/30/2019 11:38:30</publishTime>
+      <publishTime>01/15/2020 10:49:58</publishTime>
     </File>
     <File Include="Themes/images/jquery/jquery/ui-bg_glass_55_fbf9ee_1x400.png">
       <publishTime>12/03/2018 23:51:47</publishTime>
@@ -2694,10 +2694,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/23/2019 12:06:35</publishTime>
     </File>
     <File Include="Themes/RICONS-2015/js/Controllers/Danhmuc2.js">
+      <publishTime>01/15/2020 10:49:35</publishTime>
+    </File>
+    <File Include="Themes/RICONS-2015/js/Controllers/DanhmucBCTC.js">
       <publishTime>11/20/2019 15:47:56</publishTime>
     </File>
     <File Include="Themes/RICONS-2015/js/Controllers/Danhmucchucvu.js">
       <publishTime>11/01/2019 09:29:36</publishTime>
+    </File>
+    <File Include="Themes/RICONS-2015/js/Controllers/DanhmucGDDA.js">
+      <publishTime>11/23/2019 12:06:35</publishTime>
     </File>
     <File Include="Themes/RICONS-2015/js/Controllers/Danhmucvanphongpham.js">
       <publishTime>10/28/2019 10:24:00</publishTime>
@@ -2808,7 +2814,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/03/2018 23:52:18</publishTime>
     </File>
     <File Include="Themes/RICONS-2015/js/Controllers/KpiEmployee/Index_Employee.js">
-      <publishTime>11/21/2019 16:19:34</publishTime>
+      <publishTime>01/16/2020 11:59:25</publishTime>
     </File>
     <File Include="Themes/RICONS-2015/js/Controllers/KpiEmployee/Index_Employee2.js">
       <publishTime>12/30/2019 11:37:33</publishTime>
@@ -3222,10 +3228,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/04/2019 16:48:08</publishTime>
     </File>
     <File Include="Views/Danhmuc/Index.cshtml">
-      <publishTime>11/28/2019 12:54:16</publishTime>
+      <publishTime>01/17/2020 09:38:40</publishTime>
     </File>
     <File Include="Views/Danhmuc/Indexchucdanh.cshtml">
-      <publishTime>10/30/2019 10:12:34</publishTime>
+      <publishTime>01/17/2020 09:39:02</publishTime>
     </File>
     <File Include="Views/Danhmuc/Indexgiaovien.cshtml">
       <publishTime>12/03/2018 23:52:21</publishTime>
@@ -3237,7 +3243,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2019 10:43:06</publishTime>
     </File>
     <File Include="Views/Danhmuc2/Index.cshtml">
-      <publishTime>11/26/2019 17:28:19</publishTime>
+      <publishTime>01/17/2020 09:39:41</publishTime>
     </File>
     <File Include="Views/Danhmuc2/Indexchucdanh.cshtml">
       <publishTime>10/30/2019 10:12:34</publishTime>
@@ -3267,7 +3273,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/04/2019 16:48:08</publishTime>
     </File>
     <File Include="Views/DanhmucGDDA/Index.cshtml">
-      <publishTime>12/31/2019 09:57:47</publishTime>
+      <publishTime>01/15/2020 10:46:42</publishTime>
     </File>
     <File Include="Views/DanhmucGDDA/Indexchucdanh.cshtml">
       <publishTime>10/30/2019 10:12:34</publishTime>
@@ -3483,19 +3489,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/25/2019 15:12:24</publishTime>
     </File>
     <File Include="Views/WeedMeeting/Create.cshtml">
-      <publishTime>01/10/2020 16:54:20</publishTime>
+      <publishTime>01/16/2020 13:14:22</publishTime>
     </File>
     <File Include="Views/WeedMeeting/Edit.cshtml">
-      <publishTime>01/10/2020 16:56:58</publishTime>
+      <publishTime>01/16/2020 11:58:58</publishTime>
     </File>
     <File Include="Views/WeedMeeting/Index.cshtml">
-      <publishTime>11/25/2019 18:32:38</publishTime>
+      <publishTime>01/17/2020 09:35:24</publishTime>
     </File>
     <File Include="Views/WeedMeeting2/Create.cshtml">
-      <publishTime>01/10/2020 16:55:33</publishTime>
+      <publishTime>01/16/2020 13:14:38</publishTime>
     </File>
     <File Include="Views/WeedMeeting2/Edit.cshtml">
-      <publishTime>01/10/2020 16:52:13</publishTime>
+      <publishTime>01/16/2020 13:18:50</publishTime>
     </File>
     <File Include="Views/WeedMeeting2/Index.cshtml">
       <publishTime>12/03/2019 09:04:14</publishTime>
@@ -3525,7 +3531,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/28/2019 16:55:02</publishTime>
     </File>
     <File Include="Views/WeedMeetingGDDA/Index.cshtml">
-      <publishTime>01/10/2020 17:06:30</publishTime>
+      <publishTime>01/15/2020 10:50:32</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>12/03/2018 23:52:20</publishTime>

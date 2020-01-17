@@ -88,18 +88,18 @@
                 <div class="col-md-12">
                         <div class="col-md-2" style="width:115px"></div>
                     <div class="col-md-1" style="width:90px">
-                        <input type="button" id="btn-create" class="buttoncustom WhiteButton" name="New" value="Thêm mới" />
+                        <input type="button" id="btn-create" class="buttoncustom WhiteButton" name="New" value="Clear" />
                     </div>
                     <div class="col-md-1" style="width:90px">
-                        <input type="button" id="btn-save" class="buttoncustom WhiteButton" name="Save" value="Lưu" />
-                    </div>
-
-                    <div class="col-md-1" style="width:90px">
-                        <input type="button" id="btn-edit" class="buttoncustom WhiteButton" name="Update" value="Hiệu chỉnh" />
+                        <input type="button" id="btn-save" class="buttoncustom WhiteButton" name="Save" value="Lưu/Thêm Mới" />
                     </div>
 
                     <div class="col-md-1" style="width:90px">
-                        <input type="button" id="btn-delete" class="buttoncustom WhiteButton" name="Delete" value="Xoá" />
+                        <input type="button" id="btn-edit" class="hidden"  name="Update" value="Hiệu chỉnh" />
+                    </div>
+
+                    <div class="col-md-1" style="width:90px">
+                        <input type="button" id="btn-delete" class="hidden" name="Delete" value="Xoá" />
                     </div>
 
 
@@ -192,6 +192,34 @@
             }
         })
 
+        $('#content').on('click', 'a.edit', function (e) {
+            e.preventDefault();
+            // Bo check tat ca
+            $('#tableContent input[type="checkbox"]').prop('checked', false);
+            // check dong dang chon
+            $(this).closest('tr').find('input[type="checkbox"]').prop('checked', true);
+            // Goi nut edit click
+            $('#btn-edit').trigger('click');
+        });
+
+        $('#content').on('click', 'a.del', function (e) {
+            e.preventDefault();
+            // Bo check tat ca
+            $('#tableContent input[type="checkbox"]').prop('checked', false);
+            // check dong dang chon
+            $(this).closest('tr').find('input[type="checkbox"]').prop('checked', true);
+            // Goi nut edit click
+            $('#btn-edit').trigger('click');
+            var form = $('#frm-create > form');
+            var check = $('.chkCheck:checked');
+            form.find('input[name="act"]').val('delete');
+
+            var maphongban = $(check[0]).attr('mpb');
+            alert("Bạn có muốn xóa ?");
+            form.find('input[name="ID"]').val(maphongban);
+
+            $('#btn-save').trigger('click');
+        });
 
     })
 </script>

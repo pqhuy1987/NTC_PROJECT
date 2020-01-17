@@ -386,7 +386,7 @@ namespace RICONS.Web.Controllers
             {
                 iresult = "1";
                 if (loaibaocao == 1)
-                    MailLich("TEST", path, filename, maphongban, phongban_congtruong);
+                    MailLich("TEST", path, filename, maphongban, phongban_congtruong, json["matuan"].ToString());
                 return Json(new { success = true, macuochop = int.Parse(iresult) }, JsonRequestBehavior.AllowGet);
             }
             else
@@ -515,7 +515,7 @@ namespace RICONS.Web.Controllers
             return File(FileVirtualPath, "application/force-download", Path.GetFileName(FileVirtualPath));
         }
 
-        public void MailLich(string NoiDung, string path, string filename, string maphongban, int phongban_congtruong)
+        public void MailLich(string NoiDung, string path, string filename, string maphongban, int phongban_congtruong, string matuan)
         {
             string sMailGui = System.Configuration.ConfigurationManager.AppSettings["MailSend"];
             string sPass = System.Configuration.ConfigurationManager.AppSettings["MailPass"];
@@ -534,21 +534,35 @@ namespace RICONS.Web.Controllers
 
             DanhmucServices service = new DanhmucServices();
             PhongBanModels parampb = new PhongBanModels();
+            Item_weedModels Week = new Item_weedModels();
 
             List<PhongBanModels> lstResult_phongban;
+            List<Item_weedModels> lstResult_Item_weedModels;
             List<PhongBanModels> y = null;
+            List<Item_weedModels> z = null;
             var lstcaptrentt = y;
+            var lstweekitemtt = z;
+
+            lstResult_Item_weedModels = service.SelectRows_giaovien(Week);
+            lstweekitemtt = lstResult_Item_weedModels.Where(x => x.matuan == matuan).ToList();
 
             if (phongban_congtruong == 0)
             {
                 lstResult_phongban = service.SelectRows(parampb);
                 lstcaptrentt = lstResult_phongban.Where(p => p.maphongban == maphongban).ToList();
-                sMailTo = lstcaptrentt[0].email;
+                if (lstcaptrentt[0].email.ToString().Trim() == null)
+                    sMailTo = "it360@newtecons.vn";
+                else
+                    sMailTo = lstcaptrentt[0].email;
             }
-            else {
+            else
+            {
                 lstResult_phongban = service.SelectRows2(parampb);
                 lstcaptrentt = lstResult_phongban.Where(p => p.maphongban == maphongban).ToList();
-                sMailTo = lstcaptrentt[0].email;
+                if (lstcaptrentt[0].email.ToString().Trim() == null)
+                    sMailTo = "it360@newtecons.vn";
+                else
+                    sMailTo = lstcaptrentt[0].email;
             }
 
             var toAddress = new MailAddress(sMailTo);
@@ -564,8 +578,8 @@ namespace RICONS.Web.Controllers
             };
             //var smtp = new SmtpClient();
 
-            subject = "NEWTECONS PROJECT REPORT: " + lstcaptrentt[0].tenphongban;
-            body = "<p>Kính gửi anh chị,</p><p>Đính kèm là báo cáo tuần gửi từ hệ thống của: " + lstcaptrentt[0].tenphongban + "</p>" + "<p>Trân trọng,</p>";
+            subject = "NEWTECONS WEEKLY REPORT: " + lstcaptrentt[0].tenphongban;
+            body = "<p>Kính gửi Ban Tổng Giám Đốc Công ty Newtecons,</p><p>" + lstcaptrentt[0].tenphongban + " xin phép gửi báo cáo tuần: " + lstweekitemtt[0].tentuan + ". Vui lòng xem file đính kèm.</p>" + "<p>Trân trọng,</p>";
 
             using (var message = new MailMessage(fromAddress, toAddress)
             {
@@ -576,6 +590,7 @@ namespace RICONS.Web.Controllers
             {
                 try
                 {
+
                     Attachment data = new Attachment(path, MediaTypeNames.Application.Octet);
                     message.Attachments.Add(data);
                     if (!string.IsNullOrEmpty(lstcaptrentt[0].sodienthoai))
@@ -589,6 +604,7 @@ namespace RICONS.Web.Controllers
 
                     if (!string.IsNullOrEmpty(lstcaptrentt[0].ghichu2))
                         message.CC.Add(lstcaptrentt[0].ghichu2);
+
                     smtp.Send(message);
                     smtp.Dispose();
                 }
